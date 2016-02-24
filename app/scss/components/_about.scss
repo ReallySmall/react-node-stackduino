@@ -1,15 +1,5 @@
-@import 'settings.scss';
+@import '../main.scss';
 
 .about {
   padding: 0 24px;
 }
-
-  .about__header {
-    color: $color-black;
-    font-size: $font-large;
-    text-align: center;
-  }
-
-  .about__description {
-    font-size: $font-medium;
-  }

@@ -5,6 +5,10 @@ import App from 'containers/App';
 import Vote from 'containers/Vote';
 import About from 'containers/About';
 import Login from 'containers/Login';
+import Home from 'containers/Home';
+import Boards from 'containers/Boards';
+import Articles from 'containers/Articles';
+import Gallery from 'containers/Gallery';
 import Dashboard from 'containers/Dashboard';
 
 /*
@@ -25,10 +29,10 @@ export default (store) => {
   };
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={Vote} />
-      <Route path="login" component={Login} />
-      <Route path="dashboard" component={Dashboard} onEnter={requireAuth} />
-      <Route path="about" component={About} />
+      <IndexRoute component={Home} />
+      <Route path="boards" component={Boards} />
+      <Route path="articles" component={Articles} />
+      <Route path="gallery" component={Gallery} />
     </Route>
   );
 };

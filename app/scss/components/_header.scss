@@ -1,0 +1,56 @@
+/**
+ * React Starter Kit (https://www.reactstarterkit.com/)
+ *
+ * Copyright © 2014-2016 Kriasoft, LLC. All rights reserved.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE.txt file in the root directory of this source tree.
+ */
+
+@import '../main.scss';
+
+.site-header {
+  background: $grey;
+  min-height: 115px;
+  border-top: 2px solid $black;
+  .home-link {
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 18px 0 0 0;
+    .animated-site-logo {
+      float: left;
+      font-size: 32px;
+      margin: 0;
+      .fa-pause {
+        color: $light-grey;
+        font-size: 0.9em;
+      }
+      .fa-camera {
+        color: $orange;
+        margin-left: -3px;
+      }
+    }
+    .site-descriptor {
+      margin: 0 0 0 15px;
+      float: left;
+    }
+    &:hover, &:focus, &:active {
+      .siteTitle { 
+        color: $white;
+        text-decoration: none;
+      } 
+    }
+  }
+  .site-slogan {
+    color: $white;
+    clear: both;
+    margin-top: -5px;
+  }
+}
+
+      .site-title { 
+        color: $orange;
+        margin: -5px 0 0 0;
+        font-size: 38px;
+      }

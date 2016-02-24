@@ -8,6 +8,40 @@ var config = require('../webpack/webpack.config.dev.js');
 var app = express();
 var compiler = webpack(config);
 
+// keystone integration
+//var keystone = require('keystone');
+//var serve = require('serve-static');
+//var favicon = require('serve-favicon');
+//var body = require('body-parser');
+//var cookieParser = require('cookie-parser');
+//var multer = require('multer');
+
+//var cookieSecret = 'secretCookie';
+
+//app.use(cookieParser(cookieSecret));
+//app.use(body.urlencoded({ extended: true }));
+//app.use(body.json());
+//app.use(multer());
+
+// keystone.init({
+//   'name': 'Website Name',
+//   'brand': 'Website Brand',
+//   'session': false,
+//   'updates': 'updates',
+//   'auth': true,
+//   'user model': 'User',
+//   'auto update': true,
+//   'cookie secret': cookieSecret
+// });
+
+// Let keystone know where your models are defined. Here we have it at the `/models`
+//keystone.import('models');
+
+// Serve your static assets
+//app.use(serve('./public'));
+
+// keystone integration
+
 // Find the appropriate database to connect to, default to localhost if not found.
 var connect = function() {
   mongoose.connect(secrets.db, function(err, res) {
@@ -50,3 +84,6 @@ require('./config/express')(app, passport);
 require('./config/routes')(app, passport);
 
 app.listen(app.get('port'));
+
+//keystone.app = app;
+//keystone.start();
