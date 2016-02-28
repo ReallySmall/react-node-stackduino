@@ -54,7 +54,7 @@ const Header = props => {
             </div>
           </div>
         </div>
-        <Navigation />
+        <Navigation navItems={[]} />
       </header>
     );
 

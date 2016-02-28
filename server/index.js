@@ -9,36 +9,59 @@ var app = express();
 var compiler = webpack(config);
 
 // keystone integration
-//var keystone = require('keystone');
-//var serve = require('serve-static');
-//var favicon = require('serve-favicon');
-//var body = require('body-parser');
-//var cookieParser = require('cookie-parser');
-//var multer = require('multer');
+var keystone = require('keystone');
+var serve = require('serve-static');
+var favicon = require('serve-favicon');
+var body = require('body-parser');
+var cookieParser = require('cookie-parser');
+var multer = require('multer');
+var session = require('express-session');
+var flash = require('connect-flash');
 
-//var cookieSecret = 'secretCookie';
+var cookieSecret = 'secretCookie';
 
-//app.use(cookieParser(cookieSecret));
-//app.use(body.urlencoded({ extended: true }));
-//app.use(body.json());
-//app.use(multer());
+app.use(cookieParser(cookieSecret));
+app.use(body.urlencoded({ extended: true }));
+app.use(body.json());
+app.use(multer());
+app.use(session());
+app.use(flash());
 
-// keystone.init({
-//   'name': 'Website Name',
-//   'brand': 'Website Brand',
-//   'session': false,
-//   'updates': 'updates',
-//   'auth': true,
-//   'user model': 'User',
-//   'auto update': true,
-//   'cookie secret': cookieSecret
-// });
+keystone.app = app;
+keystone.mongoose = mongoose;
+
+keystone.init({
+   'name': 'Website Name',
+   'brand': 'Website Brand',
+   'session': true,
+   'updates': true,
+   'auth': false,
+   'user model': 'User',
+   'auto update': true,
+   'cookie secret': cookieSecret,
+   'mongo': 'mongodb://localhost/ReactWebpackNode'
+});
+
+keystone.set('cloudinary config', { cloud_name: 'dvv1umzpi', api_key: '165524472358952', api_secret: '671BmQ2Qo7fpbv8mXXywPrsr6x0' });
 
 // Let keystone know where your models are defined. Here we have it at the `/models`
-//keystone.import('models');
+keystone.import('models/keystone');
+
+console.log("keystone models imported")
+
+// Set keystone routes for the admin panel, located at '/keystone'
+keystone.routes(app);
+
+// Initialize keystone's connection the database
+keystone.mongoose.connect(keystone.get('mongo'));
 
 // Serve your static assets
-//app.use(serve('./public'));
+app.use(serve('./public'));
+
+keystone.routes(app);
+
+// Initialize keystone's connection the database
+//keystone.mongoose.connect(keystone.get('mongo'));
 
 // keystone integration
 
@@ -84,6 +107,3 @@ require('./config/express')(app, passport);
 require('./config/routes')(app, passport);
 
 app.listen(app.get('port'));
-
-//keystone.app = app;
-//keystone.start();

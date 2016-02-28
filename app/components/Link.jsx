@@ -2,8 +2,8 @@
  * Link
  */
 
-// import React, { Component, PropTypes } from 'react';
-// import parsePath from 'history/lib/parsePath';
+import React, { Component, PropTypes } from 'react';
+// import parsePath from 'parse-path';
 // import Location from '../../core/Location';
 
 // function isLeftClickEvent(event) {
@@ -14,7 +14,7 @@
 //   return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 // }
 
-// export default class Image extends Component {
+export default class Image extends Component {
 
 //   static propTypes = {
 //     to: PropTypes.string.isRequired,
@@ -58,9 +58,9 @@
 //     }
 //   };
 
-//   render() {
-//     const { to, query, ...props } = this.props;
-//     return <a href={Location.createHref(to, query)} {...props} onClick={this.handleClick} />;
-//   }
+   render() {
+     const { to, query, ...props } = this.props;
+     return <a href='#' />;
+   }
 
-// }
+}

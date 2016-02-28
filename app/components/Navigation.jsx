@@ -20,9 +20,9 @@ export default class Navigation extends Component {
         <div className={cx('container')}>
           <nav className={cx('row')}>
             <ul>
-              <li className={cx('col-sm-4')}><a className={cx('preface-block')} href="/boards"><h2><span class={cx('fa', 'fa-code-fork')}></span>Boards</h2></a></li>
-              <li className={cx('col-sm-4')}><a className={cx('preface-block')} to="/articles"><h2><span class={cx('fa', 'fa-code-gears')}></span>Articles</h2></a></li>
-              <li className={cx('col-sm-4')}><a className={cx('preface-block')} to="/gallery"><h2><span class={cx('fa', 'fa-code-star')}></span>Gallery</h2></a></li>
+              <li className={cx('col-sm-4')}><Link className={cx('preface-block')} to="/boards"><h2><span class={cx('fa', 'fa-code-fork')}></span>Boards</h2></Link></li>
+              <li className={cx('col-sm-4')}><Link className={cx('preface-block')} to="/articles"><h2><span class={cx('fa', 'fa-code-gears')}></span>Articles</h2></Link></li>
+              <li className={cx('col-sm-4')}><Link className={cx('preface-block')} to="/gallery"><h2><span class={cx('fa', 'fa-code-star')}></span>Gallery</h2></Link></li>
             </ul>
           </nav>
         </div>

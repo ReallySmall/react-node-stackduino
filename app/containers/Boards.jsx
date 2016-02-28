@@ -12,13 +12,6 @@ const cx = classNames.bind(styles);
  */
 const BoardsPage = props => {
 
-    var assets = [];
-    var boards = [];
-
-    for(var i = 0; i < props.boards.length; i++){
-      boards.push(<BoardTeaser content={props.boards[i]} assets={assets}/>);
-    }
-
   return (
     <div className={cx('view-animate-container')}>
         <div className={cx('container')}>

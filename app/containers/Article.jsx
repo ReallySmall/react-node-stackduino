@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_articles-page';
-import ArticleTeaser from 'components/ArticleTeaser';
+import styles from 'scss/components/_article-detail';
 
 const cx = classNames.bind(styles);
 
@@ -10,23 +9,16 @@ const cx = classNames.bind(styles);
  *  i.e. We should keep this as the container that does the data-fetching
  *  and dispatching of actions if you decide to have any sub-components.
  */
-const Articles = props => {
-
-    var articles = [];
-
-    //for(var i = 0; i < props.boards.length; i++){
-      //articles.push(<BoardTeaser content={props.boards[i]} assets={props.assets}/>);
-    //}
+const Article = props => {
 
   return (
     <div className={cx('view-animate-container')}>
         <div className={cx('container')}>
           <h1></h1>
           <p></p>
-          {articles}
         </div>
       </div>
   );
 };
 
-export default Articles;
+export default Article;
