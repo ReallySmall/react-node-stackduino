@@ -10,5 +10,13 @@ module.exports = {
     clientID: process.env.GOOGLE_CLIENTID || '62351010161-eqcnoa340ki5ekb9gvids4ksgqt9hf48.apps.googleusercontent.com',
     clientSecret: process.env.GOOGLE_SECRET || '6cKCWD75gHgzCvM4VQyR5_TU',
     callbackURL: process.env.GOOGLE_CALLBACK || "/auth/google/callback"
+  },
+  keystone: {
+  	cookieSecret: 'cookieSecret',
+	cloudinary: {
+		cloud_name: 'dvv1umzpi', 
+		api_key: '165524472358952', 
+		api_secret: '671BmQ2Qo7fpbv8mXXywPrsr6x0'
+	}
   }
 };

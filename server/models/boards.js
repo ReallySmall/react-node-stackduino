@@ -13,5 +13,5 @@ var BoardSchema = new mongoose.Schema({
 
 // Compiles the schema into a model, opening (or creating, if
 //	nonexistent) the 'Board' collection in the MongoDB database
-Board = mongoose.model('Board', BoardSchema);
+Board = mongoose.model('Boardi', BoardSchema);
 

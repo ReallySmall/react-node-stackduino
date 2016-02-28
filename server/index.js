@@ -18,9 +18,7 @@ var multer = require('multer');
 var session = require('express-session');
 var flash = require('connect-flash');
 
-var cookieSecret = 'secretCookie';
-
-app.use(cookieParser(cookieSecret));
+app.use(cookieParser(secrets.keystone.cookieSecret));
 app.use(body.urlencoded({ extended: true }));
 app.use(body.json());
 app.use(multer());
@@ -31,39 +29,32 @@ keystone.app = app;
 keystone.mongoose = mongoose;
 
 keystone.init({
-   'name': 'Website Name',
-   'brand': 'Website Brand',
+   'name': 'Stackduino',
+   'brand': 'Stackduino',
    'session': true,
    'updates': true,
    'auth': false,
    'user model': 'User',
    'auto update': true,
-   'cookie secret': cookieSecret,
-   'mongo': 'mongodb://localhost/ReactWebpackNode'
+   'cookie secret': secrets.keystone.cookieSecret,
+   'mongo': secrets.db
 });
 
-keystone.set('cloudinary config', { cloud_name: 'dvv1umzpi', api_key: '165524472358952', api_secret: '671BmQ2Qo7fpbv8mXXywPrsr6x0' });
+keystone.set('cloudinary config', secrets.keystone.cloudinary);
 
 // Let keystone know where your models are defined. Here we have it at the `/models`
 keystone.import('models/keystone');
 
-console.log("keystone models imported")
-
 // Set keystone routes for the admin panel, located at '/keystone'
 keystone.routes(app);
 
-// Initialize keystone's connection the database
+// Initialize keystone's connection to the database
 keystone.mongoose.connect(keystone.get('mongo'));
 
 // Serve your static assets
 app.use(serve('./public'));
 
 keystone.routes(app);
-
-// Initialize keystone's connection the database
-//keystone.mongoose.connect(keystone.get('mongo'));
-
-// keystone integration
 
 // Find the appropriate database to connect to, default to localhost if not found.
 var connect = function() {
