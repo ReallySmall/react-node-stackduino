@@ -19,7 +19,7 @@ export default class Image extends Component {
   render() {
 
     return (
-      <div className={s['img-placeholder']} style={{paddingBottom: this.props.ratio + '%'}}>
+      <div className={cx('img-placeholder')} style={{paddingBottom: this.props.ratio + '%'}}>
         <img src={this.props.src} alt={this.props.alt} />
       </div>
     );

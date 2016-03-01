@@ -5,7 +5,9 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 import styles from 'scss/components/_bread-crumb.scss';
-import Link from './Link';
+import { Link } from 'react-router';
+
+const cx = classNames.bind(styles);
 
 export default class Breadcrumb extends Component {
 
@@ -17,7 +19,7 @@ export default class Breadcrumb extends Component {
             <nav className={cx('page-utils', 'col-md-12')}>
               <ul className={cx('breadcrumb')}>
                 <li>
-                  <a href="/">Home</a>
+                  <Link to="/">Home</Link>
                 </li>
               </ul>
             </nav>

@@ -17,6 +17,7 @@ const App = ({children}) => {
   return (
     <div>
       <Header />
+      <Navigation />
         {children}
       <Footer />
     </div>

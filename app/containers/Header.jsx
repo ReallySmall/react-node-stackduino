@@ -5,9 +5,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'scss/components/_header';
-import Link from 'components/Link';
-import Navigation from 'components/Navigation';
-import TopicItem from 'components/Navigation';
+import { Link } from 'react-router';
 
 const cx = classNames.bind(styles);
 
@@ -54,7 +52,6 @@ const Header = props => {
             </div>
           </div>
         </div>
-        <Navigation navItems={[]} />
       </header>
     );
 

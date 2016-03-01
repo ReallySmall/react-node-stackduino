@@ -2,6 +2,7 @@
  * Routes for express app
  */
 var topics = require('../controllers/topics');
+var boards = require('../controllers/boards');
 var express = require('express');
 var users = require('../controllers/users');
 var mongoose = require('mongoose');
@@ -38,17 +39,8 @@ module.exports = function(app, passport) {
   // topic routes
   app.get('/topic', topics.all);
 
-  app.post('/topic/:id', function(req, res) {
-    topics.add(req, res);
-  });
-
-  app.put('/topic/:id', function(req, res) {
-    topics.update(req, res);
-  });
-
-  app.delete('/topic/:id', function(req, res) {
-    topics.remove(req, res);
-  });
+  // topic routes
+  app.get('/board', boards.all);
 
   // This is where the magic happens. We take the locals data we have already
   // fetched and seed our stores with data.
@@ -57,4 +49,4 @@ module.exports = function(app, passport) {
     App(req, res);
   });
 
-};;
+};

@@ -5,16 +5,26 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'scss/components/_board-teaser';
-import Link from 'components/Link';
+import { Link } from 'react-router';
 import BoardStatus from 'components/BoardStatus';
 import Carousel from 'components/Carousel';
 
 const cx = classNames.bind(styles);
 
 export default class BoardTeaser extends Component {
+  
   constructor(props) {
     super(props);
   }
+
+  propTypes = {
+    text: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
+    onIncrement: PropTypes.func.isRequired,
+    onDecrement: PropTypes.func.isRequired,
+    onDestroy: PropTypes.func.isRequired
+  };
 
   render() {
 
@@ -60,14 +70,5 @@ export default class BoardTeaser extends Component {
       </section>
     );
   }
-
-  propTypes = {
-    text: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    onIncrement: PropTypes.func.isRequired,
-    onDecrement: PropTypes.func.isRequired,
-    onDestroy: PropTypes.func.isRequired
-  };
 
 }
