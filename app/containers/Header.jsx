@@ -15,7 +15,7 @@ const Header = props => {
       <header className={cx('site-header')}>
         <div className={cx('container')}>
           <div className={cx('row')}>
-            <div id="logo" className={cx('site-branding')}>
+            <Link to={'/'} id="logo" className={cx('site-branding')}>
                 <p className={cx('animated-site-logo')}>
                   <span className={cx('fa', 'fa-pause')}></span>
                   <span className={cx('fa', 'fa-camera')}></span>
@@ -24,7 +24,7 @@ const Header = props => {
                   <h1 className={cx('site-title')}>Stackduino</h1>
                   <p className={cx('site-slogan')}>An Arduino compatible focus stacking controller for macro photography</p>
                 </div>
-            </div>
+            </Link>
             <div className={cx('social-links')}>
               <ul className={cx('plain')}>
                 <li>

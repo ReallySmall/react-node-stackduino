@@ -26,15 +26,13 @@ const cx = classNames.bind(styles);
   	};
 
   	render() {
-
-      console.log(need);
-
+      const {boards} = this.props;
 	  	return (
 	    	<div className={cx('view-animate-container')}>
 	        	<div className={cx('container')}>
 	          		<h1></h1>
 	          		<p></p>
-	          		
+                {boards}	          		
 	        	</div>
 	      	</div>
 	  	);
@@ -43,13 +41,13 @@ const cx = classNames.bind(styles);
 };
 
 Boards.propTypes = {
-  boards: PropTypes.array.isRequired,
+  //boards: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    //boards: state.board.boards
+    //boards: state.boards
   };
 }
 

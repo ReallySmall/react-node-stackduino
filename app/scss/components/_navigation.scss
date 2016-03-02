@@ -24,6 +24,7 @@
         display: block;
         text-align: center;
         text-decoration: none;
+        padding: 15px;
         &.active {
           background: $white;
         }
@@ -31,7 +32,7 @@
             text-decoration: underline;
           }
           h2 {
-            margin: 15px 0;
+            margin: 0;
           }
           .fa {
             color: $orange;

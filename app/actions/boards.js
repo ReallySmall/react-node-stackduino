@@ -6,7 +6,7 @@ import * as types from 'constants/index';
 
 polyfill();
 
-let API_ENDPOINT = '/board';
+let API_ENDPOINT = '/api/boards';
 
 /*
  * Utility function to make AJAX requests using isomorphic fetch.

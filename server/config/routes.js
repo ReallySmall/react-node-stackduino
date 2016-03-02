@@ -3,6 +3,7 @@
  */
 var topics = require('../controllers/topics');
 var boards = require('../controllers/boards');
+var posts = require('../controllers/posts');
 var express = require('express');
 var users = require('../controllers/users');
 var mongoose = require('mongoose');
@@ -11,10 +12,6 @@ var Topic = mongoose.model('Topic');
 var App = require('../../public/assets/app.server');
 
 module.exports = function(app, passport) {
-  // user routes
-  app.post('/login', users.postLogin);
-  app.post('/signup', users.postSignUp);
-  app.get('/logout', users.getLogout);
 
   // google auth
   // Redirect the user to Google for authentication. When complete, Google
@@ -36,11 +33,11 @@ module.exports = function(app, passport) {
       failureRedirect: '/login'
     }));
 
-  // topic routes
-  app.get('/topic', topics.all);
+  // board routes
+  app.get('/api/boards', boards.all);
 
-  // topic routes
-  app.get('/board', boards.all);
+  // article routes
+  app.get('/api/posts', posts.all);
 
   // This is where the magic happens. We take the locals data we have already
   // fetched and seed our stores with data.
