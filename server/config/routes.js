@@ -2,8 +2,10 @@
  * Routes for express app
  */
 var topics = require('../controllers/topics');
+var homepage = require('../controllers/homepage');
 var boards = require('../controllers/boards');
 var posts = require('../controllers/posts');
+var settings = require('../controllers/settings');
 var express = require('express');
 var users = require('../controllers/users');
 var mongoose = require('mongoose');
@@ -33,11 +35,17 @@ module.exports = function(app, passport) {
       failureRedirect: '/login'
     }));
 
+  // homepage routes
+  app.get('/api/homepage', homepage.all);
+
   // board routes
   app.get('/api/boards', boards.all);
 
   // article routes
   app.get('/api/posts', posts.all);
+
+  // settings routes
+  app.get('/api/settings', settings.all);
 
   // This is where the magic happens. We take the locals data we have already
   // fetched and seed our stores with data.

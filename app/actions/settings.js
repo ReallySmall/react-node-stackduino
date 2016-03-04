@@ -6,7 +6,7 @@ import * as types from 'constants/index';
 
 polyfill();
 
-let API_ENDPOINT = '/api/posts';
+let API_ENDPOINT = '/api/settings';
 
 /*
  * Utility function to make AJAX requests using isomorphic fetch.
@@ -19,7 +19,7 @@ let API_ENDPOINT = '/api/posts';
  * @param String endpoint
  * @return Promise
  */
-function makePostRequest(method, id, data) {
+function makeSettingsRequest(method, id, data) {
   return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
 }
 
@@ -32,10 +32,10 @@ function decrement(index) {
 }
 
 // Fetch posts logic
-export function fetchPosts() {
+export function fetchHSettings() {
   return {
-    type: types.GET_POSTS,
-    promise: makePostRequest('get')
+    type: types.GET_SETTINGS,
+    promise: makeSettingsRequest('get')
   }
 }
 
@@ -43,7 +43,7 @@ export function incrementCount(id, index) {
   return dispatch => {
     dispatch(increment(index));
 
-    return makePostRequest('put', id, {
+    return makeSettingsRequest('put', id, {
         isFull: false,
         isIncrement: true
       });
@@ -57,7 +57,7 @@ export function incrementCount(id, index) {
 export function decrementCount(id, index) {
   return dispatch => {
     dispatch(decrement(index));
-    return makePostRequest('put', id, {
+    return makeSettingsRequest('put', id, {
         isFull: false,
         isIncrement: false
       });

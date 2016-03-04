@@ -14,12 +14,19 @@ var Settings = new keystone.List('Settings', {
 Settings.add({
 	title: { type: String, required: true },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
-	siteTitle:  { type: String, required: true, initial: true },
-    siteSubtitle:  { type: String, required: true, initial: true },
-    content: {
-		brief: { type: Types.Html, wysiwyg: true, height: 150 },
-		extended: { type: Types.Html, wysiwyg: true, height: 400 }
-	}
+	header: {
+		siteTitle:  { type: String, required: true, initial: true },
+    	siteSubtitle:  { type: String, required: true, initial: true }
+	},
+	footer: {
+		col1Title: { type: String },
+		col2Title: { type: String },
+		col3Title: { type: String }
+	},
+    gallery: {
+    	tags:  { type: String },
+    	perPage:  { type: Number }
+    } 
 });
 
 Settings.schema.virtual('content.full').get(function() {
