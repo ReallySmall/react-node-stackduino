@@ -9,8 +9,10 @@ var settings = require('../controllers/settings');
 var express = require('express');
 var users = require('../controllers/users');
 var mongoose = require('mongoose');
+var keystone = require('keystone');
 var _ = require('lodash');
 var Topic = mongoose.model('Topic');
+var Board = keystone.list('Board').model;
 var App = require('../../public/assets/app.server');
 
 module.exports = function(app, passport) {

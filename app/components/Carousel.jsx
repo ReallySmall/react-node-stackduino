@@ -23,27 +23,15 @@ export default class Carousel extends Component {
 
   render() {
 
-    var getImageData = function(id, assets){
-      var img = {};
-      for(var i = 0; i < assets.length; i++){
-        if(id === assets[i].sys.id){
-          img.url = assets[i].fields.file.url;
-          img.ratio = (assets[i].fields.file.details.image.height / assets[i].fields.file.details.image.width) * 100;
-          img.alt = assets[i].fields.title;
-          break;
-        }
-      }
-      return img;
-    }
-
     var images = [];
 
     for(var i = 0; i < this.props.imageList.length; i++){
-      var img = getImageData(this.props.imageList[i].sys.id, this.props.assets);
+      img = this.props.imageList[i];
+      img.ratio = (img.height / img.width) * 100;
       images.push(
         <figure>
-          <Image src={img.url} alt={img.alt} ratio={img.ratio}/>
-          {this.props.hideCaption === true ? '' : <figcaption>{img.alt}</figcaption>}
+          <Image src={img.url} alt="" ratio={img.ratio}/>
+          {this.props.hideCaption === true ? '' : <figcaption>Test</figcaption>}
         </figure>
       );
     }

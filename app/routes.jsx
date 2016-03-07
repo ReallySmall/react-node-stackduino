@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from 'containers/App';
 import Login from 'containers/Login';
 import Home from 'containers/Home';
-import Boards from 'containers/Boards';
+import BoardsContainer from 'containers/BoardsContainer';
 import Articles from 'containers/Articles';
 import Gallery from 'containers/Gallery';
 
@@ -26,7 +26,7 @@ export default (store) => {
   return (
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
-      <Route path="boards" component={Boards} />
+      <Route path="boards" component={BoardsContainer} />
       <Route path="articles" component={Articles} />
       <Route path="gallery" component={Gallery} />
     </Route>

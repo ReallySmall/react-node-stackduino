@@ -18,12 +18,10 @@ export default class BoardTeaser extends Component {
   }
 
   propTypes = {
-    text: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    onIncrement: PropTypes.func.isRequired,
-    onDecrement: PropTypes.func.isRequired,
-    onDestroy: PropTypes.func.isRequired
+    title: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    intro: PropTypes.string.isRequired,
+    images: PropTypes.array.isRequired
   };
 
   render() {
@@ -46,23 +44,23 @@ export default class BoardTeaser extends Component {
       }
     ];
 
-    var colWidth = this.props.content.status !== '2' ? 'col-sm-9' : 'col-sm-12';
-    var thumbNailDisplay = this.props.content.status !== '2' ? 'col-sm-3' : 'hidden';
+    var colWidth = this.props.status !== '2' ? 'col-sm-9' : 'col-sm-12';
+    var thumbNailDisplay = this.props.status !== '2' ? 'col-sm-3' : 'hidden';
 
     return (
-      <section className={cx('board', statuses[this.props.content.status].htmlClass)}>
+      <section className={cx('board', statuses[this.props.status].htmlClass)}>
         <div className={cx('inset-wrapper')}>
           <div className={cx('panel')}>
             <div className={cx('row')}>
               <div className={cx(colWidth)}>
                 <h2 className="">
-                  <Link to={"/boards/" + this.props.content.version}>{this.props.content.title}</Link>
+                  <Link to={"/boards/" + this.props.version}>{this.props.title}</Link>
                 </h2>
-                <BoardStatus status={this.props.content.status} />
-                <p>{this.props.content.introduction}</p>
+                <BoardStatus status={this.props.status} />
+                <p>{this.props.intro}</p>
               </div>
               <div className={cx(thumbNailDisplay)}>
-                <Carousel imageList={this.props.content.images} assets={this.props.assets} hideCaption={true} />
+                <Carousel imageList={this.props.images} hideCaption={true} />
               </div>              
             </div>
           </div>
