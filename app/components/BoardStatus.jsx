@@ -8,11 +8,7 @@ import styles from 'scss/components/_board-status';
 
 const cx = classNames.bind(styles);
 
-class BoardStatus extends Component {
-
-  static contextTypes = {
-    onSetTitle: PropTypes.func.isRequired,
-  };
+export default class BoardStatus extends Component {
 
   render() {
 
@@ -47,5 +43,5 @@ class BoardStatus extends Component {
 }
 
 BoardStatus.propTypes = {
-  status: PropTypes.string.isRequired,
+  status: PropTypes.number.isRequired,
 };

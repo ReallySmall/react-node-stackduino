@@ -3,22 +3,23 @@ import classNames from 'classnames/bind';
 import styles from 'scss/components/_board-detail';
 import BoardStatus from 'components/BoardStatus';
 import Carousel from 'components/Carousel';
-import RepositoryLink from 'components/RepositoryLink';
+//import RepositoryLink from 'components/RepositoryLink';
 
 const cx = classNames.bind(styles);
 
-/*
- * Note: This is kept as a container-level component,
- *  i.e. We should keep this as the container that does the data-fetching
- *  and dispatching of actions if you decide to have any sub-components.
- */
-const Board = props => {
+export default class Board extends Component {
 
-  return (
-	<div className={s['view-animate-container']}>
-        <div className={s.container}>
-          <div className={s.row}>
-            <div className={s['col-sm-7']}>
+  constructor(props) {
+    super(props);
+  };
+
+  render() {
+
+    return (
+      <div className={cx('view-animate-container')}>
+        <div className={cx('container')}>
+          <div className={cx('row')}>
+            <div className={cx('col-sm-7')}>
               <article>
                 <h1>/*{this.props.content.fields.title}*/</h1>
                 <BoardStatus /* status={this.props.content.fields.status} */ />
@@ -33,15 +34,18 @@ const Board = props => {
                 </section>
               </article>
             </div>
-            <div className={s['col-sm-5']}>
+            <div className={cx('col-sm-5')}>
               <aside>
-                <RepositoryLink /* repoUrl={this.props.content.fields.github_url} */ />
               </aside>
             </div>
           </div>
         </div>
       </div>
-  );
+    );
+
+  }
 };
 
-export default Board;
+Board.propTypes = {
+  // todo
+};

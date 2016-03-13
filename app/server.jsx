@@ -8,6 +8,16 @@ import configureStore from 'store/configureStore';
 import headconfig from 'components/Meta';
 import { fetchComponentDataBeforeRender } from 'api/fetchComponentDataBeforeRender';
 
+var fs = require('fs');
+var util = require('util');
+var log_file = fs.createWriteStream('C:/Users/Richard/Documents/MEAN-Stackduino/sighanotherreact/react-webpack-node/public/assets/debug.log', {flags : 'w'});
+var log_stdout = process.stdout;
+
+console.log = function(d) { //
+  log_file.write(util.format(d) + '\n');
+  log_stdout.write(util.format(d) + '\n');
+};
+
 const clientConfig = {
   host: process.env.HOSTNAME || 'localhost',
   port: process.env.PORT || '3000'
@@ -23,7 +33,7 @@ axios.defaults.baseURL = `http://${clientConfig.host}:${clientConfig.port}`;
  * @param head - optional arguments to be placed into the head
  */
 function renderFullPage(renderedContent, initialState, head={
-  title: 'React Webpack Node',
+  title: 'Stackduino',
   meta: '<meta name="viewport" content="width=device-width, initial-scale=1" />',
   link: '<link rel="stylesheet" href="/assets/styles/main.css"/>'
 }) {
@@ -108,6 +118,8 @@ export default function render(req, res) {
       .then(html => {
         const componentHTML = renderToString(InitialView);
         const initialState = store.getState();
+        console.log('store: ' + initialState);
+        console.log('ummm');
         res.status(200).end(renderFullPage(componentHTML, initialState, {
           title: headconfig.title,
           meta: headconfig.meta,
@@ -115,6 +127,7 @@ export default function render(req, res) {
         }));
       })
       .catch(err => {
+        console.log("AAARGH");
         console.log(err);
         res.end(renderFullPage("",{}));
       });

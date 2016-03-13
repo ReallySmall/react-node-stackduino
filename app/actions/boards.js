@@ -23,15 +23,7 @@ function makeBoardRequest(method, id, data) {
   return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
 }
 
-function increment(index) {
-  return { type: types.INCREMENT_COUNT, index };
-}
-
-function decrement(index) {
-  return { type: types.DECREMENT_COUNT, index };
-}
-
-// Fetch posts logic
+// Fetch all boards
 export function fetchBoards() {
   return {
     type: types.GET_BOARDS,
@@ -39,31 +31,10 @@ export function fetchBoards() {
   }
 }
 
-export function incrementCount(id, index) {
-  return dispatch => {
-    dispatch(increment(index));
-
-    return makeBoardRequest('put', id, {
-        isFull: false,
-        isIncrement: true
-      });
-    // do something with the ajax response
-    // You can also dispatch here
-    // E.g.
-    // .then(response => {});
-  };
-}
-
-export function decrementCount(id, index) {
-  return dispatch => {
-    dispatch(decrement(index));
-    return makeBoardRequest('put', id, {
-        isFull: false,
-        isIncrement: false
-      });
-    // do something with the ajax response
-    // You can also dispatch here
-    // E.g.
-    // .then(response => {});
-  };
+// Fetch one board
+export function fetchBoard(version) {
+  return {
+    type: types.GET_BOARDS,
+    promise: makeBoardRequest('get', version)
+  }
 }

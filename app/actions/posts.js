@@ -23,47 +23,10 @@ function makePostRequest(method, id, data) {
   return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
 }
 
-function increment(index) {
-  return { type: types.INCREMENT_COUNT, index };
-}
-
-function decrement(index) {
-  return { type: types.DECREMENT_COUNT, index };
-}
-
 // Fetch posts logic
 export function fetchPosts() {
   return {
     type: types.GET_POSTS,
     promise: makePostRequest('get')
   }
-}
-
-export function incrementCount(id, index) {
-  return dispatch => {
-    dispatch(increment(index));
-
-    return makePostRequest('put', id, {
-        isFull: false,
-        isIncrement: true
-      });
-    // do something with the ajax response
-    // You can also dispatch here
-    // E.g.
-    // .then(response => {});
-  };
-}
-
-export function decrementCount(id, index) {
-  return dispatch => {
-    dispatch(decrement(index));
-    return makePostRequest('put', id, {
-        isFull: false,
-        isIncrement: false
-      });
-    // do something with the ajax response
-    // You can also dispatch here
-    // E.g.
-    // .then(response => {});
-  };
 }

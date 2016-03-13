@@ -17,13 +17,6 @@ export default class BoardTeaser extends Component {
     super(props);
   }
 
-  propTypes = {
-    title: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    intro: PropTypes.string.isRequired,
-    images: PropTypes.array.isRequired
-  };
-
   render() {
 
     var statuses = [
@@ -44,8 +37,8 @@ export default class BoardTeaser extends Component {
       }
     ];
 
-    var colWidth = this.props.status !== '2' ? 'col-sm-9' : 'col-sm-12';
-    var thumbNailDisplay = this.props.status !== '2' ? 'col-sm-3' : 'hidden';
+    var colWidth = this.props.status !== 2 ? 'col-sm-9' : 'col-sm-12';
+    var thumbNailDisplay = this.props.status !== 2 ? 'col-sm-3' : 'hidden';
 
     return (
       <section className={cx('board', statuses[this.props.status].htmlClass)}>
@@ -70,3 +63,10 @@ export default class BoardTeaser extends Component {
   }
 
 }
+
+BoardTeaser.propTypes = {
+  title: PropTypes.string.isRequired,
+  status: PropTypes.number.isRequired,
+  intro: PropTypes.string.isRequired,
+  images: PropTypes.array.isRequired
+};

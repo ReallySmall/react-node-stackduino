@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 
 const cx = classNames.bind(styles);
 
-export default class ArticleTeaser extends Component {
+export default class PostTeaser extends Component {
   constructor(props) {
     super(props);
   }
@@ -20,7 +20,7 @@ export default class ArticleTeaser extends Component {
       var tag = this.props.tags[i];
       tags.push(
         <li>
-          <a href="#" title={"Find all articles tagged with" + tag}>{tag}</a>
+          <a href="#" title={"Find all posts tagged with" + tag}>{tag}</a>
         </li>
       );
     }

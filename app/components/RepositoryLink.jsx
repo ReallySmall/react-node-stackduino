@@ -12,22 +12,14 @@ const cx = classNames.bind(styles);
 
 export default class RepositoryLink extends Component {
 
-  RepositoryLink.propTypes : {
-    repoUrl: PropTypes.string.isRequired
-  },
-
-  RepositoryLink.contextTypes : {
-    onSetTitle: PropTypes.func.isRequired,
-  },
-
-  RepositoryLink.getInitialState: function() {
+  getInitialState() {
     return { 
       commits: null,
       issues: null
     };
-  },
+  }
 
-  RepositoryLink.componentDidMount: function() {
+  componentDidMount() {
 
     let url_segments = this.props.repoUrl.split('/');
     let repo_id = $.trim(url_segments[url_segments.length-1]);
@@ -58,9 +50,9 @@ export default class RepositoryLink extends Component {
       }.bind(this)
     });
 
-  },
+  }
 
-  RepositoryLink.commitsList: function(){
+  commitsList(){
     if (this.state.commits) {
 
       let commitList = [];
@@ -92,11 +84,11 @@ export default class RepositoryLink extends Component {
     }
 
     return (
-      <p><span className={classNames(cx('fa', 'fa-refresh', 'fa-spin')}> </span> Fetching recent updates...</p>
+      <p><span className={cx('fa', 'fa-refresh', 'fa-spin')}> </span> Fetching recent updates...</p>
     );
-  },
+  }
 
-  RepositoryLink.issuesList: function(){
+  issuesList(){
     if (this.state.issues) {
 
       if(this.state.issues.length === 0){
@@ -127,11 +119,11 @@ export default class RepositoryLink extends Component {
     }
 
     return (
-      <p><span className={classNames(cx('fa', 'fa-refresh', 'fa-spin')}> </span> Fetching issues...</p>
+      <p><span className={cx('fa', 'fa-refresh', 'fa-spin')}> </span> Fetching issues...</p>
     );
-  },
+  }
 
-  RepositoryLink.render: function() {
+  render() {
 
     let repositoryUrlLink;
 
@@ -169,4 +161,8 @@ export default class RepositoryLink extends Component {
 
   }
   
-});
+}
+
+RepositoryLink.propTypes = {
+  repoUrl: PropTypes.string.isRequired
+}

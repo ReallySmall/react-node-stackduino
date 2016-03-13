@@ -23,47 +23,10 @@ function makeHomepageRequest(method, id, data) {
   return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
 }
 
-function increment(index) {
-  return { type: types.INCREMENT_COUNT, index };
-}
-
-function decrement(index) {
-  return { type: types.DECREMENT_COUNT, index };
-}
-
 // Fetch posts logic
 export function fetchHomepage() {
   return {
     type: types.GET_HOMEPAGE,
     promise: makeHomepageRequest('get')
   }
-}
-
-export function incrementCount(id, index) {
-  return dispatch => {
-    dispatch(increment(index));
-
-    return makeHomepageRequest('put', id, {
-        isFull: false,
-        isIncrement: true
-      });
-    // do something with the ajax response
-    // You can also dispatch here
-    // E.g.
-    // .then(response => {});
-  };
-}
-
-export function decrementCount(id, index) {
-  return dispatch => {
-    dispatch(decrement(index));
-    return makeHomepageRequest('put', id, {
-        isFull: false,
-        isIncrement: false
-      });
-    // do something with the ajax response
-    // You can also dispatch here
-    // E.g.
-    // .then(response => {});
-  };
 }

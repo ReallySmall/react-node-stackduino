@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import Header from 'containers/Header';
+import HeaderContainer from 'containers/HeaderContainer';
 import Footer from 'containers/Footer';
 import Navigation from 'containers/Navigation';
 import 'scss/main';
@@ -16,7 +16,7 @@ import 'scss/main';
 const App = ({children}) => {
   return (
     <div>
-      <Header />
+      <HeaderContainer />
       <Navigation />
         {children}
       <Footer />

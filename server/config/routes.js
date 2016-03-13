@@ -13,6 +13,7 @@ var keystone = require('keystone');
 var _ = require('lodash');
 var Topic = mongoose.model('Topic');
 var Board = keystone.list('Board').model;
+var Post = keystone.list('Post').model;
 var App = require('../../public/assets/app.server');
 
 module.exports = function(app, passport) {
@@ -42,6 +43,7 @@ module.exports = function(app, passport) {
 
   // board routes
   app.get('/api/boards', boards.all);
+  app.get('/api/boards/:versionid', boards.byId);
 
   // article routes
   app.get('/api/posts', posts.all);

@@ -12,18 +12,10 @@ const cx = classNames.bind(styles);
 
 export default class Carousel extends Component {
 
-  static propTypes = {
-    imageList: PropTypes.array.isRequired,
-    assets: PropTypes.array.isRequired
-  };
-
-  static contextTypes = {
-    onSetTitle: PropTypes.func.isRequired
-  };
-
   render() {
 
-    var images = [];
+    let images = [];
+    let img = {};
 
     for(var i = 0; i < this.props.imageList.length; i++){
       img = this.props.imageList[i];
@@ -46,3 +38,7 @@ export default class Carousel extends Component {
   }
 
 }
+
+Carousel.propTypes = {
+  imageList: PropTypes.array.isRequired
+};

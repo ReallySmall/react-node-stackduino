@@ -16,3 +16,17 @@ exports.all = function(req, res) {
     }
   });
 };
+
+/**
+ * By Id
+ */
+exports.byId = function(req, res) {
+  var versionId = req.params.versionid;
+  Board.findOne({version: versionId}).exec(function(err, board) {
+    if(!err) {
+      res.json(board);
+    }else {
+      console.log('Error in first query');
+    }
+  });
+};

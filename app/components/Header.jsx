@@ -9,7 +9,13 @@ import { Link } from 'react-router';
 
 const cx = classNames.bind(styles);
 
-const Header = props => {
+export default class Header extends Component {
+
+  constructor(props) {
+    super(props);
+  };
+
+  render() {
 
     return (
       <header className={cx('site-header')}>
@@ -21,8 +27,8 @@ const Header = props => {
                   <span className={cx('fa', 'fa-camera')}></span>
                 </p>
                 <div className={cx('siteDescriptor')}>
-                  <h1 className={cx('site-title')}>Stackduino</h1>
-                  <p className={cx('site-slogan')}>An Arduino compatible focus stacking controller for macro photography</p>
+                  <h1 className={cx('site-title')}>{this.props.title}</h1>
+                  <p className={cx('site-slogan')}>{this.props.subTitle}</p>
                 </div>
             </Link>
             <div className={cx('social-links')}>
@@ -55,6 +61,11 @@ const Header = props => {
       </header>
     );
 
+  }
+
 }
 
-export default Header;
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string.isRequired
+};
