@@ -20,6 +20,8 @@ let API_ENDPOINT = '/api/posts';
  * @return Promise
  */
 function makePostRequest(method, id, data) {
+  console.log("getPosts");
+  console.log(request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data));
   return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
 }
 

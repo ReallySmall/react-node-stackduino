@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Boards from 'components/Boards';
 import { fetchBoards } from 'actions/boards';
+import { fetchSettings } from 'actions/settings';
 
 /*
  * Note: This is kept as a container-level component,
@@ -14,7 +15,7 @@ class BoardsContainer extends Component {
   	//Data that needs to be called before rendering the component
   	//This is used for server side rending via the fetchComponentDataBeforeRending() method
   	static need = [
-    	fetchBoards
+    	fetchSettings, fetchBoards
   	];
 
   	constructor(props) {
@@ -24,7 +25,6 @@ class BoardsContainer extends Component {
   	render() {
 
       const {boards} = this.props;
-      console.log(this.props.boards);
 	  	return (
 	    	<Boards list={boards} />
 	  	);
@@ -38,7 +38,6 @@ BoardsContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     boards: state.board.boards
   };

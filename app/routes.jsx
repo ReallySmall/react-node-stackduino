@@ -5,7 +5,7 @@ import Home from 'containers/Home';
 import BoardsContainer from 'containers/BoardsContainer';
 import BoardContainer from 'containers/BoardContainer';
 import PostsContainer from 'containers/PostsContainer';
-import Gallery from 'containers/Gallery';
+import GalleryContainer from 'containers/GalleryContainer';
 
 export default (store) => {
   return (
@@ -14,7 +14,7 @@ export default (store) => {
       <Route path="boards" component={BoardsContainer} />
       <Route path="boards/:versionid" component={BoardContainer} />
       <Route path="articles" component={PostsContainer} />
-      <Route path="gallery" component={Gallery} />
+      <Route path="gallery" component={GalleryContainer} />
     </Route>
   );
 };

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import HeaderContainer from 'containers/HeaderContainer';
-import Footer from 'containers/Footer';
+import FooterContainer from 'containers/FooterContainer';
 import Navigation from 'containers/Navigation';
 import 'scss/main';
 
@@ -19,7 +19,7 @@ const App = ({children}) => {
       <HeaderContainer />
       <Navigation />
         {children}
-      <Footer />
+      <FooterContainer />
     </div>
   );
 };

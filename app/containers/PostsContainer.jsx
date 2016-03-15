@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-//import Posts from 'components/Posts';
+import Posts from 'components/Posts';
 import { fetchPosts } from 'actions/posts';
+import { fetchSettings } from 'actions/settings';
 
 /*
  * Note: This is kept as a container-level component,
@@ -14,7 +15,7 @@ class PostsContainer extends Component {
     //Data that needs to be called before rendering the component
     //This is used for server side rending via the fetchComponentDataBeforeRending() method
     static need = [
-      fetchPosts
+      fetchSettings, fetchPosts
     ];
 
     constructor(props) {
@@ -24,9 +25,8 @@ class PostsContainer extends Component {
     render() {
 
       const {posts} = this.props;
-      console.log(this.props.posts);
       return (
-        <p>test</p>
+        <Posts list={this.props.posts} />
       );
 
     }
@@ -38,7 +38,6 @@ PostsContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     posts: state.post.posts
   };

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'scss/components/_articles-page';
-//import PostTeaser from 'components/PostTeaser';
+import PostTeaser from 'components/PostTeaser';
 
 const cx = classNames.bind(styles);
 
@@ -11,18 +11,24 @@ export default class Posts extends Component {
 
     var postList = [];
 
-    //for(var i = 0; i < props.boards.length; i++){
-      //articles.push(<BoardTeaser content={props.boards[i]} assets={props.assets}/>);
-    //}
+    for(var i = 0; i < this.props.list.length; i++){
+      let post = this.props.list[i];
+      postList.push(
+        <PostTeaser 
+          title={post.title}
+          published={post.publishedDate}
+          intro={post.content.brief}
+          categories={post.categories} />
+      );
+    }
 
     return (
       <div className={cx('view-animate-container')}>
-          <div className={cx('container')}>
-            <h1></h1>
-            <p>test</p>
-            {postList}
-          </div>
+        <div className={cx('container')}>
+          <h1></h1>
+          {postList}
         </div>
+      </div>
     );
 
   }

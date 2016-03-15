@@ -14,13 +14,13 @@ export default class PostTeaser extends Component {
 
   render() {
 
-    var tags = [];
+    var categories = [];
 
-    for(var i = 0; i < this.props.tags.length; i++){
-      var tag = this.props.tags[i];
-      tags.push(
+    for(var i = 0; i < this.props.categories.length; i++){
+      var category = this.props.categories[i];
+      categories.push(
         <li>
-          <a href="#" title={"Find all posts tagged with" + tag}>{tag}</a>
+          <a href="#" title={"Find all posts tagged with" + category}>{category}</a>
         </li>
       );
     }
@@ -31,9 +31,10 @@ export default class PostTeaser extends Component {
         <h2>
           {this.props.title}
         </h2>
-        <p>{this.props.summary}</p>
+        <p>{this.props.publishedDate}</p>
+        <p>{this.props.intro}</p>
         <ul className={cx('tags')}>
-          {tags}
+          {categories}
         </ul>
       </article>
 
@@ -42,8 +43,9 @@ export default class PostTeaser extends Component {
 
 }
 
-ArticleTeaser.propTypes = {
-  tags: PropTypes.array.isRequired,
+PostTeaser.propTypes = {
   title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired
+  publishedDate: PropTypes.string.isRequired,
+  intro: PropTypes.string.isRequired,
+  categories: PropTypes.array.isRequired
 };
