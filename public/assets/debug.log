@@ -1,26 +1,202 @@
-AAARGH
-[TypeError: Cannot read property 'header' of undefined]
-getPosts
-F {
-  _id: 67,
-  _state: undefined,
-  _result: undefined,
-  _subscribers: [] }
-getPosts
-F {
-  _id: 77,
-  _state: undefined,
-  _result: undefined,
-  _subscribers: [] }
+{ history: 
+   { listenBefore: [Function],
+     listen: [Function],
+     transitionTo: [Function],
+     push: [Function],
+     replace: [Function],
+     go: [Function],
+     goBack: [Function],
+     goForward: [Function],
+     createKey: [Function],
+     createPath: [Function],
+     createHref: [Function],
+     createLocation: [Function],
+     setState: [Function],
+     registerTransitionHook: [Function],
+     unregisterTransitionHook: [Function],
+     pushState: [Function],
+     replaceState: [Function],
+     isActive: [Function],
+     match: [Function],
+     listenBeforeLeavingRoute: [Function] },
+  location: 
+   { pathname: '/',
+     search: '',
+     hash: '',
+     state: null,
+     action: 'POP',
+     key: 'i5uq16',
+     query: {},
+     '$searchBase': { search: '', searchBase: '' } },
+  params: {},
+  route: 
+   { component: 
+      { [Function: o]
+        displayName: 'Connect(t)',
+        WrappedComponent: [Object],
+        contextTypes: [Object],
+        propTypes: [Object],
+        need: [Object] } },
+  routeParams: {},
+  routes: 
+   [ { path: '/',
+       component: [Object],
+       indexRoute: [Object],
+       childRoutes: [Object] },
+     { component: [Object] } ],
+  children: null,
+  settings: 
+   { _id: '56d942fd170f2c083b2165b9',
+     slug: 'site-settings',
+     title: 'Site settings',
+     __v: 0,
+     gallery: { perPage: 10, tags: 'stackduino' },
+     footer: { col1Title: 'ffss', col2Title: 'ssaa', col3Title: 'lloo' },
+     header: 
+      { siteSubtitle: 'An open source focus stacking controller',
+        siteTitle: 'Stackduino' },
+     state: 'draft' },
+  homepage: 
+   { _id: '56d899d6ea15424c4866f1a6',
+     slug: 'homepage',
+     title: 'Homepage',
+     __v: 2,
+     author: '56d237599d4251dc1603c59a',
+     publishedDate: '2016-03-03T00:00:00.000Z',
+     content: 
+      { additional: '<p>dhtdhgcgfc</p>',
+        brief: '<p>fhgfghgf</p>',
+        extended: '<p>srdsgrddfd</p>' },
+     imagesSlot2: [ [Object], [Object] ],
+     imagesSlot1: [],
+     state: 'published' },
+  dispatch: [Function] }
+{ settings: 
+   { _id: '56d942fd170f2c083b2165b9',
+     slug: 'site-settings',
+     title: 'Site settings',
+     __v: 0,
+     gallery: { perPage: 10, tags: 'stackduino' },
+     footer: { col1Title: 'ffss', col2Title: 'ssaa', col3Title: 'lloo' },
+     header: 
+      { siteSubtitle: 'An open source focus stacking controller',
+        siteTitle: 'Stackduino' },
+     state: 'draft' },
+  content: 
+   { _id: '56d899d6ea15424c4866f1a6',
+     slug: 'homepage',
+     title: 'Homepage',
+     __v: 2,
+     author: '56d237599d4251dc1603c59a',
+     publishedDate: '2016-03-03T00:00:00.000Z',
+     content: 
+      { additional: '<p>dhtdhgcgfc</p>',
+        brief: '<p>fhgfghgf</p>',
+        extended: '<p>srdsgrddfd</p>' },
+     imagesSlot2: [ [Object], [Object] ],
+     imagesSlot1: [],
+     state: 'published' } }
 store: [object Object]
 ummm
 store: [object Object]
 ummm
-store: [object Object]
-ummm
-AAARGH
-[TypeError: Cannot read property 'header' of undefined]
-store: [object Object]
-ummm
+{ history: 
+   { listenBefore: [Function],
+     listen: [Function],
+     transitionTo: [Function],
+     push: [Function],
+     replace: [Function],
+     go: [Function],
+     goBack: [Function],
+     goForward: [Function],
+     createKey: [Function],
+     createPath: [Function],
+     createHref: [Function],
+     createLocation: [Function],
+     setState: [Function],
+     registerTransitionHook: [Function],
+     unregisterTransitionHook: [Function],
+     pushState: [Function],
+     replaceState: [Function],
+     isActive: [Function],
+     match: [Function],
+     listenBeforeLeavingRoute: [Function] },
+  location: 
+   { pathname: '/',
+     search: '',
+     hash: '',
+     state: null,
+     action: 'POP',
+     key: 'd4kuvr',
+     query: {},
+     '$searchBase': { search: '', searchBase: '' } },
+  params: {},
+  route: 
+   { component: 
+      { [Function: o]
+        displayName: 'Connect(t)',
+        WrappedComponent: [Object],
+        contextTypes: [Object],
+        propTypes: [Object],
+        need: [Object] } },
+  routeParams: {},
+  routes: 
+   [ { path: '/',
+       component: [Object],
+       indexRoute: [Object],
+       childRoutes: [Object] },
+     { component: [Object] } ],
+  children: null,
+  settings: 
+   { _id: '56d942fd170f2c083b2165b9',
+     slug: 'site-settings',
+     title: 'Site settings',
+     __v: 0,
+     gallery: { perPage: 10, tags: 'stackduino' },
+     footer: { col1Title: 'ffss', col2Title: 'ssaa', col3Title: 'lloo' },
+     header: 
+      { siteSubtitle: 'An open source focus stacking controller',
+        siteTitle: 'Stackduino' },
+     state: 'draft' },
+  homepage: 
+   { _id: '56d899d6ea15424c4866f1a6',
+     slug: 'homepage',
+     title: 'Homepage',
+     __v: 2,
+     author: '56d237599d4251dc1603c59a',
+     publishedDate: '2016-03-03T00:00:00.000Z',
+     content: 
+      { additional: '<p>dhtdhgcgfc</p>',
+        brief: '<p>fhgfghgf</p>',
+        extended: '<p>srdsgrddfd</p>' },
+     imagesSlot2: [ [Object], [Object] ],
+     imagesSlot1: [],
+     state: 'published' },
+  dispatch: [Function] }
+{ settings: 
+   { _id: '56d942fd170f2c083b2165b9',
+     slug: 'site-settings',
+     title: 'Site settings',
+     __v: 0,
+     gallery: { perPage: 10, tags: 'stackduino' },
+     footer: { col1Title: 'ffss', col2Title: 'ssaa', col3Title: 'lloo' },
+     header: 
+      { siteSubtitle: 'An open source focus stacking controller',
+        siteTitle: 'Stackduino' },
+     state: 'draft' },
+  content: 
+   { _id: '56d899d6ea15424c4866f1a6',
+     slug: 'homepage',
+     title: 'Homepage',
+     __v: 2,
+     author: '56d237599d4251dc1603c59a',
+     publishedDate: '2016-03-03T00:00:00.000Z',
+     content: 
+      { additional: '<p>dhtdhgcgfc</p>',
+        brief: '<p>fhgfghgf</p>',
+        extended: '<p>srdsgrddfd</p>' },
+     imagesSlot2: [ [Object], [Object] ],
+     imagesSlot1: [],
+     state: 'published' } }
 store: [object Object]
 ummm

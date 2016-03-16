@@ -1,25 +1,12 @@
-/**
- * Flickr Carousel
- */
-
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_topic-item';
-import Link from '../Link';
-import Image from '../Image';
+import styles from 'scss/components/_flickr-carousel';
+import { Link } from 'react-router';
+import Image from 'components/Image';
 
 const cx = classNames.bind(styles);
 
 export default class FlickrCarousel extends Component {
-
-  FlickrCarousel.propTypes = {
-    imageList: PropTypes.array.isRequired,
-    assets: PropTypes.array.isRequired
-  };
-
-  FlickrCarousel.contextTypes = {
-    onSetTitle: PropTypes.func.isRequired,
-  };
 
   render() {
 
@@ -44,7 +31,7 @@ export default class FlickrCarousel extends Component {
           </ul>
           <ul className={cx('slides', 'plain', 'no-list-style')}>
             <li>
-              <a href="http://flickr.com/photo.gne?id={{item.id}}" tabindex="-1">
+              <a href="http://flickr.com/photo.gne?id=" tabindex="-1">
                 <figure>       
                     <img />
                     <figcaption>
@@ -60,3 +47,12 @@ export default class FlickrCarousel extends Component {
   }
 
 }
+
+FlickrCarousel.propTypes = {
+  imageList: PropTypes.array.isRequired,
+  assets: PropTypes.array.isRequired
+};
+
+FlickrCarousel.contextTypes = {
+  onSetTitle: PropTypes.func.isRequired,
+};
