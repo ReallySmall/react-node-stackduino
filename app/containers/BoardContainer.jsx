@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 //import Board from 'components/Board';
-import { fetchBoards } from 'actions/boards';
+import { fetchBoard } from 'actions/boards';
+import { fetchWrapper } from 'actions/wrapper';
 
 /*
  * Note: This is kept as a container-level component,
@@ -14,33 +15,33 @@ class BoardContainer extends Component {
   	//Data that needs to be called before rendering the component
   	//This is used for server side rending via the fetchComponentDataBeforeRending() method
   	static need = [
-    	fetchBoards()
+    	fetchWrapper, fetchBoard
   	];
 
   	constructor(props) {
     	super(props);
   	};
 
+    componentWillMount() {
+      this.props.dispatch ( fetchBoard() );
+    };
+
   	render() {
 
       const {board} = this.props;
 	  	return (
-        <p>Test</p>
+	    	<p>Moo</p>
 	  	);
 
   	}
 };
 
-BoardContainer.propTypes = {
-  // todo
-};
+BoardContainer.propTypes = {};
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
+    content: state.board.boards
   };
 }
 
-// Read more about where to place `connect` here:
-// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps)(BoardContainer);

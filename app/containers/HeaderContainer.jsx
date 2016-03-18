@@ -12,20 +12,21 @@ export default class HeaderContainer extends Component {
 
       return (
         <Header
-          title={this.props.settings[0].header.siteTitle}
-          subTitle={this.props.settings[0].header.siteSubTitle} />
+          title={this.props.wrapper[0].header.siteTitle}
+          subtitle={this.props.wrapper[0].header.siteSubtitle} />
       );
 
     }
 };
 
 HeaderContainer.propTypes = {
-  settings: PropTypes.array.isRequired
+  wrapper: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
-    settings: state.settings.settings
+    wrapper: state.wrapper.wrapper
   };
 }
 

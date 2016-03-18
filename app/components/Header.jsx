@@ -1,7 +1,3 @@
-/**
- * Header
- */
-
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'scss/components/_header';
@@ -17,6 +13,8 @@ export default class Header extends Component {
 
   render() {
 
+    console.log(this.props);
+
     return (
       <header className={cx('site-header')}>
         <div className={cx('container')}>
@@ -28,7 +26,7 @@ export default class Header extends Component {
                 </p>
                 <div className={cx('siteDescriptor')}>
                   <h1 className={cx('site-title')}>{this.props.title}</h1>
-                  <p className={cx('site-slogan')}>{this.props.subTitle}</p>
+                  <p className={cx('site-slogan')}>{this.props.subtitle}</p>
                 </div>
             </Link>
             <div className={cx('social-links')}>
@@ -67,5 +65,5 @@ export default class Header extends Component {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  subTitle: PropTypes.string.isRequired
+  subtitle: PropTypes.string.isRequired
 };

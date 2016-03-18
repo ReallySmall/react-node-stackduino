@@ -3,17 +3,26 @@ var mongoose = require('mongoose');
 var _ = require('lodash');
 var Board = keystone.list('Board').model;
 
-
 /**
  * List
  */
 exports.all = function(req, res) {
-  Board.find({}).exec(function(err, boards) {
-    if(!err) {
-      res.json(boards);
-    }else {
-      console.log('Error in first query');
-    }
+  Board
+    .find({})
+    .select({
+      '_id' : 0,
+      'title' : 1,
+      'boardStatus' : 1,
+      'version' : 1,
+      'content.brief': 1,
+      'images' : 1
+    })
+    .exec(function(err, boards) {
+      if(!err) {
+        res.json(boards);
+      }else {
+        console.log('Error in first query');
+      }
   });
 };
 
@@ -22,6 +31,7 @@ exports.all = function(req, res) {
  */
 exports.byId = function(req, res) {
   var versionId = req.params.versionid;
+  console.log(req.params.versionid);
   Board.findOne({version: versionId}).exec(function(err, board) {
     if(!err) {
       res.json(board);

@@ -10,30 +10,30 @@ const cx = classNames.bind(styles);
 
 export default class BoardStatus extends Component {
 
-  render() {
+  render(){
 
-    var statuses = [
+    let statuses = [
       {
-        status: "Code in development",
-        description: "Hardware complete, code implementation ongoing (help welcome with a pull request!)",
-        htmlClass: "board-active-dev"
+        status: 'Code in development',
+        description: 'Hardware complete, code implementation ongoing (help welcome with a pull request!)',
+        htmlClass: 'board-active-dev'
       },
       {
-        status: "Complete",
-        description: "Hardware and code complete. No new development planned, however issues raised will be looked at",
-        htmlClass: "board-supported"
+        status: 'Complete',
+        description: 'Hardware and code complete. No new development planned, however issues raised will be looked at',
+        htmlClass: 'board-supported'
       },
       {
-        status: "Closed prototype",
-        description: "Hardware issues or limitations identified. Unsupported and superceded by a more recent version",
-        htmlClass: "board-closed-proto"
+        status: 'Closed prototype',
+        description: 'Hardware issues or limitations identified. Unsupported and superceded by a more recent version',
+        htmlClass: 'board-closed-proto'
       }
     ];
 
     return (
       <div className={cx('clearfix')}>
         <p className={cx('version-status', statuses[this.props.status].htmlClass)}>
-          <span className={cx('fa', 'fa-flash')}></span> 
+          <span className={cx('fa', 'fa-flash')}></span>
           <abbr title={statuses[this.props.status].description}>{statuses[this.props.status].status}</abbr>
         </p>
       </div>
@@ -43,5 +43,5 @@ export default class BoardStatus extends Component {
 }
 
 BoardStatus.propTypes = {
-  status: PropTypes.number.isRequired,
+  status: PropTypes.number.isRequired
 };

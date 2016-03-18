@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Posts from 'components/Posts';
 import { fetchPosts } from 'actions/posts';
-import { fetchSettings } from 'actions/settings';
+import { fetchWrapper } from 'actions/wrapper';
 
 /*
  * Note: This is kept as a container-level component,
@@ -15,11 +15,17 @@ class PostsContainer extends Component {
     //Data that needs to be called before rendering the component
     //This is used for server side rending via the fetchComponentDataBeforeRending() method
     static need = [
-      fetchSettings, fetchPosts
+      fetchWrapper, fetchPosts
     ];
 
     constructor(props) {
       super(props);
+    };
+
+    componentWillMount() {
+      if(!this.props.posts.length){ // if posts are not in state yet
+        this.props.dispatch ( fetchPosts() ); // add them
+      }
     };
 
     render() {

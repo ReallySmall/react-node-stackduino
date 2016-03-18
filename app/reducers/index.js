@@ -4,7 +4,7 @@ import topic from 'reducers/topic';
 import post from 'reducers/post';
 import homepage from 'reducers/homepage';
 import board from 'reducers/board';
-import settings from 'reducers/settings';
+import wrapper from 'reducers/wrapper';
 import { routeReducer as routing } from 'react-router-redux';
 
 // Combine reducers with routeReducer which keeps track of
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   board,
   post,
   homepage,
-  settings,
+  wrapper,
   routing
 });
 

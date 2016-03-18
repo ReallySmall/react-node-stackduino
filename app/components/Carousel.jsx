@@ -1,7 +1,3 @@
-/**
- * Carousel
- */
-
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'scss/components/_carousel.scss';
@@ -17,7 +13,7 @@ export default class Carousel extends Component {
     let images = [];
     let img = {};
 
-    for(var i = 0; i < this.props.imageList.length; i++){
+    for (let i = 0; i < this.props.imageList.length; i++){
       img = this.props.imageList[i];
       img.ratio = (img.height / img.width) * 100;
       images.push(
@@ -40,5 +36,6 @@ export default class Carousel extends Component {
 }
 
 Carousel.propTypes = {
-  imageList: PropTypes.array.isRequired
+  imageList: PropTypes.array.isRequired,
+  hideCaption: PropTypes.boolean
 };

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchHomepage } from 'actions/homepage';
-import { fetchSettings } from 'actions/settings';
+import { fetchWrapper } from 'actions/wrapper';
 import Homepage from 'components/Homepage';
 
 /*
@@ -15,35 +15,38 @@ class HomepageContainer extends Component {
     //Data that needs to be called before rendering the component
     //This is used for server side rending via the fetchComponentDataBeforeRending() method
     static need = [
-      fetchSettings, fetchHomepage
+      fetchWrapper, fetchHomepage
     ];
 
     constructor(props) {
       super(props);
     };
 
+    componentWillMount() {
+      if(!this.props.homepage.length){ // if homepage is not in state yet
+        this.props.dispatch ( fetchHomepage() );
+      }
+    };
+
     render() {
 
-      const {settings, homepage} = this.props;
-
-      console.log(this.props);
+      const {homepage} = this.props;
 
       return (
-        <Homepage settings={settings} content={homepage} />
+        <Homepage content={homepage[0]} />
       );
 
     }
 };
 
 HomepageContainer.propTypes = {
-  settings: PropTypes.object.isRequired,
-  homepage: PropTypes.object.isRequired
+  homepage: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
-    settings: state.settings.settings[0],
-    homepage: state.homepage.homepage[0]
+    homepage: state.homepage.homepage
   };
 }
 

@@ -10,7 +10,7 @@ export default class FlickrCarousel extends Component {
 
   render() {
 
-    var images = [];
+    let images = [];
 
     return (
       <div className={cx('images', 'carousel')}>
@@ -31,7 +31,7 @@ export default class FlickrCarousel extends Component {
           </ul>
           <ul className={cx('slides', 'plain', 'no-list-style')}>
             <li>
-              <a href="http://flickr.com/photo.gne?id=" tabindex="-1">
+              <a href="http://flickr.com/photo.gne?id=" tabIndex="-1">
                 <figure>       
                     <img />
                     <figcaption>
@@ -54,5 +54,5 @@ FlickrCarousel.propTypes = {
 };
 
 FlickrCarousel.contextTypes = {
-  onSetTitle: PropTypes.func.isRequired,
+  onSetTitle: PropTypes.func.isRequired
 };

@@ -23,6 +23,6 @@ FooterContainer.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    settings: state.settings.settings
+    wrapper: state.wrapper.wrapper
   };
 }

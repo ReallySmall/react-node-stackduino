@@ -8,33 +8,33 @@ import Carousel from 'components/Carousel';
 const cx = classNames.bind(styles);
 
 export default class BoardTeaser extends Component {
-  
+
   constructor(props) {
     super(props);
   }
 
-  render() {
+  render(){
 
-    var statuses = [
+    const statuses = [
       {
-        status: "Code in development",
-        description: "Hardware complete, code implementation ongoing (help welcome with a pull request!)",
-        htmlClass: "board-active-dev"
+        status: 'Code in development',
+        description: 'Hardware complete, code implementation ongoing (help welcome with a pull request!)',
+        htmlClass: 'board-active-dev'
       },
       {
-        status: "Complete",
-        description: "Hardware and code complete. No new development planned, however issues raised will be looked at",
-        htmlClass: "board-supported"
+        status: 'Complete',
+        description: 'Hardware and code complete. No new development planned, however issues raised will be looked at',
+        htmlClass: 'board-supported'
       },
       {
-        status: "Closed prototype",
-        description: "Hardware issues or limitations identified. Unsupported and superceded by a more recent version",
-        htmlClass: "board-closed-proto"
+        status: 'Closed prototype',
+        description: 'Hardware issues or limitations identified. Unsupported and superceded by a more recent version',
+        htmlClass: 'board-closed-proto'
       }
     ];
 
-    var colWidth = this.props.status !== 2 ? 'col-sm-9' : 'col-sm-12';
-    var thumbNailDisplay = this.props.status !== 2 ? 'col-sm-3' : 'hidden';
+    let colWidth = this.props.status !== 2 ? 'col-sm-9' : 'col-sm-12';
+    let thumbNailDisplay = this.props.status !== 2 ? 'col-sm-3' : 'hidden';
 
     return (
       <section className={cx('board', statuses[this.props.status].htmlClass)}>
@@ -50,10 +50,10 @@ export default class BoardTeaser extends Component {
               </div>
               <div className={cx(thumbNailDisplay)}>
                 <Carousel imageList={this.props.images} hideCaption={true} />
-              </div>              
+              </div>
             </div>
           </div>
-        </div>  
+        </div>
       </section>
     );
   }

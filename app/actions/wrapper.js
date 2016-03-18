@@ -6,7 +6,7 @@ import * as types from 'constants/index';
 
 polyfill();
 
-let API_ENDPOINT = '/api/settings';
+let API_ENDPOINT = '/api/wrapper';
 
 /*
  * Utility function to make AJAX requests using isomorphic fetch.
@@ -19,14 +19,14 @@ let API_ENDPOINT = '/api/settings';
  * @param String endpoint
  * @return Promise
  */
-function makeSettingsRequest(method, id, data) {
+function makeWrapperRequest(method, id, data) {
   return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
 }
 
 // Fetch posts logic
-export function fetchSettings() {
+export function fetchWrapper() {
   return {
-    type: types.GET_SETTINGS,
-    promise: makeSettingsRequest('get')
+    type: types.GET_WRAPPER,
+    promise: makeWrapperRequest('get')
   }
 }

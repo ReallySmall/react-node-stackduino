@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Boards from 'components/Boards';
 import { fetchBoards } from 'actions/boards';
-import { fetchSettings } from 'actions/settings';
+import { fetchWrapper } from 'actions/wrapper';
+import { fetchPosts } from 'actions/posts';
 
 /*
  * Note: This is kept as a container-level component,
@@ -15,12 +16,18 @@ class BoardsContainer extends Component {
   	//Data that needs to be called before rendering the component
   	//This is used for server side rending via the fetchComponentDataBeforeRending() method
   	static need = [
-    	fetchSettings, fetchBoards
+    	fetchWrapper, fetchBoards
   	];
 
   	constructor(props) {
     	super(props);
   	};
+
+    componentWillMount() {
+      if(!this.props.boards.length){ // if boards are not in state yet
+        this.props.dispatch ( fetchBoards() ); // add them
+      }
+    };
 
   	render() {
 

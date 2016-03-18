@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Gallery from 'components/Gallery';
-import { fetchSettings } from 'actions/settings';
+import { fetchWrapper } from 'actions/wrapper';
 
 export default class GalleryContainer extends Component {
 
   static need = [
-    fetchSettings
+    fetchWrapper
   ];
 
   constructor(props) {
@@ -16,23 +16,17 @@ export default class GalleryContainer extends Component {
   render() {
 
     return (
-      <Gallery
-        tags={this.props.settings[0].gallery.tags}
-        perPage={this.props.settings[0].gallery.perPage} />
+      <p>Content</p>
     );
 
   }
   
 };
 
-GalleryContainer.propTypes = {
-  settings: PropTypes.array.isRequired
-};
+GalleryContainer.propTypes = {};
 
 function mapStateToProps(state) {
-  return {
-    settings: state.settings.settings
-  };
+  return {};
 }
 
 export default connect(mapStateToProps)(GalleryContainer);

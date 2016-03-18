@@ -1,16 +1,15 @@
 var keystone = require('keystone');
 var mongoose = require('mongoose');
 var _ = require('lodash');
-var Settings = keystone.list('Settings').model;
-
+var Wrapper = keystone.list('Wrapper').model;
 
 /**
  * List
  */
 exports.all = function(req, res) {
-  Settings.find({}).exec(function(err, settings) {
+  Wrapper.find({}).exec(function(err, wrapper) {
     if(!err) {
-      res.json(settings);
+      res.json(wrapper);
     }else {
       console.log('Error in first query');
     }

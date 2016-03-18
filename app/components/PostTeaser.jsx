@@ -14,10 +14,10 @@ export default class PostTeaser extends Component {
 
   render() {
 
-    var categories = [];
+    let categories = [];
 
-    for(var i = 0; i < this.props.categories.length; i++){
-      var category = this.props.categories[i];
+    for(let i = 0; i < this.props.categories.length; i++){
+      let category = this.props.categories[i];
       categories.push(
         <li>
           <a href="#" title={"Find all posts tagged with" + category}>{category}</a>

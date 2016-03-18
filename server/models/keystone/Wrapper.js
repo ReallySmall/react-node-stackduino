@@ -1,17 +1,12 @@
 var keystone = require('keystone');
 var Types = keystone.Field.Types;
 
-/**
- * Board Model
- * ==========
- */
-
-var Settings = new keystone.List('Settings', {
+var Wrapper = new keystone.List('Wrapper', {
 	map: { name: 'title' },
 	autokey: { path: 'slug', from: 'title', unique: true }
 });
 
-Settings.add({
+Wrapper.add({
 	title: { type: String, required: true },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	header: {
@@ -22,16 +17,12 @@ Settings.add({
 		col1Title: { type: String },
 		col2Title: { type: String },
 		col3Title: { type: String }
-	},
-    gallery: {
-    	tags:  { type: String },
-    	perPage:  { type: Number }
-    } 
+	} 
 });
 
-Settings.schema.virtual('content.full').get(function() {
+Wrapper.schema.virtual('content.full').get(function() {
 	return this.content.extended || this.content.brief;
 });
 
-Settings.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
-Settings.register();
+Wrapper.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
+Wrapper.register();
