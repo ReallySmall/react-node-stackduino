@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_articles-page';
+import styles from 'css/components/_articles-page';
 import PostTeaser from 'components/PostTeaser';
 
 const cx = classNames.bind(styles);

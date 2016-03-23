@@ -15,9 +15,12 @@ var _ = require('lodash');
 var Topic = mongoose.model('Topic');
 var Board = keystone.list('Board').model;
 var Post = keystone.list('Post').model;
-var App = require('../../public/assets/app.server');
 var secrets = require('./secrets');
 var body = require('body-parser');
+
+var path = require('path');
+var compiled_app_module_path = path.resolve(__dirname, '../../', 'public', 'assets', 'server.js');
+var App = require(compiled_app_module_path);
 
 module.exports = function(app, passport) {
 
@@ -26,10 +29,11 @@ module.exports = function(app, passport) {
 
   // board routes
   app.get('/api/boards', boards.all);
-  app.get('/api/boards/:versionid', boards.byId);
+  app.get('/api/boards/:slug', boards.byId);
 
   // article routes
   app.get('/api/posts', posts.all);
+  app.get('/api/posts/:slug', posts.byId);
 
   // settings routes
   app.get('/api/wrapper', wrapper.all);
@@ -60,9 +64,12 @@ module.exports = function(app, passport) {
 
   });
 
+  // This is where the magic happens. We take the locals data we have already
+  // fetched and seed our stores with data.
   // App is a function that requires store data and url to initialize and return the React-rendered html string
-  app.get('*', function (req, res, next) {
-    App(req, res);
+  app.get('*', function(req, res, next) {
+    App.
+  default (req, res);
   });
 
 };

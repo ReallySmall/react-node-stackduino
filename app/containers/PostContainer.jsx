@@ -1,24 +1,46 @@
-import React from 'react';
-import classNames from 'classnames/bind';
-import styles from 'scss/components/_article-detail';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import Board from 'components/Board';
+import { fetchWrapper } from 'actions/wrapper';
+import { fetchPosts } from 'actions/posts';
 
-const cx = classNames.bind(styles);
+class PostContainer extends Component {
 
-/*
- * Note: This is kept as a container-level component,
- *  i.e. We should keep this as the container that does the data-fetching
- *  and dispatching of actions if you decide to have any sub-components.
- */
-const Article = props => {
+  	//Data that needs to be called before rendering the component
+  	//This is used for server side rending via the fetchComponentDataBeforeRending() method
+  	static need = [
+    	fetchWrapper, fetchPosts
+  	];
 
-  return (
-    <div className={cx('view-animate-container')}>
-        <div className={cx('container')}>
-          <h1></h1>
-          <p></p>
-        </div>
-      </div>
-  );
+  	constructor(props) {
+    	super(props);
+  	};
+
+    componentWillMount() {
+      this.props.dispatch ( fetchPosts(this.props.routeParams) );
+    };
+
+  	render() {
+      const {post} = this.props.post;
+
+	  	return (
+        <p>Test</p>
+	  	);
+
+  	}
 };
 
-export default Article;
+PostContainer.propTypes = {
+  // todo
+};
+
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    post: state.posts.posts
+  };
+}
+
+// Read more about where to place `connect` here:
+// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
+export default connect(mapStateToProps)(PostContainer);

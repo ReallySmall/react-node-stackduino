@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_carousel.scss';
+import styles from 'css/components/_carousel';
 import { Link } from 'react-router';
 import Image from 'components/Image';
 

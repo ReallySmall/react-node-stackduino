@@ -20,15 +20,22 @@ let API_ENDPOINT = '/api/posts';
  * @return Promise
  */
 function makePostRequest(method, id, data) {
-  console.log("getPosts");
-  console.log(request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data));
   return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
 }
 
 // Fetch posts logic
 export function fetchPosts() {
   return {
-    type: types.GET_POSTS,
+    type: types.GET_POSTS_INDEX,
     promise: makePostRequest('get')
+  }
+}
+
+
+// Fetch one board
+export function fetchPost(param) {
+  return {
+    type: types.GET_POST,
+    promise: makePostRequest('get', param.slug)
   }
 }

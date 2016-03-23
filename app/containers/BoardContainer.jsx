@@ -1,14 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-//import Board from 'components/Board';
-import { fetchBoard } from 'actions/boards';
+import Board from 'components/Board';
 import { fetchWrapper } from 'actions/wrapper';
-
-/*
- * Note: This is kept as a container-level component,
- *  i.e. We should keep this as the container that does the data-fetching
- *  and dispatching of actions if you decide to have any sub-components.
- */
+import { fetchBoard } from 'actions/boards';
 
 class BoardContainer extends Component {
 
@@ -23,25 +17,37 @@ class BoardContainer extends Component {
   	};
 
     componentWillMount() {
-      this.props.dispatch ( fetchBoard() );
+      this.props.dispatch ( fetchBoard(this.props.routeParams) );
     };
 
   	render() {
+      const {board} = this.props.board;
+            console.log(this.props);
 
-      const {board} = this.props;
 	  	return (
-	    	<p>Moo</p>
+        <Board 
+          title={this.props.board[0].title} 
+          status={this.props.board[0].boardStatus}
+          developed={this.props.board[0].boardStatus} 
+          intro={this.props.board[0].content.brief}
+          body={this.props.board[0].content.extended}
+          images={this.props.board[0].images}
+          version={this.props.board[0].version} />
 	  	);
 
   	}
 };
 
-BoardContainer.propTypes = {};
+BoardContainer.propTypes = {
+  // todo
+};
 
 function mapStateToProps(state) {
   return {
-    content: state.board.boards
+    board: state.boards.boards
   };
 }
 
+// Read more about where to place `connect` here:
+// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps)(BoardContainer);

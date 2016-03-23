@@ -18,7 +18,7 @@ export default class FooterContainer extends Component {
 }
 
 FooterContainer.propTypes = {
-  settings: PropTypes.array.isRequired
+  wrapper: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {

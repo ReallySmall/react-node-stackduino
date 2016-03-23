@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_header';
+import styles from 'css/components/_header';
 import { Link } from 'react-router';
 
 const cx = classNames.bind(styles);
@@ -12,8 +12,6 @@ export default class Header extends Component {
   };
 
   render() {
-
-    console.log(this.props);
 
     return (
       <header className={cx('site-header')}>

@@ -26,15 +26,15 @@ function makeBoardRequest(method, id, data) {
 // Fetch all boards
 export function fetchBoards() {
   return {
-    type: types.GET_BOARDS,
+    type: types.GET_BOARDS_INDEX,
     promise: makeBoardRequest('get')
   }
 }
 
 // Fetch one board
-export function fetchBoard(version) {
+export function fetchBoard(param) {
   return {
-    type: types.GET_BOARDS,
-    promise: makeBoardRequest('get', version)
+    type: types.GET_BOARD,
+    promise: makeBoardRequest('get', param.slug)
   }
 }

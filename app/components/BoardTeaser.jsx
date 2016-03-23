@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_board-teaser';
+import styles from 'css/components/_board-teaser';
 import { Link } from 'react-router';
 import BoardStatus from 'components/BoardStatus';
 import Carousel from 'components/Carousel';
@@ -43,7 +43,7 @@ export default class BoardTeaser extends Component {
             <div className={cx('row')}>
               <div className={cx(colWidth)}>
                 <h2 className="">
-                  <Link to={"/boards/" + this.props.version}>{this.props.title}</Link>
+                  <Link to={"/boards/" + this.props.slug}>{this.props.title}</Link>
                 </h2>
                 <BoardStatus status={this.props.status} />
                 <p>{this.props.intro}</p>
@@ -62,6 +62,7 @@ export default class BoardTeaser extends Component {
 
 BoardTeaser.propTypes = {
   title: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   status: PropTypes.number.isRequired,
   intro: PropTypes.string.isRequired,
   images: PropTypes.array.isRequired

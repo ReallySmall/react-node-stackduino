@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
-import styles from 'scss/components/_bread-crumb.scss';
+import styles from 'css/components/_bread-crumb';
 import { Link } from 'react-router';
 
 const cx = classNames.bind(styles);

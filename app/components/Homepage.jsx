@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_home-page';
+import styles from 'css/components/_home-page';
 import Image from 'components/Image';
 import FlickrCarousel from 'components/FlickrCarousel';
 

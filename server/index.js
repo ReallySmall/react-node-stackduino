@@ -4,9 +4,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var secrets = require('./config/secrets');
 var webpack = require('webpack');
-var config = require('../webpack/webpack.config.dev.js');
 var app = express();
-var compiler = webpack(config);
 
 // keystone integration
 var keystone = require('keystone');
@@ -79,6 +77,8 @@ fs.readdirSync(__dirname + '/models').forEach(function(file) {
 var isDev = process.env.NODE_ENV === 'development';
 
 if (isDev) {
+  var config = require('../webpack/webpack.config.dev-client.js');
+  var compiler = webpack(config);
   app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath
@@ -86,7 +86,6 @@ if (isDev) {
 
   app.use(require('webpack-hot-middleware')(compiler));
 }
-
 
 // Bootstrap passport config
 require('./config/passport')(app, passport);

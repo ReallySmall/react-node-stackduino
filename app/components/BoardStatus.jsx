@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_board-status';
+import styles from 'css/components/_board-status';
 
 const cx = classNames.bind(styles);
 

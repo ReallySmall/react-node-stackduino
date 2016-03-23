@@ -16,3 +16,17 @@ exports.all = function(req, res) {
     }
   });
 };
+
+/**
+ * By Id
+ */
+exports.byId = function(req, res) {
+  var slug = req.params.slug;
+  Posts.findOne({slug: slug}).exec(function(err, post) {
+    if(!err) {
+      res.json(post);
+    }else {
+      console.log('Error in first query');
+    }
+  });
+};

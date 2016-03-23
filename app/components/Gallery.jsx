@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_gallery-page';
+import styles from 'css/components/_gallery-page';
 
 const cx = classNames.bind(styles);
 

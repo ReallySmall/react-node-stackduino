@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_board-detail';
+import styles from 'css/components/_board-detail';
 import BoardStatus from 'components/BoardStatus';
 import Carousel from 'components/Carousel';
-//import RepositoryLink from 'components/RepositoryLink';
+import RepositoryLink from 'components/RepositoryLink';
 
 const cx = classNames.bind(styles);
 
@@ -21,21 +21,22 @@ export default class Board extends Component {
           <div className={cx('row')}>
             <div className={cx('col-sm-7')}>
               <article>
-                <h1>/*{this.props.content.fields.title}*/</h1>
-                <BoardStatus /* status={this.props.content.fields.status} */ />
+                <h1>{this.props.title}</h1>
+                <BoardStatus status={this.props.status} />
                 <section>
-                  /* <div dangerouslySetInnerHTML={{ __html: this.props.content.fields.introduction || '' }} /> */
+                  {this.props.intro}
                 </section>
+                  <Carousel imageList={this.props.images} />
                 <section>
-                  /* <Carousel imageList={this.props.content.fields.images} assets={this.props.assets} /> */
-                </section>  
+                </section>
+                  {this.props.body}  
                 <section>
-                  /* <div dangerouslySetInnerHTML={{ __html: this.props.content.fields.body || '' }} /> */
                 </section>
               </article>
             </div>
             <div className={cx('col-sm-5')}>
               <aside>
+                <RepositoryLink repoUrl={} />
               </aside>
             </div>
           </div>
@@ -47,5 +48,4 @@ export default class Board extends Component {
 };
 
 Board.propTypes = {
-  // todo
 };

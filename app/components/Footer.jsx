@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_footer';
+import styles from 'css/components/_footer';
 import { Link } from 'react-router';
 
 const cx = classNames.bind(styles);

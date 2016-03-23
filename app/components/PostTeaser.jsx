@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_article-teaser';
+import styles from 'css/components/_article-teaser';
 import { Link } from 'react-router';
 
 const cx = classNames.bind(styles);

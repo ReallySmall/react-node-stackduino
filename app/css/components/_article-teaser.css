@@ -1,0 +1,33 @@
+@import '../main.css';
+
+li {
+  article {
+    margin: 15px 0;
+    padding: 15px 0;
+    border-top: 1px solid $lightest-grey;
+    ul.tags {
+      list-style-type: none;
+      li {
+        display: inline-block;
+        margin-right: 5px;
+        a {
+          font-size: 0.9em;
+          display: block;
+          padding: 3px 6px;
+          border-radius: 5px;
+          background: $lightest-grey;
+          border: 1px solid $lighter-grey;
+          color: $grey;
+          &:hover, &:focus, &:active {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  &:first-child {
+    article {
+      border-top: none;
+    }
+  }
+}

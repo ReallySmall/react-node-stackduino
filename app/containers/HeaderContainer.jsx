@@ -24,7 +24,6 @@ HeaderContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     wrapper: state.wrapper.wrapper
   };

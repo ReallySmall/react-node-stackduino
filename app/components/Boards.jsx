@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'scss/components/_boards-page';
+import styles from 'css/components/_boards-page';
 import BoardTeaser from 'components/BoardTeaser';
 
 const cx = classNames.bind(styles);
@@ -20,7 +20,8 @@ export default class Boards extends Component {
         var board = this.props.list[i]; 
         boardTeasers.push(
           <BoardTeaser 
-            title={board.title} 
+            title={board.title}
+            slug={board.slug} 
             version={board.version}
             developed={board.developedDate}
             status={board.boardStatus}
@@ -33,7 +34,7 @@ export default class Boards extends Component {
   	return (
     	<div className={cx('view-animate-container')}>
         	<div className={cx('container')}>
-          		<h1></h1>
+          		<h1>Boards</h1>
           		{boardTeasers}
         	</div>
       	</div>

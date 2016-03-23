@@ -11,6 +11,7 @@ exports.all = function(req, res) {
     .find({})
     .select({
       '_id' : 0,
+      'slug' : 1,
       'title' : 1,
       'boardStatus' : 1,
       'version' : 1,
@@ -30,9 +31,8 @@ exports.all = function(req, res) {
  * By Id
  */
 exports.byId = function(req, res) {
-  var versionId = req.params.versionid;
-  console.log(req.params.versionid);
-  Board.findOne({version: versionId}).exec(function(err, board) {
+  var slug = req.params.slug;
+  Board.findOne({slug: slug}).exec(function(err, board) {
     if(!err) {
       res.json(board);
     }else {

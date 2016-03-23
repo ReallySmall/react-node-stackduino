@@ -1,0 +1,21 @@
+@import '../main.css';
+
+.version-status {
+  float: left;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: $white;
+  font-size: 0.9em;
+  abbr[title] {
+    border-bottom: 1px dotted $white;
+  }
+  &.board-supported {
+    background: $green;
+  }
+  &.board-active-dev {
+    background: #AEBD34;
+  }
+  &.board-closed-proto {
+    background: $red;
+  }
+}
