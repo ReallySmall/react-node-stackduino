@@ -59,12 +59,6 @@ export default function render(req, res) {
     const history = createMemoryHistory();
     const authenticated = req.isAuthenticated();
     const store = configureStore({
-      user: {
-        authenticated: authenticated,
-        isWaiting: false,
-        message: '',
-        isLogin: true
-      }
     }, history);
 
     const routes = createRoutes(store);

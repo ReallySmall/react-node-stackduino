@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'css/components/_repository-link.scss';
+import styles from 'css/components/_repository-link.css';
 import { Link } from 'react-router';
 //var DoughnutChart = require("react-chartjs").Doughnut;
 

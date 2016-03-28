@@ -23,30 +23,30 @@ class HomepageContainer extends Component {
     };
 
     componentWillMount() {
-      if(!this.props.homepage.length){ // if homepage is not in state yet
+      if(!this.props.content.length){ // if homepage is not in state yet
         this.props.dispatch ( fetchHomepage() );
       }
     };
 
     render() {
 
-      const {homepage} = this.props;
+      const {content} = this.props;
 
       return (
-        <Homepage content={homepage[0]} />
+        <Homepage content={content[0]} />
       );
 
     }
 };
 
 HomepageContainer.propTypes = {
-  homepage: PropTypes.array.isRequired
+  content: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
   console.log(state);
   return {
-    homepage: state.homepage.homepage
+    content: state.homepage.content
   };
 }
 

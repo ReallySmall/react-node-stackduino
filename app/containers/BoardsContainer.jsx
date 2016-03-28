@@ -24,29 +24,29 @@ class BoardsContainer extends Component {
   	};
 
     componentWillMount() {
-      if(!this.props.boardIndex.length){ // if boards are not in state yet
+      if(!this.props.teasers.length){ // if boards are not in state yet
         this.props.dispatch ( fetchBoards() ); // add them
       }
     };
 
   	render() {
 
-      const {boardIndex} = this.props;
+      const {teasers} = this.props;
 	  	return (
-	    	<Boards list={boardIndex} />
+	    	<Boards list={teasers} />
 	  	);
 
   	}
 };
 
 BoardsContainer.propTypes = {
-  boardIndex: PropTypes.array.isRequired,
+  teasers: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    boardIndex: state.boardIndex.boardIndex
+    teasers: state.boardIndex.teasers
   };
 }
 

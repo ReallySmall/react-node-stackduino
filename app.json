@@ -1,10 +1,6 @@
 {
-  "name": "React Node Express Mongo",
-  "description": "A barebones Node.js app using Express 4 with MongoDB, and ReactJS in Flux, using Webpack as a module bundler",
+  "name": "Stackduino website",
+  "description": "An isomorphic Node.js site using Express 4 with MongoDB, and ReactJS in Flux, using Webpack as a module bundler - based on https://github.com/choonkending/react-webpack-node",
   "repository": "https://github.com/choonkending/react-webpack-node",
-  "logo": "https://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static", "react", "webpack", "mongodb"],
-  "addons" : [
-  	"mongohq"
-  ]
+  "keywords": ["node", "express", "static", "react", "webpack", "mongodb", "isomorphic", "stackduino"],
 }

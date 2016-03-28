@@ -25,7 +25,7 @@ export default class Posts extends Component {
     return (
       <div className={cx('view-animate-container')}>
         <div className={cx('container')}>
-          <h1></h1>
+          <h1>Articles</h1>
           {postList}
         </div>
       </div>

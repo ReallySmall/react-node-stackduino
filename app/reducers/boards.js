@@ -5,7 +5,7 @@ import {
 
 
 export default function boards(state = {
-  boards: []
+  detailPages: []
 }, action) {
   switch (action.type) {
     case GET_BOARD_REQUEST:
@@ -15,7 +15,7 @@ export default function boards(state = {
     case GET_BOARD_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        boards: [...boards, action.req.data]
+        detailPages: [...detailPages, action.req.data]
       });
     case GET_BOARD_FAILURE:
       return Object.assign({}, state, {

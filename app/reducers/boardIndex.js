@@ -5,7 +5,7 @@ import {
 
 
 export default function boardIndex(state = {
-  boardIndex: []
+  teasers: []
 }, action) {
   switch (action.type) {
     case GET_BOARDS_INDEX_REQUEST:
@@ -15,7 +15,7 @@ export default function boardIndex(state = {
     case GET_BOARDS_INDEX_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        boardIndex: action.req.data
+        teasers: action.req.data
       });
     case GET_BOARDS_INDEX_FAILURE:
       return Object.assign({}, state, {

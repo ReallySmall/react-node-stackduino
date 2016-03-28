@@ -22,7 +22,7 @@ class BoardContainer extends Component {
 
   	render() {
       const {board} = this.props.board;
-            console.log(this.props);
+      console.log(this.props);
 
 	  	return (
         <Board 
@@ -44,7 +44,7 @@ BoardContainer.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    board: state.boards.boards
+    board: state.boards.detailPages
   };
 }
 
