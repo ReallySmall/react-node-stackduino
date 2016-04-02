@@ -23,29 +23,29 @@ class PostsContainer extends Component {
     };
 
     componentWillMount() {
-      if(!this.props.posts.length){ // if posts are not in state yet
+      if(!this.props.teasers.length){ // if posts are not in state yet
         this.props.dispatch ( fetchPosts() ); // add them
       }
     };
 
     render() {
 
-      const {posts} = this.props;
+      const {teasers} = this.props;
       return (
-        <Posts list={this.props.posts} />
+        <Posts list={teasers} />
       );
 
     }
 };
 
 PostsContainer.propTypes = {
-  posts: PropTypes.array.isRequired,
+  teasers: PropTypes.array.isRequired,
   dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    posts: state.post.posts
+    teasers: state.posts.teasers
   };
 }
 

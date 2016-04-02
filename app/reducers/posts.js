@@ -1,49 +1,50 @@
-import {  
-  GET_BOARDS_INDEX_REQUEST,
-  GET_BOARDS_INDEX_SUCCESS,
-  GET_BOARDS_INDEX_FAILURE,
-  GET_BOARD_REQUEST,
-  GET_BOARD_SUCCESS,
-  GET_BOARD_FAILURE } from 'constants/index';
+import {
+  GET_POSTS_INDEX_REQUEST,
+  GET_POSTS_INDEX_SUCCESS,
+  GET_POSTS_INDEX_FAILURE,
+  GET_POST_REQUEST,
+  GET_POST_SUCCESS,
+  GET_POST_FAILURE } from 'constants/index';
 
-export default function boards(state = {
+export default function posts(state = {
   teasers: [],
   details: {}
 }, action) {
   switch (action.type) {
-    case GET_BOARDS_INDEX_REQUEST:
+    case GET_POSTS_INDEX_REQUEST:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case GET_BOARDS_INDEX_SUCCESS:
+    case GET_POSTS_INDEX_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         teasers: action.req.data
       });
-    case GET_BOARDS_INDEX_FAILURE:
+    case GET_POSTS_INDEX_FAILURE:
       return Object.assign({}, state, {
         isFetching: false
       });
-    case GET_BOARD_REQUEST:
+    case GET_POST_REQUEST:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case GET_BOARD_SUCCESS:
+    case GET_POST_SUCCESS:
       
-      let boardDetails = action.req.data;
-      let slug = boardDetails.slug;
-      let boardsDetails = state.details; 
+      let postDetails = action.req.data;
+      let slug = postDetails.slug;
+      let postssDetails = state.details; 
 
-      boardsDetails[slug] = boardDetails;
+      postsDetails[slug] = postDetails;
       
       return Object.assign({}, state, {
         isFetching: false,
-        details: boardsDetails
+        details: postsDetails
       });
-    case GET_BOARD_FAILURE:
+    case GET_POST_FAILURE:
       return Object.assign({}, state, {
         isFetching: false
       });
+
 
     default:
       return state;

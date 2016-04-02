@@ -10,8 +10,6 @@ let API_ENDPOINT = '/api/boards';
 
 /*
  * Utility function to make AJAX requests using isomorphic fetch.
- * You can also use jquery's $.ajax({}) if you do not want to use the
- * /fetch API.
  * Note: this function relies on an external variable `API_ENDPOINT`
  *        and isn't a pure function
  * @param Object Data you wish to pass to the server

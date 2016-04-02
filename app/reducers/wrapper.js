@@ -5,8 +5,7 @@ import {
 
 
 export default function settings(state = {
-  wrapper: [],
-  newWrapper: ''
+  wrapper: []
 }, action) {
   switch (action.type) {
     case GET_WRAPPER_REQUEST:

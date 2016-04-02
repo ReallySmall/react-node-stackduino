@@ -39,7 +39,7 @@ function renderFullPage(renderedContent, initialState, head={
         ${head.link}
     </head>
     <body>
-    <div id="app">${renderedContent}</div>
+    <div id="app" style="height: 100%">${renderedContent}</div>
     <script>
       window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
     </script>

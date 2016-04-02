@@ -17,22 +17,26 @@ class BoardContainer extends Component {
   	};
 
     componentWillMount() {
-      this.props.dispatch ( fetchBoard(this.props.routeParams) );
+      console.log('props: ', this.props);
+      if(!this.props.board){ // if board detail is not in state yet
+        console.log(this.props.routeParams);
+        this.props.dispatch ( fetchBoard(this.props.routeParams) ); // add it
+      }
     };
 
   	render() {
-      const {board} = this.props.board;
-      console.log(this.props);
+
+      const {board} = this.props;
 
 	  	return (
         <Board 
-          title={this.props.board[0].title} 
-          status={this.props.board[0].boardStatus}
-          developed={this.props.board[0].boardStatus} 
-          intro={this.props.board[0].content.brief}
-          body={this.props.board[0].content.extended}
-          images={this.props.board[0].images}
-          version={this.props.board[0].version} />
+          title={board.title} 
+          status={board.boardStatus}
+          developed={board.boardStatus} 
+          intro={board.content.brief}
+          body={board.content.extended}
+          images={board.images}
+          version={board.version} />
 	  	);
 
   	}
@@ -44,7 +48,7 @@ BoardContainer.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    board: state.boards.detailPages
+    board: state.boards.details['stackduino-v22']
   };
 }
 

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Boards from 'components/Boards';
 import { fetchBoards } from 'actions/boards';
 import { fetchWrapper } from 'actions/wrapper';
-import { fetchPosts } from 'actions/posts';
 
 /*
  * Note: This is kept as a container-level component,
@@ -45,8 +44,9 @@ BoardsContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
-    teasers: state.boardIndex.teasers
+    teasers: state.boards.teasers
   };
 }
 
