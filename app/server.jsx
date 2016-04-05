@@ -112,7 +112,7 @@ export default function render(req, res) {
         res.end(renderFullPage("",{}));
       });
     } else {
-      res.status(404).send('Not Found');
+      res.status(404).json({"error": "404", "title": "Page not found", "description": "Oops"});
     }
   });
 }

@@ -17,6 +17,7 @@ export default class Posts extends Component {
         <PostTeaser 
           title={post.title}
           published={post.publishedDate}
+          slug={post.slug} 
           intro={post.content.brief}
           categories={post.categories} />
       );

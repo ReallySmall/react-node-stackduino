@@ -7,7 +7,6 @@ import * as types from 'constants/index';
 polyfill();
 
 let API_ENDPOINT = '/api/gallery';
-let API_FLICKR_ENDPOINT = '/api/flickr/bytags';
 
 /*
  * Utility function to make AJAX requests using isomorphic fetch.
@@ -20,26 +19,14 @@ let API_FLICKR_ENDPOINT = '/api/flickr/bytags';
  * @param String endpoint
  * @return Promise
  */
-function makeGallerySettingsRequest(method, id, data) {
-  return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
+function makeGalleryImagesRequest(method, data) {
+  return request[method](API_ENDPOINT, data);
 }
 
-function makeGalleryImagesRequest(tags, perPage, page) {
-  return request(API_FLICKR_ENDPOINT + '?tags=' + tags + '&per_page=' + perPage + '&page=' + page);
-}
-
-// Fetch gallery settings
-export function fetchGallerySettings() {
-  return {
-    type: types.GET_GALLERY_SETTINGS,
-    promise: makeGallerySettingsRequest('get')
-  }
-}
-
-// Fetch gallery settings
+// Fetch gallery images
 export function fetchGalleryImages(tags, perPage, page) {
   return {
     type: types.GET_GALLERY_IMAGES,
-    promise: makeGalleryImagesRequest(tags, perPage, page)
+    promise: makeGalleryImagesRequest('get')
   }
 }

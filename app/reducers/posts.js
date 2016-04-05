@@ -32,7 +32,7 @@ export default function posts(state = {
       
       let postDetails = action.req.data;
       let slug = postDetails.slug;
-      let postssDetails = state.details; 
+      let postsDetails = state.details; 
 
       postsDetails[slug] = postDetails;
       

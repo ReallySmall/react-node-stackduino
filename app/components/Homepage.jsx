@@ -14,13 +14,13 @@ export default class Homepage extends Component {
 
 	render() {
 
-    console.log(this.props);
+    const {content} = this.props;
+    const imagesSlot1 = [];
+    const imagesSlot2 = [];
 
-    let imagesSlot1 = [];
-
-    for(var i = 0; i < this.props.content.imagesSlot1.length; i++){
-      let img = this.props.content.imagesSlot1[i];
-      let colWidth = Math.ceil(12 / this.props.content.imagesSlot1.length);
+    for(var i = 0; i < content.imagesSlot1.length; i++){
+      let img = content.imagesSlot1[i];
+      let colWidth = Math.ceil(12 / content.imagesSlot1.length);
       img.ratio = (img.height / img.width) * 100;
       imagesSlot1 .push(
         <div className={cx('col-md-' + colWidth)}>
@@ -34,11 +34,9 @@ export default class Homepage extends Component {
       );
     }
 
-    let imagesSlot2 = [];
-
-    for(var i = 0; i < this.props.content.imagesSlot2.length; i++){
-      let img = this.props.content.imagesSlot2[i];
-      let colWidth = Math.ceil(12 / this.props.content.imagesSlot2.length);
+    for(var i = 0; i < content.imagesSlot2.length; i++){
+      let img = content.imagesSlot2[i];
+      let colWidth = Math.ceil(12 / content.imagesSlot2.length);
       img.ratio = (img.height / img.width) * 100;
       imagesSlot2 .push(
         <div className={cx('col-md-' + colWidth)}>
@@ -60,7 +58,7 @@ export default class Homepage extends Component {
         <div className={cx('container')}>
           <section>
             <h1 className="visually-hidden">Stackduino</h1>
-            <p dangerouslySetInnerHTML={{ __html: this.props.content.content.brief || '' }} />
+            <p dangerouslySetInnerHTML={{ __html: content.content.brief || '' }} />
           </section>
           <section>
             <div className={cx('row')}>
@@ -68,7 +66,7 @@ export default class Homepage extends Component {
             </div>
           </section>
           <section>
-            <div dangerouslySetInnerHTML={{ __html: this.props.content.content.additional || '' }} />
+            <div dangerouslySetInnerHTML={{ __html: content.content.additional || '' }} />
           </section>
           <section>
             <div className={cx('row')}>
@@ -76,7 +74,7 @@ export default class Homepage extends Component {
             </div>
           </section>
           <section>
-            <div dangerouslySetInnerHTML={{ __html: this.props.content.content.extended || '' }} />
+            <div dangerouslySetInnerHTML={{ __html: content.content.extended || '' }} />
           </section>
         </div>
       </div>

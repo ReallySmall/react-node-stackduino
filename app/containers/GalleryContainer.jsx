@@ -2,13 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Gallery from 'components/Gallery';
 import { fetchWrapper } from 'actions/wrapper';
-import { fetchGallerySettings } from 'actions/gallery';
 import { fetchGalleryImages } from 'actions/gallery';
 
 export default class GalleryContainer extends Component {
 
   static need = [
-    fetchWrapper, fetchGallerySettings
+    fetchWrapper, fetchGalleryImages
   ];
 
   constructor(props) {
@@ -16,20 +15,17 @@ export default class GalleryContainer extends Component {
   };
 
   componentWillMount() {
-    if(!this.props.gallerySettings.length){ // if gallery settings are not in state yet
-      this.props.dispatch ( fetchGallerySettings() ); // add them
-    }
-    if(!this.props.galleryImages.length){ // if gallery images are not in state yet
+    if(!this.props.images.length){ // if gallery images are not in state yet
       this.props.dispatch ( fetchGalleryImages() ); // add them
     }
   };
 
   render() {
 
-    const { gallerySettings, galleryImages } = this.props;
+    const { images } = this.props;
 
     return (
-      <Gallery list={galleryImages} />
+      <Gallery images={images} />
     );
 
   }
@@ -39,10 +35,8 @@ export default class GalleryContainer extends Component {
 GalleryContainer.propTypes = {};
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
-    gallerySettings: state.gallery.settings,
-    galleryImages: state.gallery.images
+    images: state.gallery.images
   };
 }
 

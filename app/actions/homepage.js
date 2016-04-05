@@ -19,8 +19,8 @@ let API_ENDPOINT = '/api/homepage';
  * @param String endpoint
  * @return Promise
  */
-function makeHomepageRequest(method, id, data) {
-  return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
+function makeHomepageRequest(method, data) {
+  return request[method](API_ENDPOINT, data);
 }
 
 // Fetch posts logic

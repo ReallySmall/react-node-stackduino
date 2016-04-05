@@ -4,12 +4,6 @@ import { fetchHomepage } from 'actions/homepage';
 import { fetchWrapper } from 'actions/wrapper';
 import Homepage from 'components/Homepage';
 
-/*
- * Note: This is kept as a container-level component,
- *  i.e. We should keep this as the container that does the data-fetching
- *  and dispatching of actions if you decide to have any sub-components.
- */
-
 class HomepageContainer extends Component {
 
     //Data that needs to be called before rendering the component
@@ -23,33 +17,31 @@ class HomepageContainer extends Component {
     };
 
     componentWillMount() {
-      if(!this.props.content.length){ // if homepage is not in state yet
+      //if(!this.props.content){ // if homepage is not in state yet
         this.props.dispatch ( fetchHomepage() );
-      }
+      //}
     };
 
     render() {
 
       const {content} = this.props;
+      console.log('PROPS', this.props);
 
       return (
-        <Homepage content={content[0]} />
+        <Homepage content={content} />
       );
 
     }
 };
 
 HomepageContainer.propTypes = {
-  content: PropTypes.array.isRequired
+  content: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     content: state.homepage.content
   };
 }
 
-// Read more about where to place `connect` here:
-// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps)(HomepageContainer);

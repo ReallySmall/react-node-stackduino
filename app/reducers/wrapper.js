@@ -5,7 +5,7 @@ import {
 
 
 export default function settings(state = {
-  wrapper: []
+  content: {}
 }, action) {
   switch (action.type) {
     case GET_WRAPPER_REQUEST:
@@ -15,7 +15,7 @@ export default function settings(state = {
     case GET_WRAPPER_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
-        wrapper: action.req.data
+        content: action.req.data
       });
     case GET_WRAPPER_FAILURE:
       return Object.assign({}, state, {

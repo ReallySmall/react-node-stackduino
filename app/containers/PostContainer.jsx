@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Board from 'components/Board';
+import Post from 'components/Post';
 import { fetchWrapper } from 'actions/wrapper';
-import { fetchPosts } from 'actions/posts';
+import { fetchPost } from 'actions/posts';
 
 class PostContainer extends Component {
 
   	//Data that needs to be called before rendering the component
   	//This is used for server side rending via the fetchComponentDataBeforeRending() method
   	static need = [
-    	fetchWrapper, fetchPosts
+    	fetchWrapper, fetchPost
   	];
 
   	constructor(props) {
@@ -17,14 +17,19 @@ class PostContainer extends Component {
   	};
 
     componentWillMount() {
-      this.props.dispatch ( fetchPosts(this.props.routeParams) );
+      this.props.dispatch ( fetchPost(this.props.routeParams) );
     };
 
   	render() {
-      const {post} = this.props.post;
+      const {post} = this.props;
 
 	  	return (
-        <p>Test</p>
+        <Post
+          title={post.title}
+          publishedDate={post.publishedDate} 
+          intro={post.content.brief}
+          body={post.content.extended}
+          categories={post.categories} />
 	  	);
 
   	}
@@ -37,7 +42,7 @@ PostContainer.propTypes = {
 function mapStateToProps(state) {
   console.log(state);
   return {
-    post: state.posts.posts
+    post: state.posts.details['another-post']
   };
 }
 

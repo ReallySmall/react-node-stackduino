@@ -29,7 +29,7 @@ export default class PostTeaser extends Component {
 
       <article>
         <h2>
-          {this.props.title}
+          <Link to={"/articles/" + this.props.slug}>{this.props.title}</Link>
         </h2>
         <p>{this.props.publishedDate}</p>
         <p>{this.props.intro}</p>

@@ -10,6 +10,8 @@ export default class FooterContainer extends Component {
 
   render() {
 
+    const {content} = this.props;
+
     return (
       <Footer />
     );
@@ -18,11 +20,13 @@ export default class FooterContainer extends Component {
 }
 
 FooterContainer.propTypes = {
-  wrapper: PropTypes.array.isRequired
+  content: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    wrapper: state.wrapper.wrapper
+    content: state.wrapper.content
   };
 }
+
+export default connect(mapStateToProps)(FooterContainer);

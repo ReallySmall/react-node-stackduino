@@ -7,7 +7,7 @@ var Wrapper = keystone.list('Wrapper').model;
  * List
  */
 exports.all = function(req, res) {
-  Wrapper.find({}).exec(function(err, wrapper) {
+  Wrapper.findOne({}).sort({'_id': -1}).exec(function(err, wrapper) {
     if(!err) {
       res.json(wrapper);
     }else {

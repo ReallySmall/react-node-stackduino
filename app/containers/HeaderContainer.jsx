@@ -10,22 +10,24 @@ export default class HeaderContainer extends Component {
 
     render() {
 
+      const {content} = this.props;
+
       return (
         <Header
-          title={this.props.wrapper[0].header.siteTitle}
-          subtitle={this.props.wrapper[0].header.siteSubtitle} />
+          title={content.header.siteTitle}
+          subtitle={content.header.siteSubtitle} />
       );
 
     }
 };
 
 HeaderContainer.propTypes = {
-  wrapper: PropTypes.array.isRequired
+  content: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    wrapper: state.wrapper.wrapper
+    content: state.wrapper.content
   };
 }
 
