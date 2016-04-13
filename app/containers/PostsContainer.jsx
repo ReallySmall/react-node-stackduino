@@ -49,6 +49,4 @@ function mapStateToProps(state) {
   };
 }
 
-// Read more about where to place `connect` here:
-// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps)(PostsContainer);

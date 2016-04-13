@@ -8,7 +8,8 @@ import {
 
 export default function posts(state = {
   teasers: [],
-  details: {}
+  details: {},
+  isFetching: false
 }, action) {
   switch (action.type) {
     case GET_POSTS_INDEX_REQUEST:

@@ -7,7 +7,8 @@ import {
 export default function gallery(state = {
   images: [],
   pages: undefined,
-  page: undefined
+  page: undefined,
+  isFetching: false
 }, action) {
   switch (action.type) {
     case GET_GALLERY_IMAGES_REQUEST:

@@ -31,7 +31,6 @@ export function fetchPosts() {
   }
 }
 
-
 // Fetch one board
 export function fetchPost(param) {
   return {

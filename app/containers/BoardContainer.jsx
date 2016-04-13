@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Board from 'components/Board';
+import Loading from 'components/Loading';
 import { fetchWrapper } from 'actions/wrapper';
 import { fetchBoard } from 'actions/boards';
 
@@ -17,19 +18,16 @@ class BoardContainer extends Component {
   	};
 
     componentWillMount() {
-      console.log('props: ', this.props);
       if(!this.props.board){ // if board detail is not in state yet
-        console.log(this.props.routeParams);
+        this.props.isFetching = true;
         this.props.dispatch ( fetchBoard(this.props.routeParams) ); // add it
       }
     };
 
   	render() {
 
-      const {board} = this.props;
-
-	  	return (
-        <Board 
+      const { board } = this.props;
+      const boardContent = this.props.isFetching === true ? <p>Loading</p> : <Board 
           title={board.title} 
           status={board.boardStatus}
           developed={board.boardStatus} 
@@ -37,6 +35,9 @@ class BoardContainer extends Component {
           body={board.content.extended}
           images={board.images}
           version={board.version} />
+
+	  	return (
+        boardContent
 	  	);
 
   	}
@@ -46,12 +47,11 @@ BoardContainer.propTypes = {
   // todo
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   return {
-    board: state.boards.details['stackduino-v22']
+    board: state.boards.details[props.routeParams.slug],
+    isFetching: state.boards.isFetching
   };
 }
 
-// Read more about where to place `connect` here:
-// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps)(BoardContainer);
