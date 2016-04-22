@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Boards from 'components/Boards';
+import Page from 'components/Page';
+import IntroBlock from 'components/IntroBlock';
+import BoardTeaser from 'components/BoardTeaser';
 import { fetchBoards } from 'actions/boards';
 import { fetchWrapper } from 'actions/wrapper';
 
@@ -23,16 +25,38 @@ class BoardsContainer extends Component {
   	};
 
     componentWillMount() {
-      if(!this.props.teasers.length){ // if boards are not in state yet
+      if(!this.props.teasers || !this.props.teasers.length){ // if boards are not in state yet
         this.props.dispatch ( fetchBoards() ); // add them
       }
     };
 
   	render() {
 
-      const {teasers} = this.props;
+      const {teasers, isFetching, requestFailed} = this.props;
+      let teaserComponents = [];
+
+      if(teasers){
+        for(let i = 0; i < teasers.length; i++){
+          let teaser = teasers[i]; 
+          teaserComponents.push(
+            <BoardTeaser 
+              key={i}
+              title={teaser.title}
+              slug={teaser.slug} 
+              version={teaser.version}
+              developed={teaser.developedDate}
+              status={teaser.boardStatus}
+              intro={teaser.content.brief}
+              images={teaser.images} />
+          );
+        }
+      }
+
 	  	return (
-	    	<Boards list={teasers} />
+        <Page isFetching={isFetching} requestFailed={requestFailed} >
+          <IntroBlock title="Boards" intro="Intro text" />
+          {teaserComponents} 
+        </Page>
 	  	);
 
   	}
@@ -43,13 +67,22 @@ BoardsContainer.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-function mapStateToProps(state) {
-  console.log(state);
+function mapStateToProps(state, props) {
+
+  let teasers = state.boards.teasers;
+  let isFetching;
+  
+  if(!teasers){
+    isFetching = true;
+  } else {
+    isFetching = state.boards.isFetching; 
+  }
+
   return {
-    teasers: state.boards.teasers
+    teasers: teasers,
+    isFetching: isFetching,
+    requestFailed: state.boards.requestFailed
   };
 }
 
-// Read more about where to place `connect` here:
-// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
 export default connect(mapStateToProps)(BoardsContainer);

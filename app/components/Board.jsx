@@ -16,7 +16,7 @@ export default class Board extends Component {
   render() {
 
     return (
-      <div className={cx('view-animate-container')}>
+      <div className={cx('view')}>
         <div className={cx('container')}>
           <div className={cx('row')}>
             <div className={cx('col-sm-7')}>

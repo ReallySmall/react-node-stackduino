@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Page from 'components/Page';
+import IntroBlock from 'components/IntroBlock';
 import Gallery from 'components/Gallery';
-import Loading from 'components/Loading';
+import LoadMore from 'components/LoadMore';
 import { fetchWrapper } from 'actions/wrapper';
 import { fetchGalleryImages } from 'actions/gallery';
 
@@ -16,33 +18,47 @@ export default class GalleryContainer extends Component {
   };
 
   componentWillMount() {
-    if(!this.props.images.length){ // if gallery images are not in state yet
-    	this.props.isFetching = true;
+    if(!this.props.images.length && !this.props.requestFailed){ // if gallery images are not in state yet and the initial server side fetch didn't fail
       	this.props.dispatch ( fetchGalleryImages() ); // add them
     }
   };
 
   render() {
 
-    const { images } = this.props;
-    const galleryContent = this.props.isFetching === true ? <div><Gallery images={images} /><Loading /></div> : <Gallery images={images} />; 
+    const { images, page, pages, isFetching, requestFailed } = this.props;
 
     return (
-      galleryContent
+    	<Page isFetching={isFetching} requestFailed={requestFailed} >
+			<IntroBlock title="Gallery" intro="Intro text" />
+	    	<Gallery images={images} />	
+    	</Page>
     );
 
   }
   
 };
 
-GalleryContainer.propTypes = {};
+GalleryContainer.propTypes = {
+
+};
 
 function mapStateToProps(state) {
+
+  let images = state.gallery.images;
+  let isFetching;
+  
+  if(!images){
+    isFetching = true;
+  } else {
+    isFetching = state.gallery.isFetching; 
+  }
+
   return {
     images: state.gallery.images,
     pages: state.gallery.pages,
     page: state.gallery.page,
-    isFetching: state.gallery.isFetching
+    isFetching: isFetching,
+    requestFailed: state.gallery.requestFailed
   };
 }
 

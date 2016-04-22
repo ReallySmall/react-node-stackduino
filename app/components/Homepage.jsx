@@ -51,7 +51,7 @@ export default class Homepage extends Component {
     }
 
   	return (
-    	<div className={cx('view-animate-container')}>
+    	<div className={cx('view')}>
         <section>
           <FlickrCarousel />
         </section>

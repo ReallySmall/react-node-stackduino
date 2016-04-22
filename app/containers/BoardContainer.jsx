@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Page from 'components/Page';
 import Board from 'components/Board';
-import Loading from 'components/Loading';
 import { fetchWrapper } from 'actions/wrapper';
 import { fetchBoard } from 'actions/boards';
 
@@ -19,7 +19,6 @@ class BoardContainer extends Component {
 
     componentWillMount() {
       if(!this.props.board){ // if board detail is not in state yet
-        this.props.isFetching = true;
         this.props.dispatch ( fetchBoard(this.props.routeParams) ); // add it
       }
     };
@@ -27,17 +26,18 @@ class BoardContainer extends Component {
   	render() {
 
       const { board } = this.props;
-      const boardContent = this.props.isFetching === true ? <p>Loading</p> : <Board 
-          title={board.title} 
-          status={board.boardStatus}
-          developed={board.boardStatus} 
-          intro={board.content.brief}
-          body={board.content.extended}
-          images={board.images}
-          version={board.version} />
 
 	  	return (
-        boardContent
+        <Page isFetching={board.isFetching} requestFailed={board.requestFailed} >
+          <Board 
+            title={board.title} 
+            status={board.boardStatus}
+            developed={board.boardStatus} 
+            intro={board.content.brief}
+            body={board.content.extended}
+            images={board.images}
+            version={board.version} /> 
+        </Page>
 	  	);
 
   	}
@@ -48,9 +48,20 @@ BoardContainer.propTypes = {
 };
 
 function mapStateToProps(state, props) {
+
+  let board = state.boards.details[props.routeParams.slug];
+  let isFetching;
+  
+  if(!board){
+    isFetching = true;
+  } else {
+    isFetching = state.boards.isFetching; 
+  }
+
   return {
-    board: state.boards.details[props.routeParams.slug],
-    isFetching: state.boards.isFetching
+    board: board,
+    isFetching: isFetching,
+    requestFailed: state.boards.requestFailed
   };
 }
 

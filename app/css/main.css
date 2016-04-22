@@ -63,13 +63,21 @@ body {
   }
 }
 
-.view-animate-container {
+.view-container {
   min-height: 100%;
-  background: $blue;
-  .container {
-    background: whitesmoke;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  & > div {
+    min-height: 100%;
+    background: $blue;
+    position: relative;
+    .view {
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: $blue;
+      & > .container {
+        background: whitesmoke;
+      }
+    }
   }
 }
 

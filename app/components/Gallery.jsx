@@ -14,15 +14,18 @@ export default class Gallery extends Component {
 
   render() {
 
+    const { images } = this.props;
+
     let photos = [];
 
     let masonryOptions = {
       transitionDuration: 0
     };
 
-    for(var i=0; i < this.props.images.length; i++){
+
+    for(var i=0; i < images.length; i++){
       
-      var photo = this.props.images[i];
+      var photo = images[i];
       var ratio = (photo.height_n / photo.width_n) * 100;
       
       photos.push(
@@ -41,26 +44,14 @@ export default class Gallery extends Component {
     }
 
     return (
-      <div className={cx('view-animate-container')}>
-        <div className={cx('container')}>
-          <h1>Gallery</h1>
-            <div className={cx('row')}>
-              <Masonry
-                className={cx('plain', 'gallery')}
-                elementType={'ul'}
-                options={masonryOptions}
-                disableImagesLoaded={false}
-              >
-                {photos}
-            </Masonry>
-            </div>
-            <div className={cx('row')}>
-              <button type="button" className={cx('btn', 'btn-primary', 'center-block')}>
-                Show more
-              </button>        
-            </div>
-        </div>
-      </div>
+      <Masonry
+        className={cx('plain', 'gallery')}
+        elementType={'ul'}
+        options={masonryOptions}
+        disableImagesLoaded={false}
+      >
+        {photos}
+      </Masonry>
     );
 
   }

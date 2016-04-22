@@ -7,9 +7,9 @@ const cx = classNames.bind(styles);
 export default class Loading extends Component {
 
   render(){
-    return (
-		<p>
-			Loading...
+    return ( 
+		<p className={cx('error')}>
+			{this.props.message}
 		</p>
     );
   }

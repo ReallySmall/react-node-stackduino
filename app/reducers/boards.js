@@ -8,7 +8,8 @@ import {
 
 export default function boards(state = {
   teasers: [],
-  details: {}
+  details: {},
+  requestFailed: false
 }, action) {
   switch (action.type) {
     case GET_BOARDS_INDEX_REQUEST:
@@ -18,15 +19,18 @@ export default function boards(state = {
     case GET_BOARDS_INDEX_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
+        requestFailed: false,
         teasers: action.req.data
       });
     case GET_BOARDS_INDEX_FAILURE:
       return Object.assign({}, state, {
-        isFetching: false
+        isFetching: false,
+        requestFailed: true
       });
     case GET_BOARD_REQUEST:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetching: true,
+        requestFailed: false
       });
     case GET_BOARD_SUCCESS:
       
@@ -38,11 +42,13 @@ export default function boards(state = {
       
       return Object.assign({}, state, {
         isFetching: false,
+        requestFailed: false,
         details: boardsDetails
       });
     case GET_BOARD_FAILURE:
       return Object.assign({}, state, {
-        isFetching: false
+        isFetching: false,
+        requestFailed: true
       });
 
     default:

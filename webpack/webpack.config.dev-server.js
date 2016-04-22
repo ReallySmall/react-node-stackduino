@@ -1,6 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
+var adminPath = path.join(__dirname, 'admin');
 var assetsPath = path.join(__dirname, '..', 'public', 'assets');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var commonLoaders = [
   {
@@ -51,7 +53,7 @@ module.exports = {
       loaders: commonLoaders.concat([
            {
               test: /\.css$/,
-              loader: 'css/locals?module&localIdentName=[name]__[local]___[hash:base64:5]'
+              loader: 'css'
            }, 
            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
@@ -67,6 +69,12 @@ module.exports = {
         new webpack.DefinePlugin({
           __DEVCLIENT__: false,
           __DEVSERVER__: true
+        }),
+        new CopyWebpackPlugin([
+        // Copy directory contents to {output}/to/directory/
+          { from: adminPath, to: assetsPath }
+        ], {
+          copyUnmodified: true
         })
     ]
 };

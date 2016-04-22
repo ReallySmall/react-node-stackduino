@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import Page from 'components/Page';
+import IntroBlock from 'components/IntroBlock';
+import PostTeaser from 'components/PostTeaser';
 import { connect } from 'react-redux';
-import Posts from 'components/Posts';
 import { fetchPosts } from 'actions/posts';
 import { fetchWrapper } from 'actions/wrapper';
 
@@ -30,9 +32,28 @@ class PostsContainer extends Component {
 
     render() {
 
-      const {teasers} = this.props;
+      const {teasers, isFetching, requestFailed} = this.props;
+      let teaserComponents = [];
+
+      if(teasers){
+        for(let i = 0; i < teasers.length; i++){
+          let teaser = teasers[i]; 
+          teaserComponents.push(
+            <PostTeaser 
+              title={teaser.title}
+              published={teaser.publishedDate}
+              slug={teaser.slug} 
+              intro={teaser.content.brief}
+              categories={teaser.categories} />
+          );
+        }
+      }
+
       return (
-        <Posts list={teasers} />
+        <Page isFetching={isFetching} requestFailed={requestFailed} >
+          <IntroBlock title="Posts" intro="Intro text" />
+          {teaserComponents} 
+        </Page>
       );
 
     }
@@ -44,8 +65,20 @@ PostsContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
+
+  let teasers = state.posts.teasers;
+  let isFetching;
+  
+  if(!teasers){
+    isFetching = true;
+  } else {
+    isFetching = state.posts.isFetching; 
+  }
+
   return {
-    teasers: state.posts.teasers
+    teasers: teasers,
+    isFetching: isFetching,
+    requestFailed: state.posts.requestFailed
   };
 }
 

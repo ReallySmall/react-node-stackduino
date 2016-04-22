@@ -29,7 +29,7 @@ exports.all = function(req, res) {
 	          res.send(body);
 	        } else {
 	          console.log(error);
-	          res.send(error);         
+	          res.status(500).send(error);         
 	        }
 	    });
 

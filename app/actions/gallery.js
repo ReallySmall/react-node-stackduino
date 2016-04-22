@@ -24,9 +24,9 @@ function makeGalleryImagesRequest(method, data) {
 }
 
 // Fetch gallery images
-export function fetchGalleryImages(tags, perPage, page) {
+export function fetchGalleryImages(page) {
   return {
     type: types.GET_GALLERY_IMAGES,
-    promise: makeGalleryImagesRequest('get')
+    promise: makeGalleryImagesRequest('get', { page: page })
   }
 }

@@ -17,7 +17,7 @@ export default class Carousel extends Component {
       img = this.props.imageList[i];
       img.ratio = (img.height / img.width) * 100;
       images.push(
-        <figure>
+        <figure key={i}>
           <Image src={img.url} alt="" ratio={img.ratio}/>
           {this.props.hideCaption === true ? '' : <figcaption>Test</figcaption>}
         </figure>

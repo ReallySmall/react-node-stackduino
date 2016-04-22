@@ -9,7 +9,7 @@ import headconfig from 'components/Meta';
 import { fetchComponentDataBeforeRender } from 'api/fetchComponentDataBeforeRender';
 
 const clientConfig = {
-  host: process.env.HOSTNAME || 'localhost',
+  host: process.env.HOSTNAME || '127.0.0.1',
   port: process.env.PORT || '3000'
 };
 

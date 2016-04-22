@@ -24,29 +24,20 @@ export default class Post extends Component {
     }
 
     return (
-      <div className={cx('view-animate-container')}>
-        <div className={cx('container')}>
-          <div className={cx('row')}>
-            <div className={cx('col-sm-8')}>
-              <article>
-                <section>
-                  <h1>{this.props.title}</h1>
-                  <p>{this.props.publishedDate}</p>
-                  <p>{this.props.intro}</p>
-                </section>
-                <section>
-                  {this.props.body}
-                </section>  
-              </article>
-            </div>
-            <div className={cx('col-sm-4')}>
-              <ul className={cx('tags')}>
-                {categories}
-              </ul>
-            </div>
-          </div>
+      <article>
+        <div className={cx('col-sm-8')}>
+          <section>
+            {this.props.body}
+          </section>  
         </div>
-      </div>
+        <div className={cx('col-sm-4', 'aside')}>
+          <aside>
+            <ul className={cx('tags')}>
+              {categories}
+            </ul>
+          </aside>
+        </div>
+      </article>
     );
 
   }

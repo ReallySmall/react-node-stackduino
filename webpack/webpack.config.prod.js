@@ -2,8 +2,10 @@ var path = require("path");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var InlineEnviromentVariablesPlugin = require('inline-environment-variables-webpack-plugin');
 var webpack = require("webpack");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var assetsPath = path.join(__dirname, "..", "public", "assets");
+var adminPath = path.join(__dirname, 'admin');
 var publicPath = "/assets/";
 
 var commonLoaders = [
@@ -37,7 +39,7 @@ var commonLoaders = [
     }
   },
   { test: /\.css$/,
-    loader: ExtractTextPlugin.extract('style-loader', 'css-loader?module!postcss-loader')
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
   }
 ];
 
@@ -121,7 +123,13 @@ module.exports = [
           __DEVCLIENT__: false,
           __DEVSERVER__: false
         }),
-        new InlineEnviromentVariablesPlugin({ NODE_ENV: 'production' })
+        new InlineEnviromentVariablesPlugin({ NODE_ENV: 'production' }),
+        new CopyWebpackPlugin([
+          // Copy directory contents to {output}/to/directory/
+          { from: adminPath, to: assetsPath }
+        ], {
+          copyUnmodified: true
+        })
     ],
     postcss: postCSSConfig
   }, {

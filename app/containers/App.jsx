@@ -1,8 +1,14 @@
 import React, { Component, PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import HeaderContainer from 'containers/HeaderContainer';
 import FooterContainer from 'containers/FooterContainer';
 import Navigation from 'containers/Navigation';
+import classNames from 'classnames/bind';
 import 'css/main';
+import styles from 'css/main';
+import Image from 'components/Image';
+
+const cx = classNames.bind(styles);
 
 /*
  * React-router's <Router> component renders <Route>'s
@@ -18,7 +24,18 @@ const App = ({children}) => {
     <div>
       <HeaderContainer />
       <Navigation />
-        {children}
+      	<div className={cx('view-container')}>
+	        <ReactCSSTransitionGroup
+			    component="div"
+			    transitionName="page"
+			    transitionEnterTimeout={500}
+			    transitionLeaveTimeout={500}
+	      	>
+		        {React.cloneElement(children, {
+		          key: Math.random()
+		        })}
+     		</ReactCSSTransitionGroup>
+     	</div>
       <FooterContainer />
     </div>
   );

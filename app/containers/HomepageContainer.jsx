@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchHomepage } from 'actions/homepage';
 import { fetchWrapper } from 'actions/wrapper';
+import _ from 'underscore';
 import Homepage from 'components/Homepage';
 import Loading from 'components/Loading';
 
@@ -18,16 +19,12 @@ class HomepageContainer extends Component {
     };
 
     componentWillMount() {
-      //if(!this.props.content){ // if homepage is not in state yet
-        console.log('moo');
-        this.props.isFetching = true;
+      if(_.isEmpty(this.props.content)){ // if homepage is not in state yet
         this.props.dispatch ( fetchHomepage() );
-      //}
+      }
     };
 
     render() {
-
-      console.log(this.props);
 
       const {content} = this.props;
       const homePageContent = this.props.isFetching === true ? <p>Loading</p> : <Homepage content={content} />
@@ -43,10 +40,20 @@ HomepageContainer.propTypes = {
   content: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
+
+  let content = state.homepage.content;
+  let isFetching;
+  
+  if(_.isEmpty(content)){
+    isFetching = true;
+  } else {
+    isFetching = state.homepage.isFetching; 
+  }
+
   return {
-    content: state.homepage.content,
-    isFetching: state.homepage.isFetching
+    content: content,
+    isFetching: isFetching
   };
 }
 

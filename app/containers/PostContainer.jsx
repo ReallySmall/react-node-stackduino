@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Page from 'components/Page';
 import Post from 'components/Post';
-import Loading from 'components/Loading';
 import { fetchWrapper } from 'actions/wrapper';
 import { fetchPost } from 'actions/posts';
 
@@ -19,7 +19,6 @@ class PostContainer extends Component {
 
     componentWillMount() {
       if(!this.props.post){
-        this.props.isFetching = true;
         this.props.dispatch ( fetchPost(this.props.routeParams) );
       }
     };
@@ -28,18 +27,16 @@ class PostContainer extends Component {
 
       const { post } = this.props;
 
-      const postContent = this.props.isFetching === true 
-      ? <Loading /> 
-      : <Post
-          title={post.title}
-          publishedDate={post.publishedDate} 
-          intro={post.content.brief}
-          body={post.content.extended}
-          categories={post.categories} />     
-
-	  	return (
-        postContent
-	  	);
+      return (
+        <Page isFetching={post.isFetching} requestFailed={post.requestFailed} >
+          <Post
+            title={post.title} 
+            date={post.publishedDate} 
+            intro={post.intro}
+            body={post.content.extended}
+            categories={post.categories} />  
+        </Page>
+      );
 
   	}
 };
@@ -49,9 +46,20 @@ PostContainer.propTypes = {
 };
 
 function mapStateToProps(state, props) {
+
+  let post = state.posts.details[props.routeParams.slug];
+  let isFetching;
+  
+  if(!post){
+    isFetching = true;
+  } else {
+    isFetching = state.posts.isFetching; 
+  }
+
   return {
-    post: state.posts.details[props.routeParams.slug],
-    isFetching: state.posts.isFetching
+    post: post,
+    isFetching: isFetching,
+    requestFailed: state.posts.requestFailed
   };
 }
 
