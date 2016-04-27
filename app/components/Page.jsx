@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import styles from 'css/components/_gallery-page';
+import styles from 'css/components/_page';
 import Loading from 'components/Loading';
 import Error from 'components/Error';
 import classNames from 'classnames/bind';
@@ -16,16 +16,13 @@ export default class Page extends Component {
 
     const { isFetching, requestFailed } = this.props;
 
-    let isFetchingComponent = isFetching === true ? <Loading /> : null;
-    let requestFailedComponent = requestFailed === true ? <Error message="Error loading images from Flickr :(" /> : null;
-
     return (
-      <div className={cx('view')}>
+      <div className={cx('page')}>
         <div className={cx('container')}>
-          <div className={cx('row')}>
+          <div className={cx('col-md-12')}>
             {this.props.children}
-            {isFetchingComponent}
-            {requestFailedComponent}
+            {isFetching && <Loading />}
+            {requestFailed && <Error message="Loading error :(" />}
           </div>
         </div>
       </div>

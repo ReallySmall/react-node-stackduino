@@ -26,15 +26,16 @@ class PostContainer extends Component {
   	render() {
 
       const { post } = this.props;
+      const { isFetching, requestFailed } = this.props;
 
       return (
-        <Page isFetching={post.isFetching} requestFailed={post.requestFailed} >
-          <Post
+        <Page isFetching={isFetching} requestFailed={requestFailed} >
+          {post && <Post
             title={post.title} 
             date={post.publishedDate} 
             intro={post.intro}
             body={post.content.extended}
-            categories={post.categories} />  
+            categories={post.categories} />}  
         </Page>
       );
 
@@ -47,20 +48,12 @@ PostContainer.propTypes = {
 
 function mapStateToProps(state, props) {
 
-  let post = state.posts.details[props.routeParams.slug];
-  let isFetching;
-  
-  if(!post){
-    isFetching = true;
-  } else {
-    isFetching = state.posts.isFetching; 
-  }
-
   return {
-    post: post,
-    isFetching: isFetching,
+    post: state.posts.details[props.routeParams.slug],
+    isFetching: state.posts.details[props.routeParams.slug] ? state.posts.isFetching : true,
     requestFailed: state.posts.requestFailed
   };
+  
 }
 
 export default connect(mapStateToProps)(PostContainer);

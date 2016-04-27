@@ -29,7 +29,7 @@ export default class Gallery extends Component {
       var ratio = (photo.height_n / photo.width_n) * 100;
       
       photos.push(
-        <li className={cx('gallery-image', 'col-sm-4')}>
+        <li key={i} className={cx('gallery-image', 'col-sm-4')}>
           <a href={"http://flickr.com/photo.gne?id=" + photo.id} title="View on Flickr" className={cx('inset-wrapper')}>
           <figure className={cx('panel')}>
             <Image src={"https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_z.jpg"} alt={photo.title + " by " + photo.ownername + " on Flickr"} ratio={ratio}/>
@@ -44,14 +44,16 @@ export default class Gallery extends Component {
     }
 
     return (
-      <Masonry
-        className={cx('plain', 'gallery')}
-        elementType={'ul'}
-        options={masonryOptions}
-        disableImagesLoaded={false}
-      >
-        {photos}
-      </Masonry>
+      <section className={cx('row')}>
+        <Masonry
+          className={cx('plain', 'gallery')}
+          elementType={'ul'}
+          options={masonryOptions}
+          disableImagesLoaded={false}
+        >
+          {photos}
+        </Masonry>
+      </section>
     );
 
   }

@@ -1,0 +1,96 @@
+'use strict';
+
+var express = require('express');
+var fs = require('fs');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var secrets = require('./config/secrets');
+var webpack = require('webpack');
+var app = express();
+
+// keystone integration
+var keystone = require('keystone');
+var serve = require('serve-static');
+var favicon = require('serve-favicon');
+var body = require('body-parser');
+var cookieParser = require('cookie-parser');
+var multer = require('multer');
+var flash = require('connect-flash');
+
+app.use(cookieParser(secrets.keystone.cookieSecret));
+app.use(body.urlencoded({ extended: true }));
+app.use(body.json());
+app.use(multer());
+app.use(flash());
+
+keystone.app = app;
+keystone.mongoose = mongoose;
+
+keystone.init({
+  'name': 'Stackduino',
+  'brand': 'Stackduino',
+  'session': true,
+  'updates': true,
+  'auth': false,
+  'user model': 'User',
+  'auto update': true,
+  'cookie secret': secrets.keystone.cookieSecret,
+  'mongo': secrets.db
+});
+
+keystone.set('cloudinary config', secrets.keystone.cloudinary);
+
+// Let keystone know where your models are defined. Here we have it at the `/models`
+keystone.import('models');
+
+// Set keystone routes for the admin panel, located at '/keystone'
+keystone.routes(app);
+
+// Initialize keystone's connection to the database
+keystone.mongoose.connect(keystone.get('mongo'));
+
+// Serve your static assets
+app.use(serve('./public'));
+
+keystone.routes(app);
+
+// Find the appropriate database to connect to, default to localhost if not found.
+var connect = function connect() {
+  mongoose.connect(secrets.db, function (err, res) {
+    if (err) {
+      console.log('Error connecting to: ' + secrets.db + '. ' + err);
+    } else {
+      console.log('Succeeded connected to: ' + secrets.db);
+    }
+  });
+};
+connect();
+
+mongoose.connection.on('error', console.log);
+mongoose.connection.on('disconnected', connect);
+
+var isDev = process.env.NODE_ENV === 'development';
+
+console.log("isDev", isDev);
+
+if (isDev) {
+  var config = require('../webpack/webpack.config.dev-client.js');
+  var compiler = webpack(config);
+  app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+  }));
+
+  app.use(require('webpack-hot-middleware')(compiler));
+}
+
+// Bootstrap passport config
+require('./config/passport')(app, passport);
+
+// Bootstrap application settings
+require('./config/express')(app, passport);
+
+// Bootstrap routes
+require('./config/routes')(app, passport);
+
+app.listen(app.get('port'));

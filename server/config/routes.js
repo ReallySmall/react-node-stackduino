@@ -7,7 +7,6 @@ var posts = require('../controllers/posts');
 var wrapper = require('../controllers/wrapper');
 var gallery = require('../controllers/gallery');
 var express = require('express');
-var users = require('../controllers/users');
 var mongoose = require('mongoose');
 var keystone = require('keystone');
 var request = require('request');

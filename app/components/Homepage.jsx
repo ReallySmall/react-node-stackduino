@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_home-page';
+import Loading from 'components/Loading';
+import Error from 'components/Error';
+import ImageBlock from 'components/ImageBlock'; 
 import Image from 'components/Image';
 import FlickrCarousel from 'components/FlickrCarousel';
 
@@ -14,69 +17,48 @@ export default class Homepage extends Component {
 
 	render() {
 
-    const {content} = this.props;
-    const imagesSlot1 = [];
-    const imagesSlot2 = [];
+    const { content, isFetching, requestFailed } = this.props;
 
-    for(var i = 0; i < content.imagesSlot1.length; i++){
-      let img = content.imagesSlot1[i];
-      let colWidth = Math.ceil(12 / content.imagesSlot1.length);
-      img.ratio = (img.height / img.width) * 100;
-      imagesSlot1 .push(
-        <div className={cx('col-md-' + colWidth)}>
-          <div className={cx('inset-wrapper')}>
-            <figure>
-              <Image src={img.url} alt="" ratio={img.ratio}/>
-              <figcaption>Test</figcaption>
-            </figure>
-          </div>
-        </div>
-      );
-    }
+    let homepageContent = null;
 
-    for(var i = 0; i < content.imagesSlot2.length; i++){
-      let img = content.imagesSlot2[i];
-      let colWidth = Math.ceil(12 / content.imagesSlot2.length);
-      img.ratio = (img.height / img.width) * 100;
-      imagesSlot2 .push(
-        <div className={cx('col-md-' + colWidth)}>
-          <div className={cx('inset-wrapper')}>
-            <figure>
-              <Image src={img.url} alt="" ratio={img.ratio}/>
-              <figcaption>Test</figcaption>
-            </figure>
-          </div>
-        </div>
-      );
+    if(isFetching){
+      homepageContent = <div className={cx('container')}>
+                          <Loading />
+                        </div>
+    } else if(requestFailed){
+      homepageContent = <error />
+    } else {
+      homepageContent = <div>
+                          <section>
+                          </section>
+                          <div className={cx('container')}>
+                            <section>
+                              <h1 className="visually-hidden">Stackduino</h1>
+                              <p dangerouslySetInnerHTML={{ __html: content.content.brief || '' }} />
+                            </section>
+                            <section>
+                              <div className={cx('row')}>
+                                <ImageBlock images={content.imagesSlot1} />
+                              </div>
+                            </section>
+                            <section>
+                              <div dangerouslySetInnerHTML={{ __html: content.content.additional || '' }} />
+                            </section>
+                            <section>
+                              <div className={cx('row')}>
+                                <ImageBlock images={content.imagesSlot2} />
+                              </div>
+                            </section>
+                            <section>
+                              <div dangerouslySetInnerHTML={{ __html: content.content.extended || '' }} />
+                            </section>
+                          </div>
+                        </div>
     }
 
   	return (
-    	<div className={cx('view')}>
-        <section>
-          <FlickrCarousel />
-        </section>
-        <div className={cx('container')}>
-          <section>
-            <h1 className="visually-hidden">Stackduino</h1>
-            <p dangerouslySetInnerHTML={{ __html: content.content.brief || '' }} />
-          </section>
-          <section>
-            <div className={cx('row')}>
-              {imagesSlot1}
-            </div>
-          </section>
-          <section>
-            <div dangerouslySetInnerHTML={{ __html: content.content.additional || '' }} />
-          </section>
-          <section>
-            <div className={cx('row')}>
-              {imagesSlot2}
-            </div>
-          </section>
-          <section>
-            <div dangerouslySetInnerHTML={{ __html: content.content.extended || '' }} />
-          </section>
-        </div>
+    	<div className={cx('page')}>
+        {homepageContent}
       </div>
   	);
 
@@ -84,6 +66,5 @@ export default class Homepage extends Component {
 };
 
 Homepage.propTypes = {
-  settings: PropTypes.object.isRequired, 
-  content: PropTypes.object.isRequired
+  content: PropTypes.object
 };

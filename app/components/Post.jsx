@@ -24,7 +24,7 @@ export default class Post extends Component {
     }
 
     return (
-      <article>
+      <article className={cx('row')}>
         <div className={cx('col-sm-8')}>
           <section>
             {this.props.body}

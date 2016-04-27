@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+var Slider = require('react-slick');
 import classNames from 'classnames/bind';
 import styles from 'css/components/_carousel';
 import { Link } from 'react-router';
@@ -24,11 +25,19 @@ export default class Carousel extends Component {
       );
     }
 
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+
     return (
       <div className={cx('carousel')}>
-        <ul>
+        <Slider {...settings}>
           {images}
-        </ul>
+        </Slider>
       </div>
     );
   }

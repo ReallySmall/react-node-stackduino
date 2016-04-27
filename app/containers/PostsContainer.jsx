@@ -39,9 +39,10 @@ class PostsContainer extends Component {
         for(let i = 0; i < teasers.length; i++){
           let teaser = teasers[i]; 
           teaserComponents.push(
-            <PostTeaser 
+            <PostTeaser
+              key={i} 
               title={teaser.title}
-              published={teaser.publishedDate}
+              publishedDate={teaser.publishedDate}
               slug={teaser.slug} 
               intro={teaser.content.brief}
               categories={teaser.categories} />
@@ -52,7 +53,9 @@ class PostsContainer extends Component {
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Posts" intro="Intro text" />
-          {teaserComponents} 
+          {teasers &&
+            teaserComponents
+          } 
         </Page>
       );
 
@@ -66,20 +69,12 @@ PostsContainer.propTypes = {
 
 function mapStateToProps(state) {
 
-  let teasers = state.posts.teasers;
-  let isFetching;
-  
-  if(!teasers){
-    isFetching = true;
-  } else {
-    isFetching = state.posts.isFetching; 
-  }
-
   return {
-    teasers: teasers,
-    isFetching: isFetching,
+    teasers: state.posts.teasers,
+    isFetching: state.posts.teasers ? state.posts.isFetching : true,
     requestFailed: state.posts.requestFailed
   };
+
 }
 
 export default connect(mapStateToProps)(PostsContainer);

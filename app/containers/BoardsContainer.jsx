@@ -55,7 +55,9 @@ class BoardsContainer extends Component {
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Boards" intro="Intro text" />
-          {teaserComponents} 
+          {teasers &&
+            teaserComponents
+          } 
         </Page>
 	  	);
 
@@ -69,20 +71,12 @@ BoardsContainer.propTypes = {
 
 function mapStateToProps(state, props) {
 
-  let teasers = state.boards.teasers;
-  let isFetching;
-  
-  if(!teasers){
-    isFetching = true;
-  } else {
-    isFetching = state.boards.isFetching; 
-  }
-
   return {
-    teasers: teasers,
-    isFetching: isFetching,
+    teasers: state.boards.teasers,
+    isFetching: state.boards.teasers ? state.boards.isFetching : true,
     requestFailed: state.boards.requestFailed
   };
+  
 }
 
 export default connect(mapStateToProps)(BoardsContainer);

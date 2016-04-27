@@ -11,12 +11,15 @@ export default class IntroBlock extends Component {
   }
 
   render(){
+
+    const { title, intro } = this.props;
+
     return (
       <section>
         <div className={cx('row')}>
           <div className={cx('col-md-12')}>
-            <h1>{this.props.intro}</h1>
-            <p>{this.props.intro}</p>
+            <h1>{title}</h1>
+            <p>{intro}</p>
           </div>
         </div>
       </section>

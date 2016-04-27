@@ -9,7 +9,7 @@ export default function gallery(state = {
   pages: undefined,
   page: undefined,
   isFetching: false,
-  requestFailed: true
+  requestFailed: false
 }, action) {
   switch (action.type) {
     case GET_GALLERY_IMAGES_REQUEST:

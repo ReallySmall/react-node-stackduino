@@ -2,9 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchHomepage } from 'actions/homepage';
 import { fetchWrapper } from 'actions/wrapper';
-import _ from 'underscore';
 import Homepage from 'components/Homepage';
-import Loading from 'components/Loading';
 
 class HomepageContainer extends Component {
 
@@ -19,42 +17,36 @@ class HomepageContainer extends Component {
     };
 
     componentWillMount() {
-      if(_.isEmpty(this.props.content)){ // if homepage is not in state yet
+      if(!this.props.content){ // if homepage is not in state yet
         this.props.dispatch ( fetchHomepage() );
       }
     };
 
     render() {
 
-      const {content} = this.props;
-      const homePageContent = this.props.isFetching === true ? <p>Loading</p> : <Homepage content={content} />
+      const { content, isFetching, requestFailed } = this.props;
 
       return (
-        homePageContent
+        <Homepage isFetching={isFetching} requestFailed={requestFailed} content={content} />
       );
 
     }
 };
 
 HomepageContainer.propTypes = {
-  content: PropTypes.object.isRequired
+  content: PropTypes.object,
+  isFetching: PropTypes.bool,
+  requestFailed: PropTypes.bool
 };
 
-function mapStateToProps(state, props) {
-
-  let content = state.homepage.content;
-  let isFetching;
-  
-  if(_.isEmpty(content)){
-    isFetching = true;
-  } else {
-    isFetching = state.homepage.isFetching; 
-  }
+function mapStateToProps(state) {
 
   return {
-    content: content,
-    isFetching: isFetching
+    content: state.homepage.content,
+    isFetching: state.homepage.content ? state.homepage.isFetching : true,
+    requestFailed: state.homepage.requestFailed
   };
+
 }
 
 export default connect(mapStateToProps)(HomepageContainer);

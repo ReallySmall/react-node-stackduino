@@ -31,12 +31,20 @@ var commonLoaders = [
   },
   { test: /\.json$/, loader: "json-loader" },
   {
-    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+    test: /\.(png|jpg|jpeg|gif)$/,
     loader: 'url',
     query: {
         name: '[hash].[ext]',
         limit: 10000,
     }
+  },
+  {
+    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+  },
+  {
+    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+    loader: 'file-loader'
   },
   { test: /\.css$/,
     loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')

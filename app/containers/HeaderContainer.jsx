@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header';
+import Navigation from 'components/Navigation';
 
 export default class HeaderContainer extends Component {
 
@@ -13,9 +14,12 @@ export default class HeaderContainer extends Component {
       const {content} = this.props;
 
       return (
-        <Header
-          title={content.header.siteTitle}
-          subtitle={content.header.siteSubtitle} />
+        <div>
+          <Header
+            title={content.header.siteTitle}
+            subtitle={content.header.siteSubtitle} />
+          <Navigation />
+        </div>
       );
 
     }

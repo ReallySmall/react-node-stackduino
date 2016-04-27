@@ -2,9 +2,9 @@
 
 .site-header {
   background: $grey;
-  min-height: 115px;
+  min-height: 110px;
   border-top: 2px solid $black;
-  .home-link {
+  .site-branding {
     display: block;
     float: left;
     overflow: hidden;
@@ -19,7 +19,7 @@
       }
       .fa-camera {
         color: $orange;
-        margin-left: -3px;
+        margin-left: 6px;
       }
     }
     .site-descriptor {
@@ -91,7 +91,7 @@
 }
 
 .social-links {
-  margin: 13px 0 0 0;
+  margin: 18px 0 0 0;
   ul {
     float: right;
     font-size: 48px;

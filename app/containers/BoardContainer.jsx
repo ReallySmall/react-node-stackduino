@@ -26,17 +26,18 @@ class BoardContainer extends Component {
   	render() {
 
       const { board } = this.props;
+      const { isFetching, requestFailed } = this.props;
 
 	  	return (
-        <Page isFetching={board.isFetching} requestFailed={board.requestFailed} >
-          <Board 
+        <Page isFetching={isFetching} requestFailed={requestFailed} >
+          {board && <Board 
             title={board.title} 
             status={board.boardStatus}
             developed={board.boardStatus} 
             intro={board.content.brief}
             body={board.content.extended}
             images={board.images}
-            version={board.version} /> 
+            version={board.version} />} 
         </Page>
 	  	);
 
@@ -49,20 +50,12 @@ BoardContainer.propTypes = {
 
 function mapStateToProps(state, props) {
 
-  let board = state.boards.details[props.routeParams.slug];
-  let isFetching;
-  
-  if(!board){
-    isFetching = true;
-  } else {
-    isFetching = state.boards.isFetching; 
-  }
-
   return {
-    board: board,
-    isFetching: isFetching,
+    board: state.boards.details[props.routeParams.slug],
+    isFetching: state.boards.details[props.routeParams.slug] ? state.boards.isFetching : true,
     requestFailed: state.boards.requestFailed
   };
+  
 }
 
 export default connect(mapStateToProps)(BoardContainer);

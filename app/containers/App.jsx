@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import HeaderContainer from 'containers/HeaderContainer';
 import FooterContainer from 'containers/FooterContainer';
-import Navigation from 'containers/Navigation';
 import classNames from 'classnames/bind';
 import 'css/main';
 import styles from 'css/main';
@@ -23,7 +22,6 @@ const App = ({children}) => {
   return (
     <div>
       <HeaderContainer />
-      <Navigation />
       	<div className={cx('view-container')}>
 	        <ReactCSSTransitionGroup
 			    component="div"

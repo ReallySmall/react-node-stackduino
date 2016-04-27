@@ -1,7 +1,6 @@
 var express = require('express');
 var fs = require('fs');
 var mongoose = require('mongoose');
-var passport = require('passport');
 var secrets = require('./config/secrets');
 var webpack = require('webpack');
 var app = express();
@@ -13,14 +12,12 @@ var favicon = require('serve-favicon');
 var body = require('body-parser');
 var cookieParser = require('cookie-parser');
 var multer = require('multer');
-var session = require('express-session');
 var flash = require('connect-flash');
 
 app.use(cookieParser(secrets.keystone.cookieSecret));
 app.use(body.urlencoded({ extended: true }));
 app.use(body.json());
 app.use(multer());
-app.use(session());
 app.use(flash());
 
 keystone.app = app;
@@ -41,7 +38,7 @@ keystone.init({
 keystone.set('cloudinary config', secrets.keystone.cloudinary);
 
 // Let keystone know where your models are defined. Here we have it at the `/models`
-keystone.import('models/keystone');
+keystone.import('models');
 
 // Set keystone routes for the admin panel, located at '/keystone'
 keystone.routes(app);
@@ -69,12 +66,9 @@ connect();
 mongoose.connection.on('error', console.log);
 mongoose.connection.on('disconnected', connect);
 
-// Bootstrap models
-fs.readdirSync(__dirname + '/models').forEach(function(file) {
-  if(~file.indexOf('.js')) require(__dirname + '/models/' + file);
-});
-
 var isDev = process.env.NODE_ENV === 'development';
+
+console.log("isDev", isDev);
 
 if (isDev) {
   var config = require('../webpack/webpack.config.dev-client.js');
@@ -87,13 +81,10 @@ if (isDev) {
   app.use(require('webpack-hot-middleware')(compiler));
 }
 
-// Bootstrap passport config
-require('./config/passport')(app, passport);
-
 // Bootstrap application settings
-require('./config/express')(app, passport);
+require('./config/express')(app);
 
 // Bootstrap routes
-require('./config/routes')(app, passport);
+require('./config/routes')(app);
 
 app.listen(app.get('port'));

@@ -16,29 +16,25 @@ export default class Board extends Component {
   render() {
 
     return (
-      <div className={cx('view')}>
-        <div className={cx('container')}>
-          <div className={cx('row')}>
-            <div className={cx('col-sm-7')}>
-              <article>
-                <h1>{this.props.title}</h1>
-                <BoardStatus status={this.props.status} />
-                <section>
-                  {this.props.intro}
-                </section>
-                  <Carousel imageList={this.props.images} />
-                <section>
-                </section>
-                  {this.props.body}  
-                <section>
-                </section>
-              </article>
-            </div>
-            <div className={cx('col-sm-5')}>
-              <aside>
-              </aside>
-            </div>
-          </div>
+      <div className={cx('row')}>
+        <div className={cx('col-sm-7')}>
+          <article>
+            <h1>{this.props.title}</h1>
+            <BoardStatus status={this.props.status} />
+            <section>
+              {this.props.intro}
+            </section>
+              <Carousel imageList={this.props.images} />
+            <section>
+            </section>
+              {this.props.body}  
+            <section>
+            </section>
+          </article>
+        </div>
+        <div className={cx('col-sm-5')}>
+          <aside>
+          </aside>
         </div>
       </div>
     );

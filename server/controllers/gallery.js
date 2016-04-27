@@ -15,7 +15,7 @@ exports.all = function(req, res) {
     	var query = 'http://localhost:3000/api/flickr/bytags?';
     	query += 'tags=' + tags;
     	query += '?per_page=' + pagination;
-    	query += '?page=' + page;
+    	query += '?page=' + 2;
 
     	var requestOpts = {
         	url: query,
