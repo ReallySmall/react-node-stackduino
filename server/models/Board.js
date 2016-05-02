@@ -39,12 +39,14 @@ Board.add({
     		htmlClass: 'board-closed-proto' 
     	}
 	]},
+    primaryImage:  { type: Types.CloudinaryImage }, 
 	images: { type: Types.CloudinaryImages },
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 }
 	},
-	githubUrl: { type: Types.Url },
+	repoUrl: { type: Types.Url },
+    repoApiUrl: { type: Types.Url },
 	categories: { type: Types.Relationship, ref: 'PostCategory', many: true }
 });
 

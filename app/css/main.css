@@ -445,6 +445,36 @@ ul {
   }
 }
 
+.image-link {
+  &:hover, &:focus {
+    .img-placeholder {
+      position: relative;
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: $white;
+        opacity: 0.4;
+      }
+    }
+  }
+}
+
+figcaption {
+  padding: 5px 0 0 0;
+  .title {
+    font-weight: bold;
+  }
+  .owner {
+    font-size: 0.9em;
+    color: $light-grey;
+  }
+}
+
 .slider-placeholder {
   background: $blue;
   position:relative;

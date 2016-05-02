@@ -1,22 +1,38 @@
 @import '../main.css';
 
-.img-placeholder {
-  background: $lightest-grey;
-  position:relative;
-  overflow: hidden;
-  &:before {
-    content: "\f03e";
-    font-family: FontAwesome;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 120px;
-    line-height: 120px;
-    margin: -60px 0 0 -60px;
-    color: $lighter-grey;
+.loading {
+  float: left;
+  .message {
+    display: block;
+    float: right;
+    font-size: 1em;
+    padding: 0.3em 5px 0.3em 5px;
+    line-height: 1em;
+    color: $light-grey;
   }
-  img {
-    position: absolute;
+  &.size-1x {
+  	.message {
+  		font-size: 1em;
+    	padding: 0.3em 5px 0.3em 5px;
+  	}
+  }
+  &.size-2x {
+  	.message {
+  		font-size: 1.2em;
+    	padding: 0.4em 5px 0.4em 5px;
+  	}
+  }
+  &.size-3x {
+  	.message {
+  		font-size: 1.4em;
+    	padding: 0.6em 10px 0.6em 10px;
+  	}
+  }
+  &.size-4x {
+  	.message {
+  		font-size: 1.6em;
+    	padding: 0.8em 10px 0.8em 10px;
+  	}
   }
 }
 

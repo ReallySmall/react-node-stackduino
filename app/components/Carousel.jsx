@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-var Slider = require('react-slick');
+var Slider = require('nuka-carousel');
 import classNames from 'classnames/bind';
 import styles from 'css/components/_carousel';
 import { Link } from 'react-router';
@@ -35,7 +35,7 @@ export default class Carousel extends Component {
 
     return (
       <div className={cx('carousel')}>
-        <Slider {...settings}>
+        <Slider>
           {images}
         </Slider>
       </div>

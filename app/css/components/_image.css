@@ -20,3 +20,9 @@
   }
 }
 
+figcaption {
+  background: whitesmoke;
+  padding: 5px;
+  font-style: italic;
+}
+

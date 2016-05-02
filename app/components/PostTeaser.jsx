@@ -3,6 +3,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_article-teaser';
+import DateBlock from 'components/DateBlock';
 import { Link } from 'react-router';
 
 const cx = classNames.bind(styles);
@@ -14,10 +15,12 @@ export default class PostTeaser extends Component {
 
   render() {
 
-    let categories = [];
+    const { title, slug, intro, publishedDate, categories } = this.props;
 
-    for(let i = 0; i < this.props.categories.length; i++){
-      let category = this.props.categories[i];
+    let categoriesElement = [];
+
+    for(let i = 0; i < categories.length; i++){
+      let category = categories[i];
       categories.push(
         <li>
           <a href="#" title={"Find all posts tagged with" + category}>{category}</a>
@@ -28,14 +31,18 @@ export default class PostTeaser extends Component {
     return (
 
       <article>
-        <h2>
-          <Link to={"/articles/" + this.props.slug}>{this.props.title}</Link>
-        </h2>
-        <p>{this.props.publishedDate}</p>
-        <p>{this.props.intro}</p>
-        <ul className={cx('tags')}>
-          {categories}
-        </ul>
+        <div className={cx('inset-wrapper')}>
+          <div className={cx('panel')}>
+            <h2>
+              <Link to={"/articles/" + slug}>{title}</Link>
+            </h2>
+            <DateBlock date={publishedDate} />
+            <div dangerouslySetInnerHTML={{ __html: intro || '' }} />
+            <ul className={cx('tags')}>
+              {categoriesElement}
+            </ul>
+          </div>
+        </div>
       </article>
 
     );
@@ -45,6 +52,7 @@ export default class PostTeaser extends Component {
 
 PostTeaser.propTypes = {
   title: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   publishedDate: PropTypes.string.isRequired,
   intro: PropTypes.string.isRequired,
   categories: PropTypes.array.isRequired

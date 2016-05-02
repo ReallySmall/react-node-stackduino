@@ -25,17 +25,11 @@ class PostContainer extends Component {
 
   	render() {
 
-      const { post } = this.props;
-      const { isFetching, requestFailed } = this.props;
+      const { post, isFetching, requestFailed } = this.props;
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
-          {post && <Post
-            title={post.title} 
-            date={post.publishedDate} 
-            intro={post.intro}
-            body={post.content.extended}
-            categories={post.categories} />}  
+          {post && <Post {...post} />}  
         </Page>
       );
 

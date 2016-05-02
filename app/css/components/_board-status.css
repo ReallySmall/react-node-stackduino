@@ -1,6 +1,9 @@
 @import '../main.css';
 
 .version-status {
+  .icon {
+    margin: 0 5px 0 0;
+  }
   float: left;
   padding: 5px 10px;
   border-radius: 5px;

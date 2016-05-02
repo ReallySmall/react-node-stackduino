@@ -5,11 +5,11 @@
  */
 var homepage = require('../controllers/homepage');
 var boards = require('../controllers/boards');
+var repos = require('../controllers/repos');
 var posts = require('../controllers/posts');
 var wrapper = require('../controllers/wrapper');
 var gallery = require('../controllers/gallery');
 var express = require('express');
-var users = require('../controllers/users');
 var mongoose = require('mongoose');
 var keystone = require('keystone');
 var request = require('request');
@@ -29,6 +29,9 @@ module.exports = function (app, passport) {
   // board routes
   app.get('/api/boards', boards.all);
   app.get('/api/boards/:slug', boards.byId);
+
+  // repo route
+  app.get('/api/repos', repos.byUrl);
 
   // article routes
   app.get('/api/posts', posts.all);

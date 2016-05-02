@@ -25,19 +25,11 @@ class BoardContainer extends Component {
 
   	render() {
 
-      const { board } = this.props;
-      const { isFetching, requestFailed } = this.props;
+      const { board, isFetching, requestFailed } = this.props;
 
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
-          {board && <Board 
-            title={board.title} 
-            status={board.boardStatus}
-            developed={board.boardStatus} 
-            intro={board.content.brief}
-            body={board.content.extended}
-            images={board.images}
-            version={board.version} />} 
+          {board && <Board {...board} />} 
         </Page>
 	  	);
 

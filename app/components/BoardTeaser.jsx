@@ -3,7 +3,8 @@ import classNames from 'classnames/bind';
 import styles from 'css/components/_board-teaser';
 import { Link } from 'react-router';
 import BoardStatus from 'components/BoardStatus';
-import Carousel from 'components/Carousel';
+import Image from 'components/Image';
+import Icon from 'react-fa';
 
 const cx = classNames.bind(styles);
 
@@ -14,6 +15,8 @@ export default class BoardTeaser extends Component {
   }
 
   render(){
+
+    const { status, slug, title, intro, images } = this.props;
 
     const statuses = [
       {
@@ -33,23 +36,30 @@ export default class BoardTeaser extends Component {
       }
     ];
 
-    let colWidth = this.props.status !== 2 ? 'col-sm-9' : 'col-sm-12';
-    let thumbNailDisplay = this.props.status !== 2 ? 'col-sm-3' : 'hidden';
+    const closed = status === 2 ? true : false;
+    const colWidth = !closed ? 'col-sm-9' : 'col-sm-12';
+    const thumbNailDisplay = !closed ? 'col-sm-3' : 'hidden';
+    const img = images.length ? images[0] : null;
 
     return (
-      <section className={cx('board', statuses[this.props.status].htmlClass)}>
-        <div className={cx('inset-wrapper')}>
+      <section className={cx('board', statuses[status].htmlClass)}>
+        {closed && <Icon name="level-down" className={cx('col-sm-1', 'proto-indicator')} rotate="180" aria-hidden="true" />}
+        <div className={cx('inset-wrapper', closed ? 'col-sm-11' : 'col-sm-12')}>
           <div className={cx('panel')}>
             <div className={cx('row')}>
               <div className={cx(colWidth)}>
-                <h2 className="">
-                  <Link to={"/boards/" + this.props.slug}>{this.props.title}</Link>
-                </h2>
-                <BoardStatus status={this.props.status} />
-                <p>{this.props.intro}</p>
+                <div className={cx('clearfix', 'teaser-header')}>
+                  <h2>
+                    <Link to={"/boards/" + slug}>{title}</Link>
+                  </h2>
+                  <BoardStatus status={status} />
+                </div>
+                {!closed && <p dangerouslySetInnerHTML={{ __html: intro || '' }} />}
               </div>
               <div className={cx(thumbNailDisplay)}>
-                <Carousel imageList={this.props.images} hideCaption={true} />
+                {img && <Link to={"/boards/" + slug} className={cx('image-link')}>
+                  <Image src={img.url} alt="" ratio={(img.height / img.width) * 100} />
+                </Link>}
               </div>
             </div>
           </div>

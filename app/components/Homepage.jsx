@@ -3,7 +3,8 @@ import classNames from 'classnames/bind';
 import styles from 'css/components/_home-page';
 import Loading from 'components/Loading';
 import Error from 'components/Error';
-import ImageBlock from 'components/ImageBlock'; 
+import ImageBlock from 'components/ImageBlock';
+import TextBlock from 'components/TextBlock'; 
 import Image from 'components/Image';
 import FlickrCarousel from 'components/FlickrCarousel';
 
@@ -26,32 +27,23 @@ export default class Homepage extends Component {
                           <Loading />
                         </div>
     } else if(requestFailed){
-      homepageContent = <error />
+      homepageContent = <div className={cx('container')}>
+                          <error />
+                        </div>
     } else {
       homepageContent = <div>
                           <section>
+                            <FlickrCarousel />
                           </section>
                           <div className={cx('container')}>
-                            <section>
+                            <section className={cx('col-md-12')}>
                               <h1 className="visually-hidden">Stackduino</h1>
                               <p dangerouslySetInnerHTML={{ __html: content.content.brief || '' }} />
                             </section>
-                            <section>
-                              <div className={cx('row')}>
-                                <ImageBlock images={content.imagesSlot1} />
-                              </div>
-                            </section>
-                            <section>
-                              <div dangerouslySetInnerHTML={{ __html: content.content.additional || '' }} />
-                            </section>
-                            <section>
-                              <div className={cx('row')}>
-                                <ImageBlock images={content.imagesSlot2} />
-                              </div>
-                            </section>
-                            <section>
-                              <div dangerouslySetInnerHTML={{ __html: content.content.extended || '' }} />
-                            </section>
+                            <ImageBlock images={content.imagesSlot1} />
+                            <TextBlock content={content.content.additional} />      
+                            <ImageBlock images={content.imagesSlot2} />
+                            <TextBlock content={content.content.extended} />
                           </div>
                         </div>
     }

@@ -1,10 +1,7 @@
-/**
- * Board Status
-**/
-
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-status';
+import Icon from 'react-fa';
 
 const cx = classNames.bind(styles);
 
@@ -12,31 +9,33 @@ export default class BoardStatus extends Component {
 
   render(){
 
+    const { status } = this.props;
+
     let statuses = [
       {
         status: 'Code in development',
         description: 'Hardware complete, code implementation ongoing (help welcome with a pull request!)',
-        htmlClass: 'board-active-dev'
+        htmlClass: 'board-active-dev',
+        icon: 'flash'
       },
       {
         status: 'Complete',
         description: 'Hardware and code complete. No new development planned, however issues raised will be looked at',
-        htmlClass: 'board-supported'
+        htmlClass: 'board-supported',
+        icon: 'check'
       },
       {
         status: 'Closed prototype',
         description: 'Hardware issues or limitations identified. Unsupported and superceded by a more recent version',
-        htmlClass: 'board-closed-proto'
+        htmlClass: 'board-closed-proto',
+        icon: 'ban'
       }
     ];
 
     return (
-      <div className={cx('clearfix')}>
-        <p className={cx('version-status', statuses[this.props.status].htmlClass)}>
-          <span className={cx('fa', 'fa-flash')}></span>
-          <abbr title={statuses[this.props.status].description}>{statuses[this.props.status].status}</abbr>
-        </p>
-      </div>
+      <p className={cx('version-status', 'clearfix', statuses[status].htmlClass)}>
+        <Icon name={statuses[status].icon} className={cx('icon')} /> <abbr title={statuses[status].description}>{statuses[status].status}</abbr>
+      </p>
     );
   }
 

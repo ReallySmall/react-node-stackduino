@@ -133,11 +133,8 @@ module.exports = [
         }),
         new InlineEnviromentVariablesPlugin({ NODE_ENV: 'production' }),
         new CopyWebpackPlugin([
-          // Copy directory contents to {output}/to/directory/
-          { from: adminPath, to: assetsPath }
-        ], {
-          copyUnmodified: true
-        })
+            { from: 'admin' }
+        ])
     ],
     postcss: postCSSConfig
   }, {

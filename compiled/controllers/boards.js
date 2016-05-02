@@ -9,7 +9,7 @@ var Board = keystone.list('Board').model;
  * List
  */
 exports.all = function (req, res) {
-  Board.find({}).select({
+  Board.find({}).sort({ version: -1 }).select({
     '_id': 0,
     'slug': 1,
     'title': 1,

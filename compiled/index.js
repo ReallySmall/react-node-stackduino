@@ -3,10 +3,8 @@
 var express = require('express');
 var fs = require('fs');
 var mongoose = require('mongoose');
-var passport = require('passport');
 var secrets = require('./config/secrets');
 var webpack = require('webpack');
-var app = express();
 
 // keystone integration
 var keystone = require('keystone');
@@ -15,12 +13,18 @@ var favicon = require('serve-favicon');
 var body = require('body-parser');
 var cookieParser = require('cookie-parser');
 var multer = require('multer');
+var session = require('express-session');
 var flash = require('connect-flash');
 
+var app = express();
+keystone.static(app);
+
+app.use('/keystone', keystone.adminApp.staticRouter);
 app.use(cookieParser(secrets.keystone.cookieSecret));
 app.use(body.urlencoded({ extended: true }));
 app.use(body.json());
 app.use(multer());
+app.use(session());
 app.use(flash());
 
 keystone.app = app;
@@ -52,8 +56,6 @@ keystone.mongoose.connect(keystone.get('mongo'));
 // Serve your static assets
 app.use(serve('./public'));
 
-keystone.routes(app);
-
 // Find the appropriate database to connect to, default to localhost if not found.
 var connect = function connect() {
   mongoose.connect(secrets.db, function (err, res) {
@@ -84,13 +86,10 @@ if (isDev) {
   app.use(require('webpack-hot-middleware')(compiler));
 }
 
-// Bootstrap passport config
-require('./config/passport')(app, passport);
-
 // Bootstrap application settings
-require('./config/express')(app, passport);
+require('./config/express')(app);
 
 // Bootstrap routes
-require('./config/routes')(app, passport);
+require('./config/routes')(app);
 
 app.listen(app.get('port'));

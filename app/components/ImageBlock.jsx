@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-teaser';
+import Image from 'components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -32,7 +33,9 @@ export default class ImageBlock extends Component {
     }
 
     return (
-      <div>{imageBlock}</div>
+      <section>
+        {imageBlock}
+      </section>
     );
 
   }

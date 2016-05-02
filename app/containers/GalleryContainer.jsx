@@ -30,7 +30,7 @@ export default class GalleryContainer extends Component {
     return (
     	<Page isFetching={isFetching} requestFailed={requestFailed} >
     		<IntroBlock title="Gallery" intro="Intro text" />
-			{images && 
+			  {images && 
 	    		<Gallery images={images} />
 	    	}	
     	</Page>

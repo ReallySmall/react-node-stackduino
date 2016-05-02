@@ -5,15 +5,21 @@ import styles from 'css/components/_loading';
 
 const cx = classNames.bind(styles);
 
-export default class Loading extends Component {
+export default class DateBlock extends Component {
 
   render(){
-    return ( 
-		<p className={cx('error')}>
-			<Icon name="times-circle" size="3x" />
-			<span className={cx('message')}>{this.props.message}</span>
+
+  	const { date } = this.props;
+
+    return (
+		<p className={cx('date')}>
+			<Icon name="calendar-o" /> {date}
 		</p>
     );
   }
 
-}
+};
+
+DateBlock.propTypes = {
+  date: PropTypes.string.isRequired
+};

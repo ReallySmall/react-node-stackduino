@@ -6,8 +6,8 @@ import {
 
 export default function gallery(state = {
   images: [],
-  pages: undefined,
-  page: undefined,
+  pages: null,
+  page: null,
   isFetching: false,
   requestFailed: false
 }, action) {
@@ -17,13 +17,20 @@ export default function gallery(state = {
         isFetching: true
       });
     case GET_GALLERY_IMAGES_SUCCESS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        requestFailed: false,
-        images: action.req.data.photos.photo,
-        pages: action.req.data.photos.pages,
-        page: action.req.data.photos.page
-      });
+      if(action.req.data.photos){
+        return Object.assign({}, state, {
+          isFetching: false,
+          requestFailed: false,
+          images: action.req.data.photos.photo,
+          pages: action.req.data.photos.pages,
+          page: action.req.data.photos.page
+        });
+      } else {
+        return Object.assign({}, state, {
+          isFetching: false,
+          requestFailed: true
+        });
+      }
     case GET_GALLERY_IMAGES_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,

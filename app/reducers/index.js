@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import posts from 'reducers/posts';
 import homepage from 'reducers/homepage';
 import boards from 'reducers/boards';
+import repodata from 'reducers/repodata';
 import wrapper from 'reducers/wrapper';
 import gallery from 'reducers/gallery';
 import { routeReducer as routing } from 'react-router-redux';
@@ -11,6 +12,7 @@ import { routeReducer as routing } from 'react-router-redux';
 const rootReducer = combineReducers({
   wrapper,
   boards,
+  repodata,
   posts,
   homepage,
   gallery,

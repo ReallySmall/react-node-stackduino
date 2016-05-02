@@ -13,9 +13,12 @@ export default class Footer extends Component {
       <footer className={cx('footer')}>
         <div className={cx('container')}>
           <div className={cx('row')}>
-            <ul className={cx('plain')}>
+            <ul className={cx('plain', 'clearfix', 'link-block-container')}>
               <li className={cx('col-sm-4', 'link-block')}>
-                <h3>Top macro sites</h3>
+                <h3>
+                  <span className={cx('fa', 'fa-external-link-square')}></span>
+                  Top macro sites
+                </h3>
                 <ul className={cx('plain')}>
                   <li>
                     <a href="http://www.photomacrography.net/">
@@ -35,7 +38,10 @@ export default class Footer extends Component {
                 </ul>
               </li>
               <li className={cx('col-sm-4', 'link-block')}>
-                <h3>Similar projects</h3>
+                <h3>
+                  <span className={cx('fa', 'fa-external-link-square')}></span>
+                  Similar projects
+                </h3>
                 <ul className={cx('plain')}>
                   <li>
                     <a href="http://www.ryleeisitt.ca/articles/building-a-focus-stacking-controller/">
@@ -55,7 +61,10 @@ export default class Footer extends Component {
                 </ul>
               </li>
               <li className={cx('col-sm-4', 'link-block')}>
-                <h3>Stacking utilities</h3>
+                <h3>
+                  <span className={cx('fa', 'fa-external-link-square')}></span>
+                  Stacking utilities
+                </h3>
                 <ul className={cx('plain')}>
                   <li>
                     <a href="http://www.zerenesystems.com/">
