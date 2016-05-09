@@ -5,7 +5,7 @@ import boards from 'reducers/boards';
 import repodata from 'reducers/repodata';
 import wrapper from 'reducers/wrapper';
 import gallery from 'reducers/gallery';
-import { routeReducer as routing } from 'react-router-redux';
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 // Combine reducers with routeReducer which keeps track of
 // router state
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   posts,
   homepage,
   gallery,
-  routing
+  routing: routerReducer
 });
 
 export default rootReducer;

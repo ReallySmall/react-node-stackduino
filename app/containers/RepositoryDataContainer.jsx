@@ -7,16 +7,14 @@ import Error from 'components/Error';
 class RepositoryDataContainer extends Component {
 
   componentDidMount() {
-    if(!this.props.repoDetail){ // if board detail is not in state yet
-      this.props.dispatch ( fetchRepoDetail(this.props.url + this.props.query) ); // add it
-    }
+    //if(!this.props.repoDetail){ // if board detail is not in state yet
+      this.props.dispatch ( fetchRepoDetail({type: 'issues', user: 'ReallySmall', repo: 'stackduino-v2'}) ); // add it
+    //}
   }
 
   render() {
 
     const { isFetching, requestFailed } = this.props;
-
-    console.log('props: ', this.props);
 
     return (
       <div>

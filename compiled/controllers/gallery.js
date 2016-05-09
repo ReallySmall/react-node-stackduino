@@ -10,20 +10,22 @@ exports.all = function (req, res) {
     Gallery.findOne({}).sort({ '_id': -1 }).exec(function (err, gallery) {
         if (!err) {
 
+            var groupID = gallery.groupID;
             var tags = gallery.tags;
             var pagination = gallery.pagination;
-            var page = gallery.page;
+            var page = req.query.page || gallery.page;
 
-            var query = 'http://localhost:3000/api/flickr/bytags?';
-            query += 'tags=' + tags;
-            query += '?per_page=' + pagination;
-            query += '?page=' + 2;
+            var query = 'http://localhost:3000/api/flickr/byGroup?';
+            query += 'group_id=' + groupID;
+            query += '&tags=' + tags;
+            query += '&per_page=' + pagination;
+            query += '&page=' + page;
 
             var requestOpts = {
                 url: query,
                 method: "GET",
                 gzip: true,
-                timeout: 3000
+                timeout: 10000
             };
 
             request(requestOpts, function (error, response, body) {
@@ -31,7 +33,7 @@ exports.all = function (req, res) {
                     res.send(body);
                 } else {
                     console.log(error);
-                    res.status(500).send(error);
+                    res.send(error);
                 }
             });
         } else {

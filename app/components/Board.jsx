@@ -28,9 +28,13 @@ export default class Board extends Component {
           <article>
             <h1>{title}</h1>
             <BoardStatus status={boardStatus} />
-            <DateBlock date={developedDate} />
-            <TextBlock content={content.brief} />
-            <TextBlock content={content.extended} />
+            <DateBlock text="Development started" date={developedDate} />
+            <div className={cx('row')}>
+              <TextBlock content={content.brief} />
+            </div>
+            <div className={cx('row')}>
+              <TextBlock content={content.extended} />
+            </div>
           </article>
         </div>
         <div className={cx('col-sm-5')}>

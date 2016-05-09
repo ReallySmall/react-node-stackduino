@@ -3,6 +3,7 @@ import classNames from 'classnames/bind';
 import styles from 'css/components/_board-teaser';
 import { Link } from 'react-router';
 import BoardStatus from 'components/BoardStatus';
+import DateBlock from 'components/DateBlock';
 import Image from 'components/Image';
 import Icon from 'react-fa';
 
@@ -16,7 +17,7 @@ export default class BoardTeaser extends Component {
 
   render(){
 
-    const { status, slug, title, intro, images } = this.props;
+    const { status, slug, title, intro, developedDate, images } = this.props;
 
     const statuses = [
       {
@@ -39,6 +40,7 @@ export default class BoardTeaser extends Component {
     const closed = status === 2 ? true : false;
     const colWidth = !closed ? 'col-sm-9' : 'col-sm-12';
     const thumbNailDisplay = !closed ? 'col-sm-3' : 'hidden';
+    const dateText = status === 0 ? 'Development started' : 'Development completed';
     const img = images.length ? images[0] : null;
 
     return (
@@ -53,6 +55,7 @@ export default class BoardTeaser extends Component {
                     <Link to={"/boards/" + slug}>{title}</Link>
                   </h2>
                   <BoardStatus status={status} />
+                  <DateBlock text={dateText} date={developedDate} />
                 </div>
                 {!closed && <p dangerouslySetInnerHTML={{ __html: intro || '' }} />}
               </div>

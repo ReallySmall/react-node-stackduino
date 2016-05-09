@@ -33,6 +33,7 @@ class BoardsContainer extends Component {
   	render() {
 
       const {teasers, isFetching, requestFailed} = this.props;
+
       let teaserComponents = [];
 
       if(teasers){
@@ -44,7 +45,7 @@ class BoardsContainer extends Component {
               title={teaser.title}
               slug={teaser.slug} 
               version={teaser.version}
-              developed={teaser.developedDate}
+              developedDate={teaser.developedDate}
               status={teaser.boardStatus}
               intro={teaser.content.brief}
               images={teaser.images} />

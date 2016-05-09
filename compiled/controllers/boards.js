@@ -14,6 +14,7 @@ exports.all = function (req, res) {
     'slug': 1,
     'title': 1,
     'boardStatus': 1,
+    'developedDate': 1,
     'version': 1,
     'content.brief': 1,
     'images': 1

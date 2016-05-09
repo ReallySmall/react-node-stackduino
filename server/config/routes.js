@@ -7,6 +7,7 @@ var repos = require('../controllers/repos');
 var posts = require('../controllers/posts');
 var wrapper = require('../controllers/wrapper');
 var gallery = require('../controllers/gallery');
+var flickr = require('../controllers/flickr');
 var express = require('express');
 var mongoose = require('mongoose');
 var keystone = require('keystone');
@@ -28,8 +29,9 @@ module.exports = function(app, passport) {
   app.get('/api/boards', boards.all);
   app.get('/api/boards/:slug', boards.byId);
 
-  // repo route
-  app.get('/api/repos', repos.byUrl);
+  // repo routes
+  app.get('/api/repos/github/commits/:user/:repo', repos.commits);
+  app.get('/api/repos/github/issues/:user/:repo', repos.issues);
 
   // article routes
   app.get('/api/posts', posts.all);
@@ -41,47 +43,8 @@ module.exports = function(app, passport) {
   // gallery route
   app.get('/api/gallery', gallery.all);
 
-    // route to proxy calls to Flickr api for gallery
-  app.get('/api/flickr/bytags', function(req, res){
-
-    var query = '?api_key=' + secrets.flickr.api_key;
-    var tags = req.query.tags;
-    var per_page = req.query.per_page || 10;
-    var page = req.query.page || 1;
-
-    if(tags){
-
-      query += '&tags=' + tags,
-      query += '&per_page=' + per_page,
-      query += '&page=' + page,
-      query += '&format=json';
-      query += '&nojsoncallback=1';
-      query += '&method=flickr.photos.search';
-      query += '&tag_mode=all';
-      query += '&extras=tags,owner_name,url_n,url_o';
-      query += '&safe_search=1';
-
-      var requestOpts = {
-        url: 'https://api.flickr.com/services/rest/' + query,
-        method: "GET",
-        gzip: true,
-        timeout: 3000
-      };
-
-      request(requestOpts, function(error, response, body) {
-        if (!error && response.statusCode === 200) {
-          res.send(body);
-        } else {
-          console.log(error);
-          res.send(error);         
-        }
-      });
-
-    } else {
-      res.send(null);
-    }
-
-  });
+  // route to proxy calls to Flickr api for gallery
+  app.get('/api/flickr/byGroup', flickr.byGroup);
 
   // This is where the magic happens. We take the locals data we have already
   // fetched and seed our stores with data.

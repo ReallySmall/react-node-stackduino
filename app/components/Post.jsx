@@ -15,8 +15,6 @@ export default class Post extends Component {
 
     const { title, publishedDate, content, categories } = this.props;
 
-    console.log(this.props);
-
     let categoriesElement = [];
 
     for(let i = 0; i < categories.length; i++){
@@ -32,8 +30,10 @@ export default class Post extends Component {
       <article className={cx('row')}>
         <div className={cx('col-sm-8')}>
           <section>
-            <h1>{title}</h1>
-            <DateBlock date={publishedDate} />
+            <div className={cx('clearfix')}>
+              <h1>{title}</h1>
+              <DateBlock date={publishedDate} />
+            </div>
             <div dangerouslySetInnerHTML={{ __html: content.brief || '' }} />
             <div dangerouslySetInnerHTML={{ __html: content.extended || '' }} />
           </section>  

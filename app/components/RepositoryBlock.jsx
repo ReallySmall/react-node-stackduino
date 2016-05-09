@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
-import styles from 'css/components/_board-detail';
+import styles from 'css/components/_repository-link';
 import Icon from 'react-fa';
 import RepositoryDataContainer from 'containers/RepositoryDataContainer';
 
@@ -16,12 +16,10 @@ export default class RepositoryBlock extends Component {
 
     const { repoUrl, repoApiUrl } = this.props;
 
-    console.log(this.props);
-
     return (
       <div>
         <h4>
-          <a className={cx('repository-link')} href={repoUrl}>
+          <a className={cx('primary-link')} href={repoUrl}>
             <Icon className={cx('icon')} name="download" />
             Download from GitHub
           </a>

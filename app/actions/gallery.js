@@ -19,14 +19,15 @@ let API_ENDPOINT = '/api/gallery';
  * @param String endpoint
  * @return Promise
  */
-function makeGalleryImagesRequest(method, data) {
-  return request[method](API_ENDPOINT, data);
+function makeGalleryImagesRequest(method, page, data) {
+  return request[method](API_ENDPOINT + '?page=' + page, data);
 }
 
 // Fetch gallery images
 export function fetchGalleryImages(page) {
+  var page = page || 1;
   return {
     type: types.GET_GALLERY_IMAGES,
-    promise: makeGalleryImagesRequest('get', { page: page })
+    promise: makeGalleryImagesRequest('get', page)
   }
 }

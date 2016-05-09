@@ -12,6 +12,7 @@ Gallery.add({
 	title: { type: String, required: true },
 	intro: { type: String },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
+	groupID: { type: String },
 	tags: { type: String },
 	pagination: { type: Number },
 	page: { type: Number, default: 0 }

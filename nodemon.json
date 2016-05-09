@@ -1,5 +1,5 @@
 {
-    "verbose": false,
+    "verbose": true,
     "watch": [
       "app/server.jsx",
       "app/routes.jsx",

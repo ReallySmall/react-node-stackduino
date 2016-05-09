@@ -11,14 +11,14 @@ export default class HeaderContainer extends Component {
 
     render() {
 
-      const {content} = this.props;
+      const {content, route} = this.props;
 
       return (
         <div>
           <Header
             title={content.header.siteTitle}
             subtitle={content.header.siteSubtitle} />
-          <Navigation />
+          <Navigation route={route} />
         </div>
       );
 
@@ -31,7 +31,8 @@ HeaderContainer.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    content: state.wrapper.content
+    content: state.wrapper.content,
+    route: state.routing
   };
 }
 

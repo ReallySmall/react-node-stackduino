@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import LegacyWarning from 'components/LegacyWarning';
+import EnableJS from 'components/EnableJS';
 import HeaderContainer from 'containers/HeaderContainer';
 import FooterContainer from 'containers/FooterContainer';
+import CookieBanner from 'components/CookieBanner';
 import classNames from 'classnames/bind';
 import 'css/main';
 import styles from 'css/main';
@@ -26,8 +29,8 @@ const App = ({children}) => {
 	        <ReactCSSTransitionGroup
 			    component="div"
 			    transitionName="page"
-			    transitionEnterTimeout={500}
-			    transitionLeaveTimeout={500}
+			    transitionEnterTimeout={10}
+			    transitionLeaveTimeout={10}
 	      	>
 		        {React.cloneElement(children, {
 		          key: Math.random()

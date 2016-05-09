@@ -33,10 +33,12 @@ export default class PostTeaser extends Component {
       <article>
         <div className={cx('inset-wrapper')}>
           <div className={cx('panel')}>
-            <h2>
-              <Link to={"/articles/" + slug}>{title}</Link>
-            </h2>
-            <DateBlock date={publishedDate} />
+            <div className={cx('teaser-header', 'clearfix')}>
+              <h2>
+                <Link to={"/articles/" + slug}>{title}</Link>
+              </h2>
+              <DateBlock date={publishedDate} />
+            </div>
             <div dangerouslySetInnerHTML={{ __html: intro || '' }} />
             <ul className={cx('tags')}>
               {categoriesElement}

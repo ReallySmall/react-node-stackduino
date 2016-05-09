@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
 import Gallery from 'components/Gallery';
-import LoadMore from 'components/LoadMore';
+import LoadButton from 'components/LoadButton';
+import Icon from 'react-fa';
 import { fetchWrapper } from 'actions/wrapper';
 import { fetchGalleryImages } from 'actions/gallery';
 
@@ -15,11 +16,21 @@ export default class GalleryContainer extends Component {
 
   constructor(props) {
     super(props);
+    this.loadMore = this.loadMore.bind(this)
+  };
+
+  loadMore(event){
+    event.preventDefault();
+    const { dispatch, page, pages } = this.props;
+    if(page + 1 <= pages){
+      dispatch ( fetchGalleryImages(page + 1) );
+    }
   };
 
   componentWillMount() {
-    if(!this.props.images.length){ // if gallery images are not in state yet and the initial server side fetch didn't fail
-      	this.props.dispatch ( fetchGalleryImages() ); // add them
+    const { dispatch, images } = this.props; 
+    if(!images.length){ // if gallery images are not in state yet and the initial server side fetch didn't fail
+      dispatch ( fetchGalleryImages() ); // add them
     }
   };
 
@@ -32,7 +43,11 @@ export default class GalleryContainer extends Component {
     		<IntroBlock title="Gallery" intro="Intro text" />
 			  {images && 
 	    		<Gallery images={images} />
-	    	}	
+	    	}
+        {!isFetching && 
+          page + 1 <= pages && 
+          <p><a href="#" onClick={this.loadMore}>Load more <Icon name="arrow-circle-down" /></a></p>
+        }
     	</Page>
     );
 
@@ -50,7 +65,7 @@ function mapStateToProps(state) {
     images: state.gallery.images,
     pages: state.gallery.pages,
     page: state.gallery.page,
-    isFetching: state.gallery.images ? state.gallery.isFetching : true,
+    isFetching: state.gallery.images.length ? state.gallery.isFetching : true,
     requestFailed: state.gallery.requestFailed
   };
 

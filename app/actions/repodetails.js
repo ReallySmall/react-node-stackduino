@@ -6,7 +6,7 @@ import * as types from 'constants/index';
 
 polyfill();
 
-let API_ENDPOINT = '/api/repos';
+let API_ENDPOINT = '/api/repos/github/';
 
 /*
  * Utility function to make AJAX requests using isomorphic fetch.
@@ -19,14 +19,17 @@ let API_ENDPOINT = '/api/repos';
  * @param String endpoint
  * @return Promise
  */
-function makeRepoDetailsRequest(method, url, data) {
-  return request[method](API_ENDPOINT + (url ? ('?repoApiUrl=' + url) : ''), data);
+function makeRepoDetailsRequest(method, reqObj, data) {
+  let type = reqObj.type;
+  let user = reqObj.user;
+  let repo = reqObj.repo;
+  return request[method](API_ENDPOINT + type + '/' + user + '/' + repo, data);
 }
 
 // Fetch gallery images
-export function fetchRepoDetail(url) {
+export function fetchRepoDetail(reqObj) {
   return {
-    type: types.GET_REPO_DETAILS,
-    promise: makeRepoDetailsRequest('get', url) // TODO pass in query
+    type: types.GET_REPO_DATA,
+    promise: makeRepoDetailsRequest('get', reqObj)
   }
 }

@@ -1,7 +1,7 @@
 import {
-  GET_REPODATA_REQUEST,
-  GET_REPODATA_SUCCESS,
-  GET_REPODATA_FAILURE } from 'constants/index';
+  GET_REPO_DATA_REQUEST,
+  GET_REPO_DATA_SUCCESS,
+  GET_REPO_DATA_FAILURE } from 'constants/index';
 
 export default function repodata(state = {
   repos: {},
@@ -9,11 +9,11 @@ export default function repodata(state = {
   requestFailed: false
 }, action) {
   switch (action.type) {
-    case GET_REPODATA_REQUEST:
+    case GET_REPO_DATA_REQUEST:
       return Object.assign({}, state, {
         isFetching: true
       });
-    case GET_REPODATA_SUCCESS:
+    case GET_REPO_DATA_SUCCESS:
 
       console.log(action.req.data);
 
@@ -28,7 +28,7 @@ export default function repodata(state = {
         requestFailed: false,
         repos: allRepos
       });
-    case GET_REPODATA_FAILURE:
+    case GET_REPO_DATA_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
         requestFailed: true

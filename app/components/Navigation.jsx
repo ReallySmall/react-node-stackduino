@@ -9,8 +9,6 @@ export default class Navigation extends Component {
 
   render() {
 
-    console.log(this.props);
-
     return (
       <section className={cx('preface-area')}>
         <div className={cx('container')}>

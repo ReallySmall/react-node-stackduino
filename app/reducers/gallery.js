@@ -18,12 +18,14 @@ export default function gallery(state = {
       });
     case GET_GALLERY_IMAGES_SUCCESS:
       if(action.req.data.photos){
+        const gallery = action.req.data.photos;
+        const photoset = [...state.images, ...gallery.photo];
         return Object.assign({}, state, {
           isFetching: false,
           requestFailed: false,
-          images: action.req.data.photos.photo,
-          pages: action.req.data.photos.pages,
-          page: action.req.data.photos.page
+          images: photoset,
+          pages: gallery.pages,
+          page: gallery.page
         });
       } else {
         return Object.assign({}, state, {

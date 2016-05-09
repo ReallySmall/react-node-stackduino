@@ -20,9 +20,9 @@ export default class Page extends Component {
       <div className={cx('page')}>
         <div className={cx('container')}>
           <div className={cx('col-md-12')}>
-            {isFetching && <Loading size="3x" />}
-            {requestFailed && <Error message="Loading error :(" />}
-            {!requestFailed && !isFetching && this.props.children}
+            {this.props.children}
+            {isFetching && !requestFailed && <Loading size="3x" />}
+            {requestFailed && !isFetching && <Error message="Loading error" />}
           </div>
         </div>
       </div>
