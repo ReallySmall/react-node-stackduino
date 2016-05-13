@@ -9,6 +9,26 @@ export default class Footer extends Component {
 
   render() {
 
+    const { wrapperData, linkData } = this.props;
+    
+    let col1ExternalLinksElements = [];
+    let col2ExternalLinksElements = [];
+    let col3ExternalLinksElements = [];
+
+    if(linkData && linkData.length){
+      for (let i = 0; i < linkData.length; i++) {
+        let link = linkData[i]
+        let markup =  <li><a href={link.url}>{link.title}</a></li>;
+        if(link.location === 'footer_col1'){
+          col1ExternalLinksElements.push(markup);
+        } else if(link.location === 'footer_col2'){
+          col2ExternalLinksElements.push(markup);
+        } else if(link.location === 'footer_col3'){
+          col3ExternalLinksElements.push(markup);
+        }
+      }
+    }
+
     return (
       <footer className={cx('footer')}>
         <div className={cx('container')}>
@@ -17,70 +37,28 @@ export default class Footer extends Component {
               <li className={cx('col-sm-4', 'link-block')}>
                 <h3>
                   <span className={cx('fa', 'fa-external-link-square')}></span>
-                  Top macro sites
+                  {wrapperData.footer.col1.title}
                 </h3>
                 <ul className={cx('plain')}>
-                  <li>
-                    <a href="http://www.photomacrography.net/">
-                      www.photomacrography.net
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://extreme-macro.co.uk/">
-                      extreme-macro.co.uk
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://www.johnhallmen.se/">
-                      www.johnhallmen.se
-                    </a>
-                  </li>
+                  {col1ExternalLinksElements}
                 </ul>
               </li>
               <li className={cx('col-sm-4', 'link-block')}>
                 <h3>
                   <span className={cx('fa', 'fa-external-link-square')}></span>
-                  Similar projects
+                  {wrapperData.footer.col2.title}
                 </h3>
                 <ul className={cx('plain')}>
-                  <li>
-                    <a href="http://www.ryleeisitt.ca/articles/building-a-focus-stacking-controller/">
-                      Controller by Rylee Isitt
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://www.davidhunt.ie/macro-pi-focus-stacking-using-raspberry-pi/">
-                      Macro Pi by David Hunt
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://petermobbs.wordpress.com/2014/10/08/an-arduino-controlled-focus-rail/">
-                      Controller by Peter Mobbs
-                    </a>
-                  </li>
+                  {col2ExternalLinksElements}
                 </ul>
               </li>
               <li className={cx('col-sm-4', 'link-block')}>
                 <h3>
                   <span className={cx('fa', 'fa-external-link-square')}></span>
-                  Stacking utilities
+                  {wrapperData.footer.col3.title}
                 </h3>
                 <ul className={cx('plain')}>
-                  <li>
-                    <a href="http://www.zerenesystems.com/">
-                      Zerene Stacker
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://www.heliconsoft.com/heliconsoft-products/helicon-focus/">
-                      Helicon Focus
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://www.hadleyweb.pwp.blueyonder.co.uk/">
-                      CombineZP
-                    </a>
-                  </li>
+                  {col3ExternalLinksElements}
                 </ul>
               </li>
             </ul>

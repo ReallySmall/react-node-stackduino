@@ -55,7 +55,7 @@ class BoardsContainer extends Component {
 
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
-          <IntroBlock title="Boards" intro="Intro text" />
+          <IntroBlock title="Boards" intro="Compatible with the Arduino IDE, Stackduino boards automate the process of focus stacking." />
           {teasers &&
             teaserComponents
           } 

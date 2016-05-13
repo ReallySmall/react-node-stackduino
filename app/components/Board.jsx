@@ -18,9 +18,7 @@ export default class Board extends Component {
 
   render() {
 
-    const { title, boardStatus, developedDate, content, images, repoUrl, repoApiUrl } = this.props;
-    
-    let repoDetails = repoUrl ? <RepositoryBlock repoUrl={repoUrl} repoApiUrl={repoApiUrl} /> : <h4>No files available for this project</h4>;
+    const { title, boardStatus, developedDate, content, images, repoUrl, repoUserName, repoName } = this.props;
 
     return (
       <div className={cx('row')}>
@@ -42,7 +40,7 @@ export default class Board extends Component {
             <div className={cx('inset-wrapper')}>
               <section className={cx('panel', 'repository-link')}>
                 <h3 className={cx('panel-header')}>Project files</h3>
-                {repoDetails} 
+                <RepositoryBlock repoUrl={repoUrl} repoUserName={repoUserName} repoName={repoName} /> 
               </section>
             </div> 
           </aside>

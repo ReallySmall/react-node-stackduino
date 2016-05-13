@@ -9,7 +9,8 @@ import {
 export default function posts(state = {
   teasers: [],
   details: {},
-  isFetching: false
+  isFetching: false,
+  requestFailed: false
 }, action) {
   switch (action.type) {
     case GET_POSTS_INDEX_REQUEST:
@@ -23,7 +24,8 @@ export default function posts(state = {
       });
     case GET_POSTS_INDEX_FAILURE:
       return Object.assign({}, state, {
-        isFetching: false
+        isFetching: false,
+        requestFailed: true
       });
     case GET_POST_REQUEST:
       return Object.assign({}, state, {
@@ -43,7 +45,8 @@ export default function posts(state = {
       });
     case GET_POST_FAILURE:
       return Object.assign({}, state, {
-        isFetching: false
+        isFetching: false,
+        requestFailed: true
       });
 
 

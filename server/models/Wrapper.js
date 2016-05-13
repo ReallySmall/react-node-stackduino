@@ -9,14 +9,23 @@ var Wrapper = new keystone.List('Wrapper', {
 Wrapper.add({
 	title: { type: String, required: true },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
-	header: {
+	header: { 
 		siteTitle:  { type: String, required: true, initial: true },
-    	siteSubtitle:  { type: String, required: true, initial: true }
+    	siteSubtitle:  { type: String, required: true, initial: true },
+    	links: {
+    		title: { type: String }
+    	}
 	},
 	footer: {
-		col1Title: { type: String },
-		col2Title: { type: String },
-		col3Title: { type: String }
+		col1: {
+			title: { type: String }
+		},
+		col2: {
+			title: { type: String }
+		},
+		col3: {
+			title: { type: String }
+		}
 	} 
 });
 

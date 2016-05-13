@@ -46,7 +46,8 @@ Board.add({
 		extended: { type: Types.Html, wysiwyg: true, height: 400 }
 	},
 	repoUrl: { type: Types.Url },
-    repoApiUrl: { type: Types.Url },
+    repoUserName: { type: String },
+    repoName: { type: String },
 	categories: { type: Types.Relationship, ref: 'PostCategory', many: true }
 });
 

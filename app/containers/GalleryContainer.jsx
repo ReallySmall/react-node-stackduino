@@ -11,7 +11,7 @@ import { fetchGalleryImages } from 'actions/gallery';
 export default class GalleryContainer extends Component {
 
   static need = [
-    fetchWrapper, fetchGalleryImages
+    fetchWrapper
   ];
 
   constructor(props) {
@@ -29,7 +29,7 @@ export default class GalleryContainer extends Component {
 
   componentWillMount() {
     const { dispatch, images } = this.props; 
-    if(!images.length){ // if gallery images are not in state yet and the initial server side fetch didn't fail
+    if(!images.length){ // if gallery images are not in state yet
       dispatch ( fetchGalleryImages() ); // add them
     }
   };

@@ -133,7 +133,7 @@ module.exports = [
         }),
         new InlineEnviromentVariablesPlugin({ NODE_ENV: 'production' }),
         new CopyWebpackPlugin([
-            { from: 'admin' }
+            { from: adminPath }
         ])
     ],
     postcss: postCSSConfig

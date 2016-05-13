@@ -28,7 +28,7 @@ exports.all = function(req, res) {
 
 	    request(requestOpts, function(error, response, body) {
 	        if (!error && response.statusCode === 200) {
-	          res.send(body);
+                res.send(body);
 	        } else {
 	          console.log(error);
 	          res.send(error);         

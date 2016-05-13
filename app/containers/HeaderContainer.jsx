@@ -15,9 +15,7 @@ export default class HeaderContainer extends Component {
 
       return (
         <div>
-          <Header
-            title={content.header.siteTitle}
-            subtitle={content.header.siteSubtitle} />
+          <Header {...content} />
           <Navigation route={route} />
         </div>
       );

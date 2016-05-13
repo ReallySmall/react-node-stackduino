@@ -22,7 +22,7 @@ export default class Page extends Component {
           <div className={cx('col-md-12')}>
             {this.props.children}
             {isFetching && !requestFailed && <Loading size="3x" />}
-            {requestFailed && !isFetching && <Error message="Loading error" />}
+            {requestFailed && !isFetching && <Error size="3x" message="Loading error" />}
           </div>
         </div>
       </div>

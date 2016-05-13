@@ -13,6 +13,26 @@ export default class Header extends Component {
 
   render() {
 
+    const { wrapperData, linkData } = this.props;
+    let externalLinksElements = [];
+
+    if(linkData && linkData.length){
+      for (let i = 0; i < linkData.length; i++) {
+        let link = linkData[i]
+        if(link.location === 'header'){
+          externalLinksElements.push(
+            <li>
+              <a href={link.url} title={link.title}>
+                <span className={cx('fa', link.icon)}>
+                  <span className={cx('visually-hidden')}>{link.title}</span>
+                </span>
+              </a>
+            </li>
+          );
+        }
+      }
+    }
+
     return (
       <header className={cx('site-header')}>
         <div className={cx('container')}>
@@ -23,33 +43,13 @@ export default class Header extends Component {
                   <span className={cx('fa', 'fa-camera')}></span>
                 </p>
                 <div className={cx('site-descriptor')}>
-                  <h1 className={cx('site-title')}>{this.props.title}</h1>
-                  <p className={cx('site-slogan')}>{this.props.subtitle}</p>
+                  <h1 className={cx('site-title')}>{wrapperData.header.siteTitle}</h1>
+                  <p className={cx('site-slogan')}>{wrapperData.header.siteSubtitle}</p>
                 </div>
             </Link>
             <div className={cx('social-links')}>
               <ul className={cx('plain')}>
-                <li>
-                  <a href="#" title="">
-                    <span className={cx('fa', 'fa-github-square')}>
-                      <span className={cx('visually-hidden')}></span>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" title="">
-                    <span className={cx('fa', 'fa-flickr')}>
-                      <span className={cx('visually-hidden')}></span>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#" title="">
-                    <span className={cx('fa', 'fa-envelope-square')}>
-                      <span className={cx('visually-hidden')}></span>
-                    </span>
-                  </a>
-                </li>
+                {externalLinksElements}
               </ul>
             </div>
           </div>
@@ -62,6 +62,6 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired
+  wrapperData: PropTypes.object.isRequired,
+  linkData: PropTypes.array.isRequired
 };

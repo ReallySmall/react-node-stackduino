@@ -17,11 +17,12 @@ export default function repodata(state = {
 
       console.log(action.req.data);
 
-      let repoDetails = action.req.data;
-      let url = repoDetails.url;
       let allRepos = state.repos; 
 
-      allRepos[url] = repoDetails;
+      const id = action.req.data.id;
+      const body = action.req.data.body;
+
+      allRepos[id] = body;
 
       return Object.assign({}, state, {
         isFetching: false,

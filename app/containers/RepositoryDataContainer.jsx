@@ -7,20 +7,27 @@ import Error from 'components/Error';
 class RepositoryDataContainer extends Component {
 
   componentDidMount() {
+
+    const { repoInfoType, repoUserName, repoName } = this.props;
+
+    console.log(this.props);
+
     //if(!this.props.repoDetail){ // if board detail is not in state yet
-      this.props.dispatch ( fetchRepoDetail({type: 'issues', user: 'ReallySmall', repo: 'stackduino-v2'}) ); // add it
+    if(repoInfoType && repoUserName && repoName){
+      this.props.dispatch ( fetchRepoDetail({type: repoInfoType, user: repoUserName, repo: repoName}) ); // add it
+    }
     //}
   }
 
   render() {
 
-    const { isFetching, requestFailed } = this.props;
+    const { isFetching, requestFailed, repoDetail } = this.props;
 
     return (
       <div>
-        {this.props.children}
+        {React.cloneElement(this.props.children, { repoDetail: repoDetail })}
         {isFetching && <Loading size="1x" />}
-        {requestFailed && <Error size="1x" message="Loading error :(" />}
+        {requestFailed && <Error size="1x" message="Loading error" />}
       </div>
     );
 
@@ -29,13 +36,16 @@ class RepositoryDataContainer extends Component {
 }
 
 RepositoryDataContainer.propTypes = {
-  url: PropTypes.string.isRequired
+  repoInfoType: PropTypes.string.isRequired,
+  repoUserName: PropTypes.string.isRequired,
+  repoName: PropTypes.string.isRequired
 }
 
 function mapStateToProps(state, props) {
+  const id = props.repoName + props.repoInfoType;
   return {
-    repoDetail: state.repodata.repos[props.url],
-    isFetching: state.repodata.repos[props.url] ? state.repodata.isFetching : true,
+    repoDetail: state.repodata.repos[id],
+    isFetching: state.repodata.repos[id] ? state.repodata.isFetching : true,
     requestFailed: state.repodata.requestFailed
   };
 }

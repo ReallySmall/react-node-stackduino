@@ -24,11 +24,11 @@ export default class Homepage extends Component {
 
     if(isFetching){
       homepageContent = <div className={cx('container')}>
-                          <Loading />
+                          <Loading size="3x" />
                         </div>
     } else if(requestFailed){
       homepageContent = <div className={cx('container')}>
-                          <error />
+                          <error size="3x" />
                         </div>
     } else {
       homepageContent = <div>

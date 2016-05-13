@@ -13,7 +13,7 @@ export default class FooterContainer extends Component {
     const {content} = this.props;
 
     return (
-      <Footer />
+      <Footer {...content} />
     );
   }
 

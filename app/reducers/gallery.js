@@ -17,7 +17,7 @@ export default function gallery(state = {
         isFetching: true
       });
     case GET_GALLERY_IMAGES_SUCCESS:
-      if(action.req.data.photos){
+      if(action.req.status < 400 && action.req.data.photos){
         const gallery = action.req.data.photos;
         const photoset = [...state.images, ...gallery.photo];
         return Object.assign({}, state, {

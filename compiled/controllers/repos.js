@@ -20,7 +20,10 @@ exports.commits = function (req, res) {
 
     request(requestOpts, function (error, response, body) {
         if (!error) {
-            res.send(body);
+            res.send({
+                id: repo + 'commits',
+                body: body
+            });
         } else {
             console.log(error);
             res.status(500).send(error);
@@ -45,7 +48,10 @@ exports.issues = function (req, res) {
 
     request(requestOpts, function (error, response, body) {
         if (!error) {
-            res.send(body);
+            res.send({
+                id: repo + 'issues',
+                body: body
+            });
         } else {
             console.log(error);
             res.status(500).send(error);
