@@ -18,7 +18,7 @@ export default class Footer extends Component {
     if(linkData && linkData.length){
       for (let i = 0; i < linkData.length; i++) {
         let link = linkData[i]
-        let markup =  <li><a href={link.url}>{link.title}</a></li>;
+        let markup =  <li key={i}><a href={link.url} title={link.description}>{link.title}</a></li>;
         if(link.location === 'footer_col1'){
           col1ExternalLinksElements.push(markup);
         } else if(link.location === 'footer_col2'){

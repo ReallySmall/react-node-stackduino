@@ -18,22 +18,25 @@ export default class Homepage extends Component {
 
 	render() {
 
-    const { content, isFetching, requestFailed } = this.props;
+    const { content, featureImages, isFetching, requestFailed } = this.props;
 
     let homepageContent = null;
 
     if(isFetching){
       homepageContent = <div className={cx('container')}>
-                          <Loading size="3x" />
+                          <Loading size="2x" />
                         </div>
     } else if(requestFailed){
       homepageContent = <div className={cx('container')}>
-                          <error size="3x" />
+                          <error size="2x" message="Loading error" />
                         </div>
     } else {
       homepageContent = <div>
                           <section>
-                            <FlickrCarousel />
+                            <FlickrCarousel 
+                              images={featureImages.images} 
+                              isFetching={featureImages.isFetching} 
+                              requestFailed={featureImages.requestFailed} />
                           </section>
                           <div className={cx('container')}>
                             <section className={cx('col-md-12')}>
@@ -41,9 +44,9 @@ export default class Homepage extends Component {
                               <p dangerouslySetInnerHTML={{ __html: content.content.brief || '' }} />
                             </section>
                             <ImageBlock images={content.imagesSlot1} />
-                            <TextBlock content={content.content.additional} />      
-                            <ImageBlock images={content.imagesSlot2} />
                             <TextBlock content={content.content.extended} />
+                            <ImageBlock images={content.imagesSlot2} />
+                            <TextBlock content={content.content.additional} />
                           </div>
                         </div>
     }

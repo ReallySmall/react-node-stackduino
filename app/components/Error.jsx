@@ -9,12 +9,12 @@ export default class Error extends Component {
 
   render(){
 
-  	const { size } = this.props || '3x';
+  	const { size, message } = this.props;
 
     return ( 
 		<p className={cx('error', 'plain', 'size-' + size)}>
-			<Icon name="times-circle" size={size} className={cx('icon')} />
-			<span className={cx('message')}>{this.props.message}</span>
+			<Icon name="times-circle" size={size || '3x'} className={cx('icon')} />
+			<span className={cx('message')}>{message || 'Loading error'}</span>
 		</p>
     );
   }

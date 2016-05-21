@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'underscore';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-teaser';
 import Image from 'components/Image';
@@ -14,23 +15,25 @@ export default class ImageBlock extends Component {
   render(){
 
     const { images } = this.props;
-    let imageBlock = [];
 
-    for(var i = 0; i < images.length; i++){
-      let img = images[i];
+    let imageBlock = _.map(images, function(image, i){
+      
       let colWidth = Math.ceil(12 / images.length);
-      img.ratio = (img.height / img.width) * 100;
-      imageBlock.push(
-        <div className={cx('col-md-' + colWidth)}>
+      image.ratio = (image.height / image.width) * 100;
+      image.caption = '';
+      
+      return (
+        <div key={i} className={cx('col-md-' + colWidth)}>
           <div className={cx('inset-wrapper')}>
             <figure>
-              <Image src={img.url} alt="" ratio={img.ratio}/>
-              <figcaption>Test</figcaption>
+              <Image src={image.url} alt="" ratio={image.ratio}/>
+              {image.caption && <figcaption>{image.caption}</figcaption>}
             </figure>
           </div>
         </div>
       );
-    }
+
+    });
 
     return (
       <section>

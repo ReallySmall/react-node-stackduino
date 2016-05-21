@@ -121,6 +121,10 @@ module.exports = {
         new webpack.DefinePlugin({
           __DEVCLIENT__: true,
           __DEVSERVER__: false
+        }),
+        new webpack.ProvidePlugin({ 
+          $: 'jquery', 
+          jQuery: 'jquery'
         })
     ],
     postcss: postCSSConfig

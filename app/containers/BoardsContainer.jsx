@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'underscore';
 import { connect } from 'react-redux';
 import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
@@ -34,31 +35,22 @@ class BoardsContainer extends Component {
 
       const {teasers, isFetching, requestFailed} = this.props;
 
-      let teaserComponents = [];
-
-      if(teasers){
-        for(let i = 0; i < teasers.length; i++){
-          let teaser = teasers[i]; 
-          teaserComponents.push(
-            <BoardTeaser 
-              key={i}
-              title={teaser.title}
-              slug={teaser.slug} 
-              version={teaser.version}
-              developedDate={teaser.developedDate}
-              status={teaser.boardStatus}
-              intro={teaser.content.brief}
-              images={teaser.images} />
-          );
-        }
-      }
-
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Boards" intro="Compatible with the Arduino IDE, Stackduino boards automate the process of focus stacking." />
-          {teasers &&
-            teaserComponents
-          } 
+          {_.map(teasers, function(teaser, i){
+            return (
+              <BoardTeaser 
+                key={i}
+                title={teaser.title}
+                slug={teaser.slug} 
+                version={teaser.version}
+                developedDate={teaser.developedDate}
+                status={teaser.boardStatus}
+                intro={teaser.content.brief}
+                images={teaser.images} />
+            );
+          })} 
         </Page>
 	  	);
 

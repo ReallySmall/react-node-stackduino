@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import posts from 'reducers/posts';
 import homepage from 'reducers/homepage';
+import featureImages from 'reducers/featureImages';
 import boards from 'reducers/boards';
 import repodata from 'reducers/repodata';
 import wrapper from 'reducers/wrapper';
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   repodata,
   posts,
   homepage,
+  featureImages,
   gallery,
   routing: routerReducer
 });

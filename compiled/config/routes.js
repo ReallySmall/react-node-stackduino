@@ -43,10 +43,14 @@ module.exports = function (app, passport) {
   app.get('/api/wrapper', wrapper.all);
 
   // gallery route
-  app.get('/api/gallery', gallery.all);
+  app.get('/api/gallery', gallery.gallery);
+  app.get('/api/gallery/features', gallery.features);
 
   // route to proxy calls to Flickr api for gallery
-  app.get('/api/flickr/byGroup', flickr.byGroup);
+  app.get('/api/flickr/byGroup/:group_id', flickr.byGroup);
+
+  // route to proxy calls to Flickr api for gallery
+  app.get('/api/flickr/byGroup/:group_id/:tag', flickr.featured);
 
   // This is where the magic happens. We take the locals data we have already
   // fetched and seed our stores with data.

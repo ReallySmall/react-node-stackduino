@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'underscore';
 import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
 import PostTeaser from 'components/PostTeaser';
@@ -33,29 +34,21 @@ class PostsContainer extends Component {
     render() {
 
       const {teasers, isFetching, requestFailed} = this.props;
-      let teaserComponents = [];
-
-      if(teasers){
-        for(let i = 0; i < teasers.length; i++){
-          let teaser = teasers[i]; 
-          teaserComponents.push(
-            <PostTeaser
-              key={i} 
-              title={teaser.title}
-              publishedDate={teaser.publishedDate}
-              slug={teaser.slug} 
-              intro={teaser.content.brief}
-              categories={teaser.categories} />
-          );
-        }
-      }
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Posts" intro="Intro text" />
-          {teasers &&
-            teaserComponents
-          } 
+          {_.map(teasers, function(teaser, i){
+            return (
+              <PostTeaser
+                key={i} 
+                title={teaser.title}
+                publishedDate={teaser.publishedDate}
+                slug={teaser.slug} 
+                intro={teaser.content.brief}
+                categories={teaser.categories} />
+            );
+          })} 
         </Page>
       );
 

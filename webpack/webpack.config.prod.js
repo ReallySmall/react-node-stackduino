@@ -134,7 +134,11 @@ module.exports = [
         new InlineEnviromentVariablesPlugin({ NODE_ENV: 'production' }),
         new CopyWebpackPlugin([
             { from: adminPath }
-        ])
+        ]),
+        new webpack.ProvidePlugin({ 
+          $: 'jquery', 
+          jQuery: 'jquery' 
+        })
     ],
     postcss: postCSSConfig
   }, {

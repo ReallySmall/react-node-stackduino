@@ -1,47 +1,108 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
+import _ from 'underscore';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_flickr-carousel';
 import { Link } from 'react-router';
 import Image from 'components/Image';
+import { truncate } from 'utilities/strings';
+import Icon from 'react-fa';
+import Loading from 'components/Loading';
+import Error from 'components/Error';
 
+const isBrowser = typeof window !== 'undefined';
+const flexslider = isBrowser ? require( 'flexslider') : undefined;
 const cx = classNames.bind(styles);
 
 export default class FlickrCarousel extends Component {
 
+  componentDidMount() {
+
+    const { images, isFetching, requestFailed } = this.props;
+
+    if(!isFetching && !requestFailed && images && images.length){
+      $(this.refs.flexslider)
+        .flexslider({
+          animation: 'slide',
+          animationLoop: true,
+          slideshow: true,
+          slideshowSpeed: 10000,
+          pauseOnHover: true,
+          controlNav: false,
+          directionNav: false
+        });
+    }
+  }
+
+  componentWillUnmount() {}
+
   render() {
 
-    let images = [];
+    const { images, isFetching, requestFailed } = this.props;
+
+    let sliderElement = null;
+
+    if(!isFetching && !requestFailed && images && images.length){
+
+      sliderElement = <div ref="flexslider" className={cx('js-flexslider', 'carousel')}>
+                        <ul className={cx('slides', 'plain', 'no-list-style')}>
+                          {_.map(images, function(image, i){
+        
+                            const height = parseInt(image.height_l);
+                            const width = parseInt(image.width_l);
+                            const ratio = (height / width) * 100;
+
+                            if(width >= 1024){
+                              return (
+                                <li key={i}>
+                                  <a href={"http://flickr.com/photo.gne?id=" + image.id} title="View on Flickr">
+                                    <figure>
+                                      <Image src={image.url_c} alt={image.title + " by " + image.ownername + " on Flickr"} ratio={ratio}/>
+                                      <figcaption>
+                                        <p className={cx('plain','title')}>{truncate(image.title, 60)}</p>
+                                        <p className={cx('plain', 'owner')}><Icon name="flickr" /> {truncate(image.ownername, 60)}</p>
+                                      </figcaption>
+                                    </figure>
+                                  </a>
+                                </li>
+                              );
+                            }        
+                            
+                            return null;
+
+                          })}  
+                        </ul>                        
+                        <ul className={cx('plain')}>
+                          <li>
+                            <a href="#" className={cx('slide-cover', 'slide-cover-left', 'flex-prev')}>
+                              <span className={cx('fa', 'fa-arrow-circle-left')}></span>
+                              <span className={cx('visually-hidden')}>Show previous image</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="#" className={cx('slide-cover', 'slide-cover-right', 'flex-next')}>
+                              <span className={cx('fa', 'fa-arrow-circle-right')}></span>
+                              <span className={cx('visually-hidden')}>Show next image</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>;
+
+    } else {
+
+      const containerClass = requestFailed ? 'request-failed-container' : '';
+      
+      sliderElement = <div className={cx('container', containerClass)}>
+                        <div className={cx('col-md-12')}> 
+                          {isFetching && !requestFailed && <Loading size="1x" message="Loading feature images" />}
+                          {requestFailed && !isFetching && <Error size="1x" message="Failed to load feature images from Flickr" />}
+                        </div>
+                      </div> 
+    }
 
     return (
-      <div className={cx('images', 'carousel')}>
-        <div className={cx('js-flexslider', 'flexslider')}>
-          <ul className={cx('plain')}>
-            <li>
-              <a href="#" className={cx('slide-cover', 'slide-cover-left', 'flex-prev')}>
-                <span className={cx('fa', 'fa-arrow-circle-left')}></span>
-                <span className={cx('visually-hidden')}>Show previous image</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" className={cx('slide-cover', 'slide-cover-right', 'flex-next')}>
-                <span className={cx('fa', 'fa-arrow-circle-right')}></span>
-                <span className={cx('visually-hidden')}>Show next image</span>
-              </a>
-            </li>
-          </ul>
-          <ul className={cx('slides', 'plain', 'no-list-style')}>
-            <li>
-              <a href="http://flickr.com/photo.gne?id=" tabIndex="-1">
-                <figure>       
-                    <img />
-                    <figcaption>
-                      <p>Caption</p>
-                    </figcaption>
-                </figure>
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div>
+        {sliderElement}
       </div>
     );
   }
@@ -49,10 +110,5 @@ export default class FlickrCarousel extends Component {
 }
 
 FlickrCarousel.propTypes = {
-  imageList: PropTypes.array.isRequired,
-  assets: PropTypes.array.isRequired
-};
-
-FlickrCarousel.contextTypes = {
-  onSetTitle: PropTypes.func.isRequired
+  images: PropTypes.array.isRequired
 };

@@ -41,6 +41,7 @@ keystone.init({
 });
 
 keystone.set('cloudinary config', secrets.keystone.cloudinary);
+keystone.set('static', ['public', 'images']);
 
 // Let keystone know where your models are defined. Here we have it at the `/models`
 keystone.import('models');
@@ -77,7 +78,7 @@ if (isDev) {
   var config = require('../webpack/webpack.config.dev-client.js');
   var compiler = webpack(config);
   app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: false,
+    noInfo: true,
     publicPath: config.output.publicPath
   }));
 

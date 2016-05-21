@@ -21,7 +21,7 @@ export default class Header extends Component {
         let link = linkData[i]
         if(link.location === 'header'){
           externalLinksElements.push(
-            <li>
+            <li key={i}>
               <a href={link.url} title={link.title}>
                 <span className={cx('fa', link.icon)}>
                   <span className={cx('visually-hidden')}>{link.title}</span>

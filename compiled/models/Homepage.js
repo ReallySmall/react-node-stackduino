@@ -18,9 +18,16 @@ Homepage.add({
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
-	flickrGalleryImageIds: { type: Types.Text },
 	imagesSlot1: { type: Types.CloudinaryImages },
 	imagesSlot2: { type: Types.CloudinaryImages },
+	imagesSlot1Local: {
+		type: Types.LocalFiles,
+		dest: './files/multiple',
+		prefix: '/multiple',
+		format: function format(item, file) {
+			return '<img src="' + file.href + '" style="max-width: 300px">';
+		}
+	},
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 },

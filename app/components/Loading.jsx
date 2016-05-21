@@ -9,12 +9,12 @@ export default class Loading extends Component {
 
   render(){
 
-  	const { size } = this.props || '3x';
+  	const { size, message } = this.props;
 
     return (
 		<p className={cx('loading', 'plain', 'size-' + size)}>
-			<Icon spin name="refresh" size={size} />
-			<span className={cx('message')}>Loading content...</span>
+			<Icon spin name="refresh" size={size || '3x'} />
+			<span className={cx('message')}>{message || 'Loading content'}</span>
 		</p>
     );
   }

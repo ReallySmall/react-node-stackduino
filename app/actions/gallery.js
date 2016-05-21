@@ -6,7 +6,8 @@ import * as types from 'constants/index';
 
 polyfill();
 
-let API_ENDPOINT = '/api/gallery';
+let API_GALLERY_ENDPOINT = '/api/gallery';
+let API_FEATURES_ENDPOINT = '/api/gallery/features';
 
 /*
  * Utility function to make AJAX requests using isomorphic fetch.
@@ -20,7 +21,11 @@ let API_ENDPOINT = '/api/gallery';
  * @return Promise
  */
 function makeGalleryImagesRequest(method, page, data) {
-  return request[method](API_ENDPOINT + '?page=' + page, data);
+  return request[method](API_GALLERY_ENDPOINT + '?page=' + page, data);
+}
+
+function makeFeatureImagesRequest(method, data) {
+  return request[method](API_FEATURES_ENDPOINT, data);
 }
 
 // Fetch gallery images
@@ -29,5 +34,13 @@ export function fetchGalleryImages(page) {
   return {
     type: types.GET_GALLERY_IMAGES,
     promise: makeGalleryImagesRequest('get', page)
+  }
+}
+
+// Fetch feature images
+export function fetchFeatureImages() {
+  return {
+    type: types.GET_FEATURE_IMAGES,
+    promise: makeFeatureImagesRequest('get')
   }
 }

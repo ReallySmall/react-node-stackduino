@@ -83,6 +83,10 @@ module.exports = {
           { from: adminPath, to: assetsPath }
         ], {
           copyUnmodified: true
+        }),
+        new webpack.ProvidePlugin({ 
+          $: 'jquery', 
+          jQuery: 'jquery'
         })
     ]
 };

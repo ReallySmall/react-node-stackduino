@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'underscore';
 import Masonry from 'react-masonry-component';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_gallery-page';
@@ -18,19 +19,15 @@ export default class Gallery extends Component {
 
     const { images } = this.props;
 
-    let photos = [];
-
     let masonryOptions = {
       transitionDuration: 0
     };
 
+    let photos = _.map(images, function(photo, i){
 
-    for(var i=0; i < images.length; i++){
-      
-      var photo = images[i];
-      var ratio = (photo.height_n / photo.width_n) * 100;
-      
-      photos.push(
+      const ratio = (photo.height_n / photo.width_n) * 100;
+
+      return (
         <li key={i} className={cx('gallery-image', 'col-sm-4')}>
           <a href={"http://flickr.com/photo.gne?id=" + photo.id} title="View on Flickr" className={cx('inset-wrapper', 'image-link')}>
             <figure className={cx('panel')}>
@@ -43,7 +40,8 @@ export default class Gallery extends Component {
           </a>
         </li>
       );
-    }
+
+    });
 
     return (
       <section className={cx('row')}>

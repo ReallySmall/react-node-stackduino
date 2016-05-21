@@ -39,7 +39,7 @@ export default class GalleryContainer extends Component {
     const { images, page, pages, isFetching, requestFailed } = this.props;
 
     return (
-    	<Page isFetching={isFetching} requestFailed={requestFailed} >
+    	<Page isFetching={isFetching} fetchingMessage="Fetching images from Flickr" requestFailed={requestFailed} requestFailedMessage="Failed to load gallery images from Flickr">
     		<IntroBlock title="Gallery" intro="Intro text" />
 			  {images && 
 	    		<Gallery images={images} />

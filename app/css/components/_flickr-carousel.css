@@ -2,64 +2,14 @@
 
 .carousel {
   background: $blue;
-  .image-slider {
-    &.loading {
-      visibility: hidden;
-    }
-  }
-  .flexslider {
-    max-width: 1000px;
-    margin: 0px auto;
-    border: none;
-    position: relative;
-    .flex-viewport {
-      overflow: visible !important
-    }
-    .slide-cover {
-      position:absolute;
-      width: 100%;
-      top: 0;
-      height: 100%;
-      z-index: 10;
-      background: $black;
-      opacity: 0.4;
-      &.slide-cover-left {
-        right: 100%;  
-        .fa {
-          display: block;
-          position: absolute;
-          right: 50px;
-          top: 50%;
-          font-size: 80px;
-          margin-top: -80px;
-          color: $light-grey;
-        }
-      }
-      &.slide-cover-right {
-        left: 100%;
-        .fa {
-          display: block;
-          position: absolute;
-          left: 50px;
-          top: 50%;
-          font-size: 80px;
-          margin-top: -80px;
-          color: $light-grey;
-        }
-      }
-      &:hover, &:focus, &:active {
-        cursor: pointer;
-        opacity: 0.7;
-        .fa {
-          color: $orange;
-        }
-      }      
-    }
-  }
-  .panel {
-    padding: 0;
-    margin: 0;
-    border: none;
+  margin: 0px auto;
+  max-width: 800px;
+  padding: 0 !important;
+  overflow: visible !important;
+  border: none;
+  position: relative;
+  .flex-viewport {
+    overflow: visible !important
   }
   figure {
     position: relative;
@@ -99,5 +49,45 @@
         display: block;
       }
     }
+  }
+  .slide-cover {
+    position:absolute;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    z-index: 10;
+    background: $black;
+    opacity: 0.4;
+    &.slide-cover-left {
+      right: 100%;  
+      .fa {
+        display: block;
+        position: absolute;
+        right: 50px;
+        top: 50%;
+        font-size: 80px;
+        margin-top: -40px;
+        color: $light-grey;
+      }
+    }
+    &.slide-cover-right {
+      left: 100%;
+      .fa {
+        display: block;
+        position: absolute;
+        left: 50px;
+        top: 50%;
+        font-size: 80px;
+        margin-top: -40px;
+        color: $light-grey;
+      }
+    }
+    &:hover, &:focus, &:active {
+      cursor: pointer;
+      opacity: 0.7;
+      .fa {
+        color: $orange;
+      }
+    }      
   }
 }
