@@ -1,8 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
-var adminPath = path.join(__dirname, 'admin');
 var assetsPath = path.join(__dirname, '..', 'public', 'assets');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
+
+console.log('dev client config in use');
 
 var commonLoaders = [
   {
@@ -15,14 +16,13 @@ var commonLoaders = [
     // Reason why we put this here instead of babelrc
     // https://github.com/gaearon/react-transform-hmr/issues/5#issuecomment-142313637
     query: {
-      "presets": ["es2015", "react", "stage-0"]
+      "presets": ["react-hmre", "es2015", "react", "stage-0"]
     },
     include: path.join(__dirname, '..', 'app'),
     exclude: path.join(__dirname, '/node_modules/')
   },
-  { test: /\.json$/, loader: "json-loader" },
   {
-    test: /\.(png|jpg|jpeg|gif)$/,
+    test: /\.(png|jpg|jpeg|gif|svg)$/,
     loader: 'url',
     query: {
         name: '[hash].[ext]',
@@ -37,56 +37,84 @@ var commonLoaders = [
     test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
     loader: 'file-loader'
   },
-  { test: /\.html$/, loader: 'html-loader' }
+  { test: /\.html$/, 
+    loader: 'html-loader' 
+  }
 ];
 
+var postCSSConfig = function() {
+  return [
+    require('postcss-import')({
+      path: path.join(__dirname, '..', 'app', 'css'),
+      // addDependencyTo is used for hot-reloading in webpack
+      addDependencyTo: webpack
+    }),
+    require('postcss-simple-vars')(),
+    // Unwrap nested rules like how Sass does it
+    require('postcss-nested')(),
+    //  parse CSS and add vendor prefixes to CSS rules
+    require('autoprefixer')({
+      browsers: ['last 2 versions', 'IE > 8']
+    }),
+    // A PostCSS plugin to console.log() the messages registered by other
+    // PostCSS plugins
+    require('postcss-reporter')({
+      clearMessages: true
+    })
+  ];
+};
+
 module.exports = {
-    // The configuration for the server-side rendering
-    name: "server-side rendering",
-    context: path.join(__dirname, "..", "app"),
+    // eval - Each module is executed with eval and //@ sourceURL.
+    devtool: 'eval',
+    // The configuration for the client
+    name: 'browser',
+    context: path.join(__dirname, '..', 'app'),
+    // Multiple entry with hot loader
+    // https://github.com/glenjamin/webpack-hot-middleware/blob/master/example/webpack.config.multientry.js
     entry: {
-      server: "./server"
+      app: ['./client', hotMiddlewareScript]
     },
-    target: "node",
     output: {
       // The output directory as absolute path
       path: assetsPath,
       // The filename of the entry chunk as relative path inside the output.path directory
-      filename: "server.js",
+      filename: '[name].js',
       // The output path from the view of the Javascript
-      publicPath: "/assets/",
-      libraryTarget: "commonjs2"
+      publicPath: '/assets/'
     },
     module: {
       loaders: commonLoaders.concat([
-           {
-              test: /\.css$/,
-              loader: 'css'
-           }, 
-           { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
-           { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }
+        { test: /\.css$/,
+          loader: 'style!css!postcss-loader'
+        }
       ])
     },
     resolve: {
       extensions: ['', '.js', '.jsx', '.css'],
       modulesDirectories: [
-        "app", "node_modules"
+        'app', 'node_modules'
       ]
     },
+    externals: [{
+      'webpack.config.dev-client.js': 'webpack.config.dev-client.js',
+      '../../webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename),
+      '../webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename),
+      './webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename),
+      'webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename)
+    }],
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
-          __DEVCLIENT__: false,
-          __DEVSERVER__: true
-        }),
-        new CopyWebpackPlugin([
-        // Copy directory contents to {output}/to/directory/
-          { from: adminPath, to: assetsPath }
-        ], {
-          copyUnmodified: true
+          __DEVCLIENT__: true,
+          __DEVSERVER__: false
         }),
         new webpack.ProvidePlugin({ 
           $: 'jquery', 
           jQuery: 'jquery'
-        })
-    ]
+        }),
+        new webpack.IgnorePlugin(new RegExp("^(config.dev-client)$"))
+    ],
+    postcss: postCSSConfig
 };

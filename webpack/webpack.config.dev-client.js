@@ -69,25 +69,6 @@ module.exports = {
     devtool: 'eval',
     // The configuration for the client
     name: 'browser',
-    /* The entry point of the bundle
-     * Entry points for multi page app could be more complex
-     * A good example of entry points would be:
-     * entry: {
-     *   pageA: "./pageA",
-     *   pageB: "./pageB",
-     *   pageC: "./pageC",
-     *   adminPageA: "./adminPageA",
-     *   adminPageB: "./adminPageB",
-     *   adminPageC: "./adminPageC"
-     * }
-     *
-     * We can then proceed to optimize what are the common chunks
-     * plugins: [
-     *  new CommonsChunkPlugin("admin-commons.js", ["adminPageA", "adminPageB"]),
-     *  new CommonsChunkPlugin("common.js", ["pageA", "pageB", "admin-commons.js"], 2),
-     *  new CommonsChunkPlugin("c-commons.js", ["pageC", "adminPageC"]);
-     * ]
-     */
     context: path.join(__dirname, '..', 'app'),
     // Multiple entry with hot loader
     // https://github.com/glenjamin/webpack-hot-middleware/blob/master/example/webpack.config.multientry.js
@@ -115,6 +96,13 @@ module.exports = {
         'app', 'node_modules'
       ]
     },
+    externals: [{
+      'webpack.config.dev-client.js': 'webpack.config.dev-client.js',
+      '../../webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename),
+      '../webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename),
+      './webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename),
+      'webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename)
+    }],
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
@@ -125,7 +113,8 @@ module.exports = {
         new webpack.ProvidePlugin({ 
           $: 'jquery', 
           jQuery: 'jquery'
-        })
+        }),
+        new webpack.IgnorePlugin(new RegExp("^(config.dev-client)$"))
     ],
     postcss: postCSSConfig
 };

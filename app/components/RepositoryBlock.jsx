@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import styles from 'css/components/_repository-link';
 import Icon from 'react-fa';
 import RepositoryDataContainer from 'containers/RepositoryDataContainer';
-import CommitList from 'components/CommitList';
+import RepositoryCommits from 'components/RepositoryCommits';
 
 const cx = classNames.bind(styles);
 
@@ -17,8 +17,6 @@ export default class RepositoryBlock extends Component {
 
     const { repoUrl, repoUserName, repoName } = this.props;
 
-    console.log(this.props);
-
     return (
       <div>
         {repoUrl &&
@@ -31,9 +29,9 @@ export default class RepositoryBlock extends Component {
             </h4>
             <p>Schematics, board files and Arduino code.</p>
             <RepositoryDataContainer repoInfoType="commits" repoUserName={repoUserName} repoName={repoName}>
+              <RepositoryCommits repoDetail="" />
             </RepositoryDataContainer>
             <RepositoryDataContainer repoInfoType="issues" repoUserName={repoUserName} repoName={repoName}>
-              <h5 className={cx('panel-sub-header')}>Issue status</h5>
             </RepositoryDataContainer>
           </div>
         }

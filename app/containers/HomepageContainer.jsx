@@ -50,7 +50,7 @@ function mapStateToProps(state) {
 
   const images = { 
     images: state.featureImages.images,
-    isFetching: state.featureImages.isFetching,
+    isFetching: state.featureImages.images.length ? state.featureImages.isFetching : true,
     requestFailed: state.featureImages.requestFailed
   }
 

@@ -1,7 +1,70 @@
 @import '../main.css';
 
-.home {
+.home-page {
   background: whitesmoke;
+  .content-block {
+    position: relative;
+    background: whitesmoke;
+    .container {
+      background: whitesmoke;
+    }
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 5;
+      top: 100%;
+      left: 50%;
+      margin-left: -40px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 40px 0 40px;
+      border-color: whitesmoke transparent transparent transparent;
+    }
+    &.blue {
+      background: $blue;
+      color: whitesmoke;
+      .container {
+        background: $blue;
+        color: whitesmoke;
+      }
+      &:after {
+        content: '';
+        border-color: $blue transparent transparent transparent;
+      }
+    }
+    &.light-grey {
+      background: $light-grey;
+      .container {
+        background: $light-grey;
+      }
+      &:after {
+        content: '';
+        border-color: $light-grey transparent transparent transparent;
+      }
+    }
+    &.lightest-grey {
+      background: $lightest-grey;
+      .container {
+        background: $lightest-grey;
+      }
+      &:after {
+        content: '';
+        border-color: $lightest-grey transparent transparent transparent;
+      }
+    }
+    &.white {
+      background: $white;
+      .container {
+        background: $white;
+      }
+      &:after {
+        content: '';
+        border-color: $white transparent transparent transparent;
+      }
+    }
+  }
 }
 
 .home-feature-images {

@@ -16,11 +16,23 @@ const cx = classNames.bind(styles);
 
 export default class FlickrCarousel extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      componentDidMount: false,
+      carouselInitialised: false
+    };
+  }
+
   componentDidMount() {
+    this.setState({componentDidMount: true});
+  }
+
+  componentDidUpdate(){
 
     const { images, isFetching, requestFailed } = this.props;
 
-    if(!isFetching && !requestFailed && images && images.length){
+    if(this.state.componentDidMount && !this.state.carouselInitialised && !isFetching && !requestFailed && images.length){
       $(this.refs.flexslider)
         .flexslider({
           animation: 'slide',
@@ -31,10 +43,14 @@ export default class FlickrCarousel extends Component {
           controlNav: false,
           directionNav: false
         });
-    }
+      this.setState({carouselInitialised: true});
+    } 
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    this.setState({componentDidMount: false});
+    this.setState({carouselInitialised: false});
+  }
 
   render() {
 
@@ -86,22 +102,22 @@ export default class FlickrCarousel extends Component {
                             </a>
                           </li>
                         </ul>
-                      </div>;
+                      </div>;                 
 
     } else {
 
-      const containerClass = requestFailed ? 'request-failed-container' : '';
+      const containerClass = requestFailed ? 'request-failed-container' : 'is-fetching-container';
       
       sliderElement = <div className={cx('container', containerClass)}>
                         <div className={cx('col-md-12')}> 
-                          {isFetching && !requestFailed && <Loading size="1x" message="Loading feature images" />}
-                          {requestFailed && !isFetching && <Error size="1x" message="Failed to load feature images from Flickr" />}
+                          {isFetching && !requestFailed && <Loading size="2x" message="Loading feature images" />}
+                          {requestFailed && <Error size="2x" message="Failed to load feature images from Flickr" />}
                         </div>
                       </div> 
     }
 
     return (
-      <div>
+      <div className={cx('carousel-container')}>
         {sliderElement}
       </div>
     );

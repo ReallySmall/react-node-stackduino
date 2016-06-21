@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'underscore';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_footer';
-import { Link } from 'react-router';
 
 const cx = classNames.bind(styles);
 
@@ -9,25 +9,7 @@ export default class Footer extends Component {
 
   render() {
 
-    const { wrapperData, linkData } = this.props;
-    
-    let col1ExternalLinksElements = [];
-    let col2ExternalLinksElements = [];
-    let col3ExternalLinksElements = [];
-
-    if(linkData && linkData.length){
-      for (let i = 0; i < linkData.length; i++) {
-        let link = linkData[i]
-        let markup =  <li key={i}><a href={link.url} title={link.description}>{link.title}</a></li>;
-        if(link.location === 'footer_col1'){
-          col1ExternalLinksElements.push(markup);
-        } else if(link.location === 'footer_col2'){
-          col2ExternalLinksElements.push(markup);
-        } else if(link.location === 'footer_col3'){
-          col3ExternalLinksElements.push(markup);
-        }
-      }
-    }
+    const { col1, col2, col3 } = this.props.content;
 
     return (
       <footer className={cx('footer')}>
@@ -37,28 +19,40 @@ export default class Footer extends Component {
               <li className={cx('col-sm-4', 'link-block')}>
                 <h3>
                   <span className={cx('fa', 'fa-external-link-square')}></span>
-                  {wrapperData.footer.col1.title}
+                  {col1.title}
                 </h3>
                 <ul className={cx('plain')}>
-                  {col1ExternalLinksElements}
+                  {_.map(col1.list, function(link, i){
+                    return(
+                      <li key={i}><a href={link.url} title={link.title}>{link.title}</a></li>
+                    )
+                  })}
                 </ul>
               </li>
               <li className={cx('col-sm-4', 'link-block')}>
                 <h3>
                   <span className={cx('fa', 'fa-external-link-square')}></span>
-                  {wrapperData.footer.col2.title}
+                  {col2.title}
                 </h3>
                 <ul className={cx('plain')}>
-                  {col2ExternalLinksElements}
+                    {_.map(col2.list, function(link, i){
+                      return (
+                        <li key={i}><a href={link.url} title={link.title}>{link.title}</a></li>
+                      )
+                    })}
                 </ul>
               </li>
               <li className={cx('col-sm-4', 'link-block')}>
                 <h3>
                   <span className={cx('fa', 'fa-external-link-square')}></span>
-                  {wrapperData.footer.col3.title}
+                  {col3.title}
                 </h3>
                 <ul className={cx('plain')}>
-                  {col3ExternalLinksElements}
+                  {_.map(col3.list, function(link, i){
+                    return (
+                      <li key={i}><a href={link.url} title={link.title}>{link.title}</a></li>
+                    )
+                  })}                
                 </ul>
               </li>
             </ul>

@@ -1,0 +1,36 @@
+@import '../main.css';
+
+.repository-link {
+  .primary-link {
+    span {
+      margin: 0 5px 0 0;
+    }
+  }
+  .repo-commits {
+    margin: 0;
+    .list-group-item {
+      border: 0;
+      background: none;
+      padding: 10px 0;
+      margin-bottom: -1px;
+      .badge {
+        display: inline-block;
+        float: right;
+        min-width: 10px;
+        padding: 3px 7px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #fff;
+        line-height: 1;
+        vertical-align: baseline;
+        white-space: nowrap;
+        text-align: center;
+        background-color: #999999;
+        border-radius: 10px;
+      }
+    }
+  }
+  .chart-container {
+    margin: 20px 0 0 0;
+  }
+}

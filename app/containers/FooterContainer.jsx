@@ -10,10 +10,12 @@ export default class FooterContainer extends Component {
 
   render() {
 
-    const {content} = this.props;
+    const { footer } = this.props.content;
+
+    console.log('footer: ', this.props);
 
     return (
-      <Footer {...content} />
+      <Footer content={footer} />
     );
   }
 

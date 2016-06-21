@@ -16,10 +16,7 @@ export default function configureStore(initialState, history) {
   // store in sync
   const middleware = [thunk, promiseMiddleware, routerMiddleware(history)];
   if (__DEVCLIENT__) {
-    console.log(123456);
     middleware.push(createLogger());
-  } else {
-    console.log(654321);
   }
 
   const store = createStore(rootReducer, initialState, compose(
@@ -33,8 +30,6 @@ export default function configureStore(initialState, history) {
       const nextReducer = require('reducers');
       store.replaceReducer(nextReducer);
     });
-  } else {
-    console.log('module not hot');
   }
 
   return store;

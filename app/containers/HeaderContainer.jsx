@@ -11,11 +11,12 @@ export default class HeaderContainer extends Component {
 
     render() {
 
-      const {content, route} = this.props;
+      const { header } = this.props.content;    
+      const { route } = this.props;
 
       return (
         <div>
-          <Header {...content} />
+          <Header content={header} />
           <Navigation route={route} />
         </div>
       );

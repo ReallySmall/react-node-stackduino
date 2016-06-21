@@ -20,7 +20,7 @@ export default function repodata(state = {
       let allRepos = state.repos; 
 
       const id = action.req.data.id;
-      const body = action.req.data.body;
+      const body = JSON.parse(action.req.data.body);
 
       allRepos[id] = body;
 

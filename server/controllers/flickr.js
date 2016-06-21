@@ -46,13 +46,11 @@ exports.featured = function(req, res) {
     query += '&method=flickr.groups.pools.getPhotos';
     query += '&group_id=' + group_id;
     query += '&tags=' + tag;
-    query += '&extras=tags,owner_name,url_n,url_o,url_l';
+    query += '&extras=tags,owner_name,url_n,url_o,url_l,url_c';
     query += '&safe_search=1';
     if(user_id){
         query += '&user_id=' + user_id;
     }
-
-    console.log('flickr featured query: ', query);
 
     var requestOpts = {
         url: 'https://api.flickr.com/services/rest/' + query,

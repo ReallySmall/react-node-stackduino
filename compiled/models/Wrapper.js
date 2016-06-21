@@ -15,18 +15,22 @@ Wrapper.add({
 		siteTitle: { type: String, required: true, initial: true },
 		siteSubtitle: { type: String, required: true, initial: true },
 		links: {
-			title: { type: String }
+			title: { type: String },
+			list: { type: Types.Relationship, ref: 'Link', many: true }
 		}
 	},
 	footer: {
 		col1: {
-			title: { type: String }
+			title: { type: String },
+			list: { type: Types.Relationship, ref: 'Link', many: true }
 		},
 		col2: {
-			title: { type: String }
+			title: { type: String },
+			list: { type: Types.Relationship, ref: 'Link', many: true }
 		},
 		col3: {
-			title: { type: String }
+			title: { type: String },
+			list: { type: Types.Relationship, ref: 'Link', many: true }
 		}
 	}
 });

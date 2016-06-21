@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'underscore';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_header';
 import { Link } from 'react-router';
@@ -13,25 +14,7 @@ export default class Header extends Component {
 
   render() {
 
-    const { wrapperData, linkData } = this.props;
-    let externalLinksElements = [];
-
-    if(linkData && linkData.length){
-      for (let i = 0; i < linkData.length; i++) {
-        let link = linkData[i]
-        if(link.location === 'header'){
-          externalLinksElements.push(
-            <li key={i}>
-              <a href={link.url} title={link.title}>
-                <span className={cx('fa', link.icon)}>
-                  <span className={cx('visually-hidden')}>{link.title}</span>
-                </span>
-              </a>
-            </li>
-          );
-        }
-      }
-    }
+    const { siteTitle, siteSubtitle, links } = this.props.content;
 
     return (
       <header className={cx('site-header')}>
@@ -43,13 +26,23 @@ export default class Header extends Component {
                   <span className={cx('fa', 'fa-camera')}></span>
                 </p>
                 <div className={cx('site-descriptor')}>
-                  <h1 className={cx('site-title')}>{wrapperData.header.siteTitle}</h1>
-                  <p className={cx('site-slogan')}>{wrapperData.header.siteSubtitle}</p>
+                  <h1 className={cx('site-title')}>{siteTitle}</h1>
+                  <p className={cx('site-slogan')}>{siteSubtitle}</p>
                 </div>
             </Link>
             <div className={cx('social-links')}>
               <ul className={cx('plain')}>
-                {externalLinksElements}
+                {_.map(links.list, function(link, i){
+                  return (
+                    <li key={i}>
+                      <a href={link.url} title={link.title}>
+                        <span className={cx('fa', link.icon)}>
+                          <span className={cx('visually-hidden')}>{link.title}</span>
+                        </span>
+                      </a>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           </div>
@@ -61,7 +54,4 @@ export default class Header extends Component {
 
 }
 
-Header.propTypes = {
-  wrapperData: PropTypes.object.isRequired,
-  linkData: PropTypes.array.isRequired
-};
+Header.propTypes = {};

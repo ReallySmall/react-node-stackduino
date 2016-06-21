@@ -16,18 +16,17 @@ export default class ImageBlock extends Component {
 
     const { images } = this.props;
 
-    let imageBlock = _.map(images, function(image, i){
+    let imageBlock = _.map(images, function(imageData, i){
       
       let colWidth = Math.ceil(12 / images.length);
-      image.ratio = (image.height / image.width) * 100;
-      image.caption = '';
+      imageData.image.ratio = (imageData.image.height / imageData.image.width) * 100;
       
       return (
         <div key={i} className={cx('col-md-' + colWidth)}>
           <div className={cx('inset-wrapper')}>
             <figure>
-              <Image src={image.url} alt="" ratio={image.ratio}/>
-              {image.caption && <figcaption>{image.caption}</figcaption>}
+              <Image src={imageData.image.url} alt={imageData.title} ratio={imageData.image.ratio}/>
+              {imageData.caption && <figcaption dangerouslySetInnerHTML={{ __html: imageData.caption || '' }} />}
             </figure>
           </div>
         </div>
@@ -36,9 +35,9 @@ export default class ImageBlock extends Component {
     });
 
     return (
-      <section>
+      <div className={cx('row')}>
         {imageBlock}
-      </section>
+      </div>
     );
 
   }

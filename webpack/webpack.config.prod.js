@@ -119,6 +119,17 @@ module.exports = [
         "app", "node_modules"
       ]
     },
+    externals: [{
+      'webpack.config.dev-client.js': 'webpack.config.dev-client.js',
+      '../../webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename),
+      '../webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename),
+      './webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename),
+      'webpack.config.dev-client.js': 'commonjs ' + require.resolve(__filename),
+      '../../webpack.config.dev-server.js': 'commonjs ' + require.resolve(__filename),
+      '../webpack.config.dev-server.js': 'commonjs ' + require.resolve(__filename),
+      './webpack.config.dev-server.js': 'commonjs ' + require.resolve(__filename),
+      'webpack.config.dev-server.js': 'commonjs ' + require.resolve(__filename)
+    }],
     plugins: [
         // extract inline css from modules into separate files
         new ExtractTextPlugin("styles/main.css"),

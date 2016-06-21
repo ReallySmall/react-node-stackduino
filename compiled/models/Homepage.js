@@ -10,7 +10,8 @@ var Types = keystone.Field.Types;
 
 var Homepage = new keystone.List('Homepage', {
 	map: { name: 'title' },
-	autokey: { path: 'slug', from: 'title', unique: true }
+	autokey: { path: 'slug', from: 'title', unique: true },
+	sortable: true
 });
 
 Homepage.add({
@@ -18,26 +19,25 @@ Homepage.add({
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
-	imagesSlot1: { type: Types.CloudinaryImages },
-	imagesSlot2: { type: Types.CloudinaryImages },
-	imagesSlot1Local: {
-		type: Types.LocalFiles,
-		dest: './files/multiple',
-		prefix: '/multiple',
-		format: function format(item, file) {
-			return '<img src="' + file.href + '" style="max-width: 300px">';
-		}
-	},
 	content: {
-		brief: { type: Types.Html, wysiwyg: true, height: 150 },
-		extended: { type: Types.Html, wysiwyg: true, height: 400 },
-		additional: { type: Types.Html, wysiwyg: true, height: 400 }
+		slot1: { type: Types.Html, wysiwyg: true, height: 150 },
+		slot2: { type: Types.Html, wysiwyg: true, height: 800 },
+		slot3: { type: Types.Html, wysiwyg: true, height: 400 },
+		slot4: { type: Types.Html, wysiwyg: true, height: 400 }
+	},
+	images: {
+		slot1: { type: Types.Relationship, ref: 'Image', many: true },
+		slot2: { type: Types.Relationship, ref: 'Image', many: true },
+		slot3: { type: Types.Relationship, ref: 'Image', many: true },
+		slot4: { type: Types.Relationship, ref: 'Image', many: true }
 	}
 });
 
 Homepage.schema.virtual('content.full').get(function () {
-	return this.content.extended || this.content.brief;
+	return this.content.slot2 || this.content.slot1;
 });
+
+Homepage.relationship({ path: 'images', ref: 'Image', refPath: 'homepages' });
 
 Homepage.defaultColumns = 'title, state|20%, author|20%, publishedDate|20%';
 Homepage.register();

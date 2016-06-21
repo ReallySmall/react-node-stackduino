@@ -47,6 +47,8 @@
       }
       figcaption {
         display: block;
+        color: inherit;
+        opacity: 0.8;
       }
     }
   }

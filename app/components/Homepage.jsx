@@ -38,21 +38,36 @@ export default class Homepage extends Component {
                               isFetching={featureImages.isFetching} 
                               requestFailed={featureImages.requestFailed} />
                           </section>
-                          <div className={cx('container')}>
-                            <section className={cx('col-md-12')}>
+                          <section className={cx('col-md-12', 'content-block', 'blue')}>
+                            <div className={cx('container')}>
                               <h1 className="visually-hidden">Stackduino</h1>
-                              <p dangerouslySetInnerHTML={{ __html: content.content.brief || '' }} />
-                            </section>
-                            <ImageBlock images={content.imagesSlot1} />
-                            <TextBlock content={content.content.extended} />
-                            <ImageBlock images={content.imagesSlot2} />
-                            <TextBlock content={content.content.additional} />
-                          </div>
+                              <p dangerouslySetInnerHTML={{ __html: content.content.slot1 || '' }} />
+                              <ImageBlock images={content.images.slot1} />
+                            </div>
+                          </section>
+                          <section className={cx('col-md-12', 'content-block', 'white')}>
+                            <div className={cx('container')}>
+                              <p dangerouslySetInnerHTML={{ __html: content.content.slot2 || '' }} />
+                              <ImageBlock images={content.images.slot2} />
+                            </div>
+                          </section>
+                          <section className={cx('col-md-12', 'content-block', 'lightest-grey')}>
+                            <div className={cx('container')}>
+                              <p dangerouslySetInnerHTML={{ __html: content.content.slot3 || '' }} />
+                              <ImageBlock images={content.images.slot3} />
+                            </div>
+                          </section>
+                          <section className={cx('col-md-12', 'content-block', 'white')}>
+                            <div className={cx('container')}>
+                              <p dangerouslySetInnerHTML={{ __html: content.content.slot4 || '' }} />
+                              <ImageBlock images={content.images.slot4} />
+                            </div>
+                          </section>
                         </div>
     }
 
   	return (
-    	<div className={cx('page')}>
+    	<div className={cx('page', 'home-page')}>
         {homepageContent}
       </div>
   	);

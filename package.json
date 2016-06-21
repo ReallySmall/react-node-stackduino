@@ -25,6 +25,8 @@
   "devDependencies": {
     "eslint-config-airbnb": "^7.0.0",
     "eslint-plugin-react": "^5.0.1",
+    "event-source-polyfill": "0.0.7",
+    "eventsource-polyfill": "^0.9.6",
     "expect": "^1.15.2",
     "imports-loader": "^0.6.5",
     "karma": "^0.13.22",
@@ -89,6 +91,7 @@
     "jquery": "^2.2.3",
     "json-loader": "^0.5.4",
     "kerberos": "0.0.19",
+    "keystone": "^0.3.19",
     "lodash": "^4.6.1",
     "method-override": "^2.3.5",
     "moment": "^2.13.0",

@@ -10,8 +10,6 @@ class RepositoryDataContainer extends Component {
 
     const { repoInfoType, repoUserName, repoName } = this.props;
 
-    console.log(this.props);
-
     //if(!this.props.repoDetail){ // if board detail is not in state yet
     if(repoInfoType && repoUserName && repoName){
       this.props.dispatch ( fetchRepoDetail({type: repoInfoType, user: repoUserName, repo: repoName}) ); // add it
@@ -22,12 +20,13 @@ class RepositoryDataContainer extends Component {
   render() {
 
     const { isFetching, requestFailed, repoDetail } = this.props;
+    console.log('props:', this.props);
 
     return (
       <div>
         {React.cloneElement(this.props.children, { repoDetail: repoDetail })}
-        {isFetching && <Loading size="1x" />}
-        {requestFailed && <Error size="1x" message="Loading error" />}
+        {isFetching && <Loading size="1g" />}
+        {requestFailed && <Error size="1g" message="Loading error" />}
       </div>
     );
 
