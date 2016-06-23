@@ -12,8 +12,6 @@ export default class FooterContainer extends Component {
 
     const { footer } = this.props.content;
 
-    console.log('footer: ', this.props);
-
     return (
       <Footer content={footer} />
     );

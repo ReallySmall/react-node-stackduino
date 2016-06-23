@@ -5,6 +5,9 @@
   .content-block {
     position: relative;
     background: whitesmoke;
+    h2, h3, h4, h5, h6 {
+      font-size: 26px;
+    }
     .container {
       background: whitesmoke;
     }
@@ -21,18 +24,6 @@
       border-style: solid;
       border-width: 20px 40px 0 40px;
       border-color: whitesmoke transparent transparent transparent;
-    }
-    &.blue {
-      background: $blue;
-      color: whitesmoke;
-      .container {
-        background: $blue;
-        color: whitesmoke;
-      }
-      &:after {
-        content: '';
-        border-color: $blue transparent transparent transparent;
-      }
     }
     &.light-grey {
       background: $light-grey;

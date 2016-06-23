@@ -3,3 +3,4 @@ npm-debug.log
 .tmp
 .idea
 server/config/secrets.js
+compiled/

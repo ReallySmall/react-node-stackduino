@@ -38,7 +38,7 @@ export default class Homepage extends Component {
                               isFetching={featureImages.isFetching} 
                               requestFailed={featureImages.requestFailed} />
                           </section>
-                          <section className={cx('col-md-12', 'content-block', 'blue')}>
+                          <section className={cx('col-md-12', 'content-block', 'lightest-grey')}>
                             <div className={cx('container')}>
                               <h1 className="visually-hidden">Stackduino</h1>
                               <p dangerouslySetInnerHTML={{ __html: content.content.slot1 || '' }} />

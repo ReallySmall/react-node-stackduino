@@ -1,5 +1,9 @@
 @import '../main.css';
 
+.headroom {
+  z-index: 5000 !important;
+}
+
 .site-header {
   background: $grey;
   min-height: 110px;
@@ -10,6 +14,7 @@
     overflow: hidden;
     margin: 18px 0 0 0;
     .animated-site-logo {
+      display: none;
       float: left;
       font-size: 32px;
       margin: 0;
@@ -44,6 +49,7 @@
   margin: -5px 0 0 0;
   font-size: 38px;
 }
+
 #preface-area {
   position: relative;
   z-index: 5;
@@ -60,9 +66,9 @@
   .preface-block {
     color: $grey;
     display: block;
-    border-right: 6px solid #dddddd;
+    border-top: 3px solid #dddddd;
     &:first-child {
-      border-left: 6px solid #dddddd;
+      border-top: none;
     }
     &.active {
       background: $white;
@@ -74,7 +80,7 @@
         text-decoration: underline;
       }
       h2 {
-        margin: 15px 0;
+        margin: 10px 0;
       }
       .fa {
         color: $orange;
@@ -83,6 +89,7 @@
     }
   }
 }
+
 #navigation {
   float: right;
   #main-menu {
@@ -93,7 +100,7 @@
 .social-links {
   margin: 18px 0 0 0;
   ul {
-    float: right;
+    float: left;
     font-size: 48px;
     li {
       float: left;
@@ -107,4 +114,40 @@
       }
     }
   }
+}
+
+@media (min-width: 768px) {
+
+  .headroom {
+    z-index: 5000 !important;
+  }
+
+  .site-header {
+    background: $grey;
+    min-height: 110px;
+    border-top: 2px solid $black;
+    .site-branding {
+      .animated-site-logo {
+        display: block;
+      }
+    }
+  }
+
+  #preface-area {
+    .preface-block {
+      border-right: 6px solid #dddddd;
+      &:first-child {
+        border-left: 6px solid #dddddd;
+      }
+    }
+  }
+
+  #navigation {}
+
+  .social-links {
+    ul {
+      float: right;
+    }
+  }
+
 }
