@@ -1,11 +1,14 @@
 @import '../main.css';
 
+.headroom {
+  z-index: 5000 !important;
+}
+
 .preface-area {
   position: relative;
   z-index: 5;
   padding: 0;
   background: $lightest-grey;
-  border-top: 2px solid $black;
   border-bottom: none;
   -webkit-box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.25);
   -moz-box-shadow:    0px 5px 10px 0px rgba(50, 50, 50, 0.25);
@@ -42,5 +45,22 @@
       }
     }
   }
+}
+
+@media (min-width: 768px) {
+
+  .headroom {
+    z-index: 5000 !important;
+  }
+
+  #preface-area {
+    .preface-block {
+      border-right: 6px solid #dddddd;
+      &:first-child {
+        border-left: 6px solid #dddddd;
+      }
+    }
+  }
+
 }
 

@@ -4,6 +4,7 @@ import styles from 'css/components/_repository-link';
 import Icon from 'react-fa';
 import RepositoryDataContainer from 'containers/RepositoryDataContainer';
 import RepositoryCommits from 'components/RepositoryCommits';
+import RepositoryIssues from 'components/RepositoryIssues';
 
 const cx = classNames.bind(styles);
 
@@ -29,9 +30,7 @@ export default class RepositoryBlock extends Component {
             </h4>
             <p>Schematics, board files and Arduino code.</p>
             <RepositoryDataContainer repoInfoType="commits" repoUserName={repoUserName} repoName={repoName}>
-              <RepositoryCommits repoDetail="" />
-            </RepositoryDataContainer>
-            <RepositoryDataContainer repoInfoType="issues" repoUserName={repoUserName} repoName={repoName}>
+              <RepositoryCommits />
             </RepositoryDataContainer>
           </div>
         }

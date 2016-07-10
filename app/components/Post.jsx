@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-detail';
 import DateBlock from 'components/DateBlock';
+import ImageBlock from 'components/ImageBlock';
 
 const cx = classNames.bind(styles);
 
@@ -13,7 +14,7 @@ export default class Post extends Component {
 
   render() {
 
-    const { title, publishedDate, content, categories } = this.props;
+    const { title, publishedDate, content, categories, primaryImage } = this.props;
 
     let categoriesElement = [];
 
@@ -40,6 +41,7 @@ export default class Post extends Component {
         </div>
         <div className={cx('col-sm-4', 'aside')}>
           <aside>
+            <ImageBlock images={primaryImage} />
             <ul className={cx('tags')}>
               {categoriesElement}
             </ul>

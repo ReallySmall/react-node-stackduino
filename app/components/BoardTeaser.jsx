@@ -52,7 +52,7 @@ export default class BoardTeaser extends Component {
               <div className={cx(colWidth)}>
                 <div className={cx('clearfix', 'teaser-header')}>
                   <h2>
-                    <Link to={"/boards/" + slug}>{title}</Link>
+                    <Link to={'/boards/' + slug}>{title}</Link>
                   </h2>
                   <BoardStatus status={status} />
                   <DateBlock text={dateText} date={developedDate} />
@@ -60,7 +60,7 @@ export default class BoardTeaser extends Component {
                 {!closed && <p dangerouslySetInnerHTML={{ __html: intro || '' }} />}
               </div>
               <div className={cx(thumbNailDisplay)}>
-                {img && <Link to={"/boards/" + slug} className={cx('image-link')}>
+                {img && <Link to={'/boards/' + slug} className={cx('image-link')}>
                   <Image src={img.url} alt="" ratio={(img.height / img.width) * 100} />
                 </Link>}
               </div>

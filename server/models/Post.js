@@ -22,7 +22,8 @@ Post.add({
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 }
 	},
-	categories: { type: Types.Relationship, ref: 'PostCategory', many: true }
+	categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
+	relatedBoards: { type: Types.Relationship, ref: 'Board', many: true }
 });
 
 Post.schema.virtual('content.full').get(function() {

@@ -1,95 +1,97 @@
 @import '../main.css';
 
-.carousel {
-  background: $blue;
-  margin: 0px auto;
-  max-width: 800px;
-  padding: 0 !important;
-  overflow: visible !important;
-  border: none;
-  position: relative;
-  .flex-viewport {
-    overflow: visible !important
-  }
-  figure {
+.home-page {
+  .carousel {
+    background: $blue;
+    margin: 0px auto;
+    max-width: 800px;
+    padding: 0 !important;
+    overflow: visible !important;
+    border: none;
     position: relative;
-    height: 0;
-    padding-bottom: 60%;
-    img {
-      -webkit-filter: grayscale(100%);
-      -moz-filter: grayscale(100%);
-      filter: grayscale(100%);
-      -o-filter: grayscale(100%);
-      -webkit-transition: 1s ease-in-out;
-      -moz-transition: 1s ease-in-out;
-      -o-transition: 1s ease-in-out;
-      transition: 1s ease-in-out;
+    .flex-viewport {
+      overflow: visible !important
     }
-    figcaption {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      color: $white;
-      display: none;
-    }
-  }
-  .flex-active-slide {
     figure {
+      position: relative;
+      height: 0;
+      padding-bottom: 60%;
       img {
-        -webkit-filter: grayscale(0%);
-        -moz-filter: grayscale(0%);
-        filter: grayscale(0%);
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        filter: grayscale(100%);
         -o-filter: grayscale(100%);
         -webkit-transition: 1s ease-in-out;
         -moz-transition: 1s ease-in-out;
         -o-transition: 1s ease-in-out;
-        transition: 1s ease-in-out;  
+        transition: 1s ease-in-out;
       }
       figcaption {
-        display: block;
-        color: inherit;
-        opacity: 0.8;
-      }
-    }
-  }
-  .slide-cover {
-    position:absolute;
-    width: 100%;
-    top: 0;
-    height: 100%;
-    z-index: 10;
-    background: $black;
-    opacity: 0.4;
-    &.slide-cover-left {
-      right: 100%;  
-      .fa {
-        display: block;
         position: absolute;
-        right: 50px;
-        top: 50%;
-        font-size: 80px;
-        margin-top: -40px;
-        color: $light-grey;
+        right: 0;
+        bottom: 0;
+        color: $white;
+        display: none;
       }
     }
-    &.slide-cover-right {
-      left: 100%;
-      .fa {
-        display: block;
-        position: absolute;
-        left: 50px;
-        top: 50%;
-        font-size: 80px;
-        margin-top: -40px;
-        color: $light-grey;
+    .flex-active-slide {
+      figure {
+        img {
+          -webkit-filter: grayscale(0%);
+          -moz-filter: grayscale(0%);
+          filter: grayscale(0%);
+          -o-filter: grayscale(100%);
+          -webkit-transition: 1s ease-in-out;
+          -moz-transition: 1s ease-in-out;
+          -o-transition: 1s ease-in-out;
+          transition: 1s ease-in-out;  
+        }
+        figcaption {
+          display: block;
+          color: inherit;
+          opacity: 0.8;
+        }
       }
     }
-    &:hover, &:focus, &:active {
-      cursor: pointer;
-      opacity: 0.7;
-      .fa {
-        color: $orange;
+    .slide-cover {
+      position:absolute;
+      width: 100%;
+      top: 0;
+      height: 100%;
+      z-index: 10;
+      background: $black;
+      opacity: 0.4;
+      &.slide-cover-left {
+        right: 100%;  
+        .fa {
+          display: block;
+          position: absolute;
+          right: 50px;
+          top: 50%;
+          font-size: 80px;
+          margin-top: -40px;
+          color: $light-grey;
+        }
       }
-    }      
+      &.slide-cover-right {
+        left: 100%;
+        .fa {
+          display: block;
+          position: absolute;
+          left: 50px;
+          top: 50%;
+          font-size: 80px;
+          margin-top: -40px;
+          color: $light-grey;
+        }
+      }
+      &:hover, &:focus, &:active {
+        cursor: pointer;
+        opacity: 0.7;
+        .fa {
+          color: $orange;
+        }
+      }      
+    }
   }
 }

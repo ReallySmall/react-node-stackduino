@@ -286,48 +286,6 @@ ul {
     li {
       list-style-type: none;
     }
-    &.pinout {
-      margin-top: 10px;
-      margin-bottom: 10px;
-      li {
-        span {
-          display: block;
-          &.pin-number {
-            float: left;
-          }
-          &.pin-net {
-            padding-left: 60px;
-          }
-        }
-      }
-    }
-  }
-  &.display-options {
-    font-size: 1.6em;
-    margin-top: 10px;
-    color: $light-grey;
-    li {
-      position: relative;
-      float: right;
-      &:first-child {
-        margin-left: 20px;
-      }
-      a {
-        .fa-sort-desc {
-          margin-left: -18px;
-        }
-        &.asc-active {
-          .fa-sort-desc {
-            color: $black;
-          }
-        }
-        &.desc-active {
-          .fa-sort-asc {
-            color: $black;
-          }  
-        }
-      }
-    }
   }
 }
 
@@ -539,15 +497,6 @@ figcaption {
       }
     }
   }
-
-#slidebox {
-  ul {
-    li {
-      overflow: hidden;
-      max-height: 550px;
-    }
-  }
-}
 
 .clear-none {
   clear: none;

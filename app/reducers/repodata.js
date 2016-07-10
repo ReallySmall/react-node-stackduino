@@ -15,8 +15,6 @@ export default function repodata(state = {
       });
     case GET_REPO_DATA_SUCCESS:
 
-      console.log(action.req.data);
-
       let allRepos = state.repos; 
 
       const id = action.req.data.id;

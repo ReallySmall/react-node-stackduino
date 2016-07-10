@@ -37,7 +37,7 @@ class PostsContainer extends Component {
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
-          <IntroBlock title="Posts" intro="Intro text" />
+          <IntroBlock title="Articles" intro="Building and using Stackduino" />
           {_.map(teasers, function(teaser, i){
             return (
               <PostTeaser
@@ -46,7 +46,8 @@ class PostsContainer extends Component {
                 publishedDate={teaser.publishedDate}
                 slug={teaser.slug} 
                 intro={teaser.content.brief}
-                categories={teaser.categories} />
+                categories={teaser.categories}
+                primaryImage={teaser.primaryImage} />
             );
           })} 
         </Page>

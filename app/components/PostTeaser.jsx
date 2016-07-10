@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import styles from 'css/components/_article-teaser';
 import DateBlock from 'components/DateBlock';
 import { Link } from 'react-router';
+import Image from 'components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -15,37 +16,32 @@ export default class PostTeaser extends Component {
 
   render() {
 
-    const { title, slug, intro, publishedDate, categories } = this.props;
+    const { title, slug, intro, publishedDate, categories, primaryImage } = this.props;
 
-    let categoriesElement = [];
-
-    for(let i = 0; i < categories.length; i++){
-      let category = categories[i];
-      categories.push(
-        <li>
-          <a href="#" title={"Find all posts tagged with" + category}>{category}</a>
-        </li>
-      );
-    }
+    console.log(this.props);
 
     return (
 
-      <article>
-        <div className={cx('inset-wrapper')}>
+      <section>
+        <div className={cx('inset-wrapper', 'col-sm-12')}>
           <div className={cx('panel')}>
-            <div className={cx('teaser-header', 'clearfix')}>
-              <h2>
-                <Link to={"/articles/" + slug}>{title}</Link>
-              </h2>
-              <DateBlock date={publishedDate} />
+            <div className={cx('col-md-9')}>
+              <div className={cx('clearfix', 'teaser-header')}>
+                <h2>
+                  <Link to={'/articles/' + slug}>{title}</Link>
+                </h2>
+                <DateBlock date={publishedDate} />
+              </div>
+              {<p dangerouslySetInnerHTML={{ __html: intro || '' }} />}
             </div>
-            <div dangerouslySetInnerHTML={{ __html: intro || '' }} />
-            <ul className={cx('tags')}>
-              {categoriesElement}
-            </ul>
+            <div className={cx('col-md-3')}>
+              {primaryImage && <Link to={'/articles/' + slug} className={cx('image-link')}>
+                <Image src={primaryImage.url} alt="" ratio={(primaryImage.height / primaryImage.width) * 100} />
+              </Link>}
+            </div>
           </div>
         </div>
-      </article>
+      </section>
 
     );
   }
@@ -56,6 +52,5 @@ PostTeaser.propTypes = {
   title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   publishedDate: PropTypes.string.isRequired,
-  intro: PropTypes.string.isRequired,
-  categories: PropTypes.array.isRequired
+  intro: PropTypes.string.isRequired
 };

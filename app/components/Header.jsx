@@ -21,7 +21,6 @@ export default class Header extends Component {
 
     return (
       <div className={cx('header-container')}>
-        <Headroom>
           <header className={cx('site-header')}>
             <div className={cx('container')}>
               <div className={cx('row')}>
@@ -53,8 +52,9 @@ export default class Header extends Component {
               </div>
             </div>
           </header>
-          <Navigation route={route} />
-        </Headroom>
+          <Headroom pinStart={112} upTolerance={15} >
+            <Navigation route={route} />
+          </Headroom>
       </div>
     );
 

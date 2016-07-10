@@ -1,13 +1,10 @@
 @import '../main.css';
 
-.headroom {
-  z-index: 5000 !important;
-}
-
 .site-header {
   background: $grey;
   min-height: 110px;
   border-top: 2px solid $black;
+  border-bottom: 2px solid $black;
   .site-branding {
     display: block;
     float: left;
@@ -44,50 +41,11 @@
     margin-top: -5px;
   }
 }
+
 .site-title { 
   color: $orange;
   margin: -5px 0 0 0;
   font-size: 38px;
-}
-
-#preface-area {
-  position: relative;
-  z-index: 5;
-  padding: 0;
-  background: $lightest-grey;
-  border-top: none;
-  border-bottom: none;
-  -webkit-box-shadow: 0px 5px 10px 0px rgba(50, 50, 50, 0.25);
-  -moz-box-shadow:    0px 5px 10px 0px rgba(50, 50, 50, 0.25);
-  box-shadow:         0px 5px 10px 0px rgba(50, 50, 50, 0.25);
-  ul {
-    margin: 0;
-  }
-  .preface-block {
-    color: $grey;
-    display: block;
-    border-top: 3px solid #dddddd;
-    &:first-child {
-      border-top: none;
-    }
-    &.active {
-      background: $white;
-    }
-    a {
-      display: block;
-      color: $black;
-      &:hover, &:focus, &:active {
-        text-decoration: underline;
-      }
-      h2 {
-        margin: 10px 0;
-      }
-      .fa {
-        color: $orange;
-        margin-right: 10px;
-      }
-    }
-  }
 }
 
 #navigation {
@@ -118,10 +76,6 @@
 
 @media (min-width: 768px) {
 
-  .headroom {
-    z-index: 5000 !important;
-  }
-
   .site-header {
     background: $grey;
     min-height: 110px;
@@ -132,17 +86,6 @@
       }
     }
   }
-
-  #preface-area {
-    .preface-block {
-      border-right: 6px solid #dddddd;
-      &:first-child {
-        border-left: 6px solid #dddddd;
-      }
-    }
-  }
-
-  #navigation {}
 
   .social-links {
     ul {

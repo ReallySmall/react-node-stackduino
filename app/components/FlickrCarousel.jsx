@@ -55,6 +55,15 @@ export default class FlickrCarousel extends Component {
   render() {
 
     const { images, isFetching, requestFailed } = this.props;
+    let containerClass = '';
+
+    if(requestFailed){
+      containerClass = 'request-failed-container';
+    } else if(isFetching){
+      containerClass = 'is-fetching-container';
+    } else {
+      containerClass = ''
+    }
 
     let sliderElement = null;
 
@@ -105,19 +114,15 @@ export default class FlickrCarousel extends Component {
                       </div>;                 
 
     } else {
-
-      const containerClass = requestFailed ? 'request-failed-container' : 'is-fetching-container';
       
-      sliderElement = <div className={cx('container', containerClass)}>
-                        <div className={cx('col-md-12')}> 
-                          {isFetching && !requestFailed && <Loading size="2x" message="Loading feature images" />}
-                          {requestFailed && <Error size="2x" message="Failed to load feature images from Flickr" />}
-                        </div>
+      sliderElement = <div className={cx('container')}>
+                        {isFetching && !requestFailed && <Loading size="2x" message="Loading feature images" />}
+                        {requestFailed && <Error size="2x" message="Failed to load feature images from Flickr" />}
                       </div> 
     }
 
     return (
-      <div className={cx('carousel-container')}>
+      <div className={cx('carousel-container', containerClass)}>
         {sliderElement}
       </div>
     );

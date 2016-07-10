@@ -40,7 +40,7 @@ export default class GalleryContainer extends Component {
 
     return (
     	<Page isFetching={isFetching} fetchingMessage="Fetching images from Flickr" requestFailed={requestFailed} requestFailedMessage="Failed to load gallery images from Flickr">
-    		<IntroBlock title="Gallery" intro="Intro text" />
+    		<IntroBlock title="Gallery" intro="Images of, and taken by, Stackduino controllers on Flickr." />
 			  {images && 
 	    		<Gallery images={images} />
 	    	}

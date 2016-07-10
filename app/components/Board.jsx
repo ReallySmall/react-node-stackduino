@@ -5,6 +5,7 @@ import BoardStatus from 'components/BoardStatus';
 import Carousel from 'components/Carousel';
 import TextBlock from 'components/TextBlock';
 import DateBlock from 'components/DateBlock';
+import ImageBlock from 'components/ImageBlock';
 import RepositoryBlock from 'components/RepositoryBlock';
 import Icon from 'react-fa';
 
@@ -18,7 +19,9 @@ export default class Board extends Component {
 
   render() {
 
-    const { title, boardStatus, developedDate, content, images, repoUrl, repoUserName, repoName } = this.props;
+    const { title, boardStatus, developedDate, content, images, repoUrl, repoUserName, repoName, specification } = this.props;
+
+    console.log(this.props);
 
     return (
       <div className={cx('row')}>
@@ -30,6 +33,7 @@ export default class Board extends Component {
             <div className={cx('row')}>
               <TextBlock content={content.brief} />
             </div>
+            <Carousel images={images} />
             <div className={cx('row')}>
               <TextBlock content={content.extended} />
             </div>
@@ -42,7 +46,13 @@ export default class Board extends Component {
                 <h3 className={cx('panel-header')}>Project files</h3>
                 <RepositoryBlock repoUrl={repoUrl} repoUserName={repoUserName} repoName={repoName} /> 
               </section>
-            </div> 
+            </div>
+            <div className={cx('inset-wrapper')}>
+              <section className={cx('panel', 'repository-link')}>
+                <h3 className={cx('panel-header')}>Specifications</h3>
+                  {<div dangerouslySetInnerHTML={{ __html: specification || '' }} />}
+              </section> 
+            </div>
           </aside>
         </div>
       </div>

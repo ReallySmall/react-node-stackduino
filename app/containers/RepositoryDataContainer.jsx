@@ -20,13 +20,16 @@ class RepositoryDataContainer extends Component {
   render() {
 
     const { isFetching, requestFailed, repoDetail } = this.props;
-    console.log('props:', this.props);
+
+    let childrenWithProps = React.Children.map(this.props.children, function(child) {
+      return React.cloneElement(child, { repoDetail: repoDetail });
+    });
 
     return (
       <div>
-        {React.cloneElement(this.props.children, { repoDetail: repoDetail })}
-        {isFetching && <Loading size="1g" />}
-        {requestFailed && <Error size="1g" message="Loading error" />}
+        {childrenWithProps}
+        {!repoDetail && isFetching && !requestFailed && <Loading size="1g" />}
+        {!repoDetail && requestFailed && <Error size="1g" message="Couldn't connect to GitHub" />}
       </div>
     );
 

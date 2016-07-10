@@ -48,7 +48,9 @@ Board.add({
 	repoUrl: { type: Types.Url },
     repoUserName: { type: String },
     repoName: { type: String },
-	categories: { type: Types.Relationship, ref: 'PostCategory', many: true }
+    specification: { type: Types.Html, wysiwyg: true, height: 400 }, 
+	categories: { type: Types.Relationship, ref: 'PostCategory', many: true },
+    relatedPosts: { type: Types.Relationship, ref: 'Post', many: true }
 });
 
 Board.schema.virtual('content.full').get(function() {

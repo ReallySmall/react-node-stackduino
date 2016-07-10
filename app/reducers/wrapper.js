@@ -13,13 +13,10 @@ export default function settings(state = {
         isFetching: true
       });
     case GET_WRAPPER_SUCCESS:
-      console.log("wrapper failed");
-      console.log(action.req.data);
       return Object.assign({}, state, {
         content: action.req.data
       });
     case GET_WRAPPER_FAILURE:
-      console.log("wrapper failed");
       return Object.assign({}, state, {
         isFetching: false
       });

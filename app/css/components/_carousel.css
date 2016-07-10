@@ -11,18 +11,23 @@
       padding: 15px;
     }
   }
-  .flex-control-paging {
-    top: 0;
-    bottom: auto;
-    height: 30px;
-    padding: 10px;
-    background: $lightest-grey;
-    display: none;
-  }
-  &.slider-nav {
-    padding-top: 30px;
-    .flex-control-paging {
-      display: block;
+  .flex-control-nav {
+    &.flex-control-thumbs {
+      margin: 0;
+      list-style: none;
+      text-align: center;
+      li {
+        width: 10%;
+        display: inline-block;
+        margin: 10px;
+        cursor: pointer;
+        img {
+          padding: 5px;
+        }
+        .flex-active {
+          outline: 2px solid $blue;
+        }
+      }
     }
   }
 }
