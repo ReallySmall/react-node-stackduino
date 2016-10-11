@@ -23,7 +23,7 @@ function makeWrapperRequest(method, id, data) {
   return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
 }
 
-// Fetch posts logic
+// Fetch wrapper logic
 export function fetchWrapper() {
   return {
     type: types.GET_WRAPPER,

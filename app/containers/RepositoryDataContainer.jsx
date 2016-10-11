@@ -28,8 +28,8 @@ class RepositoryDataContainer extends Component {
     return (
       <div>
         {childrenWithProps}
-        {!repoDetail && isFetching && !requestFailed && <Loading size="1g" />}
-        {!repoDetail && requestFailed && <Error size="1g" message="Couldn't connect to GitHub" />}
+        {!repoDetail && isFetching && !requestFailed && <Loading size="lg" />}
+        {!repoDetail && requestFailed && <Error size="lg" message="Couldn't connect to GitHub" />}
       </div>
     );
 

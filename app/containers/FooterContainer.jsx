@@ -13,8 +13,9 @@ export default class FooterContainer extends Component {
     const { footer } = this.props.content;
 
     return (
-      <Footer content={footer} />
+      footer && <Footer content={footer} />
     );
+
   }
 
 }
@@ -25,7 +26,7 @@ FooterContainer.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    content: state.wrapper.content
+    content: state.wrapper.content || null
   };
 }
 

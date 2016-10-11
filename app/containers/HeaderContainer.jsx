@@ -15,7 +15,7 @@ export default class HeaderContainer extends Component {
       const { route } = this.props;
 
       return (
-        <Header content={header} route={route} />
+        header && route && <Header content={header} route={route} />
       );
 
     }

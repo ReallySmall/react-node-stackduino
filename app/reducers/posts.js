@@ -44,11 +44,11 @@ export default function posts(state = {
         details: postsDetails
       });
     case GET_POST_FAILURE:
+
       return Object.assign({}, state, {
         isFetching: false,
         requestFailed: true
       });
-
 
     default:
       return state;

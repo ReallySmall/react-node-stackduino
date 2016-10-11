@@ -37,7 +37,7 @@ class PostsContainer extends Component {
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
-          <IntroBlock title="Articles" intro="Building and using Stackduino" />
+          <IntroBlock title="Articles" intro="Notes on building and using Stackduino boards. More to come!" />
           {_.map(teasers, function(teaser, i){
             return (
               <PostTeaser

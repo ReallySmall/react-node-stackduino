@@ -20,14 +20,16 @@ export default class RepositoryCommits extends Component {
         <h5 className={cx('panel-sub-header')}>Latest updates to this version</h5>
         <ul className={cx('list-group', 'repo-commits', 'plain')}>
           {_.map(repoDetail, function(commit, i){
-            return (
-              <li key={i} className={cx('list-group-item')}>
-                <span className={cx('badge')}>
-                  {moment(commit.commit.committer.date).format('MMMM Do YYYY')}
-                </span>
-                <a href={commit.commit.url}>{commit.commit.message}</a>
-              </li>
-            )
+            if(commit.commit.committer.date && commit.commit.url && commit.commit.message){
+              return (
+                <li key={i} className={cx('list-group-item')}>
+                  <span className={cx('badge')}>
+                    {moment(commit.commit.committer.date).format('MMMM Do YYYY')}
+                  </span>
+                  <a href={commit.commit.url}>{commit.commit.message}</a>
+                </li>
+              )
+            }
           })}
         </ul>
         {!repoDetail || !repoDetail.length &&

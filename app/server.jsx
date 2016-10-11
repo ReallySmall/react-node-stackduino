@@ -23,7 +23,7 @@ axios.defaults.baseURL = `http://${clientConfig.host}:${clientConfig.port}`;
  * @param head - optional arguments to be placed into the head
  */
 function renderFullPage(renderedContent, initialState, head={
-  title: 'React Webpack Node',
+  title: 'Stackduino',
   meta: '<meta name="viewport" content="width=device-width, initial-scale=1" />',
   link: '<link rel="stylesheet" href="/assets/styles/main.css"/>'
 }) {
@@ -111,7 +111,7 @@ export default function render(req, res) {
         res.end(renderFullPage("",{}));
       });
     } else {
-      res.status(404).json({"error": "404", "title": "Page not found", "description": "Oops"});
+      res.status(404).json({"error": "404", "title": "Page not found"});
     }
   });
 }

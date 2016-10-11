@@ -52,9 +52,7 @@ export default class Header extends Component {
               </div>
             </div>
           </header>
-          <Headroom pinStart={112} upTolerance={15} >
-            <Navigation route={route} />
-          </Headroom>
+          <Navigation route={route} />
       </div>
     );
 

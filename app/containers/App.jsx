@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import LegacyWarning from 'components/LegacyWarning';
 import EnableJS from 'components/EnableJS';
+import { browserHistory, Router, Route, IndexRoute, Link } from 'react-router'
 import HeaderContainer from 'containers/HeaderContainer';
 import FooterContainer from 'containers/FooterContainer';
 import CookieBanner from 'components/CookieBanner';
@@ -10,7 +11,10 @@ import 'css/main';
 import styles from 'css/main';
 import Image from 'components/Image';
 
+import { fetchWrapper } from 'actions/wrapper';
+
 const cx = classNames.bind(styles);
+
 
 /*
  * React-router's <Router> component renders <Route>'s
@@ -21,21 +25,29 @@ const cx = classNames.bind(styles);
  * A better explanation of react-router is available here:
  * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
  */
-const App = ({children}) => {
+const App = ({children, location}) => {
+
+  //Data that needs to be called before rendering the component
+  //This is used for server side rending via the fetchComponentDataBeforeRending() method
+  const need = [
+    fetchWrapper
+  ];
+
+  console.log(location);
+
   return (
     <div>
       <HeaderContainer />
-      	<div className={cx('view-container')}>
-	        <ReactCSSTransitionGroup
-			    component="div"
-			    transitionName="page"
-			    transitionEnterTimeout={10}
-			    transitionLeaveTimeout={10}
-	      	>
-		        {React.cloneElement(children, {
-		          key: Math.random()
-		        })}
-     		</ReactCSSTransitionGroup>
+      <div className={cx('view-container')}>
+        <ReactCSSTransitionGroup 
+          component="div"
+          transitionName="animate-down" 
+          transitionEnterTimeout={500} 
+          transitionLeaveTimeout={500}>
+            {React.cloneElement(children, {
+              key: location.pathname
+            })}
+        </ReactCSSTransitionGroup>
      	</div>
       <FooterContainer />
     </div>

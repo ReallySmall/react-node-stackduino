@@ -52,6 +52,16 @@ var postCSSConfig = function() {
     require('postcss-simple-vars')(),
     // Unwrap nested rules like how Sass does it
     require('postcss-nested')(),
+    // convert units to rems
+    require('postcss-pxtorem')({
+      rootValue: 16,
+      unitPrecision: 5,
+      propWhiteList: [],
+      selectorBlackList: [],
+      replace: true,
+      mediaQuery: false,
+      minPixelValue: 3
+    }),
     //  parse CSS and add vendor prefixes to CSS rules
     require('autoprefixer')({
       browsers: ['last 2 versions', 'IE > 8']

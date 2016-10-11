@@ -44,7 +44,7 @@ export default class GalleryContainer extends Component {
 			  {images && 
 	    		<Gallery images={images} />
 	    	}
-        {!isFetching && 
+        {!isFetching && !requestFailed &&
           page + 1 <= pages && 
           <p><a href="#" onClick={this.loadMore}>Load more <Icon name="arrow-circle-down" /></a></p>
         }

@@ -47,9 +47,9 @@ export default class Gallery extends Component {
       <section className={cx('row')}>
         <Masonry
           className={cx('plain', 'gallery')}
-          elementType={'ul'}
-          options={masonryOptions}
-          disableImagesLoaded={false}
+          //elementType={'ul'}
+          //options={masonryOptions}
+          //disableImagesLoaded={false}
         >
           {photos}
         </Masonry>

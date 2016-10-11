@@ -18,26 +18,26 @@ export default class PostTeaser extends Component {
 
     const { title, slug, intro, publishedDate, categories, primaryImage } = this.props;
 
-    console.log(this.props);
-
     return (
 
       <section>
-        <div className={cx('inset-wrapper', 'col-sm-12')}>
+        <div className={cx('inset-wrapper')}>
           <div className={cx('panel')}>
-            <div className={cx('col-md-9')}>
-              <div className={cx('clearfix', 'teaser-header')}>
-                <h2>
-                  <Link to={'/articles/' + slug}>{title}</Link>
-                </h2>
-                <DateBlock date={publishedDate} />
+            <div className={cx('row')}>
+              <div className={cx('col-md-9')}>
+                <div className={cx('clearfix', 'teaser-header')}>
+                  <h2>
+                    <Link to={'/articles/' + slug}>{title}</Link>
+                  </h2>
+                  <DateBlock date={publishedDate} />
+                </div>
+                {<p dangerouslySetInnerHTML={{ __html: intro || '' }} />}
               </div>
-              {<p dangerouslySetInnerHTML={{ __html: intro || '' }} />}
-            </div>
-            <div className={cx('col-md-3')}>
-              {primaryImage && <Link to={'/articles/' + slug} className={cx('image-link')}>
-                <Image src={primaryImage.url} alt="" ratio={(primaryImage.height / primaryImage.width) * 100} />
-              </Link>}
+              <div className={cx('col-md-3')}>
+                {primaryImage && <Link to={'/articles/' + slug} className={cx('image-link')}>
+                  <Image src={primaryImage.url} alt="" ratio={(primaryImage.height / primaryImage.width) * 100} />
+                </Link>}
+              </div>
             </div>
           </div>
         </div>
