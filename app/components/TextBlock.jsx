@@ -15,7 +15,7 @@ export default class TextBlock extends Component {
     const { content } = this.props;
 
     return (
-      <section className={cx('col-md-12')}>
+      <section>
         <div dangerouslySetInnerHTML={{ __html: content || '' }} />
       </section>
     );

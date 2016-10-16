@@ -14,10 +14,12 @@ export default class ImageBlock extends Component {
 
   render(){
 
-    const { images } = this.props;
+    const { images, captions } = this.props;
+    
     let imageBlock = null;
+    let showCaptions = captions === 'false' ? false : true;
 
-    if(_.isArray(images)){
+    if(_.isArray(images) && images.length){
 
       imageBlock = _.map(images, function(imageData, i){
         
@@ -29,7 +31,7 @@ export default class ImageBlock extends Component {
             <div className={cx('inset-wrapper')}>
               <figure>
                 <Image src={imageData.image.url} alt={imageData.title} ratio={imageData.image.ratio}/>
-                {imageData.caption && <figcaption dangerouslySetInnerHTML={{ __html: imageData.caption || '' }} />}
+                {showCaptions && imageData.caption && <figcaption dangerouslySetInnerHTML={{ __html: imageData.caption || '' }} />}
               </figure>
             </div>
           </div>
@@ -37,21 +39,19 @@ export default class ImageBlock extends Component {
 
       });
 
-    } else {
+    } else if(images.url && images.height && images.width){
 
-      console.log(images);
-
-      const ratio = (images.height / images.width) * 100;
-      
-      imageBlock = 
-        <div className={cx('col-md-12')}>
-          <div className={cx('inset-wrapper')}>
-            <figure>
-              <Image src={images.url} alt={images.title} ratio={ratio}/>
-              {images.caption && <figcaption dangerouslySetInnerHTML={{ __html: images.caption || '' }} />}
-            </figure>
+        const ratio = (images.height / images.width) * 100;
+        
+        imageBlock = 
+          <div className={cx('col-md-12')}>
+            <div className={cx('inset-wrapper')}>
+              <figure>
+                <Image src={images.url} alt={images.title} ratio={ratio}/>
+                {showCaptions && images.caption && <figcaption dangerouslySetInnerHTML={{ __html: images.caption || '' }} />}
+              </figure>
+            </div>
           </div>
-        </div>
 
     }
 
@@ -64,7 +64,3 @@ export default class ImageBlock extends Component {
   }
 
 }
-
-ImageBlock.propTypes = {
-  images: PropTypes.array.isRequired
-};

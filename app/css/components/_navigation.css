@@ -19,16 +19,16 @@
     list-style-type: none;
     li {
       padding: 0;
-      border-right: 6px solid #dddddd;
-      &:first-child {
-        border-left: 6px solid #dddddd;
-      }
       .preface-block {
         color: $grey;
         display: block;
         text-align: center;
         text-decoration: none;
         padding: 15px;
+        border-top: 3px solid #dddddd;
+        &:first-child {
+          border-top: none;
+        }
         &.active {
           background: $white;
         }
@@ -49,15 +49,15 @@
 
 @media (min-width: 768px) {
 
-  .headroom {
-    z-index: 5000 !important;
-  }
-
-  #preface-area {
-    .preface-block {
-      border-right: 6px solid #dddddd;
-      &:first-child {
-        border-left: 6px solid #dddddd;
+  .preface-area {
+    ul {
+      li {
+        .preface-block {
+          border-right: 6px solid #dddddd;
+          &:first-child {
+            border-left: 6px solid #dddddd;
+          }
+        }
       }
     }
   }

@@ -22,7 +22,7 @@ const config = {
     { 'rel': 'icon', 'sizes': '192x192', 'href': chromecon },
     // Add to homescreen for Safari on IOS
     { 'rel': 'apple-touch-icon', 'sizes': '152x152', applecon },
-    { 'rel': 'stylesheet', 'href': 'https://fonts.googleapis.com/css?family=Roboto+Condensed', 'type': 'text/css' },
+    { 'rel': 'stylesheet', 'href': 'https://fonts.googleapis.com/css?family=Economica:700', 'type': 'text/css' },
     { 'rel': 'stylesheet', 'href': '/assets/styles/main.css' }
     // SEO: If your mobile URL is different from the desktop URL,
     // add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones
@@ -43,7 +43,7 @@ const config = {
     // Add to homescreen for Safari on IOS
     { 'name': 'apple-mobile-web-app-capable', 'content': 'yes' },
     { 'name': 'apple-mobile-web-app-status-bar-style', 'content': 'black' },
-    { 'name': 'apple-mobile-web-app-title', 'content': 'React Webpack Node' },
+    { 'name': 'apple-mobile-web-app-title', 'content': 'Stackduino' },
     // Tile icon for Win8 (144x144 + tile color)
     { 'name': 'msapplication-TileImage', 'content': mscon },
     { 'name': 'msapplication-TileColor', 'content': '#3372DF' }

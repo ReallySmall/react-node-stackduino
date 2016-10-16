@@ -65,14 +65,14 @@ export default class Carousel extends Component {
                         <ul className={cx('slides', 'plain', 'no-list-style')}>
                           {_.map(images, function(image, i){
         
-                            const height = parseInt(image.height);
-                            const width = parseInt(image.width);
+                            const height = parseInt(image.image.height);
+                            const width = parseInt(image.image.width);
                             const ratio = (height / width) * 100;
 
 	                          return (
-	                            <li key={i} data-thumb={image.url}>
+	                            <li key={i} data-thumb={image.image.url}>
 	                                <figure>
-	                                  <Image src={image.url} alt="" ratio={ratio}/>
+	                                  <Image src={image.image.url} alt="" ratio={ratio}/>
 	                                </figure>
 	                            </li>
 	                          );

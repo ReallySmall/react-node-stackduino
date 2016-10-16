@@ -21,22 +21,18 @@ export default class Board extends Component {
 
     const { title, boardStatus, developedDate, content, images, repoUrl, repoUserName, repoName, specification } = this.props;
 
-    console.log(this.props);
-
     return (
       <div className={cx('row')}>
         <div className={cx('col-sm-7')}>
           <article>
             <h1>{title}</h1>
-            <BoardStatus status={boardStatus} />
-            <DateBlock text="Development started" date={developedDate} />
-            <div className={cx('row')}>
-              <TextBlock content={content.brief} />
+            <div className={cx('clearfix')}>
+              <BoardStatus status={boardStatus} />
+              <DateBlock text="Development started" date={developedDate} />
             </div>
-            <Carousel images={images} />
-            <div className={cx('row')}>
-              <TextBlock content={content.extended} />
-            </div>
+            <TextBlock content={content.brief} />
+            <Carousel images={images.slot1} />
+            <TextBlock content={content.extended} />
           </article>
         </div>
         <div className={cx('col-sm-5')}>
@@ -44,7 +40,7 @@ export default class Board extends Component {
             <div className={cx('inset-wrapper')}>
               <section className={cx('panel', 'repository-link')}>
                 <h3 className={cx('panel-header')}>Project files</h3>
-                <RepositoryBlock repoUrl={repoUrl} repoUserName={repoUserName} repoName={repoName} /> 
+                <RepositoryBlock repoUrl={repoUrl} repoUserName={repoUserName} repoName={repoName} />
               </section>
             </div>
             <div className={cx('inset-wrapper')}>

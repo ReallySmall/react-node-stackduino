@@ -8,7 +8,7 @@ var Posts = keystone.list('Post').model;
  * List
  */
 exports.all = function(req, res) {
-  Posts.find({}).exec(function(err, posts) {
+  Posts.find({}).populate('images.slot1 images.slot2').exec(function(err, posts) {
     if(!err) {
       res.json(posts);
     }else {
@@ -22,7 +22,7 @@ exports.all = function(req, res) {
  */
 exports.byId = function(req, res) {
   var slug = req.params.slug;
-  Posts.findOne({slug: slug}).exec(function(err, post) {
+  Posts.findOne({slug: slug}).populate('images.slot1 images.slot2').exec(function(err, post) {
     if(!err) {
       res.json(post);
     }else {

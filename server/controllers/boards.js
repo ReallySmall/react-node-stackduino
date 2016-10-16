@@ -20,6 +20,7 @@ exports.all = function(req, res) {
       'content.brief': 1,
       'images' : 1
     })
+    .populate('images.slot1 images.slot2')
     .exec(function(err, boards) {
       if(!err) {
         res.json(boards);
@@ -34,7 +35,9 @@ exports.all = function(req, res) {
  */
 exports.byId = function(req, res) {
   var slug = req.params.slug;
-  Board.findOne({slug: slug}).exec(function(err, board) {
+  Board.findOne({slug: slug})
+    .populate('images.slot1 images.slot2')
+    .exec(function(err, board) {
     if(!err) {
       res.json(board);
     }else {

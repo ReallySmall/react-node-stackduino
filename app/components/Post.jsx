@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import _ from 'underscore';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-detail';
 import DateBlock from 'components/DateBlock';
@@ -14,18 +15,7 @@ export default class Post extends Component {
 
   render() {
 
-    const { title, publishedDate, content, categories, primaryImage } = this.props;
-
-    let categoriesElement = [];
-
-    for(let i = 0; i < categories.length; i++){
-      let category = categories[i];
-      categoriesElement.push(
-        <li>
-          <a href="#" title={"Find all posts tagged with" + category}>{category}</a>
-        </li>
-      );
-    }
+    const { title, publishedDate, content, categories, images } = this.props;
 
     return (
       <article className={cx('row')}>
@@ -41,9 +31,15 @@ export default class Post extends Component {
         </div>
         <div className={cx('col-sm-4', 'aside')}>
           <aside>
-            <ImageBlock images={primaryImage} />
+            <ImageBlock images={images.slot1} />
             <ul className={cx('tags')}>
-              {categoriesElement}
+              {_.map(categories, function(category, i){
+                return (
+                  <li>
+                    <a href="#" title={"Find all posts tagged with" + category}>{category}</a>
+                  </li>
+                );
+              })}
             </ul>
           </aside>
         </div>

@@ -32,11 +32,16 @@ function renderFullPage(renderedContent, initialState, head={
     <html lang="">
 
     <head>
-        ${head.title}
-
-        ${head.meta}
-
-        ${head.link}
+      ${head.title}
+      ${head.meta}
+      ${head.link}
+      <noscript>
+        <style>
+          .no-script-hide {
+            display: none;
+          }
+        </style>
+      </noscript>
     </head>
     <body>
     <div id="app" style="height: 100%">${renderedContent}</div>

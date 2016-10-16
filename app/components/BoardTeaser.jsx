@@ -54,8 +54,10 @@ export default class BoardTeaser extends Component {
                   <h2>
                     <Link to={'/boards/' + slug}>{title}</Link>
                   </h2>
-                  <BoardStatus status={status} />
-                  <DateBlock text={dateText} date={developedDate} />
+                  <div className={cx('clearfix')}>
+                    <BoardStatus status={status} />
+                    <DateBlock text={dateText} date={developedDate} />
+                  </div>
                 </div>
                 {!closed && <p dangerouslySetInnerHTML={{ __html: intro || '' }} />}
               </div>

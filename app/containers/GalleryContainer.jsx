@@ -16,15 +16,6 @@ export default class GalleryContainer extends Component {
 
   constructor(props) {
     super(props);
-    this.loadMore = this.loadMore.bind(this)
-  };
-
-  loadMore(event){
-    event.preventDefault();
-    const { dispatch, page, pages } = this.props;
-    if(page + 1 <= pages){
-      dispatch ( fetchGalleryImages(page + 1) );
-    }
   };
 
   componentWillMount() {
@@ -36,19 +27,13 @@ export default class GalleryContainer extends Component {
 
   render() {
 
-    const { images, page, pages, isFetching, requestFailed } = this.props;
+    const { isFetching, requestFailed } = this.props;
 
     return (
-    	<Page isFetching={isFetching} fetchingMessage="Fetching images from Flickr" requestFailed={requestFailed} requestFailedMessage="Failed to load gallery images from Flickr">
-    		<IntroBlock title="Gallery" intro="Images of, and taken by, Stackduino controllers on Flickr." />
-			  {images && 
-	    		<Gallery images={images} />
-	    	}
-        {!isFetching && !requestFailed &&
-          page + 1 <= pages && 
-          <p><a href="#" onClick={this.loadMore}>Load more <Icon name="arrow-circle-down" /></a></p>
-        }
-    	</Page>
+      <Page isFetching={isFetching} fetchingMessage="Fetching images from Flickr" requestFailed={requestFailed} requestFailedMessage="Failed to load gallery images from Flickr">
+        <IntroBlock title="Gallery" intro="Images of, and taken by, Stackduino controllers on Flickr." />
+        <Gallery {...this.props} />
+      </Page>
     );
 
   }

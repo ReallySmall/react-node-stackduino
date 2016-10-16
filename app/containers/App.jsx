@@ -33,15 +33,13 @@ const App = ({children, location}) => {
     fetchWrapper
   ];
 
-  console.log(location);
-
   return (
     <div>
       <HeaderContainer />
       <div className={cx('view-container')}>
         <ReactCSSTransitionGroup 
           component="div"
-          transitionName="animate-down" 
+          transitionName="fade" 
           transitionEnterTimeout={500} 
           transitionLeaveTimeout={500}>
             {React.cloneElement(children, {

@@ -16,7 +16,7 @@ export default class RepositoryCommits extends Component {
     const { repoDetail } = this.props;
 
     return (
-      <div className={cx('commit-list', 'clearfix')}>
+      <div className={cx('commit-list', 'clearfix', 'no-script-hide')}>
         <h5 className={cx('panel-sub-header')}>Latest updates to this version</h5>
         <ul className={cx('list-group', 'repo-commits', 'plain')}>
           {_.map(repoDetail, function(commit, i){

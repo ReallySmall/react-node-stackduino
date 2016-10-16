@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import styles from 'css/components/_article-teaser';
 import DateBlock from 'components/DateBlock';
 import { Link } from 'react-router';
-import Image from 'components/Image';
+import ImageBlock from 'components/ImageBlock';
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +16,7 @@ export default class PostTeaser extends Component {
 
   render() {
 
-    const { title, slug, intro, publishedDate, categories, primaryImage } = this.props;
+    const { title, slug, intro, publishedDate, categories, images } = this.props;
 
     return (
 
@@ -34,9 +34,9 @@ export default class PostTeaser extends Component {
                 {<p dangerouslySetInnerHTML={{ __html: intro || '' }} />}
               </div>
               <div className={cx('col-md-3')}>
-                {primaryImage && <Link to={'/articles/' + slug} className={cx('image-link')}>
-                  <Image src={primaryImage.url} alt="" ratio={(primaryImage.height / primaryImage.width) * 100} />
-                </Link>}
+                <Link to={'/articles/' + slug} className={cx('image-link')}>
+                  <ImageBlock images={images.slot1} captions="false" />
+                </Link>
               </div>
             </div>
           </div>

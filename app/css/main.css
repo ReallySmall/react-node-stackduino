@@ -63,6 +63,13 @@ body {
   }
 }
 
+#app {
+  height: 100%;
+  & > div {
+    min-height: 80%;
+  }
+}
+
 .view-container {
   min-height: 100%;
   overflow: hidden;
@@ -84,6 +91,9 @@ body {
 
 .request-failed-container {
   background: antiquewhite !important;
+  .container {
+    background: antiquewhite !important;
+  }
 }
 
 /* Links */
@@ -273,12 +283,6 @@ a:focus {
   outline: 0;
 }
 
-a {
-  &:hover, &:focus, &:active {
-    transition: 0.3s all;
-  }
-}
-
 ul {
   &.no-list-style, &.plain {
     margin: 0;
@@ -342,6 +346,17 @@ ul {
   font-size: 4em;
   color: $light-grey;
   text-align: center;
+}
+
+.load-more {
+  margin: 10px 0px;
+  a {
+    font-size: 1.2em;
+    color: $light-grey;
+    &:hover, &:focus {
+      color: $black;
+    }
+  }
 }
 
 #main-content {
@@ -499,6 +514,17 @@ figcaption {
   word-spacing: 9999px;
 }
 
+noscript {
+  p {
+    color: $red;
+    padding: 5px 10px;
+    border: 1px dotted $red;
+    float: left;
+    clear: both;
+    margin: 0;
+  }
+}
+
 .animate-down-enter {
   transform: translate(100%);
 }
@@ -515,4 +541,22 @@ figcaption {
 .animate-down-leave.animate-down-leave-active {
   transform: translate(-100%);
   transition: transform 1000ms ease-in-out;
+}
+
+.fade-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+}
+
+.fade-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0;
 }

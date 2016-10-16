@@ -47,7 +47,7 @@ class PostsContainer extends Component {
                 slug={teaser.slug} 
                 intro={teaser.content.brief}
                 categories={teaser.categories}
-                primaryImage={teaser.primaryImage} />
+                images={teaser.images} />
             );
           })} 
         </Page>

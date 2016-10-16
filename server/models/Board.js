@@ -39,8 +39,10 @@ Board.add({
     		htmlClass: 'board-closed-proto' 
     	}
 	]},
-    primaryImage:  { type: Types.CloudinaryImage }, 
-	images: { type: Types.CloudinaryImages },
+    images: {
+        slot1: { type: Types.Relationship, ref: 'Image', many: true },
+        slot2: { type: Types.Relationship, ref: 'Image', many: true }
+    },
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 }

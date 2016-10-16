@@ -41,7 +41,7 @@ export default class FlickrCarousel extends Component {
           slideshowSpeed: 10000,
           pauseOnHover: true,
           controlNav: false,
-          directionNav: false
+          customDirectionNav: $(this.refs.flexslider).find('.js-ui-carousel-controls a')
         });
       this.setState({carouselInitialised: true});
     } 
@@ -69,7 +69,7 @@ export default class FlickrCarousel extends Component {
 
     if(!isFetching && !requestFailed && images && images.length){
 
-      sliderElement = <div ref="flexslider" className={cx('js-flexslider', 'carousel')}>
+      sliderElement = <div ref="flexslider" className={cx('js-flexslider', 'carousel', 'no-script-hide')}>
                         <ul className={cx('slides', 'plain', 'no-list-style')}>
                           {_.map(images, function(image, i){
         
@@ -97,7 +97,7 @@ export default class FlickrCarousel extends Component {
 
                           })}  
                         </ul>                        
-                        <ul className={cx('plain')}>
+                        <ul ref="flexsliderControls" className={cx('plain', 'js-ui-carousel-controls')}>
                           <li>
                             <a href="#" className={cx('slide-cover', 'slide-cover-left', 'flex-prev')}>
                               <span className={cx('fa', 'fa-arrow-circle-left')}></span>

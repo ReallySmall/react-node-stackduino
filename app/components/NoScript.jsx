@@ -1,0 +1,22 @@
+import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames/bind';
+import styles from 'css/components/_board-detail';
+
+const cx = classNames.bind(styles);
+
+export default class NoScript extends Component {
+
+  constructor(props) {
+    super(props);
+  };
+
+  render() {
+
+    return (
+      <noscript>
+        <p>This bit needs JavaScript enabled to work</p>
+      </noscript>
+    );
+
+  }
+};

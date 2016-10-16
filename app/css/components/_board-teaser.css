@@ -6,12 +6,21 @@
 }
 
 .proto-indicator {
-  &:before {
-    font-size: 6em;
-    color: $lightest-grey;
-  }
+  display: none;
 }
 
 .hidden {
   display: none;
+}
+
+@media (min-width: 768px) {
+
+	.proto-indicator {
+		display: block;
+		&:before {
+		font-size: 6em;
+		color: $lightest-grey;
+		}
+	}
+
 }

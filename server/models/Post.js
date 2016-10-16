@@ -16,8 +16,10 @@ Post.add({
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
-	primaryImage: { type: Types.CloudinaryImage },
-	images:  { type: Types.CloudinaryImages }, 
+    images: {
+        slot1: { type: Types.Relationship, ref: 'Image', many: true },
+        slot2: { type: Types.Relationship, ref: 'Image', many: true }
+    }, 
 	content: {
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 }
