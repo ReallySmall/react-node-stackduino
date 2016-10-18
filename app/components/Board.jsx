@@ -30,9 +30,9 @@ export default class Board extends Component {
               <BoardStatus status={boardStatus} />
               <DateBlock text="Development started" date={developedDate} />
             </div>
-            <TextBlock content={content.brief} />
+            {content && content.brief && <TextBlock content={content.brief} />}
             <Carousel images={images.slot1} />
-            <TextBlock content={content.extended} />
+            {content && content.extended && <TextBlock content={content.extended} />}
           </article>
         </div>
         <div className={cx('col-sm-5')}>

@@ -63,16 +63,16 @@ export default class Carousel extends Component {
 
       sliderElement = <div ref="flexslider" className={cx('js-flexslider', 'carousel')}>
                         <ul className={cx('slides', 'plain', 'no-list-style')}>
-                          {_.map(images, function(image, i){
+                          {_.map(images, function(item, i){
         
-                            const height = parseInt(image.image.height);
-                            const width = parseInt(image.image.width);
+                            const height = parseInt(item.image.height);
+                            const width = parseInt(item.image.width);
                             const ratio = (height / width) * 100;
 
 	                          return (
-	                            <li key={i} data-thumb={image.image.url}>
+	                            <li key={i} data-thumb={item.image.url}>
 	                                <figure>
-	                                  <Image src={image.image.url} alt="" ratio={ratio}/>
+	                                  <Image src={item.image.url} alt={item.alt} ratio={ratio}/>
 	                                </figure>
 	                            </li>
 	                          );

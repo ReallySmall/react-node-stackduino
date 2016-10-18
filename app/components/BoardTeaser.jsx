@@ -41,7 +41,7 @@ export default class BoardTeaser extends Component {
     const colWidth = !closed ? 'col-sm-9' : 'col-sm-12';
     const thumbNailDisplay = !closed ? 'col-sm-3' : 'hidden';
     const dateText = status === 0 ? 'Development started' : 'Development completed';
-    const img = images.length ? images[0] : null;
+    const img = images.slot1;
 
     return (
       <section className={cx('board', statuses[status].htmlClass)}>
@@ -62,8 +62,8 @@ export default class BoardTeaser extends Component {
                 {!closed && <p dangerouslySetInnerHTML={{ __html: intro || '' }} />}
               </div>
               <div className={cx(thumbNailDisplay)}>
-                {img && <Link to={'/boards/' + slug} className={cx('image-link')}>
-                  <Image src={img.url} alt="" ratio={(img.height / img.width) * 100} />
+                {img.length && <Link to={'/boards/' + slug} className={cx('image-link')}>
+                  <Image src={img[0].image.url} alt={img[0].alt} ratio={(img[0].image.height / img[0].image.width) * 100} />
                 </Link>}
               </div>
             </div>
@@ -79,6 +79,5 @@ BoardTeaser.propTypes = {
   title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   status: PropTypes.number.isRequired,
-  intro: PropTypes.string.isRequired,
-  images: PropTypes.array.isRequired
+  intro: PropTypes.string.isRequired
 };

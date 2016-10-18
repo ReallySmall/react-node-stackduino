@@ -30,7 +30,7 @@ export default class ImageBlock extends Component {
           <div key={i} className={cx('col-md-' + colWidth)}>
             <div className={cx('inset-wrapper')}>
               <figure>
-                <Image src={imageData.image.url} alt={imageData.title} ratio={imageData.image.ratio}/>
+                <Image src={imageData.image.url} alt={imageData.alt} ratio={imageData.image.ratio}/>
                 {showCaptions && imageData.caption && <figcaption dangerouslySetInnerHTML={{ __html: imageData.caption || '' }} />}
               </figure>
             </div>
@@ -47,7 +47,7 @@ export default class ImageBlock extends Component {
           <div className={cx('col-md-12')}>
             <div className={cx('inset-wrapper')}>
               <figure>
-                <Image src={images.url} alt={images.title} ratio={ratio}/>
+                <Image src={images.url} alt={images.alt} ratio={ratio}/>
                 {showCaptions && images.caption && <figcaption dangerouslySetInnerHTML={{ __html: images.caption || '' }} />}
               </figure>
             </div>

@@ -8,11 +8,12 @@ var Types = keystone.Field.Types;
 
 var Board = new keystone.List('Board', {
 	map: { name: 'title' },
-	autokey: { path: 'slug', from: 'title', unique: true }
+	autokey: { path: 'slug', from: 'path', unique: true }
 });
 
 Board.add({
 	title: { type: String, required: true },
+    path: { type: String, required: true, initial: true },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	developedDate: { type: Types.Date, index: true },
 	version: { type: Types.Number },

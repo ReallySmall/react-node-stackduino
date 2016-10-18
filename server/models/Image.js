@@ -14,7 +14,8 @@ var Image = new keystone.List('Image', {
 Image.add({
 	title: { type: String, required: true },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
-    image:  { type: Types.CloudinaryImage }, 
+    image:  { type: Types.CloudinaryImage },
+    alt:  { type: String, required: true, initial: false }, 
     caption: { type: Types.Html, wysiwyg: true, height: 150 },
 	link: { type: Types.Url }
 });
