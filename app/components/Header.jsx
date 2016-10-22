@@ -5,6 +5,7 @@ import classNames from 'classnames/bind';
 import styles from 'css/components/_header';
 import { Link } from 'react-router';
 import Navigation from 'components/Navigation';
+import LegacyWarning from 'components/LegacyWarning';
 
 const cx = classNames.bind(styles);
 
@@ -22,6 +23,7 @@ export default class Header extends Component {
     return (
       <div className={cx('header-container')}>
           <header className={cx('site-header')}>
+            <LegacyWarning />
             <div className={cx('container')}>
               <div className={cx('row')}>
                 <Link to={'/'} id="logo" className={cx('site-branding')}>

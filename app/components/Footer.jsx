@@ -12,7 +12,7 @@ export default class Footer extends Component {
     const { col1, col2, col3 } = this.props.content;
 
     return (
-      <footer className={cx('footer')}>
+      <footer className={cx('footer', 'js-ui-sticky-footer')}>
         <div className={cx('container')}>
           <div className={cx('row')}>
             <ul className={cx('plain', 'clearfix', 'link-block-container')}>

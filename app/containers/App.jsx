@@ -5,6 +5,7 @@ import EnableJS from 'components/EnableJS';
 import { browserHistory, Router, Route, IndexRoute, Link } from 'react-router'
 import HeaderContainer from 'containers/HeaderContainer';
 import FooterContainer from 'containers/FooterContainer';
+import UIScripts from 'ui';
 import CookieBanner from 'components/CookieBanner';
 import classNames from 'classnames/bind';
 import 'css/main';

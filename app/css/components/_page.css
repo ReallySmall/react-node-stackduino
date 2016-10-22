@@ -1,9 +1,9 @@
 @import '../main.css';
 
 .page {
-  .container {
-    padding: 25px 0;
-    background: whitesmoke;
-    overflow: hidden;
-  }
+	.container {
+		padding: 25px 0;
+		background: whitesmoke;
+		overflow: hidden;
+	}
 }

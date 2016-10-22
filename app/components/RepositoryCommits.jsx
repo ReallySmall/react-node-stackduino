@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import _ from 'underscore';
-import moment from 'moment';
+//import moment from 'moment';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_repository-commits';
 
@@ -24,7 +24,7 @@ export default class RepositoryCommits extends Component {
               return (
                 <li key={i} className={cx('list-group-item')}>
                   <span className={cx('badge')}>
-                    {moment(commit.commit.committer.date).format('MMMM Do YYYY')}
+                    //{moment(commit.commit.committer.date).format('MMMM Do YYYY')}
                   </span>
                   <a href={commit.commit.url}>{commit.commit.message}</a>
                 </li>

@@ -4,7 +4,6 @@ import styles from 'css/components/_repository-link';
 import Icon from 'react-fa';
 import RepositoryDataContainer from 'containers/RepositoryDataContainer';
 import RepositoryCommits from 'components/RepositoryCommits';
-import RepositoryIssues from 'components/RepositoryIssues';
 
 const cx = classNames.bind(styles);
 

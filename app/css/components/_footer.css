@@ -1,6 +1,9 @@
 @import '../main.css';
 
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   text-align: left;
   background: #292929;
   font-size: 12px;

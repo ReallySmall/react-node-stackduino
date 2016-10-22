@@ -54,7 +54,9 @@
       li {
         .preface-block {
           border-right: 6px solid #dddddd;
-          &:first-child {
+        }
+        &:first-child {
+          .preface-block {
             border-left: 6px solid #dddddd;
           }
         }

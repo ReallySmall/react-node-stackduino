@@ -32,7 +32,7 @@ export default class Homepage extends Component {
                         </div>
     } else {
       homepageContent = <div>
-                          <section>
+                          <section className={cx('no-script-hide')}>
                             <FlickrCarousel 
                               images={featureImages.images} 
                               isFetching={featureImages.isFetching} 

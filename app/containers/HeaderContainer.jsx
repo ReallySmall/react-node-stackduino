@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'components/Header';
-import Navigation from 'components/Navigation';
 
 export default class HeaderContainer extends Component {
 
