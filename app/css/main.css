@@ -66,27 +66,28 @@ body {
 #app {
   min-height: 100%;
   position: relative;
-  padding-bottom: 200px;
+  overflow: hidden;
   & > div {
     min-height: 100%;
   }
 }
 
 .view-container {
-  overflow: hidden;
-  & > div {
-    min-height: 100%;
-    background: $blue;
-    position: relative;
-    .view {
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: $blue;
-      & > .container {
-        background: whitesmoke;
-      }
+  overflow: visible;
+  min-height: 100%;
+  background: $blue;
+  position: relative;
+  .page-backing {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: -400%;
+    .container {
+      height: 500%;
     }
+  }
+  .container {
+    background: whitesmoke;
   }
 }
 
@@ -266,6 +267,9 @@ p a, p a:visited {
 
 a:link {
   text-decoration: none;
+  &:focus {
+    text-decoration: underline;
+  }
 }
 
 a:focus {

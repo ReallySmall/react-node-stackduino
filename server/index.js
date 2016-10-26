@@ -72,8 +72,6 @@ mongoose.connection.on('disconnected', connect);
 
 var isDev = process.env.NODE_ENV === 'development';
 
-console.log("isDev", isDev);
-
 if (isDev) {
   var config = require('../webpack/webpack.config.dev-client.js');
   var compiler = webpack(config);

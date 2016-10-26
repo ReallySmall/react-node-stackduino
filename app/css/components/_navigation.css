@@ -1,9 +1,5 @@
 @import '../main.css';
 
-.headroom {
-  z-index: 5000 !important;
-}
-
 .preface-area {
   position: relative;
   z-index: 5;
@@ -35,8 +31,9 @@
         &:hover, &:focus, &:active {
             text-decoration: underline;
           }
-          h2 {
+          h3 {
             margin: 0;
+            font-size: 26px;
           }
           .fa {
             color: $orange;

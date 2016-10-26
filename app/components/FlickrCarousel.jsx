@@ -70,6 +70,7 @@ export default class FlickrCarousel extends Component {
     if(!isFetching && !requestFailed && images && images.length){
 
       sliderElement = <div ref="flexslider" className={cx('js-flexslider', 'carousel', 'no-script-hide')}>
+                        <h3 className="visually-hidden">Images from Flickr</h3>
                         <ul className={cx('slides', 'plain', 'no-list-style')}>
                           {_.map(images, function(image, i){
         

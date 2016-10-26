@@ -34,7 +34,7 @@ export default class RepositoryBlock extends Component {
           </div>
         }
         {!repoUrl &&
-          <h4>No files available for this project</h4>
+          <p className={cx('plain')}>No files available for this project</p>
         }
       </div>
     );

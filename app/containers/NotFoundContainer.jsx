@@ -25,9 +25,8 @@ class NotFoundContainer extends Component {
 
 	  	return (
         <Page>
-          <h1>404</h1>
-          <p><span className={cx('fa', 'fa-warning', 'fa-4x')}></span></p>
-          <p>Sorry, this page doesn't exist. Perhaps it was moved or deleted.</p>
+          <h1><span className={cx('fa', 'fa-warning')}></span> Not Found</h1>
+          <p>Sorry, this content doesn't exist.</p>
           <p><a href="/">Back to home</a>.</p>
         </Page>
 	  	);

@@ -37,11 +37,11 @@ export default class BoardTeaser extends Component {
       }
     ];
 
+    const img = images.slot1;
     const closed = status === 2 ? true : false;
     const colWidth = !closed ? 'col-sm-9' : 'col-sm-12';
-    const thumbNailDisplay = !closed ? 'col-sm-3' : 'hidden';
+    const thumbNailDisplay = !closed || !img.length ? 'col-sm-3' : 'hidden';
     const dateText = status === 0 ? 'Development started' : 'Development completed';
-    const img = images.slot1;
 
     return (
       <section className={cx('board', statuses[status].htmlClass)}>
@@ -51,15 +51,15 @@ export default class BoardTeaser extends Component {
             <div className={cx('row')}>
               <div className={cx(colWidth)}>
                 <div className={cx('clearfix', 'teaser-header')}>
-                  <h2>
+                  <h3>
                     <Link to={'/boards/' + slug}>{title}</Link>
-                  </h2>
+                  </h3>
                   <div className={cx('clearfix')}>
                     <BoardStatus status={status} />
                     <DateBlock text={dateText} date={developedDate} />
                   </div>
                 </div>
-                {!closed && <p dangerouslySetInnerHTML={{ __html: intro || '' }} />}
+                {!closed && <div dangerouslySetInnerHTML={{ __html: intro || '' }} />}
               </div>
               <div className={cx(thumbNailDisplay)}>
                 {img.length && <Link to={'/boards/' + slug} className={cx('image-link')}>

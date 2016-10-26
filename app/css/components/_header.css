@@ -29,10 +29,10 @@
       float: left;
     }
     &:hover, &:focus, &:active {
-      .siteTitle { 
+      .site-title, .fa-camera { 
         color: $white;
         text-decoration: none;
-      } 
+      }
     }
   }
   .site-slogan {

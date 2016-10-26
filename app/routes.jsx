@@ -18,7 +18,7 @@ export default (store) => {
       <Route path="articles" component={PostsContainer} />
       <Route path="articles/:slug" component={PostContainer} />
       <Route path="gallery" component={GalleryContainer} />
-      <Route path='*' component={NotFoundContainer} />
+      <Route path='*' component={NotFoundContainer} status={404} />
     </Route>
   );
 };

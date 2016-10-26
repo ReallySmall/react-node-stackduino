@@ -15,9 +15,7 @@ export default class TextBlock extends Component {
     const { content } = this.props;
 
     return (
-      <section>
-        <div dangerouslySetInnerHTML={{ __html: content || '' }} />
-      </section>
+      <div dangerouslySetInnerHTML={{ __html: content || '' }} />
     );
 
   }

@@ -40,6 +40,12 @@ function renderFullPage(renderedContent, initialState, head={
           .no-script-hide {
             display: none;
           }
+          .no-script-show {
+            display: block;
+          }
+          .footer {
+            position: relative;
+          }
         </style>
       </noscript>
     </head>

@@ -13,6 +13,7 @@ export default class Footer extends Component {
 
     return (
       <footer className={cx('footer', 'js-ui-sticky-footer')}>
+        <h2 className={cx('visually-hidden')}>External links</h2>
         <div className={cx('container')}>
           <div className={cx('row')}>
             <ul className={cx('plain', 'clearfix', 'link-block-container')}>

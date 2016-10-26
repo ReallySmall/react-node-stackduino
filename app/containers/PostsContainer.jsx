@@ -39,13 +39,20 @@ class PostsContainer extends Component {
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Articles" intro="Notes on building and using Stackduino boards. More to come!" />
           {_.map(teasers, function(teaser, i){
+
+            let intro = '';
+
+            if(teaser.content && teaser.content.brief){
+              intro = teaser.content.brief;
+            }
+
             return (
               <PostTeaser
                 key={i} 
                 title={teaser.title}
                 publishedDate={teaser.publishedDate}
                 slug={teaser.slug} 
-                intro={teaser.content.brief}
+                intro={intro}
                 categories={teaser.categories}
                 images={teaser.images} />
             );

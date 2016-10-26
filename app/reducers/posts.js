@@ -15,11 +15,13 @@ export default function posts(state = {
   switch (action.type) {
     case GET_POSTS_INDEX_REQUEST:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetching: true,
+        requestFailed: false
       });
     case GET_POSTS_INDEX_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
+        requestFailed: false,
         teasers: action.req.data
       });
     case GET_POSTS_INDEX_FAILURE:
@@ -29,7 +31,8 @@ export default function posts(state = {
       });
     case GET_POST_REQUEST:
       return Object.assign({}, state, {
-        isFetching: true
+        isFetching: true,
+        requestFailed: false
       });
     case GET_POST_SUCCESS:
       
@@ -41,6 +44,7 @@ export default function posts(state = {
       
       return Object.assign({}, state, {
         isFetching: false,
+        requestFailed: false,
         details: postsDetails
       });
     case GET_POST_FAILURE:

@@ -38,6 +38,9 @@ const App = ({children, location}) => {
     <div>
       <HeaderContainer />
       <div className={cx('view-container')}>
+        <div className={cx('page-backing')}>
+          <div className={cx('container')}></div>
+        </div>
         <ReactCSSTransitionGroup 
           component="div"
           transitionName="fade" 

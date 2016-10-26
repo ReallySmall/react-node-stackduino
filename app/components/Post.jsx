@@ -18,19 +18,20 @@ export default class Post extends Component {
     const { title, publishedDate, content, categories, images } = this.props;
 
     return (
-      <article className={cx('row')}>
+      <div className={cx('row')}>
         <div className={cx('col-sm-8')}>
-          <section>
+          <article>
             <div className={cx('clearfix')}>
-              <h1>{title}</h1>
+              <h2>{title}</h2>
               <DateBlock date={publishedDate} />
             </div>
-            <div dangerouslySetInnerHTML={{ __html: content.brief || '' }} />
-            <div dangerouslySetInnerHTML={{ __html: content.extended || '' }} />
-          </section>  
+            {content && content.brief && <div dangerouslySetInnerHTML={{ __html: content.brief}} />}
+            {content && content.extended && <div dangerouslySetInnerHTML={{ __html: content.extended}} />}
+          </article>  
         </div>
         <div className={cx('col-sm-4', 'aside')}>
           <aside>
+            <h2 className={cx('visually-hidden')}>Related content</h2>
             <ImageBlock images={images.slot1} />
             <ul className={cx('tags')}>
               {_.map(categories, function(category, i){
@@ -43,7 +44,7 @@ export default class Post extends Component {
             </ul>
           </aside>
         </div>
-      </article>
+      </div>
     );
 
   }

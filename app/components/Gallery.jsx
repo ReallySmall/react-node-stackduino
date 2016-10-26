@@ -55,7 +55,7 @@ export default class Gallery extends Component {
     });
 
     return (
-      <section className={cx('row')}>
+      <div className={cx('row')}>
         <div className={cx('col-md-12')}>
           <NoScript />
         </div>
@@ -73,7 +73,7 @@ export default class Gallery extends Component {
             <a href="#" onClick={this.loadMore}>Load more <Icon name="arrow-circle-down" /></a>
           </p>
         }
-      </section>
+      </div>
     );
 
   }
