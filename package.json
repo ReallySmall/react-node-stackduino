@@ -117,6 +117,7 @@
     "pg-hstore": "^2.3.2",
     "react": "^15.2.0",
     "react-chartjs": "^0.7.3",
+    "react-cookie-banner": "0.0.17",
     "react-dom": "^15.0.1",
     "react-easy-transition": "0.0.3",
     "react-headroom": "^2.1.0",

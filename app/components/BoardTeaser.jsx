@@ -40,7 +40,7 @@ export default class BoardTeaser extends Component {
     const img = images.slot1;
     const closed = status === 2 ? true : false;
     const colWidth = !closed ? 'col-sm-9' : 'col-sm-12';
-    const thumbNailDisplay = !closed || !img.length ? 'col-sm-3' : 'hidden';
+    const thumbNailDisplay = !closed && img.length ? 'col-sm-3' : 'hidden';
     const dateText = status === 0 ? 'Development started' : 'Development completed';
 
     return (

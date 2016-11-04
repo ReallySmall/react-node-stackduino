@@ -56,6 +56,11 @@
         border-color: $white transparent transparent transparent;
       }
     }
+    &.last {
+      &:after {
+        display: none;
+      }
+    }
   }
 }
 

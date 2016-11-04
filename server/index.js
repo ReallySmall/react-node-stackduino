@@ -33,7 +33,7 @@ keystone.init({
    'brand': 'Stackduino',
    'session': true,
    'updates': true,
-   'auth': false,
+   'auth': true,
    'user model': 'User',
    'auto update': true,
    'cookie secret': secrets.keystone.cookieSecret,

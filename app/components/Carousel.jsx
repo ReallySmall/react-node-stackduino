@@ -62,7 +62,7 @@ export default class Carousel extends Component {
     if(images && images.length){
 
       sliderElement = <div ref="flexslider" className={cx('js-flexslider', 'carousel')}>
-                        <ul className={cx('slides', 'plain', 'no-list-style')}>
+                        <ul className={cx('slides')}>
                           {_.map(images, function(item, i){
         
                             const height = parseInt(item.image.height);
@@ -73,6 +73,7 @@ export default class Carousel extends Component {
 	                            <li key={i} data-thumb={item.image.url}>
 	                                <figure>
 	                                  <Image src={item.image.url} alt={item.alt} ratio={ratio}/>
+                                    {item.caption && <figcaption dangerouslySetInnerHTML={{ __html: item.caption || '' }} />}
 	                                </figure>
 	                            </li>
 	                          );
@@ -84,7 +85,7 @@ export default class Carousel extends Component {
     } 
 
     return (
-      <div className={cx('carousel-container')}>
+      <div className={cx('carousel-container', 'pad-bottom')}>
         {sliderElement}
       </div>
     );

@@ -1,5 +1,9 @@
 @import '../main.css';
 
+.pad-bottom {
+  margin-bottom: 30px;
+}
+
 .carousel {
   position: relative;
   ul {

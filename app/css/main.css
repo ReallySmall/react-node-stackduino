@@ -51,7 +51,8 @@ body {
   nowhitespace: afterproperty;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
-  font: 14px/1.6 'Oxygen',sans-serif;
+  line-height: 1.1em;
+  font: 14px/1.6 'Open Sans',sans-serif;
   color: $text-colour;
   background: $blue;
   height: 100%;
@@ -532,7 +533,7 @@ noscript {
 
 .fade-enter {
   opacity: 0.01;
-  transition: opacity .5s ease-in;
+  transition: opacity .25s ease-in;
 }
 
 .fade-enter.fade-enter-active {
@@ -541,9 +542,21 @@ noscript {
 
 .fade-leave {
   opacity: 1;
-  transition: opacity .5s ease-in;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: opacity .25s ease-in;
 }
 
 .fade-leave.fade-leave-active {
   opacity: 0;
+}
+
+.cookie-message {
+  display: block;
+  width: 100%;
+  color: $light-grey;
+  text-align: left;
+  padding: 30px 0px 0px 0px;
 }

@@ -8,7 +8,10 @@ var Posts = keystone.list('Post').model;
  * List
  */
 exports.all = function(req, res) {
-  Posts.find({}).populate('images.slot1 images.slot2').exec(function(err, posts) {
+  Posts
+    .find({})
+    .sort({publishedDate: -1})
+    .populate('images.slot1 images.slot2').exec(function(err, posts) {
     if(!err) {
       res.json(posts);
     }else {

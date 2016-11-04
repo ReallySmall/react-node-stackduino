@@ -58,7 +58,7 @@ export default class Homepage extends Component {
                                 <ImageBlock images={content.images.slot3} />
                               </div>
                             </section>
-                            <section className={cx('col-md-12', 'content-block', 'white')}>
+                            <section className={cx('col-md-12', 'content-block', 'white', 'last')}>
                               <div className={cx('container')}>
                                 <div dangerouslySetInnerHTML={{ __html: content.content.slot4 || '' }} />
                                 <ImageBlock images={content.images.slot4} />

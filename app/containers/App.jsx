@@ -1,16 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import LegacyWarning from 'components/LegacyWarning';
-import EnableJS from 'components/EnableJS';
 import { browserHistory, Router, Route, IndexRoute, Link } from 'react-router'
 import HeaderContainer from 'containers/HeaderContainer';
 import FooterContainer from 'containers/FooterContainer';
-import UIScripts from 'ui';
-import CookieBanner from 'components/CookieBanner';
+import UIScripts from 'ui'; // not used in markup but is self-calling
 import classNames from 'classnames/bind';
 import 'css/main';
 import styles from 'css/main';
-import Image from 'components/Image';
 
 import { fetchWrapper } from 'actions/wrapper';
 
@@ -44,8 +40,8 @@ const App = ({children, location}) => {
         <ReactCSSTransitionGroup 
           component="div"
           transitionName="fade" 
-          transitionEnterTimeout={500} 
-          transitionLeaveTimeout={500}>
+          transitionEnterTimeout={250} 
+          transitionLeaveTimeout={250}>
             {React.cloneElement(children, {
               key: location.pathname
             })}
