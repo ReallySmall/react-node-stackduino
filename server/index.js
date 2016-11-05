@@ -17,7 +17,7 @@ var app = express();
 keystone.static(app);
 
 app.use('/keystone', keystone.adminApp.staticRouter);
-app.use(cookieParser(process.env.COOKIE_SECRET);
+app.use(cookieParser(process.env.KEYSTONE_COOKIE_SECRET);
 app.use(body.urlencoded({ extended: true }));
 app.use(body.json());
 app.use(multer());
