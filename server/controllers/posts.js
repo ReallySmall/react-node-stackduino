@@ -25,7 +25,7 @@ exports.all = function(req, res) {
  */
 exports.byId = function(req, res) {
   var slug = req.params.slug;
-  Posts.findOne({slug: slug}).populate('images.slot1 images.slot2').exec(function(err, post) {
+  Posts.findOne({slug: slug}).populate('images.slot1 images.slot2 relatedBoards').exec(function(err, post) {
     if(!err) {
       res.json(post);
     }else {

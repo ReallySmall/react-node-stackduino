@@ -38,7 +38,7 @@ export default class Carousel extends Component {
           animation: 'slide',
           animationLoop: true,
           slideshow: true,
-          slideshowSpeed: 10000,
+          slideshowSpeed: 12000,
           pauseOnHover: true,
           controlNav: 'thumbnails',
           directionNav: false,
