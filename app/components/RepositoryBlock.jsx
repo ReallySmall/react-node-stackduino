@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_repository-link';
-import Icon from 'react-fa';
 import RepositoryDataContainer from 'containers/RepositoryDataContainer';
 import RepositoryCommits from 'components/RepositoryCommits';
 
@@ -23,7 +22,7 @@ export default class RepositoryBlock extends Component {
           <div>
             <h4>
               <a className={cx('primary-link')} href={repoUrl}>
-                <Icon className={cx('icon')} name="download" />
+                <span className={cx('icon', 'fa', 'fa-download')}></span>
                 Download from GitHub
               </a>
             </h4>

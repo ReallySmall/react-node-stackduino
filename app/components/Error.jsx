@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Icon from 'react-fa';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_error';
 
@@ -13,7 +12,7 @@ export default class Error extends Component {
 
     return ( 
 		<p className={cx('error', 'plain', 'size-' + size)}>
-			<Icon name="times-circle" size={size || '3x'} className={cx('icon')} />
+			<span className={cx('icon', 'fa', 'fa-times-circle')} />
 			<span className={cx('message')}>{message || 'Loading error'}</span>
 		</p>
     );

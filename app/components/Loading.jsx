@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Icon from 'react-fa';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_loading';
 
@@ -13,7 +12,7 @@ export default class Loading extends Component {
 
     return (
 		<p className={cx('loading', 'plain', 'no-script-hide', 'size-' + size)}>
-			<Icon spin name="refresh" size={size || '3x'} />
+			<span className={cx('fa', 'fa-refresh')}></span>
 			<span className={cx('message')}>{message || 'Loading content'}</span>
 		</p>
     );

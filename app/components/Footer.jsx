@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import _ from 'underscore';
+import {map} from "underscore";
 import classNames from 'classnames/bind';
 import styles from 'css/components/_footer';
 
@@ -23,7 +23,7 @@ export default class Footer extends Component {
                   {col1.title}
                 </h3>
                 <ul className={cx('plain')}>
-                  {_.map(col1.list, function(link, i){
+                  {map(col1.list, function(link, i){
                     return(
                       <li key={i}><a href={link.url} title={link.title}>{link.title}</a></li>
                     )
@@ -36,7 +36,7 @@ export default class Footer extends Component {
                   {col2.title}
                 </h3>
                 <ul className={cx('plain')}>
-                    {_.map(col2.list, function(link, i){
+                    {map(col2.list, function(link, i){
                       return (
                         <li key={i}><a href={link.url} title={link.title}>{link.title}</a></li>
                       )
@@ -49,7 +49,7 @@ export default class Footer extends Component {
                   {col3.title}
                 </h3>
                 <ul className={cx('plain')}>
-                  {_.map(col3.list, function(link, i){
+                  {map(col3.list, function(link, i){
                     return (
                       <li key={i}><a href={link.url} title={link.title}>{link.title}</a></li>
                     )

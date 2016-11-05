@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import _ from 'underscore';
+import {map} from "underscore";
 import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
 import PostTeaser from 'components/PostTeaser';
@@ -38,7 +38,7 @@ class PostsContainer extends Component {
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Articles" intro="Notes on building and using Stackduino boards. More to come!" />
-          {_.map(teasers, function(teaser, i){
+          {map(teasers, function(teaser, i){
 
             let intro = '';
 

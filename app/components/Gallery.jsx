@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import _ from 'underscore';
+import {map} from "underscore";
 import Masonry from 'react-masonry-component';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_gallery-page';
@@ -7,7 +7,6 @@ import Image from 'components/Image';
 import NoScript from 'components/NoScript';
 import { fetchGalleryImages } from 'actions/gallery';
 import { truncate } from 'utilities/strings';
-import Icon from 'react-fa';
 
 const cx = classNames.bind(styles);
 
@@ -34,7 +33,7 @@ export default class Gallery extends Component {
       transitionDuration: 0
     };
 
-    let photos = _.map(images, function(photo, i){
+    let photos = map(images, function(photo, i){
 
       const ratio = (photo.height_n / photo.width_n) * 100;
 
@@ -45,7 +44,10 @@ export default class Gallery extends Component {
               <Image src={"https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + "_z.jpg"} alt={photo.title + " by " + photo.ownername + " on Flickr"} ratio={ratio}/>
               <figcaption>
                 <p className={cx('plain','title')}>{truncate(photo.title, 30)}</p>
-                <p className={cx('plain', 'owner')}><Icon name="flickr" /> {truncate(photo.ownername, 30)}</p>
+                <p className={cx('plain', 'owner')}>
+                  <span className={cx('fa', 'fa-flickr')}></span>
+                  {truncate(photo.ownername, 30)}
+                </p>
               </figcaption>
             </figure>
           </a>
@@ -70,7 +72,7 @@ export default class Gallery extends Component {
         {!isFetching && !requestFailed &&
           page + 1 <= pages && 
           <p className={cx('load-more', 'col-md-12')}>
-            <a href="#" onClick={this.loadMore}>Load more <Icon name="arrow-circle-down" /></a>
+            <a href="#" onClick={this.loadMore}>Load more <span className={cx('fa', 'fa-arrow-circle-down')}></span></a>
           </p>
         }
       </div>

@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import _ from 'underscore';
+import {map} from "underscore";
 import moment from 'moment';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_repository-commits';
@@ -19,7 +19,7 @@ export default class RepositoryCommits extends Component {
       <div className={cx('commit-list', 'clearfix', 'no-script-hide')}>
         <h5 className={cx('panel-sub-header')}>Latest updates to this version</h5>
         <ul className={cx('list-group', 'repo-commits', 'plain')}>
-          {_.map(repoDetail, function(commit, i){
+          {map(repoDetail, function(commit, i){
             if(commit.commit.committer.date && commit.commit.url && commit.commit.message){
               return (
                 <li key={i} className={cx('list-group-item')}>

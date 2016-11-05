@@ -1,14 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { fetchWrapper } from 'actions/wrapper';
+import { fetchGalleryImages } from 'actions/gallery';
 import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
 import Gallery from 'components/Gallery';
 import LoadButton from 'components/LoadButton';
-import Icon from 'react-fa';
-import { fetchWrapper } from 'actions/wrapper';
-import { fetchGalleryImages } from 'actions/gallery';
 
-export default class GalleryContainer extends Component {
+class GalleryContainer extends Component {
 
   static need = [
     fetchWrapper

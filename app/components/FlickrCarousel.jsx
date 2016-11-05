@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import _ from 'underscore';
+import {map} from "underscore";
 import classNames from 'classnames/bind';
 import styles from 'css/components/_flickr-carousel';
 import { Link } from 'react-router';
 import Image from 'components/Image';
 import { truncate } from 'utilities/strings';
-import Icon from 'react-fa';
 import Loading from 'components/Loading';
 import Error from 'components/Error';
 
@@ -72,7 +71,7 @@ export default class FlickrCarousel extends Component {
       sliderElement = <div ref="flexslider" className={cx('js-flexslider', 'carousel', 'no-script-hide')}>
                         <h3 className="visually-hidden">Images from Flickr</h3>
                         <ul className={cx('slides', 'plain', 'no-list-style')}>
-                          {_.map(images, function(image, i){
+                          {map(images, function(image, i){
         
                             const height = parseInt(image.height_l);
                             const width = parseInt(image.width_l);
@@ -86,7 +85,7 @@ export default class FlickrCarousel extends Component {
                                       <Image src={image.url_c} alt={image.title + " by " + image.ownername + " on Flickr"} ratio={ratio}/>
                                       <figcaption>
                                         <p className={cx('plain','title')}>{truncate(image.title, 60)}</p>
-                                        <p className={cx('plain', 'owner')}><Icon name="flickr" /> {truncate(image.ownername, 60)}</p>
+                                        <p className={cx('plain', 'owner')}><span className={cx('fa', 'fa-flickr')}></span> {truncate(image.ownername, 60)}</p>
                                       </figcaption>
                                     </figure>
                                   </a>

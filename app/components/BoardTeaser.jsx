@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 import BoardStatus from 'components/BoardStatus';
 import DateBlock from 'components/DateBlock';
 import Image from 'components/Image';
-import Icon from 'react-fa';
 
 const cx = classNames.bind(styles);
 
@@ -45,7 +44,7 @@ export default class BoardTeaser extends Component {
 
     return (
       <section className={cx('board', statuses[status].htmlClass)}>
-        {closed && <Icon name="level-down" className={cx('col-sm-1', 'proto-indicator')} rotate="180" aria-hidden="true" />}
+        {closed && <span className={cx('col-sm-1', 'proto-indicator', 'fa', 'fa-level-down')} aria-hidden="true" />}
         <div className={cx('inset-wrapper', closed ? 'col-sm-11' : 'col-sm-12')}>
           <div className={cx('panel')}>
             <div className={cx('row')}>

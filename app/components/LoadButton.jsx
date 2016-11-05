@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Icon from 'react-fa';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_blank';
 
@@ -11,7 +10,7 @@ export default class LoadButton extends Component {
     return (
     	<a href="#">
         Load more
-        <Icon name="arrow-circle-down" />
+        <span className={cx('fa', 'fa-arrow-circle-down')}></span>
       </a>
     );
   }

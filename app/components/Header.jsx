@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import _ from 'underscore';
-import Headroom from 'react-headroom';
+import {map} from "underscore";
 import classNames from 'classnames/bind';
 import styles from 'css/components/_header';
 import { Link } from 'react-router';
@@ -38,7 +37,7 @@ export default class Header extends Component {
                 </Link>
                 <div className={cx('social-links')}>
                   <ul className={cx('plain')}>
-                    {_.map(links.list, function(link, i){
+                    {map(links.list, function(link, i){
                       return (
                         <li key={i}>
                           <a href={link.url} title={link.title}>

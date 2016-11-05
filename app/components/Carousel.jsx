@@ -1,12 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import _ from 'underscore';
+import {map} from "underscore";
 import classNames from 'classnames/bind';
 import styles from 'css/components/_carousel';
 import { Link } from 'react-router';
 import Image from 'components/Image';
 import { truncate } from 'utilities/strings';
-import Icon from 'react-fa';
 import Loading from 'components/Loading';
 import Error from 'components/Error';
 
@@ -63,7 +62,7 @@ export default class Carousel extends Component {
 
       sliderElement = <div ref="flexslider" className={cx('js-flexslider', 'carousel')}>
                         <ul className={cx('slides')}>
-                          {_.map(images, function(item, i){
+                          {map(images, function(item, i){
         
                             const height = parseInt(item.image.height);
                             const width = parseInt(item.image.width);

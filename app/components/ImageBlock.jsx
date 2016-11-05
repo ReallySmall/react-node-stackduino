@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import _ from 'underscore';
+import {map, isArray} from "underscore";
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-teaser';
 import Image from 'components/Image';
@@ -19,9 +19,9 @@ export default class ImageBlock extends Component {
     let imageBlock = null;
     let showCaptions = captions === 'false' ? false : true;
 
-    if(_.isArray(images) && images.length){
+    if(isArray(images) && images.length){
 
-      imageBlock = _.map(images, function(imageData, i){
+      imageBlock = map(images, function(imageData, i){
         
         let colWidth = Math.ceil(12 / images.length);
         imageData.image.ratio = (imageData.image.height / imageData.image.width) * 100;

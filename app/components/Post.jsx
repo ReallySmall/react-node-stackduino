@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import _ from 'underscore';
+import {map} from "underscore";
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-detail';
 import DateBlock from 'components/DateBlock';
@@ -34,7 +34,7 @@ export default class Post extends Component {
             <h2 className={cx('visually-hidden')}>Related content</h2>
             <ImageBlock images={images.slot1} />
             <ul className={cx('tags')}>
-              {_.map(categories, function(category, i){
+              {map(categories, function(category, i){
                 return (
                   <li>
                     <a href="#" title={"Find all posts tagged with" + category}>{category}</a>

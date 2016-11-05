@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-status';
-import Icon from 'react-fa';
 
 const cx = classNames.bind(styles);
 
@@ -34,7 +33,7 @@ export default class BoardStatus extends Component {
 
     return (
       <p className={cx('version-status', 'clearfix', statuses[status].htmlClass)}>
-        <Icon name={statuses[status].icon} className={cx('icon')} /> <abbr title={statuses[status].description}>{statuses[status].status}</abbr>
+        <span className={cx('icon', 'fa', 'fa-' + statuses[status].icon)}></span> <abbr title={statuses[status].description}>{statuses[status].status}</abbr>
       </p>
     );
   }

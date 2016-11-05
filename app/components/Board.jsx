@@ -7,7 +7,6 @@ import TextBlock from 'components/TextBlock';
 import DateBlock from 'components/DateBlock';
 import ImageBlock from 'components/ImageBlock';
 import RepositoryBlock from 'components/RepositoryBlock';
-import Icon from 'react-fa';
 
 const cx = classNames.bind(styles);
 
