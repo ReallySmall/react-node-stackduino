@@ -12,7 +12,7 @@ export default class Loading extends Component {
 
     return (
 		<p className={cx('loading', 'plain', 'no-script-hide', 'size-' + size)}>
-			<span className={cx('fa', 'fa-refresh')}></span>
+			<span className={cx('fa', 'fa-refresh', 'fa-spin')}></span>
 			<span className={cx('message')}>{message || 'Loading content'}</span>
 		</p>
     );

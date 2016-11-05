@@ -83,7 +83,7 @@
     "cross-env": "^1.0.7"
   },
   "engines": {
-    "node": "5.x"
+    "node": "4.3.1"
   },
   "dependencies": {
     "axios": "^0.9.1",
@@ -118,7 +118,6 @@
     "react": "^15.2.0",
     "react-addons-css-transition-group": "^15.3.2",
     "react-dom": "^15.0.1",
-    "react-fa": "^4.1.2",
     "react-helmet": "2.3.1",
     "react-masonry-component": "^4.3.1",
     "react-redux": "^4.4.1",
@@ -127,8 +126,6 @@
     "redux": "^3.3.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
-    "sequelize": "^3.21.0",
-    "sequelize-cli": "^2.3.1",
     "spark-md5": "^2.0.2",
     "warning": "^2.1.0"
   }

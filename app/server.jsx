@@ -35,6 +35,7 @@ function renderFullPage(renderedContent, initialState, head={
       ${head.title}
       ${head.meta}
       ${head.link}
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
       <noscript>
         <style>
           .no-script-hide {

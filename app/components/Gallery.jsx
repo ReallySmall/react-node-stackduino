@@ -45,8 +45,7 @@ export default class Gallery extends Component {
               <figcaption>
                 <p className={cx('plain','title')}>{truncate(photo.title, 30)}</p>
                 <p className={cx('plain', 'owner')}>
-                  <span className={cx('fa', 'fa-flickr')}></span>
-                  {truncate(photo.ownername, 30)}
+                  <span className={cx('fa', 'fa-flickr')}></span> {truncate(photo.ownername, 30)}
                 </p>
               </figcaption>
             </figure>
