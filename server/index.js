@@ -3,10 +3,6 @@ var fs = require('fs');
 var mongoose = require('mongoose');
 var webpack = require('webpack');
 
-if(process.env.NODE_ENV !== 'production'){
-  var secrets = require('./config/secrets');
-}
-
 // keystone integration
 var keystone = require('keystone');
 var serve = require('serve-static');
@@ -21,7 +17,7 @@ var app = express();
 keystone.static(app);
 
 app.use('/keystone', keystone.adminApp.staticRouter);
-app.use(cookieParser(process.env.COOKIE_SECRET || secrets.keystone.cookieSecret));
+app.use(cookieParser(process.env.COOKIE_SECRET);
 app.use(body.urlencoded({ extended: true }));
 app.use(body.json());
 app.use(multer());
@@ -39,14 +35,14 @@ keystone.init({
    'auth': true,
    'user model': 'User',
    'auto update': true,
-   'cookie secret': process.env.KEYSTONE_COOKIE_SECRET || secrets.keystone.cookieSecret,
+   'cookie secret': process.env.KEYSTONE_COOKIE_SECRET,
    'mongo': secrets.db
 });
 
 keystone.set('cloudinary config', {
-                                    cloud_name: process.env.KEYSTONE_CLOUDINARY_CLOUD_NAME || secrets.keystone.cloudinary.cloud_name, 
-                                    api_key: process.env.KEYSTONE_CLOUDINARY_API_KEY || secrets.keystone.cloudinary.api_key, 
-                                    api_secret: process.env.KEYSTONE_CLOUDINARY_API_SECRET || secrets.keystone.cloudinary.api_secret
+                                    cloud_name: process.env.KEYSTONE_CLOUDINARY_CLOUD_NAME, 
+                                    api_key: process.env.KEYSTONE_CLOUDINARY_API_KEY, 
+                                    api_secret: process.env.KEYSTONE_CLOUDINARY_API_SECRET
                                   });
 
 keystone.set('static', ['public', 'images']);
@@ -67,9 +63,9 @@ app.use(serve('./public'));
 var connect = function() {
   mongoose.connect(process.env.MONGODB_URI || secrets.db, function(err, res) {
     if(err) {
-      console.log('Error connecting to: ' + process.env.MONGODB_URI || secrets.db + '. ' + err);
+      console.log('Error connecting to: ' + process.env.MONGODB_URI + '. ' + err);
     }else {
-      console.log('Succeeded connected to: ' + process.env.MONGODB_URI || secrets.db);
+      console.log('Succeeded connected to: ' + process.env.MONGODB_URI);
     }
   });
 };

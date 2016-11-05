@@ -6,10 +6,6 @@ var path = require('path');
 var flash = require('express-flash');
 var methodOverride = require('method-override');
 
-if(process.env.NODE_ENV !== 'production'){
-  var secrets = require('./secrets');
-}
-
 module.exports = function (app, passport) {
   app.set('port', (process.env.PORT || 3000));
 
@@ -56,7 +52,7 @@ module.exports = function (app, passport) {
   var sess = {
     resave: true,
     saveUninitialized: false,
-    secret: process.env.SESSION_SECRET || secrets.sessionSecret,
+    secret: process.env.SESSION_SECRET,
     proxy: true, // The "X-Forwarded-Proto" header will be used.
     name: 'sessionId',
     // Add HTTPOnly, Secure attributes on Session Cookie
@@ -67,7 +63,7 @@ module.exports = function (app, passport) {
     },
     store: new MongoStore(
       { 
-        url: process.env.MONGODB_URI || secrets.db,
+        url: process.env.MONGODB_URI,
         autoReconnect: true
       }
     )
