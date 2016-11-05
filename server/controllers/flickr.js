@@ -1,10 +1,13 @@
 var request = require('request');
-var secrets = require('../config/secrets');
+
+if(process.env.NODE_ENV !== 'production'){
+  var secrets = require('../config/secrets');
+}
 
 exports.byGroup = function(req, res) {
 
     var group_id = req.params.group_id;
-    var query = '?api_key=' + secrets.flickr.api_key; 
+    var query = '?api_key=' + process.env.FLICKR_API_KEY || secrets.flickr.api_key; 
     var per_page = req.query.per_page || 10;
     var page = req.query.page || 1;
 
@@ -38,7 +41,7 @@ exports.featured = function(req, res) {
 
     var group_id = req.params.group_id;
     var tag = req.params.tag;
-    var query = '?api_key=' + secrets.flickr.api_key;
+    var query = '?api_key=' + process.env.FLICKR_API_KEY || secrets.flickr.api_key;
     var user_id = req.query.user_id;
 
     query += '&format=json';

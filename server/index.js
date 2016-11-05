@@ -1,8 +1,11 @@
 var express = require('express');
 var fs = require('fs');
 var mongoose = require('mongoose');
-var secrets = require('./config/secrets');
 var webpack = require('webpack');
+
+if(process.env.NODE_ENV !== 'production'){
+  var secrets = require('./config/secrets');
+}
 
 // keystone integration
 var keystone = require('keystone');
@@ -18,7 +21,7 @@ var app = express();
 keystone.static(app);
 
 app.use('/keystone', keystone.adminApp.staticRouter);
-app.use(cookieParser(secrets.keystone.cookieSecret));
+app.use(cookieParser(process.env.COOKIE_SECRET || secrets.keystone.cookieSecret));
 app.use(body.urlencoded({ extended: true }));
 app.use(body.json());
 app.use(multer());
@@ -36,11 +39,16 @@ keystone.init({
    'auth': true,
    'user model': 'User',
    'auto update': true,
-   'cookie secret': secrets.keystone.cookieSecret,
+   'cookie secret': process.env.KEYSTONE_COOKIE_SECRET || secrets.keystone.cookieSecret,
    'mongo': secrets.db
 });
 
-keystone.set('cloudinary config', secrets.keystone.cloudinary);
+keystone.set('cloudinary config', {
+                                    cloud_name: process.env.KEYSTONE_CLOUDINARY_CLOUD_NAME || secrets.keystone.cloudinary.cloud_name, 
+                                    api_key: process.env.KEYSTONE_CLOUDINARY_API_KEY || secrets.keystone.cloudinary.api_key, 
+                                    api_secret: process.env.KEYSTONE_CLOUDINARY_API_SECRET || secrets.keystone.cloudinary.api_secret
+                                  });
+
 keystone.set('static', ['public', 'images']);
 
 // Let keystone know where your models are defined. Here we have it at the `/models`
@@ -57,11 +65,11 @@ app.use(serve('./public'));
 
 // Find the appropriate database to connect to, default to localhost if not found.
 var connect = function() {
-  mongoose.connect(secrets.db, function(err, res) {
+  mongoose.connect(process.env.MONGODB_URI || secrets.db, function(err, res) {
     if(err) {
-      console.log('Error connecting to: ' + secrets.db + '. ' + err);
+      console.log('Error connecting to: ' + process.env.MONGODB_URI || secrets.db + '. ' + err);
     }else {
-      console.log('Succeeded connected to: ' + secrets.db);
+      console.log('Succeeded connected to: ' + process.env.MONGODB_URI || secrets.db);
     }
   });
 };

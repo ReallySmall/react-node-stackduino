@@ -1,6 +1,5 @@
 var keystone = require('keystone');
 var mongoose = require('mongoose');
-var _ = require('lodash');
 var request = require('request');
 var Gallery = keystone.list('Gallery').model;
 

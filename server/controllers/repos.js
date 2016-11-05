@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var request = require('request');
 
 exports.commits = function(req, res) {

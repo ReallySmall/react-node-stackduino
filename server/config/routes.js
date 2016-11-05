@@ -12,8 +12,6 @@ var express = require('express');
 var mongoose = require('mongoose');
 var keystone = require('keystone');
 var request = require('request');
-var _ = require('lodash');
-var secrets = require('./secrets');
 var body = require('body-parser');
 
 var path = require('path');
