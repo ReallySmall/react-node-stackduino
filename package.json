@@ -78,8 +78,7 @@
     "file-loader": "^0.8.5",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
-    "inline-environment-variables-webpack-plugin": "0.0.2",
-    "cross-env": "^1.0.7"
+    "inline-environment-variables-webpack-plugin": "0.0.2"
   },
   "engines": {
     "node": "4.3.1"
@@ -89,6 +88,7 @@
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.3.5",
     "body-parser": "^1.15.0",
+    "cross-env": "^1.0.7",
     "classnames": "^2.2.3",
     "connect-mongo": "^1.1.0",
     "connect-pg-simple": "^3.1.0",
