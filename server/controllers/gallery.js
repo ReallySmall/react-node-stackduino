@@ -1,10 +1,18 @@
 var keystone = require('keystone');
 var mongoose = require('mongoose');
-var request = require('axios');
+var axios = require('axios');
 var Gallery = keystone.list('Gallery').model;
 
+var flickrApi = axios.create({
+  baseURL: 'http://localhost:3000/api/flickr/',
+  timeout: 10000
+});
+
 exports.gallery = function(req, res) {
-  Gallery.findOne({}).sort({'_id': -1}).exec(function(err, gallery) {
+  Gallery
+    .findOne({})
+    .sort({'_id': -1})
+    .exec(function(err, gallery) {
     if(!err) {
 
         var groupID = gallery.groupID;
@@ -13,31 +21,26 @@ exports.gallery = function(req, res) {
     	var page = req.query.page || gallery.page;
         var user_id = req.query.user_id;
 
-    	var query = 'http://localhost:3000/api/flickr/byGroup/';
+    	var query = 'byGroup/';
         query += groupID;
     	query += '?per_page=' + pagination;
     	query += '&page=' + page;
+
         if(tags){
             query += '&tags=' + tags;
         }
+
         if(user_id){
             query += '&user_id=' + user_id;
         }
 
-    	var requestOpts = {
-        	url: query,
-	        method: "GET",
-	        timeout: 10000
-	    };
-
-	    request(requestOpts, function(error, response, body) {
-	        if (!error && response.statusCode === 200) {
-                res.send(body);
-	        } else {
-	          console.log(error);
-	          res.send(error);         
-	        }
-	    });
+        flickrApi.get(query)
+            .then(function(response) {
+                res.send(response.data);
+            })
+            .catch(function (error) {
+                res.send(error);         
+            });
 
     } else {
       console.log('Error in first query');
@@ -60,20 +63,13 @@ exports.features = function(req, res) {
             query += '?user_id=' + user_id;
         }
 
-        var requestOpts = {
-            url: query,
-            method: "GET",
-            timeout: 10000
-        };
-
-        request(requestOpts, function(error, response, body) {
-            if (!error && response.statusCode === 200) {
-                res.send(body);
-            } else {
-              console.log(error);
-              res.send(error);         
-            }
-        });
+        flickrApi.get(query)
+            .then(function(response) {
+                res.send(response.data);
+            })
+            .catch(function (error) {
+                res.send(error);         
+            });
 
     } else {
       console.log('Error in first query');

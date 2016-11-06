@@ -1,4 +1,9 @@
-var request = require('axios');
+var axios = require('axios');
+
+var flickrApi = axios.create({
+  baseURL: 'https://api.flickr.com/services/rest/',
+  timeout: 8000
+});
 
 exports.byGroup = function(req, res) {
 
@@ -16,20 +21,13 @@ exports.byGroup = function(req, res) {
     query += '&extras=tags,owner_name,url_n,url_o,url_l,url_c';
     query += '&safe_search=1';
 
-    var requestOpts = {
-        url: 'https://api.flickr.com/services/rest/' + query,
-        method: "GET",
-        timeout: 10000
-    };
-
-    request(requestOpts, function(error, response, body) {
-        if (!error && response.statusCode === 200) {
-            res.send(body);
-        } else {
-            console.log(error);
+    flickrApi.get(query)
+        .then(function(response) {
+            res.send(response.data);
+        })
+        .catch(function (error) {
             res.send(error);         
-        }
-    });
+        });
 
 };
 
@@ -51,19 +49,12 @@ exports.featured = function(req, res) {
         query += '&user_id=' + user_id;
     }
 
-    var requestOpts = {
-        url: 'https://api.flickr.com/services/rest/' + query,
-        method: "GET",
-        timeout: 10000
-    };
-
-    request(requestOpts, function(error, response, body) {
-        if (!error && response.statusCode === 200) {
-            res.send(body);
-        } else {
-            console.log(error);
+    flickrApi.get(query)
+        .then(function(response) {
+            res.send(response.data);
+        })
+        .catch(function (error) {
             res.send(error);         
-        }
-    });
+        });
 
 };
