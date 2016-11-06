@@ -2,6 +2,7 @@ var express = require('express');
 var fs = require('fs');
 var mongoose = require('mongoose');
 var webpack = require('webpack');
+var dotenv = require('dotenv').config();
 
 // keystone integration
 var keystone = require('keystone');
@@ -17,10 +18,10 @@ var app = express();
 keystone.static(app);
 
 app.use('/keystone', keystone.adminApp.staticRouter);
-app.use(cookieParser(process.env.KEYSTONE_COOKIE_SECRET);
+app.use(cookieParser(process.env.KEYSTONE_COOKIE_SECRET));
 app.use(body.urlencoded({ extended: true }));
 app.use(body.json());
-app.use(multer());
+//app.use(multer());
 app.use(session());
 app.use(flash());
 
@@ -36,7 +37,7 @@ keystone.init({
    'user model': 'User',
    'auto update': true,
    'cookie secret': process.env.KEYSTONE_COOKIE_SECRET,
-   'mongo': secrets.db
+   'mongo': process.env.MONGODB_URI
 });
 
 keystone.set('cloudinary config', {
