@@ -11,7 +11,7 @@ var flickr = require('../controllers/flickr');
 var express = require('express');
 var mongoose = require('mongoose');
 var keystone = require('keystone');
-var request = require('request');
+var request = require('axios');
 var body = require('body-parser');
 
 var path = require('path');

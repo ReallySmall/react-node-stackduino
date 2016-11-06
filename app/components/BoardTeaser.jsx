@@ -44,7 +44,7 @@ export default class BoardTeaser extends Component {
 
     return (
       <section className={cx('board', statuses[status].htmlClass)}>
-        {closed && <span className={cx('col-sm-1', 'proto-indicator', 'fa', 'fa-level-down')} aria-hidden="true" />}
+        {closed && <span className={cx('col-sm-1', 'proto-indicator', 'fa', 'fa-level-down', 'fa-flip-horizontal')} aria-hidden="true" />}
         <div className={cx('inset-wrapper', closed ? 'col-sm-11' : 'col-sm-12')}>
           <div className={cx('panel')}>
             <div className={cx('row')}>
