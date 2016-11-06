@@ -1,4 +1,4 @@
-var request = require('request');
+var request = require('axios');
 
 exports.commits = function(req, res) {
 

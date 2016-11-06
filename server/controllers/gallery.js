@@ -1,6 +1,6 @@
 var keystone = require('keystone');
 var mongoose = require('mongoose');
-var request = require('request');
+var request = require('axios');
 var Gallery = keystone.list('Gallery').model;
 
 exports.gallery = function(req, res) {
