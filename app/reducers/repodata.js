@@ -16,7 +16,6 @@ export default function repodata(state = {
     case GET_REPO_DATA_SUCCESS:
 
       let allRepos = state.repos; 
-
       const id = action.req.data.id;
       const body = JSON.parse(action.req.data.body);
 

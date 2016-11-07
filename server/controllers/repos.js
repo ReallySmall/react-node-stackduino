@@ -12,6 +12,7 @@ exports.commits = function(req, res) {
 
     githubApi.get(query)
         .then(function(response) {
+            console.log(response);
             res.send(response.data);
         })
         .catch(function (error) {
