@@ -555,8 +555,7 @@ noscript {
 
 .cookie-message {
   display: block;
-  width: 100%;
   color: $light-grey;
   text-align: left;
-  padding: 30px 0px 0px 0px;
+  padding: 20px 0px 0px 0px;
 }

@@ -20,6 +20,7 @@
     border-left: 1px solid $grey2;
     border-right: 1px solid $grey2;
     .link-block {
+      margin-bottom: 10px;
       h3 {
         color: $light-grey;
         span {

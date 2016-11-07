@@ -20,7 +20,7 @@
         display: block;
         text-align: center;
         text-decoration: none;
-        padding: 15px;
+        padding: 10px;
         border-top: 3px solid #dddddd;
         &:first-child {
           border-top: none;
@@ -33,7 +33,7 @@
           }
           h3 {
             margin: 0;
-            font-size: 26px;
+            font-size: 18px;
           }
           .fa {
             color: $orange;
@@ -51,6 +51,10 @@
       li {
         .preface-block {
           border-right: 6px solid #dddddd;
+          padding: 15px;
+          h3 {
+            font-size: 26px;
+          }
         }
         &:first-child {
           .preface-block {

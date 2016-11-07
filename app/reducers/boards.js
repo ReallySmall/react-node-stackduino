@@ -35,9 +35,6 @@ export default function boards(state = {
     case GET_BOARD_SUCCESS:
       
       let boardDetails = action.req.data;
-
-      console.log(boardDetails);
-
       let slug = boardDetails.slug;
       let boardsDetails = state.details; 
 

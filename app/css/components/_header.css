@@ -59,7 +59,7 @@
   margin: 18px 0 0 0;
   ul {
     float: left;
-    font-size: 48px;
+    font-size: 24px;
     li {
       float: left;
       padding-left: 20px;
@@ -90,6 +90,7 @@
   .social-links {
     ul {
       float: right;
+      font-size: 48px;
     }
   }
 

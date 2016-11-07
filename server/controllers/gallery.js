@@ -4,11 +4,15 @@ var axios = require('axios');
 var Gallery = keystone.list('Gallery').model;
 
 var flickrApi = axios.create({
-  baseURL: 'http://localhost:3000/api/flickr/',
   timeout: 10000
 });
 
 exports.gallery = function(req, res) {
+
+    var protocol = req.protocol;
+    var hostName = req.headers.host;
+    flickrApi.defaults.baseURL = protocol + '://' + hostName + '/api/flickr/';
+
   Gallery
     .findOne({})
     .sort({'_id': -1})
@@ -49,6 +53,11 @@ exports.gallery = function(req, res) {
 };
 
 exports.features = function(req, res) {
+
+    var protocol = req.protocol;
+    var hostName = req.headers.host;
+    flickrApi.defaults.baseURL = protocol + '://' + hostName + '/api/flickr/';
+
   Gallery.findOne({}).sort({'_id': -1}).exec(function(err, gallery) {
     if(!err) {
 
