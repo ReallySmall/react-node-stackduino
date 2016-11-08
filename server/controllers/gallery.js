@@ -65,7 +65,7 @@ exports.features = function(req, res) {
         var tags = gallery.tags;
         var user_id = gallery.userId;
 
-        var query = 'http://localhost:3000/api/flickr/byGroup/';
+        var query = 'byGroup/';
         query += groupID + '/';
         query += tags;
         if(user_id){
