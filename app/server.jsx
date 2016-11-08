@@ -29,7 +29,7 @@ function renderFullPage(renderedContent, initialState, head={
 }) {
   return `
   <!doctype html>
-    <html lang="">
+    <html lang="en">
 
     <head>
       ${head.title}

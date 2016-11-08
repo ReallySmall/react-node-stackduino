@@ -15,17 +15,30 @@ export default function repodata(state = {
       });
     case GET_REPO_DATA_SUCCESS:
 
-      let allRepos = state.repos; 
+      let allRepos = state.repos;
+
       const id = action.req.data.id;
-      const body = JSON.parse(action.req.data.body);
+      const body = action.req.data.body;
 
-      allRepos[id] = body;
+      if(id && body){
 
-      return Object.assign({}, state, {
-        isFetching: false,
-        requestFailed: false,
-        repos: allRepos
-      });
+        allRepos[id] = body;
+
+        return Object.assign({}, state, {
+          isFetching: false,
+          requestFailed: false,
+          repos: allRepos
+        });
+
+      } else { // if data object returned does not match expected structure count as a fail
+
+        return Object.assign({}, state, {
+          isFetching: false,
+          requestFailed: true
+        });
+
+      }
+
     case GET_REPO_DATA_FAILURE:
       return Object.assign({}, state, {
         isFetching: false,
