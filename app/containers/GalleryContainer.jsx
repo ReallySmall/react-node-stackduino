@@ -29,7 +29,7 @@ class GalleryContainer extends Component {
     const { isFetching, requestFailed } = this.props;
 
     return (
-      <Page isFetching={isFetching} fetchingMessage="Fetching images from Flickr" requestFailed={requestFailed} requestFailedMessage="Failed to load gallery images from Flickr">
+      <Page isFetching={isFetching} fetchingMessage="Fetching images from Flickr" requestFailed={requestFailed} connectionError={true} errorMessage="Failed to load gallery images from Flickr">
         <IntroBlock title="Gallery" intro="Images of, and taken by, Stackduino controllers on Flickr." />
         <Gallery {...this.props} />
       </Page>

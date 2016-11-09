@@ -355,9 +355,8 @@ ul {
 }
 
 .load-more {
-  margin: 10px 0px;
   a {
-    font-size: 1.2em;
+    font-size: 1.4rem;
     color: $light-grey;
     &:hover, &:focus {
       color: $black;
@@ -557,5 +556,5 @@ noscript {
   display: block;
   color: $light-grey;
   text-align: left;
-  padding: 20px 0px 0px 0px;
+  padding-top: 20px;
 }

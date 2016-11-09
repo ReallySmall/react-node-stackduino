@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import styles from 'css/components/_page';
 import Loading from 'components/Loading';
+import Error from 'components/Error';
 import NotFoundContainer from 'containers/NotFoundContainer';
 import classNames from 'classnames/bind';
 
@@ -14,7 +15,7 @@ export default class Page extends Component {
 
   render() {
 
-    const { isFetching, fetchingMessage, requestFailed } = this.props;
+    const { isFetching, fetchingMessage, errorMessage, connectionError, requestFailed } = this.props;
 
     return (
       <div className={cx('page')}>
@@ -22,7 +23,8 @@ export default class Page extends Component {
           <div className={cx('col-md-12')}>
             {this.props.children}
             {isFetching && !requestFailed && <Loading size="2x" message={fetchingMessage} />}
-            {requestFailed && <NotFoundContainer />}
+            {requestFailed && !connectionError && <NotFoundContainer />}
+            {requestFailed && connectionError && <Error message={errorMessage} size="2x" />}
           </div>
         </div>
       </div>
