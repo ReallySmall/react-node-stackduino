@@ -357,7 +357,7 @@ ul {
 .load-more {
   a {
     font-size: 1.4rem;
-    color: $light-grey;
+    color: $orange;
     &:hover, &:focus {
       color: $black;
     }
@@ -555,6 +555,6 @@ noscript {
 .cookie-message {
   display: block;
   color: $light-grey;
-  text-align: left;
+  text-align: center;
   padding-top: 20px;
 }

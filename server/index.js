@@ -60,9 +60,14 @@ keystone.mongoose.connect(keystone.get('mongo'));
 // Serve your static assets
 app.use(serve('./public'));
 
+var connectOptions = {
+  user: process.env.MONGODB_USER,
+  pass: process.env.MONGODB_PASS
+}
+
 // Find the appropriate database to connect to, default to localhost if not found.
 var connect = function() {
-  mongoose.connect(process.env.MONGODB_URI || secrets.db, function(err, res) {
+  mongoose.connect(process.env.MONGODB_URI, connectOptions, function(err, res) {
     if(err) {
       console.log('Error connecting to: ' + process.env.MONGODB_URI + '. ' + err);
     }else {
@@ -70,6 +75,7 @@ var connect = function() {
     }
   });
 };
+
 connect();
 
 mongoose.connection.on('error', console.log);

@@ -89,6 +89,7 @@
   }
 
   .social-links {
+    display: block;
     ul {
       float: right;
       font-size: 48px;
