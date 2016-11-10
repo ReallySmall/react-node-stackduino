@@ -70,7 +70,7 @@ export default class Gallery extends Component {
         </Masonry>}
         {!isFetching && !requestFailed &&
           page + 1 <= pages && 
-          <p className={cx('load-more', 'col-md-12')}>
+          <p className={cx('load-more', 'plain', 'col-md-12')}>
             <a href="#" onClick={this.loadMore}>Load more <span className={cx('fa', 'fa-arrow-circle-down')}></span></a>
           </p>
         }

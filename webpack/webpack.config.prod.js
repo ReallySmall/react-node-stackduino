@@ -141,13 +141,18 @@ module.exports = [
             minify: true,
             info: true,
             output: 'styles/main.css',
-            rejected: true
+            rejected: true,
+            whitelist: ['*fade*', '*slide*']
           }
         }),
         new webpack.optimize.UglifyJsPlugin({
+          minimize: true,
           compressor: {
             warnings: false
-          }
+          },
+          output: {
+            comments: false
+          },
         }),
         new webpack.DefinePlugin({
           __DEVCLIENT__: false,
