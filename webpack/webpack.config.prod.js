@@ -1,6 +1,7 @@
 var path = require("path");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var InlineEnviromentVariablesPlugin = require('inline-environment-variables-webpack-plugin');
+var purify = require("purifycss-webpack-plugin");
 var webpack = require("webpack");
 var assetsPath = path.join(__dirname, "..", "public", "assets");
 var adminPath = path.join(__dirname, 'admin');
@@ -129,6 +130,20 @@ module.exports = [
     plugins: [
         // extract inline css from modules into separate files
         new ExtractTextPlugin("styles/main.css"),
+        new purify({
+          basePath: __dirname,
+          resolveExtensions: ['.jsx'],
+          paths: [
+              "app/containers/*.jsx",
+              "app/components/*.jsx"
+          ],
+          purifyOptions: {
+            minify: true,
+            info: true,
+            output: 'styles/main.css',
+            rejected: true
+          }
+        }),
         new webpack.optimize.UglifyJsPlugin({
           compressor: {
             warnings: false
