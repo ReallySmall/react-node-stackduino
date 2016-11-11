@@ -16,11 +16,9 @@ export default class IntroBlock extends Component {
 
     return (
       <section>
-        <div className={cx('row')}>
-          <div className={cx('col-md-12')}>
-            <h2>{title}</h2>
-            <p>{intro}</p>
-          </div>
+        <div className={cx('col-md-12', 'intro-block')}>
+          <h2 className={cx('page-heading')}>{title}</h2>
+          <p>{intro}</p>
         </div>
       </section>
     );

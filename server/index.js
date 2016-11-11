@@ -41,10 +41,10 @@ keystone.init({
 });
 
 keystone.set('cloudinary config', {
-                                    cloud_name: process.env.KEYSTONE_CLOUDINARY_CLOUD_NAME, 
-                                    api_key: process.env.KEYSTONE_CLOUDINARY_API_KEY, 
-                                    api_secret: process.env.KEYSTONE_CLOUDINARY_API_SECRET
-                                  });
+  cloud_name: process.env.KEYSTONE_CLOUDINARY_CLOUD_NAME, 
+  api_key: process.env.KEYSTONE_CLOUDINARY_API_KEY, 
+  api_secret: process.env.KEYSTONE_CLOUDINARY_API_SECRET
+});
 
 keystone.set('static', ['public', 'images']);
 
@@ -56,36 +56,18 @@ keystone.routes(app);
 
 // Initialize keystone's connection to the database
 keystone.mongoose.connect(keystone.get('mongo'));
+keystone.mongoose.connection.on('error', console.log);
 
 // Serve your static assets
 app.use(serve('./public'));
 
-// Find the appropriate database to connect to, default to localhost if not found.
-var connect = function() {
-  mongoose.connect(process.env.MONGODB_URI, function(err, res) {
-    if(err) {
-      console.log('Error connecting to: ' + process.env.MONGODB_URI + '. ' + err);
-    }else {
-      console.log('Succeeded connected to: ' + process.env.MONGODB_URI);
-    }
-  });
-};
-
-connect();
-
-mongoose.connection.on('error', console.log);
-mongoose.connection.on('disconnected', connect);
-
-var isDev = process.env.NODE_ENV === 'development';
-
-if (isDev) {
+if (process.env.NODE_ENV === 'development') {
   var config = require('../webpack/webpack.config.dev-client.js');
   var compiler = webpack(config);
   app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath
   }));
-
   app.use(require('webpack-hot-middleware')(compiler));
 }
 

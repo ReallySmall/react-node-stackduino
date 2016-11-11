@@ -142,7 +142,7 @@ module.exports = [
             info: true,
             output: 'styles/main.css',
             rejected: true,
-            whitelist: ['*fade*', '*slide*']
+            whitelist: ['*fade*', '*slide*', '*carousel*']
           }
         }),
         new webpack.optimize.UglifyJsPlugin({

@@ -33,7 +33,7 @@ class BoardsContainer extends Component {
 
   	render() {
 
-      const {teasers, isFetching, requestFailed} = this.props;
+      const {teasers, isFetching, requestFailed, tags} = this.props;
 
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >

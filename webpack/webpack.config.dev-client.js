@@ -3,9 +3,6 @@ var webpack = require('webpack');
 var assetsPath = path.join(__dirname, '..', 'public', 'assets');
 var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 var purify = require("purifycss-webpack-plugin");
-
-console.log('dev client config in use');
-
 var commonLoaders = [
   {
     /*

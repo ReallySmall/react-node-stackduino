@@ -116,8 +116,8 @@ export default class FlickrCarousel extends Component {
     } else {
       
       sliderElement = <div className={cx('container')}>
-                        {isFetching && !requestFailed && <Loading size="2x" message="Loading feature images" />}
-                        {requestFailed && <Error size="2x" message="Failed to load feature images from Flickr" />}
+                        {isFetching && !requestFailed && <Loading size="2x" message="Loading feature images..." />}
+                        {requestFailed && <Error size="2x" message="Failed to load feature images." />}
                       </div> 
     }
 

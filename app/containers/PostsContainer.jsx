@@ -34,6 +34,7 @@ class PostsContainer extends Component {
     render() {
 
       const {teasers, isFetching, requestFailed} = this.props;
+      console.log(this.props.location.query.tags);
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >

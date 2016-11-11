@@ -558,3 +558,12 @@ noscript {
   text-align: center;
   padding-top: 20px;
 }
+
+.intro-block {
+  background: whitesmoke;
+  float: none;
+}
+
+.page-heading {
+  margin: 0;
+}

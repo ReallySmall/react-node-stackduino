@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-detail';
 import BoardStatus from 'components/BoardStatus';
@@ -18,7 +19,7 @@ export default class Board extends Component {
 
   render() {
 
-    const { title, boardStatus, developedDate, content, images, repoUrl, repoUserName, repoName, specification } = this.props;
+    const { title, version, boardStatus, developedDate, content, images, repoUrl, repoUserName, repoName, specification } = this.props;
 
     return (
         <div className={cx('row')}>
@@ -33,6 +34,10 @@ export default class Board extends Component {
               <Carousel images={images.slot1} />
               {content && content.extended && <TextBlock content={content.extended} />}
             </article>
+            <aside>
+              <h3 className={cx('visually-hidden')}>Further information</h3>
+              <Link to={{ pathname: '/articles', query: { tags: version } }}>More about building and using this board</Link>
+            </aside>
           </div>
           <div className={cx('col-sm-5')}>
             <aside>
