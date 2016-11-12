@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import {map} from "underscore";
 import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
+import TagFilter from 'components/TagFilter';
 import PostTeaser from 'components/PostTeaser';
 import { connect } from 'react-redux';
 import { fetchPosts } from 'actions/posts';
@@ -43,6 +44,7 @@ class PostsContainer extends Component {
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Articles" intro="Notes on building and using Stackduino boards. More to come!" />
+          {filters && filters.length && <TagFilter tags={filters} />}
           {map(teasers, function(teaser, i){
 
             let intro = '';

@@ -1,0 +1,31 @@
+@import '../main.css';
+
+.tag-filter {
+	float: none !important;
+	overflow: hidden;
+	margin-bottom: 20px;
+	.tags {
+		overflow: hidden;
+		li {
+			float: left;
+		}
+		.tag {
+			display: block;
+			float: left;
+			margin: 3px 6px 0 0;
+			padding: 3px 6px;
+			border: 1px solid $lighter-grey;
+			border-radius: 4px;
+			background: $white;
+			.fa {
+				color: $lighter-grey;
+			}
+			&:hover, &:focus {
+				border: 1px solid $light-grey;
+				.fa {
+					color: $light-grey;
+				}
+			}
+		}
+	}
+}
