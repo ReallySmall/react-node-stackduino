@@ -17,13 +17,13 @@ var flash = require('connect-flash');
 var app = express();
 keystone.static(app);
 
-app.use('/keystone', keystone.adminApp.staticRouter);
 app.use(cookieParser(process.env.KEYSTONE_COOKIE_SECRET));
 app.use(body.urlencoded({ extended: true }));
 app.use(body.json());
-//app.use(multer());
+app.use(multer());
 app.use(session());
 app.use(flash());
+app.use('/keystone', keystone.adminApp.staticRouter);
 
 keystone.app = app;
 keystone.mongoose = mongoose;
@@ -35,7 +35,7 @@ keystone.init({
    'updates': true,
    'auth': true,
    'user model': 'User',
-   'auto update': true,
+   'auto update': false,
    'cookie secret': process.env.KEYSTONE_COOKIE_SECRET,
    'mongo': process.env.MONGODB_URI
 });
@@ -46,7 +46,7 @@ keystone.set('cloudinary config', {
   api_secret: process.env.KEYSTONE_CLOUDINARY_API_SECRET
 });
 
-keystone.set('static', ['public', 'images']);
+keystone.set('static', ['public']);
 
 // Let keystone know where your models are defined. Here we have it at the `/models`
 keystone.import('models');
@@ -61,6 +61,7 @@ keystone.mongoose.connection.on('error', console.log);
 // Serve your static assets
 app.use(serve('./public'));
 
+// If in dev enable HMR
 if (process.env.NODE_ENV === 'development') {
   var config = require('../webpack/webpack.config.dev-client.js');
   var compiler = webpack(config);
@@ -71,10 +72,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(require('webpack-hot-middleware')(compiler));
 }
 
-// Bootstrap application settings
-require('./config/express')(app);
-
 // Bootstrap routes
-require('./config/routes')(app);
+require('./routes')(app);
 
-app.listen(app.get('port'));
+keystone.start();

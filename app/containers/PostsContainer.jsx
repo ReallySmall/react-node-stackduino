@@ -34,7 +34,11 @@ class PostsContainer extends Component {
     render() {
 
       const {teasers, isFetching, requestFailed} = this.props;
-      console.log(this.props.location.query.tags);
+      let filters = this.props.location.query.tags || null;
+
+      if(filters){
+        filters = filters.split(',');
+      }
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
@@ -47,16 +51,39 @@ class PostsContainer extends Component {
               intro = teaser.content.brief;
             }
 
+            let teaserMarkup = null;
+            let postTeaser = <PostTeaser
+                                key={i} 
+                                title={teaser.title}
+                                publishedDate={teaser.publishedDate}
+                                slug={teaser.slug} 
+                                intro={intro}
+                                categories={teaser.categories}
+                                images={teaser.images} />
+
+            if(!filters){
+              teaserMarkup = postTeaser;
+            } else {
+              let tagMatch = false;
+              for(let i = 0; i < filters.length; i++){
+                let filter = filters[i];
+                let postTags = teaser.tags;
+                for(let i = 0; i < teaser.tags.length; i++){
+                  let tag = teaser.tags[i].name;
+                  if(tag === filter){
+                    tagMatch = true;
+                  }
+                }
+              }
+              if(tagMatch){
+                teaserMarkup = postTeaser;
+              }
+            }
+
             return (
-              <PostTeaser
-                key={i} 
-                title={teaser.title}
-                publishedDate={teaser.publishedDate}
-                slug={teaser.slug} 
-                intro={intro}
-                categories={teaser.categories}
-                images={teaser.images} />
+                teaserMarkup
             );
+
           })} 
         </Page>
       );

@@ -34,10 +34,12 @@ export default class Board extends Component {
               <Carousel images={images.slot1} />
               {content && content.extended && <TextBlock content={content.extended} />}
             </article>
-            <aside>
-              <h3 className={cx('visually-hidden')}>Further information</h3>
-              <Link to={{ pathname: '/articles', query: { tags: version } }}>More about building and using this board</Link>
-            </aside>
+            {boardStatus < 2 &&
+              <aside>
+                <h3 className={cx('visually-hidden')}>Further information</h3>
+                <Link to={{ pathname: '/articles', query: { tags: 'v' + version } }}>More about building and using this board</Link>
+              </aside>
+            }
           </div>
           <div className={cx('col-sm-5')}>
             <aside>

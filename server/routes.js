@@ -1,24 +1,24 @@
 /**
- * Routes for express app
+ * Routes
  */
-var homepage = require('../controllers/homepage');
-var boards = require('../controllers/boards');
-var repos = require('../controllers/repos');
-var posts = require('../controllers/posts');
-var wrapper = require('../controllers/wrapper');
-var gallery = require('../controllers/gallery');
-var flickr = require('../controllers/flickr');
-var express = require('express');
-var mongoose = require('mongoose');
-var keystone = require('keystone');
-var request = require('axios');
-var body = require('body-parser');
+var homepage = require('./controllers/homepage');
+var boards = require('./controllers/boards');
+var repos = require('./controllers/repos');
+var posts = require('./controllers/posts');
+var wrapper = require('./controllers/wrapper');
+var gallery = require('./controllers/gallery');
+var flickr = require('./controllers/flickr');
+// var express = require('express');
+// var mongoose = require('mongoose');
+// var keystone = require('keystone');
+// var request = require('axios');
+// var body = require('body-parser');
 
 var path = require('path');
-var compiled_app_module_path = path.resolve(__dirname, '../../', 'public', 'assets', 'server.js');
+var compiled_app_module_path = path.resolve(__dirname, '../', 'public', 'assets', 'server.js');
 var App = require(compiled_app_module_path);
 
-module.exports = function(app, passport) {
+module.exports = function(app) {
 
   // homepage routes
   app.get('/api/homepage', homepage.all);

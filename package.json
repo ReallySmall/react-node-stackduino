@@ -89,7 +89,7 @@
     "mocha": "^2.4.5",
     "moment": "^2.13.0",
     "mongoose": "^4.4.7",
-    "multer": "^1.2.0",
+    "multer": "^0.1.8",
     "nock": "^8.0.0",
     "node-libs-browser": "^1.0.0",
     "nodemon": "^1.9.1",
