@@ -23,7 +23,7 @@ function makePostRequest(method, id, data) {
   return request[method](API_ENDPOINT + (id ? ('/' + id) : ''), data);
 }
 
-// Fetch posts logic
+// Fetch posts
 export function fetchPosts() {
   return {
     type: types.GET_POSTS_INDEX,
@@ -31,10 +31,18 @@ export function fetchPosts() {
   }
 }
 
-// Fetch one board
+// Fetch one post
 export function fetchPost(param) {
   return {
     type: types.GET_POST,
     promise: makePostRequest('get', param.slug)
+  }
+}
+
+// Filter with tags
+export function filterByTags(tags) {
+  return {
+    type: types.FILTER_BY_TAGS,
+    tags: tags
   }
 }

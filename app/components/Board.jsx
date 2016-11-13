@@ -8,6 +8,7 @@ import TextBlock from 'components/TextBlock';
 import DateBlock from 'components/DateBlock';
 import ImageBlock from 'components/ImageBlock';
 import RepositoryBlock from 'components/RepositoryBlock';
+import FilterButtonContainer from 'containers/FilterButtonContainer';
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +16,11 @@ export default class Board extends Component {
 
   constructor(props) {
     super(props);
+  };
+
+  filterPosts(event) {
+    let value = event.target.value;
+    this.props.dispatch( filterEvents({ type: this.props.type, value: value }) ); // send the new filter value to state
   };
 
   render() {
@@ -37,7 +43,7 @@ export default class Board extends Component {
             <aside>
               <h3 className={cx('visually-hidden')}>Further information</h3>
               <strong>
-                <Link to={{ pathname: '/articles', query: { tags: 'v' + version } }} className={cx('more-info-link')}><span className={cx('fa', 'fa-info-circle')}></span> More about building and using this board</Link>
+                <FilterButtonContainer path="/articles" title="More about building and using this board" tags={['v' + version]} />
               </strong>  
             </aside>
           </div>

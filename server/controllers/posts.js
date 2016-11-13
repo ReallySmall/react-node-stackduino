@@ -1,19 +1,36 @@
 var keystone = require('keystone');
 var mongoose = require('mongoose');
 var Posts = keystone.list('Post').model;
+var Tags = keystone.list('Tag').model;
 
 /**
  * List
  */
 exports.all = function(req, res) {
+
+  var data = {
+    teasers: [],
+    tags: []
+  };
+
   Posts
     .find({})
     .sort({publishedDate: -1})
-    .populate('images.slot1 images.slot2 tags').exec(function(err, posts) {
+    .populate('images.slot1 images.slot2 tags').exec(function(err, teasers) {
       if(!err) {
-        res.json(posts);
+        data.teasers = teasers;
+        Tags
+          .find({})
+          .exec(function(err, tags) {
+            if(!err) {
+              data.tags = tags;
+              res.json(data);
+            } else {
+              console.log('Error in tags query');
+            }
+        });
       } else {
-        console.log('Error in first query');
+        console.log('Error in posts query');
       }
   });
 };
@@ -27,7 +44,7 @@ exports.byId = function(req, res) {
       if(!err) {
         res.json(post);
       } else {
-        console.log('Error in first query');
+        console.log('Error in post query');
       }
   });
 };

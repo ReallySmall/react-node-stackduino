@@ -6,6 +6,7 @@ import TagFilter from 'components/TagFilter';
 import PostTeaser from 'components/PostTeaser';
 import { connect } from 'react-redux';
 import { fetchPosts } from 'actions/posts';
+import { filterByTags } from 'actions/posts';
 import { fetchWrapper } from 'actions/wrapper';
 
 /*
@@ -34,17 +35,20 @@ class PostsContainer extends Component {
 
     render() {
 
-      const {teasers, isFetching, requestFailed} = this.props;
-      let filters = this.props.location.query.tags || null;
-
-      if(filters){
-        filters = filters.split(',');
+      const {teasers, tags, isFetching, requestFailed} = this.props;
+      const filters = this.props.filters.length ? this.props.filters : null;
+      
+      let queryFilters = this.props.location.query.tags;
+      if(queryFilters){
+        queryFilters = queryFilters.split(',');
       }
+
+      const activeFilters = filters || queryFilters || null;
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Articles" intro="Notes on building and using Stackduino boards. More to come!" />
-          {filters && filters.length && <TagFilter tags={filters} />}
+          <TagFilter tags={activeFilters} />
           {map(teasers, function(teaser, i){
 
             let intro = '';
@@ -63,12 +67,12 @@ class PostsContainer extends Component {
                                 categories={teaser.categories}
                                 images={teaser.images} />
 
-            if(!filters){
+            if(!activeFilters){
               teaserMarkup = postTeaser;
             } else {
               let tagMatch = false;
-              for(let i = 0; i < filters.length; i++){
-                let filter = filters[i];
+              for(let i = 0; i < activeFilters.length; i++){
+                let filter = activeFilters[i];
                 let postTags = teaser.tags;
                 for(let i = 0; i < teaser.tags.length; i++){
                   let tag = teaser.tags[i].name;
@@ -102,6 +106,8 @@ function mapStateToProps(state) {
 
   return {
     teasers: state.posts.teasers,
+    tags: state.posts.tags,
+    filters: state.posts.filters,
     isFetching: state.posts.teasers ? state.posts.isFetching : true,
     requestFailed: state.posts.requestFailed
   };

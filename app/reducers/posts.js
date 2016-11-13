@@ -4,10 +4,13 @@ import {
   GET_POSTS_INDEX_FAILURE,
   GET_POST_REQUEST,
   GET_POST_SUCCESS,
-  GET_POST_FAILURE } from 'constants/index';
+  GET_POST_FAILURE,
+  FILTER_BY_TAGS } from 'constants/index';
 
 export default function posts(state = {
   teasers: [],
+  tags: [],
+  filters: [],
   details: {},
   isFetching: false,
   requestFailed: false
@@ -22,7 +25,8 @@ export default function posts(state = {
       return Object.assign({}, state, {
         isFetching: false,
         requestFailed: false,
-        teasers: action.req.data
+        teasers: action.req.data.teasers,
+        tags: action.req.data.tags
       });
     case GET_POSTS_INDEX_FAILURE:
       return Object.assign({}, state, {
@@ -48,10 +52,13 @@ export default function posts(state = {
         details: postsDetails
       });
     case GET_POST_FAILURE:
-
       return Object.assign({}, state, {
         isFetching: false,
         requestFailed: true
+      });
+    case FILTER_BY_TAGS:
+      return Object.assign({}, state, {
+        filters: action.tags
       });
 
     default:

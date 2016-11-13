@@ -1,24 +1,40 @@
 import React, { Component, PropTypes } from 'react';
+import { routerMiddleware, push } from 'react-router-redux';
+import { connect } from 'react-redux';
+import { reject } from 'underscore';
+import { filterByTags } from 'actions/posts';
 import {map} from "underscore";
 import classNames from 'classnames/bind';
 import styles from 'css/components/_tag-filter';
 
 const cx = classNames.bind(styles);
 
-export default class TagFilter extends Component {
+class TagFilter extends Component {
+
+	constructor(props) {
+    	super(props);
+  	};
 
   render(){
 
-  	const { tags } = this.props;
+  	const { tags, filter } = this.props;
+  	const label = tags && tags.length ? 'Showing content tagged with:' : 'Showing all content';
 
     return ( 
 		<div className={cx('tag-filter', 'col-md-12')}>
-			<small className={cx('plain')}>Showing content tagged with:</small>
+			<small className={cx('plain')}>{label}</small>
 			<ul className={cx('plain', 'tags')}>
 				{map(tags, function(tag, i){
 		            return (
 		                <li key={i}>
-		                	<a href="#" className={cx('tag')}>{tag} <span className={cx('fa', 'fa-close')}></span></a>
+		                	<a 
+		                		href="#" 
+		                		className={cx('tag')} 
+		                		onClick={(event) => { 
+              						event.preventDefault();
+              						const updatedTags = reject(tags, function(item){ return item === tag; });
+					            	filter(updatedTags); 
+            					}}>{tag} <span className={cx('fa', 'fa-close')}></span></a>
 		                </li>
 		            );
 	          	})}
@@ -27,4 +43,14 @@ export default class TagFilter extends Component {
     );
   }
 
-}
+};
+
+function mapStateToProps() { return {};};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    filter: (tags) => dispatch(filterByTags(tags))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TagFilter);
