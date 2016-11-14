@@ -42,9 +42,11 @@ export default class Board extends Component {
             </article>
             <aside>
               <h3 className={cx('visually-hidden')}>Further information</h3>
-              <strong>
-                <FilterButtonContainer path="/articles" title="More about building and using this board" tags={['v' + version]} />
-              </strong>  
+              <p>
+                <strong>
+                  <FilterButtonContainer path="/articles" title="More about building and using this board" tags={['v' + version]} icon="fa-info-circle" />
+                </strong>
+              </p>  
             </aside>
           </div>
           <div className={cx('col-sm-5')}>

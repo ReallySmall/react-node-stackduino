@@ -2,6 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { routerMiddleware, push } from 'react-router-redux';
 import { connect } from 'react-redux';
 import { filterByTags } from 'actions/posts';
+import classNames from 'classnames/bind';
+import styles from 'css/components/_board-detail';
+
+const cx = classNames.bind(styles);
 
 class FilterButtonContainer extends Component {
 
@@ -11,7 +15,7 @@ class FilterButtonContainer extends Component {
 
     render() {
 
-      const {path, query, title, tags, filter, redirect} = this.props;
+      const {path, query, title, tags, filter, redirect, icon} = this.props;
 
       return (
         <a 
@@ -23,7 +27,9 @@ class FilterButtonContainer extends Component {
               redirect(path);
             }
           }
-        >{title}</a>
+        >
+          {icon && <span className={cx('fa', icon)}></span>} {title}
+        </a>
       );
 
     }

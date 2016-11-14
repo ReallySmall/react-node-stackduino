@@ -23,7 +23,14 @@ exports.all = function(req, res) {
           .find({})
           .exec(function(err, tags) {
             if(!err) {
-              data.tags = tags;
+              
+              var tagList = [];
+
+              for(var i = 0; i < tags.length; i++){
+                tagList.push(tags[i].name);
+              };
+
+              data.tags = tagList;
               res.json(data);
             } else {
               console.log('Error in tags query');

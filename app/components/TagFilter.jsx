@@ -17,14 +17,14 @@ class TagFilter extends Component {
 
   render(){
 
-  	const { tags, filter } = this.props;
-  	const label = tags && tags.length ? 'Showing content tagged with:' : 'Showing all content';
+  	const { filter, filterTags, allTags } = this.props;
+  	const label = filterTags && filterTags.length ? 'Showing content tagged with:' : 'Showing all content';
 
     return ( 
 		<div className={cx('tag-filter', 'col-md-12')}>
 			<small className={cx('plain')}>{label}</small>
 			<ul className={cx('plain', 'tags')}>
-				{map(tags, function(tag, i){
+				{map(filterTags, function(tag, i){
 		            return (
 		                <li key={i}>
 		                	<a 
@@ -32,7 +32,7 @@ class TagFilter extends Component {
 		                		className={cx('tag')} 
 		                		onClick={(event) => { 
               						event.preventDefault();
-              						const updatedTags = reject(tags, function(item){ return item === tag; });
+              						const updatedTags = reject(filterTags, function(item){ return item === tag; });
 					            	filter(updatedTags); 
             					}}>{tag} <span className={cx('fa', 'fa-close')}></span></a>
 		                </li>

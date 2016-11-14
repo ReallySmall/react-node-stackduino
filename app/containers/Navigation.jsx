@@ -14,19 +14,24 @@ export default class Navigation extends Component {
         <div className={cx('container')}>
           <nav className={cx('row')}>
             <ul>
-              <li className={cx('col-sm-4')}>
+              <li className={cx('col-sm-3')}>
                 <Link className={cx('preface-block')} to="/boards" activeClassName={cx('active')}>
                   <h2><span className={cx('fa', 'fa-code-fork')}></span>Boards</h2>
                 </Link>
               </li>
-              <li className={cx('col-sm-4')}>
+              <li className={cx('col-sm-3')}>
                 <Link className={cx('preface-block')} to="/articles" activeClassName={cx('active')}>
-                  <h2><span className={cx('fa', 'fa-gears')}></span>Articles</h2>
+                  <h2><span className={cx('fa', 'fa-files-o')}></span>Articles</h2>
                 </Link>
               </li>
-              <li className={cx('col-sm-4')}>
+              <li className={cx('col-sm-3')}>
                 <Link className={cx('preface-block')} to="/gallery" activeClassName={cx('active')}>
                   <h2><span className={cx('fa', 'fa-star')}></span>Gallery</h2>
+                </Link>
+              </li>
+              <li className={cx('col-sm-3')}>
+                <Link className={cx('preface-block')} to="/tools" activeClassName={cx('active')}>
+                  <h2><span className={cx('fa', 'fa-gears')}></span>Tools</h2>
                 </Link>
               </li>
             </ul>

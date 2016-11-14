@@ -7,6 +7,7 @@ import BoardContainer from 'containers/BoardContainer';
 import PostsContainer from 'containers/PostsContainer';
 import PostContainer from 'containers/PostContainer';
 import GalleryContainer from 'containers/GalleryContainer';
+import ToolsContainer from 'containers/ToolsContainer';
 import NotFoundContainer from 'containers/NotFoundContainer';
 
 export default (store) => {
@@ -18,6 +19,7 @@ export default (store) => {
       <Route path="articles" component={PostsContainer} />
       <Route path="articles/:slug" component={PostContainer} />
       <Route path="gallery" component={GalleryContainer} />
+      <Route path="tools" component={ToolsContainer} />
       <Route path='*' component={NotFoundContainer} status={404} />
     </Route>
   );

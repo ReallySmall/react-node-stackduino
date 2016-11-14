@@ -48,7 +48,7 @@ class PostsContainer extends Component {
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Articles" intro="Notes on building and using Stackduino boards. More to come!" />
-          <TagFilter tags={activeFilters} />
+          <TagFilter filterTags={activeFilters} allTags={tags} />
           {map(teasers, function(teaser, i){
 
             let intro = '';
