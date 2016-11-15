@@ -125,8 +125,7 @@ module.exports = {
           $: 'jquery', 
           jQuery: 'jquery'
         }),
-        new webpack.IgnorePlugin(new RegExp("^(config.dev-client)$")),
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/) 
+        new webpack.IgnorePlugin(new RegExp("^(config.dev-client)$"))
     ],
     postcss: postCSSConfig
 };

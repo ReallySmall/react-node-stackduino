@@ -10,6 +10,16 @@ var truncate = function(string, truncateAt) {
     truncatedString += ' ...';
     return truncatedString;
   }
-}
+};
 
-export { truncate }
+var toDateString = function(dateString){
+  if(!dateString){
+    return '';
+  }
+  var dateObj = new Date(dateString);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+  var formattedDate = dateObj.getDate()+" "+months[dateObj.getMonth()]+" "+dateObj.getFullYear();
+  return formattedDate;
+};
+
+export { truncate, toDateString };

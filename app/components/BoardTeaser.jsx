@@ -40,7 +40,7 @@ export default class BoardTeaser extends Component {
     const closed = status === 2 ? true : false;
     const colWidth = !closed ? 'col-sm-9' : 'col-sm-12';
     const thumbNailDisplay = !closed && img.length ? 'col-sm-3' : 'hidden';
-    const dateText = status === 0 ? 'Development started' : 'Development completed';
+    const dateText = status === 0 ? 'Development started' : 'Completed';
 
     return (
       <section className={cx('board', statuses[status].htmlClass)}>

@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import {map} from "underscore";
-import moment from 'moment';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_repository-commits';
+import { toDateString } from 'utilities/strings';
 
 const cx = classNames.bind(styles);
 
@@ -21,10 +21,13 @@ export default class RepositoryCommits extends Component {
         <ul className={cx('list-group', 'repo-commits', 'plain')}>
           {map(repoDetail, function(commit, i){
             if(commit.commit.committer.date && commit.commit.url && commit.commit.message){
+
+              let date = toDateString(commit.commit.committer.date);
+
               return (
                 <li key={i} className={cx('list-group-item')}>
                   <span className={cx('badge')}>
-                    {moment(commit.commit.committer.date).format('MMMM Do YYYY')}
+                    {date}
                   </span>
                   <a href={commit.commit.url}>{commit.commit.message}</a>
                 </li>

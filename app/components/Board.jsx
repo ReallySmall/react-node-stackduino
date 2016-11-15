@@ -26,6 +26,7 @@ export default class Board extends Component {
   render() {
 
     const { title, version, boardStatus, developedDate, content, images, repoUrl, repoUserName, repoName, specification } = this.props;
+    const dateText = boardStatus === 0 ? 'Development started' : 'Completed';
 
     return (
         <div className={cx('row')}>
@@ -34,7 +35,7 @@ export default class Board extends Component {
               <h2>{title}</h2>
               <div className={cx('clearfix')}>
                 <BoardStatus status={boardStatus} />
-                <DateBlock text="Development started" date={developedDate} />
+                <DateBlock text={dateText} date={developedDate} />
               </div>
               {content && content.brief && <TextBlock content={content.brief} />}
               <Carousel images={images.slot1} />
@@ -70,7 +71,7 @@ export default class Board extends Component {
     );
 
   }
-};
+};    
 
 Board.propTypes = {
 };
