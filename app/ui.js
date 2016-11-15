@@ -1,4 +1,4 @@
-//import cssua from 'cssuseragent';
+import $ from 'jquery';
 import { isClient } from 'utilities/environment';
 
 const ui = (() => {
@@ -17,7 +17,6 @@ const ui = (() => {
 
   		$(document).ready(function(){
   			stickyFooter();
-        console.log(navigator.userAgent);
   		});
 
   		$(window).on('resize', function(){

@@ -35,7 +35,11 @@ function renderFullPage(renderedContent, initialState, head={
       ${head.title}
       ${head.meta}
       ${head.link}
-      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <link 
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" 
+        crossorigin="anonymous">
       <noscript>
         <style>
           .no-script-hide {
@@ -54,6 +58,11 @@ function renderFullPage(renderedContent, initialState, head={
     <div id="app">${renderedContent}</div>
     <script>
       window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous">
     </script>
     <script type="text/javascript" charset="utf-8" src="/assets/app.js"></script>
     <script>
