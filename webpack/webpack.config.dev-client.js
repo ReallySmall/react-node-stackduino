@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 var assetsPath = path.join(__dirname, '..', 'public', 'assets');
 var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
-var purify = require("purifycss-webpack-plugin");
 var commonLoaders = [
   {
     /*
@@ -90,6 +89,12 @@ module.exports = {
       filename: '[name].js',
       // The output path from the view of the Javascript
       publicPath: '/assets/'
+    },
+    externals: {
+      // require("jquery") is external and available
+      //  on the global var jQuery
+      "jquery": "jQuery",
+      "$": "jQuery"
     },
     module: {
       loaders: commonLoaders.concat([

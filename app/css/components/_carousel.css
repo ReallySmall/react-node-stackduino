@@ -11,8 +11,9 @@
     overflow: hidden;
     list-style-type: none;
     figcaption {
-      background: $lightest-grey;
-      padding: 15px;
+      background: transparent;
+      padding: 10px;
+      color: grey;
     }
   }
   .flex-control-nav {

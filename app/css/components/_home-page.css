@@ -2,66 +2,6 @@
 
 .home-page {
   background: whitesmoke;
-  .content-block {
-    position: relative;
-    background: whitesmoke;
-    h2, h3, h4, h5, h6 {
-      font-size: 26px;
-    }
-    .container {
-      background: whitesmoke;
-      padding: 40px 0;
-    }
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      z-index: 5;
-      top: 100%;
-      left: 50%;
-      margin-left: -40px;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 20px 40px 0 40px;
-      border-color: whitesmoke transparent transparent transparent;
-    }
-    &.light-grey {
-      background: $light-grey;
-      .container {
-        background: $light-grey;
-      }
-      &:after {
-        content: '';
-        border-color: $light-grey transparent transparent transparent;
-      }
-    }
-    &.lightest-grey {
-      background: $lightest-grey;
-      .container {
-        background: $lightest-grey;
-      }
-      &:after {
-        content: '';
-        border-color: $lightest-grey transparent transparent transparent;
-      }
-    }
-    &.white {
-      background: $white;
-      .container {
-        background: $white;
-      }
-      &:after {
-        content: '';
-        border-color: $white transparent transparent transparent;
-      }
-    }
-    &.last {
-      &:after {
-        display: none;
-      }
-    }
-  }
 }
 
 .home-feature-images {
@@ -165,3 +105,64 @@
     }
   }
 }
+
+.content-block {
+    position: relative;
+    background: whitesmoke;
+    h2, h3, h4, h5, h6 {
+      font-size: 26px;
+    }
+    .container {
+      background: whitesmoke;
+      padding: 40px 0;
+    }
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 5;
+      top: 100%;
+      left: 50%;
+      margin-left: -40px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 40px 0 40px;
+      border-color: whitesmoke transparent transparent transparent;
+    }
+    &.light-grey {
+      background: $light-grey;
+      .container {
+        background: $light-grey;
+      }
+      &:after {
+        content: '';
+        border-color: $light-grey transparent transparent transparent;
+      }
+    }
+    &.lightest-grey {
+      background: $lightest-grey;
+      .container {
+        background: $lightest-grey;
+      }
+      &:after {
+        content: '';
+        border-color: $lightest-grey transparent transparent transparent;
+      }
+    }
+    &.white {
+      background: $white;
+      .container {
+        background: $white;
+      }
+      &:after {
+        content: '';
+        border-color: $white transparent transparent transparent;
+      }
+    }
+    &.last {
+      &:after {
+        display: none;
+      }
+    }
+  }

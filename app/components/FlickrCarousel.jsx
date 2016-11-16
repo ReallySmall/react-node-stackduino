@@ -85,7 +85,6 @@ export default class FlickrCarousel extends Component {
                                       <Image src={image.url_c} alt={image.title + " by " + image.ownername + " on Flickr"} ratio={ratio}/>
                                       <figcaption>
                                         <p className={cx('plain','title')}>{truncate(image.title, 60)}</p>
-                                        <p className={cx('plain', 'owner')}><span className={cx('fa', 'fa-flickr')}></span> {truncate(image.ownername, 60)}</p>
                                       </figcaption>
                                     </figure>
                                   </a>

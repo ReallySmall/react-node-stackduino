@@ -94,6 +94,12 @@ module.exports = {
       // The output path from the view of the Javascript
       publicPath: '/assets/'
     },
+    externals: {
+      // require("jquery") is external and available
+      //  on the global var jQuery
+      "jquery": "jQuery",
+      "$": "jQuery"
+    },
     module: {
       loaders: commonLoaders.concat([
         { test: /\.css$/,
