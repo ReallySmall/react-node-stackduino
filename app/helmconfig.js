@@ -10,10 +10,11 @@
  */
 
 // Import all your needed files first (webpack will grab the url)
-import chromecon from 'file!images/chrome-ninja192-precomposed.png';
-import applecon from 'file!images/apple-ninja152-precomposed.png';
-import mscon from 'file!images/ms-ninja144-precomposed.png';
-import favicon from 'file!images/favicon.png';
+import chromecon from 'file!images/android-chrome-192x192.png';
+import applecon from 'file!images/apple-touch-icon.png';
+import mscon from 'file!images/mstile-150x150.png';
+import favicon from 'file!images/favicon.ico';
+import ogicon from 'file!images/stackduino_boards.jpg';
 
 const config = {
   link: [
@@ -21,7 +22,7 @@ const config = {
     { 'rel': 'icon', 'href': favicon },
     { 'rel': 'icon', 'sizes': '192x192', 'href': chromecon },
     // Add to homescreen for Safari on IOS
-    //{ 'rel': 'apple-touch-icon', 'sizes': '152x152', applecon },
+    { 'rel': 'apple-touch-icon', 'sizes': '152x152', applecon },
     { 'rel': 'stylesheet', 'href': 'https://fonts.googleapis.com/css?family=Economica:700', 'type': 'text/css' },
     { 'rel': 'stylesheet', 'href': '/assets/styles/main.css' }
     // SEO: If your mobile URL is different from the desktop URL,
@@ -46,7 +47,11 @@ const config = {
     { 'name': 'apple-mobile-web-app-title', 'content': 'Stackduino' },
     // Tile icon for Win8 (144x144 + tile color)
     { 'name': 'msapplication-TileImage', 'content': mscon },
-    { 'name': 'msapplication-TileColor', 'content': '#3372DF' }
+    { 'name': 'msapplication-TileColor', 'content': '#3372DF' },
+    // og tags
+    { 'name': 'og:site_name', 'content': 'Stackduino' },
+    { 'name': 'og:description', 'content': 'A range of arduino compatible open source focus stacking controllers' },
+    { 'name': 'og:image', 'content': ogicon }
   ]
 };
 
