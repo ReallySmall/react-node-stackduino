@@ -14,6 +14,12 @@ export default class TextBlock extends Component {
 
     const { content } = this.props;
 
+    if(!content){
+    	return {
+    		null
+    	}
+    }
+
     return (
       <div dangerouslySetInnerHTML={{ __html: content || '' }} />
     );

@@ -4,7 +4,8 @@
   &.cookie {
     background: $black;
     .container {
-      padding: 10px 0;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
     p {
       span {
@@ -36,8 +37,10 @@
 
   .header-message {
     &.cookie {
-      p {
-        padding: 0 !important;
+      .container {
+        p {
+          padding: 0;
+        }
       }
     }
   }

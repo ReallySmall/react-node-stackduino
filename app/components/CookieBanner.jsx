@@ -16,7 +16,7 @@ export default class CookieBanner extends Component {
   };
 
   componentDidMount() {
-    this.setState({acceptCookiesRequired: cookie.load('accepted-cookies') ? false : true });  
+    this.setState({acceptCookiesRequired: cookie.load('_accepted_cookies') ? false : true });  
   };
 
   render() {
@@ -35,7 +35,7 @@ export default class CookieBanner extends Component {
                 <span>{bannerMessage} | <Link to={'/cookies'}>Read more</Link></span>
                 <button onClick={(event) => { 
                   event.preventDefault();
-                  cookie.save('accepted-cookies', 'true', { path: '/' });
+                  cookie.save('_accepted_cookies', 'true', { path: '/' });
                   const cookiesAccepted = {
                     acceptCookiesRequired: false
                   };
