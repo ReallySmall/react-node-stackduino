@@ -15,6 +15,9 @@
     list-style-type: none;
     li {
       padding: 0;
+      float: left;
+      width: 50%;
+      border: 1px solid $lightest-grey;
       .preface-block {
         color: $grey;
         display: block;
@@ -49,6 +52,8 @@
   .preface-area {
     ul {
       li {
+        width: 25%;
+        border: none;
         .preface-block {
           border-right: 6px solid #dddddd;
           padding: 12px;

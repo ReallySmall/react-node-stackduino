@@ -12,7 +12,7 @@ export default class TextBlock extends Component {
 
   render(){
 
-    const { content, classes } = this.props;
+    const { content } = this.props;
 
     return (
       <div dangerouslySetInnerHTML={{ __html: content || '' }} />

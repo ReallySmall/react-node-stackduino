@@ -6,7 +6,7 @@
 }
 
 .proto-indicator {
-  display: none;
+  display: none !important;
 }
 
 .hidden {
@@ -16,7 +16,7 @@
 @media (min-width: 768px) {
 
 	.proto-indicator {
-		display: block;
+		display: block !important;
 		&:before {
 		font-size: 6em;
 		color: $lightest-grey;

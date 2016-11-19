@@ -4,6 +4,7 @@ import classNames from 'classnames/bind';
 import styles from 'css/components/_header';
 import { Link } from 'react-router';
 import Navigation from 'components/Navigation';
+import CookieBanner from 'components/CookieBanner';
 import LegacyWarning from 'components/LegacyWarning';
 
 const cx = classNames.bind(styles);
@@ -17,12 +18,14 @@ export default class Header extends Component {
   render() {
 
     const { siteTitle, siteSubtitle, links } = this.props.content;
+    const { cookies, legacyBrowsers } = this.props.messages;
     const { route } = this.props.route;
 
     return (
       <div className={cx('header-container')}>
           <header className={cx('site-header')}>
-            <LegacyWarning />
+            <CookieBanner content={cookies} />
+            <LegacyWarning content={legacyBrowsers} />
             <div className={cx('container')}>
               <div className={cx('row')}>
                 <Link to={'/'} id="logo" className={cx('site-branding')}>

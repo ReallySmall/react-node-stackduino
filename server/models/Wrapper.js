@@ -30,7 +30,18 @@ Wrapper.add({
 			title: { type: String },
 			list: { type: Types.Relationship, ref: 'Link', many: true }
 		}
-	} 
+	},
+	messages: {
+		cookies: {
+			bannerMessage: { type: String, required: false },
+			bannerButtonMessage: { type: String, required: false },
+			policyContent: { type: Types.Html, wysiwyg: true, height: 400 }
+		},
+		legacyBrowsers: {
+			bannerMessage: { type: String, required: false }
+		}
+	}
+
 });
 
 Wrapper.schema.virtual('content.full').get(function() {

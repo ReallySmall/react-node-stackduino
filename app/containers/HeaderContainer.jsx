@@ -10,11 +10,11 @@ class HeaderContainer extends Component {
 
     render() {
 
-      const { header } = this.props.content;    
+      const { header, messages } = this.props.content;    
       const { route } = this.props;
 
       return (
-        header && route && <Header content={header} route={route} />
+        header && route && <Header content={header} messages={messages} route={route} />
       );
 
     }

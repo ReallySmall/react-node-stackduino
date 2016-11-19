@@ -57,7 +57,6 @@ export default class Footer extends Component {
                 </ul>
               </li>
             </ul>
-            <small className={cx('col-sm-12', 'cookie-message')}>Like most sites, this one uses cookies.</small>
           </div>
         </div>
       </footer>
