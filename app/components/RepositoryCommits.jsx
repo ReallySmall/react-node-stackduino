@@ -29,7 +29,7 @@ export default class RepositoryCommits extends Component {
                   <span className={cx('badge')}>
                     {date}
                   </span>
-                  <a href={commit.commit.url}>{commit.commit.message}</a>
+                  <a href={commit.html_url}>{commit.commit.message}</a>
                 </li>
               )
             }
