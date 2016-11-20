@@ -35,7 +35,7 @@ export default class CookieBanner extends Component {
                 <span>{bannerMessage} | <Link to={'/cookies'}>Read more</Link></span>
                 <button onClick={(event) => { 
                   event.preventDefault();
-                  cookie.save('_accepted_cookies', 'true', { path: '/' });
+                  cookie.save('_accepted_cookies', 'true', { maxAge: 31536000, path: '/' });
                   const cookiesAccepted = {
                     acceptCookiesRequired: false
                   };
