@@ -8,6 +8,7 @@ var posts = require('./controllers/posts');
 var wrapper = require('./controllers/wrapper');
 var gallery = require('./controllers/gallery');
 var flickr = require('./controllers/flickr');
+var mail = require('./controllers/mail');
 
 var path = require('path');
 var compiled_app_module_path = path.resolve(__dirname, '../', 'public', 'assets', 'server.js');
@@ -42,6 +43,9 @@ module.exports = function(app) {
 
   // route to proxy calls to Flickr api for gallery
   app.get('/api/flickr/byGroup/:group_id/:tag', flickr.featured);
+
+  // route to proxy calls to mail api
+  app.post('/api/mail', mail.send);
 
   // This is where the magic happens. We take the locals data we have already
   // fetched and seed our stores with data.

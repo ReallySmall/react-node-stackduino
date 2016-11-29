@@ -1,3 +1,8 @@
+var messages = {
+  flickrFetching: 'Asking Flickr nicely...',
+  flickrFailed: 'Failed to get images. Refresh the page or try again later'
+};
+
 var truncate = function(string, truncateAt) {
   if(!string || !truncateAt){
     return;
@@ -22,4 +27,4 @@ var toDateString = function(dateString){
   return formattedDate;
 };
 
-export { truncate, toDateString };
+export { messages, truncate, toDateString };

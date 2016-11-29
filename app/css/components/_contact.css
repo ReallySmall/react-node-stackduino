@@ -1,0 +1,42 @@
+@import '../main.css';
+
+.form {
+	.form-row {
+		display: block;
+		width: 100%;
+		clear: both;
+		overflow: hidden;
+		margin: 0 0 15px 0;
+		label {
+			display: block;
+			clear: both;
+			margin: 0 0 5px 0;
+		}
+		input, textarea, select {
+			display: block;
+			width: 100%;
+			clear: both;
+			padding: 5px;
+			border-radius: 4px;
+			border: 1px solid $lighter-grey;
+			&:hover {
+				border: 1px solid $light-grey;
+			}
+		}
+	}
+	button {
+		display: block;
+		width: auto;
+		clear: both;
+		padding: 5px 10px;
+		border-radius: 4px;
+		border: 1px solid $lighter-grey;
+		color: $orange;
+		background: none;
+		fomt-weight: bold;
+		&:hover {
+			border: 1px solid $light-grey;
+			cursor: pointer;
+		}
+	}
+}

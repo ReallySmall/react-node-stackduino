@@ -27,11 +27,11 @@ class BoardContainer extends Component {
 
   	render() {
 
-      const { board, isFetching, requestFailed } = this.props;
+      const { board, isFetching, requestFailed, location } = this.props;
 
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
-          {board && <Board {...board} />} 
+          {board && <Board {...board} location={location} />} 
         </Page>
 	  	);
 

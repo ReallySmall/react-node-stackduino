@@ -8,6 +8,7 @@ import Image from 'components/Image';
 import { truncate } from 'utilities/strings';
 import Loading from 'components/Loading';
 import Error from 'components/Error';
+import { messages } from 'utilities/strings';
 
 const isBrowser = typeof window !== 'undefined';
 const flexslider = isBrowser ? require( 'flexslider') : undefined;
@@ -115,8 +116,8 @@ export default class FlickrCarousel extends Component {
     } else {
       
       sliderElement = <div className={cx('container')}>
-                        {isFetching && !requestFailed && <Loading size="2x" message="Loading feature images..." />}
-                        {requestFailed && <Error size="2x" message="Failed to load feature images." />}
+                        {isFetching && !requestFailed && <Loading size="2x" message={messages.flickrFetching} />}
+                        {requestFailed && <Error size="2x" message={messages.flickrFailed} />}
                       </div> 
     }
 

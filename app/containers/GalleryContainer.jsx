@@ -6,6 +6,7 @@ import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
 import Gallery from 'components/Gallery';
 import LoadButton from 'components/LoadButton';
+import { messages } from 'utilities/strings';
 
 class GalleryContainer extends Component {
 
@@ -29,7 +30,7 @@ class GalleryContainer extends Component {
     const { isFetching, requestFailed } = this.props;
 
     return (
-      <Page isFetching={isFetching} fetchingMessage="Fetching images..." requestFailed={requestFailed} connectionError={true} errorMessage="Failed to load images. Try refreshing the page.">
+      <Page isFetching={isFetching} fetchingMessage={messages.flickrFetching} requestFailed={requestFailed} connectionError={true} errorMessage={messages.flickrFailed}>
         <IntroBlock title="Gallery" intro="Images of, and taken by, Stackduino controllers on Flickr." />
         <Gallery {...this.props} />
       </Page>

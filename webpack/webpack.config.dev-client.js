@@ -119,8 +119,7 @@ module.exports = {
         new webpack.ProvidePlugin({ 
           $: 'jquery', 
           jQuery: 'jquery'
-        }),
-        new webpack.IgnorePlugin(new RegExp("^(config.dev-client)$"))
+        })
     ],
     postcss: postCSSConfig
 };

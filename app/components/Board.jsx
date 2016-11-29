@@ -7,6 +7,7 @@ import Carousel from 'components/Carousel';
 import TextBlock from 'components/TextBlock';
 import DateBlock from 'components/DateBlock';
 import ImageBlock from 'components/ImageBlock';
+import Contact from 'components/Contact';
 import RepositoryBlock from 'components/RepositoryBlock';
 import FilterButtonContainer from 'containers/FilterButtonContainer';
 
@@ -25,7 +26,7 @@ export default class Board extends Component {
 
   render() {
 
-    const { title, version, boardStatus, developedDate, content, images, repoUrl, repoUserName, repoName, specification } = this.props;
+    const { title, version, boardStatus, developedDate, content, images, repoUrl, repoUserName, repoName, specification, location } = this.props;
     const dateText = boardStatus === 0 ? 'Development started' : 'Completed';
 
     return (
@@ -63,6 +64,7 @@ export default class Board extends Component {
                     {<div dangerouslySetInnerHTML={{ __html: specification || '' }} />}
                 </section> 
               </div>
+              <Contact location={this.props.location.pathname} />
             </aside>
           </div>
         </div>

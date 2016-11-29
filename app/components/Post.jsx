@@ -5,6 +5,7 @@ import styles from 'css/components/_board-detail';
 import DateBlock from 'components/DateBlock';
 import ImageBlock from 'components/ImageBlock';
 import FilterButtonContainer from 'containers/FilterButtonContainer';
+import Contact from 'components/Contact';
 
 const cx = classNames.bind(styles);
 
@@ -16,7 +17,7 @@ export default class Post extends Component {
 
   render() {
 
-    const { title, publishedDate, content, categories, images, tags } = this.props;
+    const { title, publishedDate, content, categories, images, tags, location } = this.props;
     let tagList = [];
 
     for(let i = 0; i < tags.length; i++){
@@ -39,6 +40,7 @@ export default class Post extends Component {
           <aside>
             <h2 className={cx('visually-hidden')}>Related content</h2>
             <ImageBlock images={images.slot1} />
+            <Contact location={this.props.location.pathname} />
           </aside>
         </div>
       </div>

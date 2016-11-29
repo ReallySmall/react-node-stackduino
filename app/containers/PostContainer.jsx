@@ -26,11 +26,11 @@ class PostContainer extends Component {
 
   	render() {
 
-      const { post, isFetching, requestFailed } = this.props;
+      const { post, isFetching, requestFailed, location } = this.props;
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
-          {post && <Post {...post} />}
+          {post && <Post {...post} location={location} />}
         </Page>
       );
 
