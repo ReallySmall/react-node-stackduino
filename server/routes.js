@@ -1,6 +1,3 @@
-/**
- * Routes
- */
 var homepage = require('./controllers/homepage');
 var boards = require('./controllers/boards');
 var repos = require('./controllers/repos');

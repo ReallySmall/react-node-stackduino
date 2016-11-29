@@ -490,7 +490,7 @@ figcaption {
     overflow: hidden;
     .panel-header {
       margin: -16px -16px 15px -16px;
-      padding: 15px;
+      padding: 10px 15px;
       background: $lightest-grey;
       border-bottom: 3px solid $grey;
     }

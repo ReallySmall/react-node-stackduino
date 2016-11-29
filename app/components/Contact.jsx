@@ -66,17 +66,17 @@ export default class Contact extends Component {
       <div className={cx('inset-wrapper', 'contact')}>
         <div className={cx('panel', 'form')}>
           <section>
-            <h3 className={cx('panel-header')}>Get in touch</h3>
+            <h3 className={cx('panel-header')}>Contact</h3>
             {this.state.submission === 'inactive' &&
               <form onSubmit={this.handleSubmit}>
                 <fieldset>
                   <div className={cx('form-row')}>
-                    <label htmlFor="contact-email">Your email (if you would like a reply)</label>
-                    <input id="contact-email" type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange('email')} />
+                    <label htmlFor="contact-message">Your message*</label>
+                    <textarea id="contact-message" ref="message" name="message" placeholder="Ask a question or leave feedback" maxlength="500" required="required" value={this.state.message} onChange={this.handleChange('message')} />
                   </div>
                   <div className={cx('form-row')}>
-                    <label htmlFor="contact-message">Your message</label>
-                    <textarea id="contact-message" ref="message" name="message" placeholder="Ask a question or leave feedback" required="required" value={this.state.message} onChange={this.handleChange('message')} />
+                    <label htmlFor="contact-email">Your email (if you would like a reply)</label>
+                    <input id="contact-email" type="email" name="email" placeholder="Email" maxlength="100" value={this.state.email} onChange={this.handleChange('email')} />
                   </div>
                 </fieldset>
                 <button type="submit">Send <span className={cx('fa', 'fa-arrow-circle-right')}></span></button>

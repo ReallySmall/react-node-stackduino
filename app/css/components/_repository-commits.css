@@ -14,7 +14,7 @@
     .list-group-item {
       border: 0;
       background: none;
-      padding: 10px 0;
+      padding: 5px 0;
       margin-bottom: -1px;
       .badge {
         display: inline-block;
