@@ -3,13 +3,9 @@
 .error {
   line-height: 1rem;
   font-size: 1rem;
-  .icon {
+  &:before {
     color: $red;
-  }
-  .message {
-    display: inline-block;
-    padding: 0px 5px 0px 5px;
-    color: $light-grey;
+    padding-right: 5px;
   }
   &.size-1x {
   	line-height: 1rem;

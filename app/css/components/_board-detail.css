@@ -13,26 +13,39 @@
 }
 
 .more-board-information {
-  	position: relative;
-  	text-align: center;
-  	background: $lightest-grey;
-  	padding: 40px 15px 25px 15px;
-  	margin: 0 -15px 25px -15px;
-  	font-size: 16px;
-  	&:after {
-        content: '';
-        display: block;
-	    position: absolute;
-	    z-index: 5;
-	    top: 0;
-	    left: 50%;
-	    margin-left: -40px;
-	    width: 0;
-	    height: 0;
-	    border-style: solid;
-	    border-width: 20px 40px 0 40px;
-        border-color: whitesmoke transparent transparent transparent;
-    }
+	position: relative;
+	text-align: center;
+	background: $lightest-grey;
+	padding: 40px 15px 25px 15px;
+	margin: 0 -15px 25px -15px;
+	font-size: 16px;
+	&:after {
+      content: '';
+      display: block;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 50%;
+    margin-left: -40px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 40px 0 40px;
+      border-color: whitesmoke transparent transparent transparent;
+  }
+  a {
+    display: block;
+    padding: 10px 15px;
+    background: $white;
+    border-radius: 4px;
+    border: 1px solid $lighter-grey;
+  }
+}
+
+.spec-list {
+  p {
+    margin-bottom: 5px;
+  }
 }
 
 @media (min-width: 768px) {

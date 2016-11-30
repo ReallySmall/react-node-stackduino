@@ -59,7 +59,7 @@ export default class Board extends Component {
                 </section>
               </div>
               <div className={cx('inset-wrapper')}>
-                <section className={cx('panel', 'repository-link')}>
+                <section className={cx('panel', 'repository-link', 'spec-list')}>
                   <h3 className={cx('panel-header')}>Specifications</h3>
                     {<div dangerouslySetInnerHTML={{ __html: specification || '' }} />}
                 </section> 

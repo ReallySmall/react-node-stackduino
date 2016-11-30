@@ -45,18 +45,26 @@ export default class Contact extends Component {
 
     mailApi.post('/api/mail', this.state)
       .then(response => {
-        this.setState({submission: 'success', email: '', message: ''});
+        if(response.data.statusCode >= 400){
+          this.setState({submission: 'error', email: '', message: ''});
+          this.resetForm();       
+        } else {
+          this.setState({submission: 'success', email: '', message: ''});
+          this.resetForm();
+        }
       })
       .catch(error => {
-        this.setState({submission: 'error', email: '', message: ''});         
+        this.setState({submission: 'error', email: '', message: ''});
+        this.resetForm();        
       });
 
   }
 
-  resetForm(event){
+  resetForm(){
 
-    event.preventDefault();
-    this.setState({submission: 'inactive'});
+    setTimeout(() => {
+      this.setState({ submission: 'inactive' });
+    }, 5000);
 
   }
 
@@ -72,11 +80,11 @@ export default class Contact extends Component {
                 <fieldset>
                   <div className={cx('form-row')}>
                     <label htmlFor="contact-message">Your message*</label>
-                    <textarea id="contact-message" ref="message" name="message" placeholder="Ask a question or leave feedback" maxlength="500" required="required" value={this.state.message} onChange={this.handleChange('message')} />
+                    <textarea id="contact-message" ref="message" name="message" placeholder="Ask a question or leave feedback" maxLength="500" required="required" value={this.state.message} onChange={this.handleChange('message')} />
                   </div>
                   <div className={cx('form-row')}>
                     <label htmlFor="contact-email">Your email (if you would like a reply)</label>
-                    <input id="contact-email" type="email" name="email" placeholder="Email" maxlength="100" value={this.state.email} onChange={this.handleChange('email')} />
+                    <input id="contact-email" type="email" name="email" placeholder="Email" maxLength="100" value={this.state.email} onChange={this.handleChange('email')} />
                   </div>
                 </fieldset>
                 <button type="submit">Send <span className={cx('fa', 'fa-arrow-circle-right')}></span></button>
@@ -86,13 +94,10 @@ export default class Contact extends Component {
               <Loading message="Sending message..." />
             }
             {this.state.submission === 'error' &&
-              <Error message="Error sending message. Please try again." />
+              <Error message="Error sending message." />
             }
             {this.state.submission === 'success' &&
-              <div>
-                <p>Sent successfully, thanks for your message!</p>
-                <p className={cx('plain')}><a href="#" onClick={this.resetForm}>Send another message</a>.</p>
-              </div>
+              <p>Sent successfully, thanks for your message!</p>
             }
           </section>
         </div>
