@@ -35,20 +35,12 @@ class PostsContainer extends Component {
 
     render() {
 
-      const {teasers, tags, isFetching, requestFailed} = this.props;
-      const filters = this.props.filters.length ? this.props.filters : null;
-      
-      let queryFilters = this.props.location.query.tags;
-      if(queryFilters){
-        queryFilters = queryFilters.split(',');
-      }
-
-      const activeFilters = filters || queryFilters || null;
+      const {teasers, tags, filters, filterLength, isFetching, requestFailed} = this.props;
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Articles" intro="Notes on building and using Stackduino boards." />
-          <TagFilter filterTags={activeFilters} allTags={tags} />
+          <TagFilter filters={filters} filterLength={filterLength} tags={tags} />
           {map(teasers, function(teaser, i){
 
             let intro = '';
@@ -67,27 +59,20 @@ class PostsContainer extends Component {
                                 categories={teaser.categories}
                                 images={teaser.images} />
 
-            if(!activeFilters){
-              teaserMarkup = postTeaser;
-            } else {
-              let tagMatch = false;
-              for(let i = 0; i < activeFilters.length; i++){
-                let filter = activeFilters[i];
-                let postTags = teaser.tags;
-                for(let i = 0; i < teaser.tags.length; i++){
-                  let tag = teaser.tags[i].name;
-                  if(tag === filter){
-                    tagMatch = true;
+            if(!filters || !filters.length){ // if no active filters render out all teasers
+              teaserMarkup = postTeaser; 
+            } else { // if active filters, render out teasers with tags matching filters
+              map(filters, function(filter, i){ // for each active filter
+                map(teaser.tags, function(tag, i){ // compare with each tag in the teaser
+                  if(tag.name === filter){ // if any matches
+                    teaserMarkup = postTeaser; // render teaser
                   }
-                }
-              }
-              if(tagMatch){
-                teaserMarkup = postTeaser;
-              }
-            }
+                });
+              });
+            };
 
             return (
-                teaserMarkup
+              teaserMarkup
             );
 
           })} 
@@ -108,6 +93,7 @@ function mapStateToProps(state) {
     teasers: state.posts.teasers,
     tags: state.posts.tags,
     filters: state.posts.filters,
+    filterLength: state.posts.filterLength,
     isFetching: state.posts.teasers ? state.posts.isFetching : true,
     requestFailed: state.posts.requestFailed
   };

@@ -4,7 +4,12 @@
 	float: none !important;
 	overflow: hidden;
 	margin-bottom: 20px;
+	.filter-label {
+		display: block;
+		width: 100%;
+	}
 	.tags {
+		float: left;
 		overflow: hidden;
 		li {
 			float: left;
@@ -27,5 +32,14 @@
 				}
 			}
 		}
+	}
+	select {
+		float: left;
+		height: 30px;
+		margin: 3px 6px 0 0;
+		padding: 0 5px;
+		border: 1px solid $lighter-grey;
+		border-radius: 4px;
+		color: $grey;
 	}
 }

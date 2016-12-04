@@ -43,6 +43,6 @@ export function fetchPost(param) {
 export function filterByTags(tags) {
   return {
     type: types.FILTER_BY_TAGS,
-    tags: tags
+    filters: tags
   }
 }

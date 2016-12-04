@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import {
   GET_POSTS_INDEX_REQUEST,
   GET_POSTS_INDEX_SUCCESS,
@@ -10,7 +11,8 @@ import {
 export default function posts(state = {
   teasers: [],
   tags: [],
-  filters: [],
+  filters: null,
+  filterLength: 0,
   details: {},
   isFetching: false,
   requestFailed: false
@@ -58,7 +60,8 @@ export default function posts(state = {
       });
     case FILTER_BY_TAGS:
       return Object.assign({}, state, {
-        filters: action.tags
+        filters: action.filters,
+        filterLength: action.filters.length
       });
 
     default:

@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { routerMiddleware, push } from 'react-router-redux';
 import { connect } from 'react-redux';
-import { reject } from 'underscore';
+import { reject, difference } from 'underscore';
 import { filterByTags } from 'actions/posts';
 import {map} from "underscore";
 import classNames from 'classnames/bind';
@@ -13,35 +13,75 @@ class TagFilter extends Component {
 
 	constructor(props) {
     	super(props);
+	    this.setState = this.setState.bind(this);
+	    this.filterSelect = this.filterSelect.bind(this);
   	};
 
-  render(){
+  	filterSelect(event){
 
-  	const { filter, filterTags, allTags } = this.props;
-  	const label = filterTags && filterTags.length ? 'Showing content tagged with:' : 'Showing all content';
+  		const { filter } = this.props;
+  		const updatedTags = this.props.filters || [];
 
-    return ( 
-		<div className={cx('tag-filter', 'col-md-12')}>
-			<small className={cx('plain')}>{label}</small>
-			<ul className={cx('plain', 'tags')}>
-				{map(filterTags, function(tag, i){
-		            return (
-		                <li key={i}>
-		                	<a 
-		                		href="#" 
-		                		className={cx('tag')} 
-		                		onClick={(event) => { 
-              						event.preventDefault();
-              						const updatedTags = reject(filterTags, function(item){ return item === tag; });
-					            	filter(updatedTags); 
-            					}}>{tag} <span className={cx('fa', 'fa-close')}></span></a>
-		                </li>
-		            );
-	          	})}
-			</ul>
-		</div>
-    );
-  }
+		updatedTags.push(event.target.value);
+		filter(updatedTags);
+
+  	};
+
+  	removeFilter(i, event){
+
+  		event.preventDefault();
+
+  		const { filter, filters } = this.props;
+  		const tag = filters[i];;
+		const updatedTags = reject(filters, function(item){ 
+								return item === tag; 
+							});
+
+		filter(updatedTags);
+
+  	};
+
+  	render(){
+
+	  	const { tags, filters, filterLength } = this.props;
+	  	const label = filters && filters.length ? 'Showing content tagged with:' : 'Showing all content';
+	  	const availableTags = difference(tags, filters);
+	  	const filterControlLabel = filters && filters.length ? 'Add another filter' : 'Add a filter'
+	  	const filterControl = availableTags.length 
+	  		?	<div>
+					<select onChange={this.filterSelect} value=''>
+						<option value="">{filterControlLabel}</option>
+						{map(availableTags, function(tag, i){
+				            return (
+				                <option key={i} value={tag}>{tag}</option>
+				            );
+			          	})}
+					</select>
+				</div>
+			: null;
+
+	    return ( 
+			<div className={cx('tag-filter', 'col-md-12')}>
+				<small className={cx('plain', 'filter-label')}>{label}</small>
+				<ul className={cx('plain', 'tags')}>
+					{map(filters, (item, i) => {
+						let boundItemClick = this.removeFilter.bind(this, i);
+			            return (
+			                <li key={i}>
+			                	<a 
+			                		href="#" 
+			                		role="button"
+			                		className={cx('tag')}
+			                		onClick={boundItemClick}>{item} <span className={cx('fa', 'fa-close')}></span>
+			                	</a>
+			                </li>
+			            );
+		          	})}
+				</ul>
+				{filterControl}
+			</div>
+	    );
+	}
 
 };
 
