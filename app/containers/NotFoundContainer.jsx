@@ -26,7 +26,7 @@ class NotFoundContainer extends Component {
 	  	return (
         <Page>
           <p><span className={cx('fa', 'fa-warning')}></span> Not Found</p>
-          <p>Sorry, this content doesn't exist.</p>
+          <p>Sorry, couldn't get this content. There may be a network error, or it might not exist.</p>
           <p><a href="/">Back to home</a>.</p>
         </Page>
 	  	);

@@ -1,3 +1,4 @@
+var CommonsPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 var path = require("path");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var InlineEnviromentVariablesPlugin = require('inline-environment-variables-webpack-plugin');
@@ -96,7 +97,6 @@ module.exports = [
       filename: "[name].js",
       // The output path from the view of the Javascript
       publicPath: publicPath
-
     },
     externals: {
         // require("jquery") is external and available
@@ -140,6 +140,7 @@ module.exports = [
             comments: false
           },
         }),
+        new webpack.optimize.DedupePlugin(),
         new webpack.DefinePlugin({
           __DEVCLIENT__: false,
           __DEVSERVER__: false

@@ -24,7 +24,7 @@ export default class Page extends Component {
             {this.props.children}
             {isFetching && !requestFailed && <Loading size="2x" message={fetchingMessage} />}
             {requestFailed && !connectionError && <NotFoundContainer />}
-            {requestFailed && connectionError && <Error message={errorMessage} size="2x" />}
+            {requestFailed && connectionError && <div className={cx('col-md-12')}><Error message={errorMessage} size="2x" /></div>}
           </div>
         </div>
       </div>

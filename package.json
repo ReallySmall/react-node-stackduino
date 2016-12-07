@@ -22,7 +22,9 @@
   },
   "author": "Richard Iles",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "^1.13.3"
+  },
   "engines": {
     "node": "4.3.1"
   },

@@ -116,9 +116,11 @@ export default class FlickrCarousel extends Component {
     } else {
       
       sliderElement = <div className={cx('container')}>
-                        {isFetching && !requestFailed && <Loading size="2x" message={messages.flickrFetching} />}
-                        {requestFailed && <Error size="2x" message={messages.flickrFailed} />}
-                      </div> 
+                        <div className={cx('col-md-12')}> 
+                          {isFetching && !requestFailed && <Loading size="2x" message={messages.flickrFetching} />}
+                          {requestFailed && <Error size="2x" message={messages.flickrFailed} />}
+                        </div>
+                      </div>
     }
 
     return (

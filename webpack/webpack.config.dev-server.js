@@ -1,3 +1,4 @@
+var CommonsPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 var path = require('path');
 var webpack = require('webpack');
 var assetsPath = path.join(__dirname, '..', 'public', 'assets');
