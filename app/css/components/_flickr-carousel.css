@@ -1,6 +1,7 @@
 @import '../main.css';
 
 .home-page {
+  .no-script-hide {position: relative;}
   .carousel {
     background: $blue;
     margin: 0px auto;
@@ -8,9 +9,10 @@
     padding: 0 !important;
     overflow: visible !important;
     border: none;
-    position: relative;
+    position: relative !important;
     .flex-viewport {
-      overflow: visible !important
+      overflow: visible !important;
+      position: relative;
     }
     figure {
       position: relative;

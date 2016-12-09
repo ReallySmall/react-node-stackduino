@@ -1,5 +1,5 @@
 var messages = {
-  flickrFetching: 'Asking Flickr nicely...',
+  flickrFetching: 'Asking Flickr...',
   flickrFailed: 'Failed to get images. Refresh the page or try again later'
 };
 

@@ -34,23 +34,23 @@ export default class Homepage extends Component {
       homepageContent = <div>
                           <article>
                             <h2 className="visually-hidden">Page content</h2>
-                            <section className={cx('no-script-hide')}>
-                              <FlickrCarousel 
-                                images={featureImages.images} 
-                                isFetching={featureImages.isFetching} 
-                                requestFailed={featureImages.requestFailed} />
-                            </section>
                             <section className={cx('col-md-12', 'content-block', 'lightest-grey')}>
                               <div className={cx('container')}>
                                 <div dangerouslySetInnerHTML={{ __html: content.content.slot1 || '' }} />
                                 <ImageBlock images={content.images.slot1} />
                               </div>
                             </section>
-                            <section className={cx('col-md-12', 'content-block', 'white')}>
+                            <section className={cx('col-md-12', 'content-block', 'white', 'last')}>
                               <div className={cx('container')}>
                                 <div dangerouslySetInnerHTML={{ __html: content.content.slot2 || '' }} />
                                 <ImageBlock images={content.images.slot2} />
                               </div>
+                            </section>
+                            <section className={cx('no-script-hide')}>
+                              <FlickrCarousel 
+                                images={featureImages.images} 
+                                isFetching={featureImages.isFetching} 
+                                requestFailed={featureImages.requestFailed} />
                             </section>
                             <section className={cx('col-md-12', 'content-block', 'lightest-grey')}>
                               <div className={cx('container')}>
