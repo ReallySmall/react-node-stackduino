@@ -23,25 +23,25 @@ export default class Homepage extends Component {
     	<div className={cx('page', 'home-page', 'container', 'container-wrapper')}>
         <article>
           <h2 className="visually-hidden">Page content</h2>
-          <section className={cx('col-md-12', 'content-block', 'lightest-grey')}>
+          <section className={cx('col-md-12', 'content-block', 'white')}>
             <div className={cx('col-md-12')}>
               <div dangerouslySetInnerHTML={{ __html: content.content.slot1 || '' }} />
               <ImageBlock images={content.images.slot1} />
             </div>
           </section>
-          <section className={cx('col-md-12', 'content-block', 'white')}>
+          <section className={cx('col-md-12', 'content-block', 'lightest-grey')}>
             <div className={cx('col-md-12')}>
               <div dangerouslySetInnerHTML={{ __html: content.content.slot2 || '' }} />
               <ImageBlock images={content.images.slot2} />
             </div>
           </section>
-          <section className={cx('col-md-12', 'content-block', 'lightest-grey')}>
+          <section className={cx('col-md-12', 'content-block', 'white')}>
             <div className={cx('col-md-12')}>
               <div dangerouslySetInnerHTML={{ __html: content.content.slot3 || '' }} />
               <ImageBlock images={content.images.slot3} />
             </div>
           </section>
-          <section className={cx('col-md-12', 'content-block', 'white', 'last')}>
+          <section className={cx('col-md-12', 'content-block', 'lightest-grey', 'last')}>
             <div className={cx('col-md-12')}>
               <div dangerouslySetInnerHTML={{ __html: content.content.slot4 || '' }} />
               <ImageBlock images={content.images.slot4} />

@@ -462,7 +462,7 @@ figcaption {
 .inset-wrapper {
   display: block;
   padding: 2px;
-  background: #EFEEEA;
+  background: whitesmoke;
   border-left: 1px solid #dddddd;
   border-top: 1px solid #dddddd;
   border-right: 2px solid $white;
