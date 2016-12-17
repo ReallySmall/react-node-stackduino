@@ -74,7 +74,7 @@ body {
 }
 
 .view-container {
-  overflow: visible;
+  overflow: hidden;
   min-height: 100%;
   background: $blue;
   position: relative;
@@ -421,6 +421,8 @@ ul {
   &:hover, &:focus {
     .img-placeholder {
       position: relative;
+      left: 0;
+      top: 0;
       &:after {
         content: '';
         display: block;

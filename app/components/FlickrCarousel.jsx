@@ -6,9 +6,6 @@ import styles from 'css/components/_flickr-carousel';
 import { Link } from 'react-router';
 import Image from 'components/Image';
 import { truncate } from 'utilities/strings';
-import Loading from 'components/Loading';
-import Error from 'components/Error';
-import { messages } from 'utilities/strings';
 
 const isBrowser = typeof window !== 'undefined';
 const flexslider = isBrowser ? require( 'flexslider') : undefined;
@@ -30,9 +27,9 @@ export default class FlickrCarousel extends Component {
 
   componentDidUpdate(){
 
-    const { images, isFetching, requestFailed } = this.props;
+    const { images } = this.props;
 
-    if(this.state.componentDidMount && !this.state.carouselInitialised && !isFetching && !requestFailed && images.length){
+    if(this.state.componentDidMount && !this.state.carouselInitialised && images.length){
       $(this.refs.flexslider)
         .flexslider({
           animation: 'slide',
@@ -54,23 +51,13 @@ export default class FlickrCarousel extends Component {
 
   render() {
 
-    const { images, isFetching, requestFailed } = this.props;
-    let containerClass = '';
-
-    if(requestFailed){
-      containerClass = 'request-failed-container';
-    } else if(isFetching){
-      containerClass = 'is-fetching-container';
-    } else {
-      containerClass = ''
-    }
-
+    const { images } = this.props;
     let sliderElement = null;
 
-    if(!isFetching && !requestFailed && images && images.length){
+    if(images && images.length){
 
       sliderElement = <div ref="flexslider" className={cx('js-flexslider', 'carousel', 'no-script-hide')}>
-                        <h3 className="visually-hidden">Images from Flickr</h3>
+                        <h3 className="visually-hidden">Images created with Stackduino</h3>
                         <ul className={cx('slides', 'plain', 'no-list-style')}>
                           {map(images, function(image, i){
         
@@ -113,18 +100,10 @@ export default class FlickrCarousel extends Component {
                         </ul>
                       </div>;                 
 
-    } else {
-      
-      sliderElement = <div className={cx('container')}>
-                        <div className={cx('col-md-12')}> 
-                          {isFetching && !requestFailed && <Loading size="2x" message={messages.flickrFetching} />}
-                          {requestFailed && <Error size="2x" message={messages.flickrFailed} />}
-                        </div>
-                      </div>
-    }
+    } 
 
     return (
-      <div className={cx('carousel-container', containerClass)}>
+      <div className={cx('carousel-container', 'hero-carousel')}>
         {sliderElement}
       </div>
     );

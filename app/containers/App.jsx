@@ -3,7 +3,6 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { browserHistory, Router, Route, IndexRoute, Link } from 'react-router'
 import HeaderContainer from 'containers/HeaderContainer';
 import FooterContainer from 'containers/FooterContainer';
-import UIScripts from 'ui'; // not used in markup but is self-calling
 import classNames from 'classnames/bind';
 import 'css/main';
 import styles from 'css/main';
@@ -12,16 +11,6 @@ import { fetchWrapper } from 'actions/wrapper';
 
 const cx = classNames.bind(styles);
 
-
-/*
- * React-router's <Router> component renders <Route>'s
- * and replaces `this.props.children` with the proper React Component.
- *
- * Please refer to `routes.jsx` for the route config.
- *
- * A better explanation of react-router is available here:
- * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
- */
 const App = ({children, location}) => {
 
   //Data that needs to be called before rendering the component

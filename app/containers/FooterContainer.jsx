@@ -13,7 +13,9 @@ class FooterContainer extends Component {
     const { footer } = this.props.content;
 
     return (
-      footer && <Footer content={footer} />
+      <div>
+        {footer && <Footer content={footer} />}
+      </div>
     );
 
   }

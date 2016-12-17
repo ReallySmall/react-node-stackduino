@@ -38,26 +38,28 @@ class BoardsContainer extends Component {
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
           <IntroBlock title="Boards" intro="Compatible with the Arduino IDE, Stackduino boards automate the process of focus stacking. Version 2.x boards place the emphasis on an enhanced feature-set. The cost of components is correspondingly slightly higher, and the build more challenging due to the use of SMD technology. Version 1.x boards offer a simpler feature-set, but are cheaper and simpler to build. The latest versions of both 1.x and 2.x boards use identical pcb footprints to facilitate development of universally compatible enclosures and accessories." />
-          {map(teasers, function(teaser, i){
+          <section>
+            {map(teasers, function(teaser, i){
 
-            let intro = '';
+              let intro = '';
 
-            if(teaser.content && teaser.content.brief){
-              intro = teaser.content.brief;
-            }
+              if(teaser.content && teaser.content.brief){
+                intro = teaser.content.brief;
+              }
 
-            return (
-              <BoardTeaser 
-                key={i}
-                title={teaser.title}
-                slug={teaser.slug} 
-                version={teaser.version}
-                developedDate={teaser.developedDate}
-                status={teaser.boardStatus}
-                intro={intro}
-                images={teaser.images} />
-            );
-          })} 
+              return (
+                <BoardTeaser 
+                  key={i}
+                  title={teaser.title}
+                  slug={teaser.slug} 
+                  version={teaser.version}
+                  developedDate={teaser.developedDate}
+                  status={teaser.boardStatus}
+                  intro={intro}
+                  images={teaser.images} />
+              );
+            })}
+          </section>
         </Page>
 	  	);
 

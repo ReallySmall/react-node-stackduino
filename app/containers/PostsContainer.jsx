@@ -4,6 +4,7 @@ import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
 import TagFilter from 'components/TagFilter';
 import PostTeaser from 'components/PostTeaser';
+import Error from 'components/Error';
 import { connect } from 'react-redux';
 import { fetchPosts } from 'actions/posts';
 import { filterByTags } from 'actions/posts';
@@ -36,6 +37,7 @@ class PostsContainer extends Component {
     render() {
 
       const {teasers, tags, filters, filterLength, isFetching, requestFailed} = this.props;
+      let resultCount = 0;
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
@@ -65,6 +67,7 @@ class PostsContainer extends Component {
               map(filters, function(filter, i){ // for each active filter
                 map(teaser.tags, function(tag, i){ // compare with each tag in the teaser
                   if(tag.name === filter){ // if any matches
+                    resultCount++;
                     teaserMarkup = postTeaser; // render teaser
                   }
                 });
@@ -75,7 +78,8 @@ class PostsContainer extends Component {
               teaserMarkup
             );
 
-          })} 
+          })}
+          {filters && filters.length && resultCount === 0 && <Error size="1x" message="Nothing to show, please try different filters." /> || null}
         </Page>
       );
 

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import FlickrCarouselContainer from 'containers/FlickrCarouselContainer';
 import {map} from "underscore";
 import classNames from 'classnames/bind';
 import styles from 'css/components/_footer';
@@ -12,8 +13,10 @@ export default class Footer extends Component {
     const { col1, col2, col3 } = this.props.content;
 
     return (
-      <footer className={cx('footer', 'js-ui-sticky-footer')}>
-        <h2 className={cx('visually-hidden')}>External links</h2>
+      <footer id="footer" className={cx('footer', 'js-ui-sticky-footer')}>
+        <h2 className={cx('visually-hidden')}>Footer content</h2>
+        <FlickrCarouselContainer />
+        <h3 className={cx('visually-hidden')}>External links</h3>
         <div className={cx('container')}>
           <div className={cx('row')}>
             <ul className={cx('plain', 'clearfix', 'link-block-container')}>

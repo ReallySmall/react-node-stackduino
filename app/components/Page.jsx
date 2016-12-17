@@ -15,12 +15,13 @@ export default class Page extends Component {
 
   render() {
 
-    const { isFetching, fetchingMessage, errorMessage, connectionError, requestFailed } = this.props;
+    const { isFetching, fetchingMessage, errorMessage, connectionError, requestFailed, customClass } = this.props;
+    let internalMarkup = this.props.internalMarkup === 'false' ? false : true;
 
     return (
-      <div className={cx('page')}>
-        <div className={cx('container')}>
-          <div className={cx('col-md-12')}>
+      <div className={cx('page', customClass)}>
+        <div className={cx(internalMarkup ? 'container' : '')}>
+          <div className={cx(internalMarkup ? 'col-md-12' : '')}>
             {this.props.children}
             {isFetching && !requestFailed && <Loading size="2x" message={fetchingMessage} />}
             {requestFailed && !connectionError && <NotFoundContainer />}

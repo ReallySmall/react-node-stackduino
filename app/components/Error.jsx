@@ -11,7 +11,7 @@ export default class Error extends Component {
   	const { size, message } = this.props;
 
     return ( 
-		<p className={cx('error', 'icon', 'plain', 'size-' + size)}>
+		<p className={cx('error', 'icon', 'col-md-12', 'plain', 'size-' + size)}>
 			<span className={cx('fa', 'fa-times-circle')}> </span> {message || 'Loading error'}
 		</p>
     );

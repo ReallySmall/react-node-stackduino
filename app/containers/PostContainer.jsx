@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchWrapper } from 'actions/wrapper';
 import { fetchPost } from 'actions/posts';
-import NotFoundContainer from 'containers/NotFoundContainer';
 import Page from 'components/Page';
 import Post from 'components/Post';
 
