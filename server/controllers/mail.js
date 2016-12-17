@@ -5,8 +5,8 @@ var Wrapper = keystone.list('Wrapper').model;
 
 exports.send = function(req, res) {
 
-  var from_email = new sendgrid.Email(req.body.email || 'reallysmallmacro@gmail.com');
-  var to_email = new sendgrid.Email('reallysmallmacro@gmail.com');
+  var from_email = new sendgrid.Email(req.body.email || process.env.SITE_EMAIL);
+  var to_email = new sendgrid.Email(process.env.SITE_EMAIL);
   var subject = 'New message from Stackduino site: ' + req.body.page;
   var content = new sendgrid.Content("text/plain", req.body.message);
   var mail = new sendgrid.Mail(from_email, subject, to_email, content);
