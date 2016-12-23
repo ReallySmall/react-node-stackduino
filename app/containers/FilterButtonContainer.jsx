@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { routerMiddleware, push } from 'react-router-redux';
 import { connect } from 'react-redux';
+import {map} from 'underscore';
 import { filterByTags } from 'actions/posts';
 import classNames from 'classnames/bind';
-import styles from 'css/components/_board-detail';
+import styles from 'css/components/_filter-buttons';
 
 const cx = classNames.bind(styles);
 
@@ -16,21 +17,35 @@ class FilterButtonContainer extends Component {
     render() {
 
       const {path, query, title, tags, filter, redirect, icon} = this.props;
+      let tagList = null;
 
       return (
-        <a 
-          href={path} 
-          onClick={
-            (event) => { 
-              event.preventDefault();
-              filter(tags); 
-              redirect(path);
-            }
-          }
-        >
-          {icon && <span className={cx('fa', icon)}></span>} {title}
-        </a>
-      );
+        <div className={cx('filter-buttons')}>
+          <h3>{title}</h3>
+          <ul className={cx('plain')}>
+            {map(tags, function(tag, i){
+              return(
+                <li key={i}>
+                  <a 
+                    href={path}
+                    title="Find articles related to this"
+                    className={cx('tag')}
+                    onClick={
+                      (event) => { 
+                        event.preventDefault();
+                        filter([tag]); 
+                        redirect(path);
+                      }
+                    }
+                  >
+                    {icon && <span className={cx('fa', icon)}></span>} {tag}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      )
 
     }
 };

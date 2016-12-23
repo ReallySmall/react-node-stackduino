@@ -21,11 +21,11 @@ export default class Post extends Component {
     let tagList = [];
 
     for(let i = 0; i < tags.length; i++){
-      tagList.push(tags[i]);
+      tagList.push(tags[i].name);
     }
 
     return (
-      <div className={cx('row')}>
+      <div>
         <div className={cx('col-sm-8')}>
           <article>
             <div className={cx('clearfix')}>
@@ -34,7 +34,10 @@ export default class Post extends Component {
             </div>
             {content && content.brief && <div dangerouslySetInnerHTML={{ __html: content.brief}} />}
             {content && content.extended && <div dangerouslySetInnerHTML={{ __html: content.extended}} />}
-          </article>  
+          </article>
+          <aside>
+            <FilterButtonContainer path="/articles" tags={tagList} title="Tags" icon="fa-tag" />
+          </aside>
         </div>
         <div className={cx('col-sm-4', 'aside')}>
           <aside>

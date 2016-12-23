@@ -65,12 +65,12 @@ export default class FlickrCarousel extends Component {
                             const width = parseInt(image.width_l);
                             const ratio = (height / width) * 100;
 
-                            if(width >= 1024){
+                            if(width >= 800){
                               return (
                                 <li key={i}>
                                   <a href={"http://flickr.com/photo.gne?id=" + image.id} title="View on Flickr">
                                     <figure>
-                                      <Image src={image.url_c} alt={image.title + " by " + image.ownername + " on Flickr"} ratio={ratio}/>
+                                      <Image src={image.url_z} alt={image.title + " by " + image.ownername + " on Flickr"} ratio={ratio}/>
                                       <figcaption>
                                         <p className={cx('plain','title')}>{truncate(image.title, 60)}</p>
                                       </figcaption>

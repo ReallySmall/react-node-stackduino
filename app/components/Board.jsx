@@ -30,44 +30,41 @@ export default class Board extends Component {
     const dateText = boardStatus === 0 ? 'Development started' : 'Completed';
 
     return (
-        <div className={cx('row')}>
-          <div className={cx('col-sm-7')}>
-            <article>
-              <h2>{title}</h2>
-              <div className={cx('clearfix')}>
-                <BoardStatus status={boardStatus} />
-                <DateBlock text={dateText} date={developedDate} />
-              </div>
-              {content && content.brief && <TextBlock content={content.brief} />}
-              <Carousel images={images.slot1} />
-              {content && content.extended && <TextBlock content={content.extended} />}
-            </article>
-            <aside>
-              <h3 className={cx('visually-hidden')}>Further information</h3>
-              <p className={cx('more-board-information')}>
-                <FilterButtonContainer path="/articles" title="More about building and using this board" tags={['v' + version]} icon="fa-info-circle" />
-              </p>  
-            </aside>
-          </div>
-          <div className={cx('col-sm-5')}>
-            <aside>
-              <h2 className={cx('visually-hidden')}>Related content</h2>
-              <div className={cx('inset-wrapper')}>
-                <section className={cx('panel', 'repository-link')}>
-                  <h3 className={cx('panel-header')}>Project files</h3>
-                  <RepositoryBlock repoUrl={repoUrl} repoUserName={repoUserName} repoName={repoName} />
-                </section>
-              </div>
-              <div className={cx('inset-wrapper')}>
-                <section className={cx('panel', 'repository-link', 'spec-list')}>
-                  <h3 className={cx('panel-header')}>Specifications</h3>
-                    {<div dangerouslySetInnerHTML={{ __html: specification || '' }} />}
-                </section> 
-              </div>
-              <Contact location={this.props.location.pathname} />
-            </aside>
-          </div>
+      <div>
+        <div className={cx('col-sm-7')}>
+          <article>
+            <h2>{title}</h2>
+            <div className={cx('clearfix')}>
+              <BoardStatus status={boardStatus} />
+              <DateBlock text={dateText} date={developedDate} />
+            </div>
+            {content && content.brief && <TextBlock content={content.brief} />}
+            <Carousel images={images.slot1} />
+            {content && content.extended && <TextBlock content={content.extended} />}
+          </article>
+          <aside>
+            <FilterButtonContainer path="/articles" tags={['v' + version]} title="Tags" icon="fa-tag" />
+          </aside>
         </div>
+        <div className={cx('col-sm-5')}>
+          <aside>
+            <h2 className={cx('visually-hidden')}>Related content</h2>
+            <div className={cx('inset-wrapper')}>
+              <section className={cx('panel', 'repository-link')}>
+                <h3 className={cx('panel-header')}>Project files</h3>
+                <RepositoryBlock repoUrl={repoUrl} repoUserName={repoUserName} repoName={repoName} />
+              </section>
+            </div>
+            <div className={cx('inset-wrapper')}>
+              <section className={cx('panel', 'repository-link', 'spec-list')}>
+                <h3 className={cx('panel-header')}>Specifications</h3>
+                  {<div dangerouslySetInnerHTML={{ __html: specification || '' }} />}
+              </section> 
+            </div>
+            <Contact location={this.props.location.pathname} />
+          </aside>
+        </div>
+      </div>
     );
 
   }

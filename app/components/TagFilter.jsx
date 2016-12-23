@@ -49,8 +49,9 @@ class TagFilter extends Component {
 	  	const filterControlLabel = filters && filters.length ? 'Add another filter' : 'Add a filter'
 	  	const filterControl = availableTags.length 
 	  		?	<div>
-					<select onChange={this.filterSelect} value=''>
-						<option value="">{filterControlLabel}</option>
+	  				<label htmlFor="tag-filter-select" className={cx('visually-hidden')}>Available tags</label>
+					<select id="tag-filter-select" onChange={this.filterSelect} value=''>
+						<option value={filterControlLabel}>{filterControlLabel}</option>
 						{map(availableTags, function(tag, i){
 				            return (
 				                <option key={i} value={tag}>{tag}</option>

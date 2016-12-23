@@ -1,4 +1,5 @@
 var express = require('express');
+var compression = require('compression');
 var fs = require('fs');
 var mongoose = require('mongoose');
 var webpack = require('webpack');
@@ -15,6 +16,8 @@ var session = require('express-session');
 var flash = require('connect-flash');
 
 var app = express();
+
+app.use(compression());
 keystone.static(app);
 
 app.use(cookieParser(process.env.KEYSTONE_COOKIE_SECRET));

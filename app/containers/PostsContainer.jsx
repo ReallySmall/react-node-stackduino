@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {map} from "underscore";
+import {map} from 'underscore';
 import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
 import TagFilter from 'components/TagFilter';
