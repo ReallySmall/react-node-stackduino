@@ -15,6 +15,7 @@ Board.add({
 	title: { type: String, required: true },
     path: { type: String, required: true, initial: true },
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'published', index: true },
+    metaDescription: { type: String },
 	developedDate: { type: Types.Date, index: true },
 	version: { type: Types.Number },
 	boardStatus: { type: Types.Select, numeric: true, options: [

@@ -20,7 +20,7 @@ class FilterButtonContainer extends Component {
       let tagList = null;
 
       return (
-        <div className={cx('filter-buttons')}>
+        <div className={cx('filter-buttons', 'clearfix')}>
           <h3>{title}</h3>
           <ul className={cx('plain')}>
             {map(tags, function(tag, i){

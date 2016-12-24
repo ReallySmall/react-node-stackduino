@@ -16,6 +16,7 @@ Post.add({
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'published', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
+	metaDescription: { type: String },
     images: {
         slot1: { type: Types.Relationship, ref: 'Image', many: true },
         slot2: { type: Types.Relationship, ref: 'Image', many: true }
@@ -24,8 +25,7 @@ Post.add({
 		brief: { type: Types.Html, wysiwyg: true, height: 150 },
 		extended: { type: Types.Html, wysiwyg: true, height: 400 }
 	},
-	tags: { type: Types.Relationship, ref: 'Tag', many: true },
-	relatedBoards: { type: Types.Relationship, ref: 'Board', many: true }
+	tags: { type: Types.Relationship, ref: 'Tag', many: true }
 });
 
 Post.schema.virtual('content.full').get(function() {

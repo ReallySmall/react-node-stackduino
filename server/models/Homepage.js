@@ -17,6 +17,7 @@ Homepage.add({
 	state: { type: Types.Select, options: 'draft, published, archived', default: 'draft', index: true },
 	author: { type: Types.Relationship, ref: 'User', index: true },
 	publishedDate: { type: Types.Date, index: true, dependsOn: { state: 'published' } },
+	metaDescription: { type: String },
 	content: {
 		slot1: { type: Types.Html, wysiwyg: true, height: 150 },
 		slot2: { type: Types.Html, wysiwyg: true, height: 800 },
