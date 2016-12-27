@@ -55,7 +55,6 @@ export default class BoardTeaser extends Component {
                   </h3>
                   <div className={cx('clearfix')}>
                     <BoardStatus status={status} />
-                    <DateBlock text={dateText} date={developedDate} />
                   </div>
                 </div>
                 {!closed && <div dangerouslySetInnerHTML={{ __html: intro || '' }} />}

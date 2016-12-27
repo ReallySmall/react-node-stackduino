@@ -6,6 +6,7 @@ import { fetchBoard } from 'actions/boards';
 import NotFoundContainer from 'containers/NotFoundContainer';
 import Page from 'components/Page';
 import Board from 'components/Board';
+import Helmet from 'react-helmet';
 
 class BoardContainer extends Component {
 
@@ -31,6 +32,7 @@ class BoardContainer extends Component {
 
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
+          <Helmet title="Boards" />
           {board && <Board {...board} location={location} />} 
         </Page>
 	  	);

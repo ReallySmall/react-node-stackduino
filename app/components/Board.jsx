@@ -36,7 +36,6 @@ export default class Board extends Component {
             <h2>{title}</h2>
             <div className={cx('clearfix')}>
               <BoardStatus status={boardStatus} />
-              <DateBlock text={dateText} date={developedDate} />
             </div>
             {content && content.brief && <TextBlock content={content.brief} />}
             <Carousel images={images.slot1} />

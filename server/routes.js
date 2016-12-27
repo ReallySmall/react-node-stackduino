@@ -6,6 +6,7 @@ var wrapper = require('./controllers/wrapper');
 var gallery = require('./controllers/gallery');
 var flickr = require('./controllers/flickr');
 var mail = require('./controllers/mail');
+var ssl = require('./controllers/ssl');
 
 var path = require('path');
 var compiled_app_module_path = path.resolve(__dirname, '../', 'public', 'assets', 'server.js');
@@ -13,7 +14,10 @@ var App = require(compiled_app_module_path);
 
 module.exports = function(app) {
 
-  // homepage routes
+  // ssl cert route
+  app.get('/.well-known/acme-challenge/:id', ssl.publicKey);
+
+  // homepage route
   app.get('/api/homepage', homepage.all);
 
   // board routes
@@ -28,7 +32,7 @@ module.exports = function(app) {
   app.get('/api/posts', posts.all);
   app.get('/api/posts/:slug', posts.byId);
 
-  // settings routes
+  // wrapper route
   app.get('/api/wrapper', wrapper.all);
 
   // gallery route
