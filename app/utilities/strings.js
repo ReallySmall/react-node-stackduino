@@ -32,7 +32,7 @@ var toHttps = function(url){
     return '';
   }
   url = url.trim();
-  var secureUrl = url.replace('http', 'https');
+  var secureUrl = url.replace('http://', 'https://');
   return secureUrl;
 }
 
