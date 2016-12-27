@@ -27,4 +27,14 @@ var toDateString = function(dateString){
   return formattedDate;
 };
 
-export { messages, truncate, toDateString };
+var toHttps = function(url){
+  if(!url){
+    return '';
+  }
+  url = url.trim();
+  var secureUrl = url.replace('http', 'https');
+  return secureUrl;
+}
+
+export { messages, truncate, toDateString, toHttps };
+

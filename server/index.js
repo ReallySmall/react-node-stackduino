@@ -46,8 +46,7 @@ keystone.init({
 keystone.set('cloudinary config', {
   cloud_name: process.env.KEYSTONE_CLOUDINARY_CLOUD_NAME, 
   api_key: process.env.KEYSTONE_CLOUDINARY_API_KEY, 
-  api_secret: process.env.KEYSTONE_CLOUDINARY_API_SECRET,
-  secure: true
+  api_secret: process.env.KEYSTONE_CLOUDINARY_API_SECRET
 });
 
 keystone.set('cloudinary secure', true);
