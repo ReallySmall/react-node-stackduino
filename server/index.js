@@ -50,6 +50,8 @@ keystone.set('cloudinary config', {
   secure: true
 });
 
+keystone.set('cloudinary secure', true);
+
 keystone.set('static', ['public']);
 
 // Let keystone know where your models are defined. Here we have it at the `/models`
