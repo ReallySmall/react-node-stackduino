@@ -6,6 +6,7 @@ import styles from 'css/components/_carousel';
 import { Link } from 'react-router';
 import Image from 'components/Image';
 import { truncate } from 'utilities/strings';
+import { toHttps } from 'utilities/strings';
 import Loading from 'components/Loading';
 import Error from 'components/Error';
 
@@ -69,9 +70,9 @@ export default class Carousel extends Component {
                             const ratio = (height / width) * 100;
 
 	                          return (
-	                            <li key={i} data-thumb={item.image.url}>
+	                            <li key={i} data-thumb={toHttps(item.image.url)}>
 	                                <figure>
-	                                  <Image src={item.image.url} alt={item.alt} ratio={ratio}/>
+	                                  <Image src={toHttps(item.image.url)} alt={item.alt} ratio={ratio}/>
                                     {item.caption && <figcaption dangerouslySetInnerHTML={{ __html: item.caption || '' }} />}
 	                                </figure>
 	                            </li>
