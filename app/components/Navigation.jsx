@@ -10,10 +10,10 @@ export default class Navigation extends Component {
   render() {
 
     return (
-      <section className={cx('preface-area')}>
-        <h2 className={cx('visually-hidden')}>Navigation</h2>
+      <div className={cx('preface-area')}>
         <div className={cx('container')}>
           <nav className={cx('row')}>
+            <h2 className={cx('visually-hidden')}>Navigation</h2>
             <ul>
               <li className={cx('col-sm-3')}>
                 <Link className={cx('preface-block')} to="/boards" activeClassName={cx('active')}>
@@ -38,7 +38,7 @@ export default class Navigation extends Component {
             </ul>
           </nav>
         </div>
-      </section>
+      </div>
     );
   }
 

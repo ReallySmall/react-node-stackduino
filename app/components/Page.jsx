@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styles from 'css/components/_page';
+import Helmet from "react-helmet";
 import Loading from 'components/Loading';
 import Error from 'components/Error';
 import NotFoundContainer from 'containers/NotFoundContainer';
@@ -15,7 +16,7 @@ export default class Page extends Component {
 
   render() {
 
-    const { isFetching, fetchingMessage, errorMessage, connectionError, requestFailed, customClass } = this.props;
+    const { isFetching, fetchingMessage, errorMessage, connectionError, requestFailed, customClass, title } = this.props;
     let internalMarkup = this.props.internalMarkup === 'false' ? false : true;
 
     return (

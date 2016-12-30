@@ -22,7 +22,7 @@ export default class Homepage extends Component {
   	return (
     	<div className={cx('page', 'home-page', 'container', 'container-wrapper')}>
         <article>
-          <h2 className="visually-hidden">Page content</h2>
+          <h2 className="visually-hidden">About Stackduino</h2>
           <section className={cx('col-md-12', 'content-block', 'white')}>
             <div className={cx('col-md-12')}>
               <div dangerouslySetInnerHTML={{ __html: content.content.slot1 || '' }} />

@@ -17,7 +17,7 @@
     border-right: 1px solid $grey2;
     .link-block {
       margin-bottom: 10px;
-      h3 {
+      h3, h4 {
         color: $light-grey;
         span {
           margin: 0 10px 0 0;

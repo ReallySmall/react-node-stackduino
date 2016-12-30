@@ -30,7 +30,7 @@ class BoardContainer extends Component {
       const { board, isFetching, requestFailed, location } = this.props;
 
 	  	return (
-        <Page isFetching={isFetching} requestFailed={requestFailed} >
+        <Page isFetching={isFetching} requestFailed={requestFailed} title="test">
           {board && <Board {...board} location={location} />} 
         </Page>
 	  	);
