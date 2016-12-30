@@ -2,7 +2,7 @@ var express = require('express');
 var compression = require('compression');
 var fs = require('fs');
 var mongoose = require('mongoose');
-var enforce = require('express-sslify');
+//var enforce = require('express-sslify');
 var webpack = require('webpack');
 var dotenv = require('dotenv').config();
 
@@ -19,7 +19,7 @@ var flash = require('connect-flash');
 var app = express();
 
 if (process.env.NODE_ENV !== 'development') {
-  app.use(enforce.HTTPS({ trustProtoHeader: true }));
+  //app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
 
 app.use(compression());
