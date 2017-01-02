@@ -18,9 +18,7 @@ class ToolsContainer extends Component {
 
   	//Data that needs to be called before rendering the component
   	//This is used for server side rending via the fetchComponentDataBeforeRending() method
-  	static need = [
-    	fetchWrapper, fetchBoards
-  	];
+  	static need = [ fetchWrapper, fetchBoards ];
 
   	constructor(props) {
     	super(props);
@@ -38,7 +36,11 @@ class ToolsContainer extends Component {
 
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
-          <Helmet title="Tools" />
+          <Helmet 
+            title="Tools" 
+            meta={[
+              {"name": "description", "content": "Coming soon..."}
+            ]} />
           <IntroBlock title="Tools" intro="Coming soon..." />
         </Page>
 	  	);

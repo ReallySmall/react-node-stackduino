@@ -2,5 +2,8 @@
 
 .no-script-show {
   display: none;
+  padding: 5px 10px;
+  border-color: red;
+  border: 1px solid dashed;
 }
 

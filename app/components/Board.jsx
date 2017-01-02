@@ -29,10 +29,17 @@ export default class Board extends Component {
 
     const { title, version, boardStatus, developedDate, content, images, repoUrl, repoUserName, repoName, specification, location } = this.props;
     const dateText = boardStatus === 0 ? 'Development started' : 'Completed';
+    let metaDescription = this.props.metaDescription || ''; 
+
+    console.log(metaDescription);
 
     return (
       <div>
-        <Helmet title={'Version ' + version} />
+        <Helmet 
+          title={'Version ' + version} 
+          meta={[
+            {"name": "description", "content": metaDescription }
+          ]}/>
         <div className={cx('col-sm-7')}>
           <article>
             <h2>{title}</h2>

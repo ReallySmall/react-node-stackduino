@@ -17,9 +17,7 @@ const App = ({children, location}) => {
 
   //Data that needs to be called before rendering the component
   //This is used for server side rending via the fetchComponentDataBeforeRending() method
-  const need = [
-    fetchWrapper
-  ];
+  const need = [ fetchWrapper ];
 
   return (
     <div>

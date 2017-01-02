@@ -18,9 +18,7 @@ class BoardsContainer extends Component {
 
   	//Data that needs to be called before rendering the component
   	//This is used for server side rending via the fetchComponentDataBeforeRending() method
-  	static need = [
-    	fetchWrapper, fetchBoards
-  	];
+  	static need = [ fetchWrapper, fetchBoards ];
 
   	constructor(props) {
     	super(props);
@@ -38,7 +36,11 @@ class BoardsContainer extends Component {
 
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
-          <Helmet title="Board versions"/>
+          <Helmet
+            title="Board versions" 
+            meta={[
+              {"name": "description", "content": "All versions of Stackduino, back to the first prototypes" }
+            ]}/>
           <IntroBlock title="Board versions" intro="Compatible with the Arduino IDE, Stackduino boards automate the process of focus stacking. Version 2.x boards place the emphasis on an enhanced feature-set. The cost of components is correspondingly slightly higher, and the build more challenging due to the use of SMD technology. Version 1.x boards offer a simpler feature-set, but are cheaper and simpler to build. The latest versions of both 1.x and 2.x boards use identical pcb footprints to facilitate development of universally compatible enclosures and accessories." />
           {map(teasers, function(teaser, i){
 

@@ -19,6 +19,8 @@ export default class Post extends Component {
   render() {
 
     const { title, publishedDate, content, categories, images, tags, location } = this.props;
+
+    let metaDescription = this.props.metaDescription || ''; 
     let tagList = [];
 
     for(let i = 0; i < tags.length; i++){
@@ -27,7 +29,11 @@ export default class Post extends Component {
 
     return (
       <div>
-        <Helmet title={title} />
+        <Helmet 
+          title={title} 
+          meta={[
+            {"name": "description", "content": metaDescription }
+          ]}/>
         <div className={cx('col-sm-8')}>
           <article>
             <div className={cx('clearfix')}>

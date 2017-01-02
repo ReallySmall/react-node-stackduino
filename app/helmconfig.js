@@ -23,7 +23,7 @@ const config = {
     { 'rel': 'icon', 'href': favicon },
     { 'rel': 'icon', 'sizes': '192x192', 'href': chromecon },
     // Add to homescreen for Safari on IOS
-    { 'rel': 'apple-touch-icon', 'sizes': '152x152', applecon },
+    { 'rel': 'apple-touch-icon', 'sizes': '152x152', 'href': applecon },
     { 'rel': 'stylesheet', 'href': 'https://fonts.googleapis.com/css?family=Economica:700', 'type': 'text/css' },
     { 'rel': 'stylesheet', 'href': 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 'type': 'text/css' },
     { 'rel': 'stylesheet', 'href': '/assets/styles/main.css' }

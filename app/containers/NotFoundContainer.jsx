@@ -10,23 +10,21 @@ const cx = classNames.bind(styles);
 
 class NotFoundContainer extends Component {
 
-    static need = [
-      fetchWrapper
-    ];
+    static need = [ fetchWrapper ];
 
   	constructor(props) {
     	super(props);
   	};
 
-    componentWillMount() {
-
-    };
-
   	render() {
 
 	  	return (
         <Page>
-          <Helmet title="Not found"/>
+          <Helmet 
+            title="Not found" 
+            meta={[
+              {"name": "description", "content": "Sorry, this content doesn't exist" }
+            ]}/>
           <p><span className={cx('fa', 'fa-warning')}></span> Sorry, couldn't get this content. There may be a network error, or it might not exist.</p>
           <p><a href="/">Back to home</a>.</p>
         </Page>

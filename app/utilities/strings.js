@@ -1,4 +1,5 @@
 var messages = {
+  enableJavaScript: 'Please enable JavaScript to view this content',
   flickrFetching: 'Asking Flickr...',
   flickrFailed: 'Failed to get images. Refresh the page or try again later'
 };

@@ -11,9 +11,7 @@ import { messages } from 'utilities/strings';
 
 class GalleryContainer extends Component {
 
-  static need = [
-    fetchWrapper
-  ];
+  static need = [ fetchWrapper ];
 
   constructor(props) {
     super(props);
@@ -32,7 +30,11 @@ class GalleryContainer extends Component {
 
     return (
       <Page isFetching={isFetching} fetchingMessage={messages.flickrFetching} requestFailed={requestFailed} connectionError={true} errorMessage={messages.flickrFailed}>
-        <Helmet title="Gallery"/>
+        <Helmet
+          title="Gallery" 
+          meta={[
+            {"name": "description", "content": "Images of, and taken by, Stackduino controllers on Flickr" }
+          ]}/>
         <IntroBlock title="Gallery" intro="Images of, and taken by, Stackduino controllers on Flickr." />
         <Gallery {...this.props} />
       </Page>

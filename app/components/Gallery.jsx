@@ -56,7 +56,7 @@ export default class Gallery extends Component {
     });
 
     return (
-      <div className={cx('row')}>
+      <div>
         <div className={cx('col-md-12')}>
           <NoScript />
         </div>

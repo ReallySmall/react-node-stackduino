@@ -10,9 +10,7 @@ class HomepageContainer extends Component {
 
     //Data that needs to be called before rendering the component
     //This is used for server side rending via the fetchComponentDataBeforeRending() method
-    static need = [
-      fetchWrapper, fetchHomepage
-    ];
+    static need = [ fetchWrapper, fetchHomepage ];
 
     constructor(props) {
       super(props);
@@ -34,7 +32,11 @@ class HomepageContainer extends Component {
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} internalMarkup="false">
-          <Helmet title="Home"/>
+          <Helmet
+            title="Home" 
+            meta={[
+              {"name": "description", "content": "Automating focus stacking with Arduino" }
+            ]}/>
           {content && <Homepage content={content} location={location} />} 
         </Page>
       );

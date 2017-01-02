@@ -21,9 +21,7 @@ class PostsContainer extends Component {
 
     //Data that needs to be called before rendering the component
     //This is used for server side rending via the fetchComponentDataBeforeRending() method
-    static need = [
-      fetchWrapper, fetchPosts
-    ];
+    static need = [ fetchWrapper, fetchPosts ];
 
     constructor(props) {
       super(props);
@@ -42,8 +40,12 @@ class PostsContainer extends Component {
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
-          <Helmet title="Articles"/>
-          <IntroBlock title="Articles" intro="Notes on building and using Stackduino boards." />
+          <Helmet 
+            title="Articles"
+            meta={[
+              {"name": "description", "content": "Notes and information on building and using Stackduino boards"}
+            ]} />
+          <IntroBlock title="Articles" intro="Notes and information on building and using Stackduino boards." />
           <TagFilter filters={filters} filterLength={filterLength} tags={tags} />
           {map(teasers, function(teaser, i){
 
