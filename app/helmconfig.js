@@ -17,6 +17,7 @@ import favicon from 'file!images/favicon.ico';
 import ogicon from 'file!images/stackduino_boards.jpg';
 
 const config = {
+  titleTemplate: 'Stackduino | %s',
   link: [
     // Add to homescreen for Chrome on Android
     { 'rel': 'icon', 'href': favicon },
@@ -24,10 +25,8 @@ const config = {
     // Add to homescreen for Safari on IOS
     { 'rel': 'apple-touch-icon', 'sizes': '152x152', applecon },
     { 'rel': 'stylesheet', 'href': 'https://fonts.googleapis.com/css?family=Economica:700', 'type': 'text/css' },
+    { 'rel': 'stylesheet', 'href': 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', 'type': 'text/css' },
     { 'rel': 'stylesheet', 'href': '/assets/styles/main.css' }
-    // SEO: If your mobile URL is different from the desktop URL,
-    // add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones
-    // { 'rel': 'canonical', 'href': 'http://www.example.com/' }
   ],
   meta: [
     { 'charset': 'utf-8' },

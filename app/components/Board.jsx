@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Helmet from 'react-helmet';
 import { Link } from 'react-router';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-detail';
@@ -31,6 +32,7 @@ export default class Board extends Component {
 
     return (
       <div>
+        <Helmet title={'Version ' + version} />
         <div className={cx('col-sm-7')}>
           <article>
             <h2>{title}</h2>

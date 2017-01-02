@@ -3,6 +3,7 @@ import {map} from "underscore";
 import { connect } from 'react-redux';
 import { fetchBoards } from 'actions/boards';
 import { fetchWrapper } from 'actions/wrapper';
+import Helmet from 'react-helmet';
 import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
 import BoardTeaser from 'components/BoardTeaser';
@@ -37,6 +38,7 @@ class ToolsContainer extends Component {
 
 	  	return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
+          <Helmet title="Tools" />
           <IntroBlock title="Tools" intro="Coming soon..." />
         </Page>
 	  	);

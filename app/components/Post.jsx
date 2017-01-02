@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Helmet from 'react-helmet';
 import {map} from "underscore";
 import classNames from 'classnames/bind';
 import styles from 'css/components/_board-detail';
@@ -26,6 +27,7 @@ export default class Post extends Component {
 
     return (
       <div>
+        <Helmet title={title} />
         <div className={cx('col-sm-8')}>
           <article>
             <div className={cx('clearfix')}>

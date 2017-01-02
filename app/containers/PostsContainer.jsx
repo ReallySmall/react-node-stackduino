@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {map} from 'underscore';
+import Helmet from 'react-helmet';
 import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
 import TagFilter from 'components/TagFilter';
@@ -41,6 +42,7 @@ class PostsContainer extends Component {
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} >
+          <Helmet title="Articles"/>
           <IntroBlock title="Articles" intro="Notes on building and using Stackduino boards." />
           <TagFilter filters={filters} filterLength={filterLength} tags={tags} />
           {map(teasers, function(teaser, i){

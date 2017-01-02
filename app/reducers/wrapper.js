@@ -3,9 +3,8 @@ import {
   GET_WRAPPER_SUCCESS,
   GET_WRAPPER_FAILURE } from 'constants/index';
 
-
 export default function settings(state = {
-  content: null
+  content: null,
 }, action) {
   switch (action.type) {
     case GET_WRAPPER_REQUEST:

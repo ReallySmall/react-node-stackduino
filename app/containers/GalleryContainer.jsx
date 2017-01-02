@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchWrapper } from 'actions/wrapper';
 import { fetchGalleryImages } from 'actions/gallery';
+import Helmet from 'react-helmet';
 import Page from 'components/Page';
 import IntroBlock from 'components/IntroBlock';
 import Gallery from 'components/Gallery';
@@ -31,6 +32,7 @@ class GalleryContainer extends Component {
 
     return (
       <Page isFetching={isFetching} fetchingMessage={messages.flickrFetching} requestFailed={requestFailed} connectionError={true} errorMessage={messages.flickrFailed}>
+        <Helmet title="Gallery"/>
         <IntroBlock title="Gallery" intro="Images of, and taken by, Stackduino controllers on Flickr." />
         <Gallery {...this.props} />
       </Page>

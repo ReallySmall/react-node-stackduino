@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchWrapper } from 'actions/wrapper';
+import Helmet from 'react-helmet';
 import Page from 'components/Page';
 import classNames from 'classnames/bind';
 import styles from 'css/components/_article-teaser';
@@ -25,6 +26,7 @@ class NotFoundContainer extends Component {
 
 	  	return (
         <Page>
+          <Helmet title="Not found"/>
           <p><span className={cx('fa', 'fa-warning')}></span> Sorry, couldn't get this content. There may be a network error, or it might not exist.</p>
           <p><a href="/">Back to home</a>.</p>
         </Page>

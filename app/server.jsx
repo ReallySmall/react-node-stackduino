@@ -1,11 +1,11 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import Helmet from 'react-helmet';
 import { RouterContext, match, createMemoryHistory } from 'react-router'
 import axios from 'axios';
 import { Provider } from 'react-redux';
 import createRoutes from 'routes.jsx';
 import configureStore from 'store/configureStore';
-import headconfig from 'components/Meta';
 import { fetchComponentDataBeforeRender } from 'api/fetchComponentDataBeforeRender';
 
 const clientConfig = {
@@ -22,24 +22,17 @@ axios.defaults.baseURL = `http://${clientConfig.host}:${clientConfig.port}`;
  * @param initial state of the store, so that the client can be hydrated with the same state as the server
  * @param head - optional arguments to be placed into the head
  */
-function renderFullPage(renderedContent, initialState, head={
-  title: 'Stackduino',
-  meta: '<meta name="viewport" content="width=device-width, initial-scale=1" />',
-  link: '<link rel="stylesheet" href="/assets/styles/main.css"/>'
-}) {
+function renderFullPage(renderedContent, initialState) {
+
+  const head = Helmet.rewind();
+
   return `
   <!doctype html>
     <html lang="en">
-
     <head>
-      ${head.title}
-      ${head.meta}
-      ${head.link}
-      <link 
-        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
-        rel="stylesheet" 
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" 
-        crossorigin="anonymous">
+      ${head.title.toString()}
+      ${head.meta.toString()}
+      ${head.link.toString()}
       <noscript>
         <style>
           .no-script-hide {
@@ -132,11 +125,7 @@ export default function render(req, res) {
       .then(html => {
         const componentHTML = renderToString(InitialView);
         const initialState = store.getState();
-        res.status(200).end(renderFullPage(componentHTML, initialState, {
-          title: headconfig.title,
-          meta: headconfig.meta,
-          link: headconfig.link
-        }));
+        res.status(200).end(renderFullPage(componentHTML, initialState));
       })
       .catch(err => {
         res.end(renderFullPage("",{}));
