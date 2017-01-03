@@ -17,7 +17,7 @@ import favicon from 'file!images/favicon.ico';
 import ogicon from 'file!images/stackduino_boards.jpg';
 
 const config = {
-  titleTemplate: 'Stackduino | %s',
+  titleTemplate: 'Stackduino: Arduino Focus Stacking | %s',
   link: [
     // Add to homescreen for Chrome on Android
     { 'rel': 'icon', 'href': favicon },
