@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchHomepage } from 'actions/homepage';
 import { fetchWrapper } from 'actions/wrapper';
-import Helmet from 'react-helmet';
 import Page from 'components/Page';
 import Homepage from 'components/Homepage';
 
@@ -32,11 +31,6 @@ class HomepageContainer extends Component {
 
       return (
         <Page isFetching={isFetching} requestFailed={requestFailed} internalMarkup="false">
-          <Helmet
-            title="Home" 
-            meta={[
-              {"name": "description", "content": "Automating focus stacking with Arduino" }
-            ]}/>
           {content && <Homepage content={content} location={location} />} 
         </Page>
       );

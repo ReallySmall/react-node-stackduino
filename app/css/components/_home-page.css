@@ -11,7 +11,8 @@
     padding: 40px 0px;
     background: whitesmoke;
     h2, h3, h4, h5, h6 {
-      font-size: 26px;
+      line-height: 24px;
+      font-size: 20px;
     }
     &:after {
       content: '';
@@ -63,3 +64,14 @@
       }
     }
   }
+
+@media (min-width: 768px) {
+
+  .content-block {
+    h2, h3, h4, h5, h6 {
+      line-height: 28px;
+      font-size: 24px;
+    }
+  }
+
+}
