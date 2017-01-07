@@ -51,7 +51,7 @@ body {
   nowhitespace: afterproperty;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
-  line-height: 1.1em;
+  line-height: 18px;
   font: 14px/1.6 'Open Sans',sans-serif;
   color: $text-colour;
   background: $blue;
@@ -225,15 +225,34 @@ h1,h2,h3,h4,h5,h6 {
   margin: 0 0 10px 0;
 }
 
-h1 { font-size: 32px; }
-h2 { font-size: 26px; }
-h3 { font-size: 20px; }
-h4 { font-size: 18px; }
-h5 { font-size: 16px; }
-h6 { font-size: 14px; }
+h1 { 
+  line-height: 28px;
+  font-size: 24px; 
+}
+h2 { 
+  line-height: 24px;
+  font-size: 20px; 
+}
+h3 { 
+  line-height: 22px;
+  font-size: 18px; 
+}
+h4 { 
+  line-height: 20px;
+  font-size: 16px; 
+}
+h5 { 
+  line-height: 19px;
+  font-size: 15px; 
+}
+h6 { 
+  line-height: 18px;
+  font-size: 14px; 
+}
 
 p {
-  margin: 0 0 20px;
+  line-height: 19px;
+  margin: 0 0 15px;
   &.plain {
     margin: 0;
   }
@@ -562,11 +581,37 @@ noscript {
   padding-top: 20px;
 }
 
-.intro-block {
-  background: whitesmoke;
-  float: none;
-}
-
 .col-md-12 {
   float: none !important;
 }
+
+@media (min-width: 768px) {
+
+  h1 { 
+    line-height: 32px;
+    font-size: 28px; 
+  }
+  h2 { 
+    line-height: 28px;
+    font-size: 24px; 
+  }
+  h3 { 
+    line-height: 26px;
+    font-size: 22px; 
+  }
+  h4 { 
+    line-height: 24px;
+    font-size: 20px; 
+  }
+  h5 { 
+    line-height: 22px;
+    font-size: 18px; 
+  }
+  h6 { 
+    line-height: 20px;
+    font-size: 16px; 
+  }
+
+}
+
+

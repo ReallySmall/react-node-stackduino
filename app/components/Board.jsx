@@ -31,8 +31,6 @@ export default class Board extends Component {
     const dateText = boardStatus === 0 ? 'Development started' : 'Completed';
     let metaDescription = this.props.metaDescription || ''; 
 
-    console.log(metaDescription);
-
     return (
       <div>
         <Helmet 
@@ -43,7 +41,7 @@ export default class Board extends Component {
         <div className={cx('col-sm-7')}>
           <article>
             <h2>{title}</h2>
-            <div className={cx('clearfix')}>
+            <div className={cx('clearfix', 'intro-block')}>
               <BoardStatus status={boardStatus} />
             </div>
             {content && content.brief && <TextBlock content={content.brief} />}

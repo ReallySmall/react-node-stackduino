@@ -2,18 +2,17 @@
 
 .site-header {
   background: $grey;
-  min-height: 110px;
   border-top: 2px solid $black;
   border-bottom: 2px solid $black;
   .site-branding {
     display: block;
     float: left;
     overflow: hidden;
-    margin: 18px 0 0 0;
+    margin: 15px 0;
     .animated-site-logo {
       display: none;
       float: left;
-      font-size: 32px;
+      font-size: 46px;
       margin: 0;
       .fa-pause {
         color: $light-grey;
@@ -36,16 +35,17 @@
     }
   }
   .site-slogan {
+    margin: 0;
     color: $white;
     clear: both;
-    margin-top: -10px;
   }
 }
 
 .site-title { 
   color: $orange;
   margin: -5px 0 0 0;
-  font-size: 38px;
+  line-height: 38px;
+  font-size: 26px;
 }
 
 #navigation {
@@ -57,7 +57,7 @@
 
 .social-links {
   display: none;
-  margin: 18px 0 0 0;
+  margin: 22px 0;
   ul {
     float: left;
     font-size: 24px;
@@ -70,6 +70,9 @@
         &:hover, &:focus, &:active {
           color: $lightest-grey;
         }
+        .fa {
+          display: block;
+        }
       }
     }
   }
@@ -79,13 +82,17 @@
 
   .site-header {
     background: $grey;
-    min-height: 110px;
     border-top: 2px solid $black;
     .site-branding {
+      margin: 22px 0;
       .animated-site-logo {
         display: block;
       }
     }
+  }
+
+  .site-title {
+    font-size: 36px;
   }
 
   .social-links {

@@ -36,8 +36,8 @@ export default class Post extends Component {
           ]}/>
         <div className={cx('col-sm-8')}>
           <article>
-            <div className={cx('clearfix')}>
-              <h2>{title}</h2>
+            <h2>{title}</h2>
+            <div className={cx('clearfix', 'intro-block')}>
               <DateBlock date={publishedDate} />
             </div>
             {content && content.brief && <div dangerouslySetInnerHTML={{ __html: content.brief}} />}

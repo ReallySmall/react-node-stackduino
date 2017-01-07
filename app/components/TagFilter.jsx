@@ -62,7 +62,7 @@ class TagFilter extends Component {
 			: null;
 
 	    return ( 
-			<div className={cx('tag-filter', 'col-md-12')}>
+			<div className={cx('tag-filter')}>
 				<small className={cx('plain', 'filter-label')}>{label}</small>
 				<ul className={cx('plain', 'tags')}>
 					{map(filters, (item, i) => {

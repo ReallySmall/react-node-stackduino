@@ -45,8 +45,9 @@ class PostsContainer extends Component {
             meta={[
               {"name": "description", "content": "Notes and information on building and using Stackduino boards"}
             ]} />
-          <IntroBlock title="Articles" intro="Notes and information on building and using Stackduino boards." />
-          <TagFilter filters={filters} filterLength={filterLength} tags={tags} />
+          <IntroBlock title="Articles" intro="Notes and information on building and using Stackduino boards.">
+            <TagFilter filters={filters} filterLength={filterLength} tags={tags} />
+          </IntroBlock>
           {map(teasers, function(teaser, i){
 
             let intro = '';
