@@ -49,7 +49,7 @@ export default class BoardTeaser extends Component {
           <div className={cx('panel')}>
             <div className={cx('row')}>
               <div className={cx(colWidth)}>
-                <div className={cx('clearfix', 'teaser-header')}>
+                <div className={cx('clearfix', 'teaser-header', 'intro-block')}>
                   <h3>
                     <Link to={'/boards/' + slug}>{title}</Link>
                   </h3>

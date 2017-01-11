@@ -16,6 +16,8 @@ import mscon from 'file!images/mstile-150x150.png';
 import favicon from 'file!images/favicon.ico';
 import ogicon from 'file!images/stackduino_boards.jpg';
 
+const defaultMetaDesc = 'An Arduino compatible focus stacking controller for macro photography';
+
 const config = {
   titleTemplate: 'Stackduino: Arduino Focus Stacking | %s',
   link: [
@@ -33,7 +35,7 @@ const config = {
     // Setting IE=edge tells Internet Explorer to use the latest engine to render the page and execute Javascript
     { 'http-equiv': 'X-UA-Compatible', 'content': 'IE=edge' },
     //  Meta descriptions are commonly used on search engine result pages to display preview snippets for a given page.
-    { 'name': 'description', 'content': 'An Arduino compatible focus stacking controller for macro photography' },
+    { 'name': 'description', 'content': defaultMetaDesc },
     // Mobile Safari introduced this tag to let web developers control the viewport's size and scale
     // The width property controls the size of the viewport, the initial-scale property controls
     // the zoom level when the page is first loaded
@@ -49,8 +51,8 @@ const config = {
     { 'name': 'msapplication-TileColor', 'content': '#3372DF' },
     // og tags
     { 'name': 'og:site_name', 'content': 'Stackduino' },
-    { 'name': 'og:description', 'content': 'A range of arduino compatible open source focus stacking controllers' },
-    { 'name': 'og:image', 'content': ogicon }
+    { 'name': 'og:description', 'content': defaultMetaDesc },
+    { 'name': 'og:image:secure_url', 'content': ogicon }
   ]
 };
 

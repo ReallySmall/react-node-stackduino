@@ -24,7 +24,7 @@ export default class Page extends Component {
         <div className={cx(internalMarkup ? 'container' : '')}>
           <div className={cx(internalMarkup ? 'col-md-12' : '')}>
             {this.props.children}
-            {isFetching && !requestFailed && <div className={cx('col-md-12')}><Loading size="2x" message={fetchingMessage} /></div>}
+            {isFetching && !requestFailed && <div className={cx('container')}><div className={cx('col-md-12')}><Loading size="2x" message={fetchingMessage} /></div></div>}
             {requestFailed && !connectionError && <NotFoundContainer />}
             {requestFailed && connectionError && <div className={cx('col-md-12')}><Error message={errorMessage} size="2x" /></div>}
           </div>
