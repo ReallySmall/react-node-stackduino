@@ -23,7 +23,7 @@ export default class Header extends Component {
 
     return (
       <div className={cx('header-container')}>
-          <header className={cx('site-header')}>
+          <div className={cx('site-header')}>
             <CookieBanner content={cookies} />
             <LegacyWarning content={legacyBrowsers} />
             <div className={cx('container')}>
@@ -55,7 +55,7 @@ export default class Header extends Component {
                 </div>
               </div>
             </div>
-          </header>
+          </div>
           <Navigation route={route} />
       </div>
     );

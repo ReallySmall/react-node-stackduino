@@ -47,8 +47,7 @@ function renderFullPage(renderedContent, initialState) {
         </style>
       </noscript>
     </head>
-    <body>
-    <div id="app">${renderedContent}</div>
+    <body>${renderedContent}
     <script>
       window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
     </script>

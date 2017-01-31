@@ -13,7 +13,7 @@ export default class Footer extends Component {
     const { col1, col2, col3 } = this.props.content;
 
     return (
-      <footer id="footer" className={cx('footer', 'js-ui-sticky-footer')}>
+      <div id="footer" className={cx('footer', 'js-ui-sticky-footer')}>
         <h2 className={cx('visually-hidden')}>Further reading</h2>
         <FlickrCarouselContainer />
         <h3 className={cx('visually-hidden')}>External links</h3>
@@ -62,7 +62,7 @@ export default class Footer extends Component {
             </ul>
           </div>
         </div>
-      </footer>
+      </div>
     );
   }
 

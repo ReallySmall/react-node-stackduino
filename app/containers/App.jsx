@@ -20,24 +20,30 @@ const App = ({children, location}) => {
   const need = [ fetchWrapper ];
 
   return (
-    <div>
-      <Helmet {...config}/>
-      <HeaderContainer />
-      <div className={cx('view-container')}>
-        <div className={cx('page-backing')}>
-          <div className={cx('container')}></div>
-        </div>
-        <ReactCSSTransitionGroup 
-          component="div"
-          transitionName="fade" 
-          transitionEnterTimeout={250} 
-          transitionLeaveTimeout={250}>
-            {React.cloneElement(children, {
-              key: location.pathname
-            })}
-        </ReactCSSTransitionGroup>
-     	</div>
-      <FooterContainer />
+    <div id="app">
+        <Helmet {...config}/>
+    	<header>
+      		<HeaderContainer />
+      	</header>
+      	<main>
+      		<div className={cx('view-container')}>
+        		<div className={cx('page-backing')}>
+          			<div className={cx('container')}></div>
+        		</div>
+        		<ReactCSSTransitionGroup 
+          			component="div"
+          			transitionName="fade" 
+          			transitionEnterTimeout={250} 
+          			transitionLeaveTimeout={250}>
+            			{React.cloneElement(children, {
+              			key: location.pathname
+            		})}
+        		</ReactCSSTransitionGroup>
+     		</div>
+     	</main>
+     	<footer>
+      		<FooterContainer />
+      	</footer>
     </div>
   );
 };
