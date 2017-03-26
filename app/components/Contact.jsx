@@ -83,8 +83,8 @@ export default class Contact extends Component {
                     <textarea id="contact-message" ref="message" name="message" placeholder="Ask a question or leave feedback" maxLength="500" required="required" value={this.state.message} onChange={this.handleChange('message')} />
                   </div>
                   <div className={cx('form-row')}>
-                    <label htmlFor="contact-email">Your email (if you would like a reply)</label>
-                    <input id="contact-email" type="email" name="email" placeholder="Email" maxLength="100" value={this.state.email} onChange={this.handleChange('email')} />
+                    <label htmlFor="contact-email">Your email*</label>
+                    <input id="contact-email" type="email" name="email" required="required" placeholder="Email" maxLength="100" value={this.state.email} onChange={this.handleChange('email')} />
                   </div>
                 </fieldset>
                 <button type="submit">Send <span className={cx('fa', 'fa-arrow-circle-right')}></span></button>
